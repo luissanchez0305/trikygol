@@ -1,0 +1,49 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>    
+  <div ng-show="true">
+        <div class="list card cardprogram">
+            <form [formGroup]="login" (ngSubmit)="attemptUserLogin()">
+            <div class="item item-body">
+                <label class="lorems lorems-content">
+                   Por favor introduce la información de tu cuenta
+                </label>
+                <br/>
+                <br/>
+                <ion-item>
+                    <ion-input type="text" placeholder="Email" autocapitalize="none" formControlName="email"></ion-input>
+                </ion-item>
+                <br>
+                <ion-item>
+                    <ion-input type="password" placeholder="Contraseña" formControlName="pwd"></ion-input>
+                </ion-item>
+                <br>
+                <button ion-button full type="submit" class="button button-calm" [disabled]="!login.valid">INGRESAR</button>
+                <br>
+                <br>
+                <div ion-button (click)="openRegister()">
+                    REGISTRARSE
+                </div>
+                <div ion-button (click)="openForgot()">
+                    RECUPERAR MI CONTRASEÑA
+                </div>
+
+            </div>
+            </form>
+        </div>
+
+    </div>
+</ion-content>

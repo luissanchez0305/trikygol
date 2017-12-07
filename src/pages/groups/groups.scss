@@ -1,0 +1,38 @@
+page-groups {
+    .notifications-details{
+        color: #12283e;
+        font-size: 14px;
+    }
+    ion-avatar{
+        font-size: 65px;
+        color: #f9f5f5;
+        background-color: #F89406;
+        text-align: center;
+        border-radius: 100%;
+        width: 70px;
+        height: 70px;
+    }
+    ion-label {
+        white-space: normal;
+    }
+    .notifications h2{    
+        margin: 2px 0 !important;
+        font-size: 14px;
+        text-align: left;
+    }
+    .noWrap{
+        white-space: normal;
+        text-align: center;
+    }
+    .firstPlace{
+        font-size: 2.4rem;
+        font-weight: normal;
+    }
+    .secondPlace{
+        font-size: 1.8rem;
+        font-weight: normal;
+    }
+    .selected{
+        background-color: #F89406;
+    }
+}

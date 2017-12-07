@@ -1,0 +1,186 @@
+<!--
+  Generated template for the GroupsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Grupos</ion-title>
+    <ion-buttons end>
+      <button (click)="logout()">
+        Logout
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button full id="triky-button" class="selected" color="triky-button" (click)="clickGroups('triky')">TRIKY</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button full id="fifa-button" color="triky-button" (click)="clickGroups('fifa')">FIFA</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item-group>
+      <ion-item>
+        <ion-item class="notifications" (click)="clickGroup('A')">
+          <ion-avatar item-left>
+            <span class="group-letter">A</span>
+          </ion-avatar>
+          <div *ngIf="showPlacesA"><p class="firstPlace">1er {{ firstA }}</p><p class="secondPlace">2do {{ secondA }}</p></div>
+          <h2 *ngIf="!showPlacesA">{{ fillTextA }}</h2>
+          <ion-grid>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapA }}">{{ teamA1 }}</ion-col>
+              <ion-col>{{ teamA2 }}</ion-col>
+            </ion-row>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapA }}">{{ teamA3 }}</ion-col>
+              <ion-col>{{ teamA4 }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-item class="notifications" (click)="clickGroup('B')">
+          <ion-avatar item-left>
+            <span class="group-letter">B</span>
+          </ion-avatar>
+          <div *ngIf="showPlacesB"><p class="firstPlace">1er {{ firstB }}</p><p class="secondPlace">2do {{ secondB }}</p></div>
+          <h2 *ngIf="!showPlacesB">{{ fillTextB }}</h2>
+          <ion-grid>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapB }}">{{ teamB1 }}</ion-col>
+              <ion-col>{{ teamB2 }}</ion-col>
+            </ion-row>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapA }}">{{ teamB3 }}</ion-col>
+              <ion-col>{{ teamB4 }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-item class="notifications" (click)="clickGroup('C')">
+          <ion-avatar item-left>
+            <span class="group-letter">C</span>
+          </ion-avatar>
+          <div *ngIf="showPlacesC"><p class="firstPlace">1er {{ firstC }}</p><p class="secondPlace">2do {{ secondC }}</p></div>
+          <h2 *ngIf="!showPlacesC">{{ fillTextC }}</h2>
+          <ion-grid>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapC }}">{{ teamC1 }}</ion-col>
+              <ion-col>{{ teamC2 }}</ion-col>
+            </ion-row>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapA }}">{{ teamC3 }}</ion-col>
+              <ion-col>{{ teamC4 }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-item class="notifications" (click)="clickGroup('D')">
+          <ion-avatar item-left>
+            <span class="group-letter">D</span>
+          </ion-avatar>
+          <div *ngIf="showPlacesD"><p class="firstPlace">1er {{ firstD }}</p><p class="secondPlace">2do {{ secondD }}</p></div>
+          <h2 *ngIf="!showPlacesD">{{ fillTextD }}</h2>
+          <ion-grid>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapD }}">{{ teamD1 }}</ion-col>
+              <ion-col>{{ teamD2 }}</ion-col>
+            </ion-row>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapA }}">{{ teamD3 }}</ion-col>
+              <ion-col>{{ teamD4 }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-item class="notifications" (click)="clickGroup('E')">
+          <ion-avatar item-left>
+            <span class="group-letter">E</span>
+          </ion-avatar>
+          <div *ngIf="showPlacesE"><p class="firstPlace">1er {{ firstE }}</p><p class="secondPlace">2do {{ secondE }}</p></div>
+          <h2 *ngIf="!showPlacesE">{{ fillTextE }}</h2>
+          <ion-grid>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapE }}">{{ teamE1 }}</ion-col>
+              <ion-col>{{ teamE2 }}</ion-col>
+            </ion-row>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapA }}">{{ teamE3 }}</ion-col>
+              <ion-col>{{ teamE4 }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-item class="notifications" (click)="clickGroup('F')">
+          <ion-avatar item-left>
+            <span class="group-letter">F</span>
+          </ion-avatar>
+          <div *ngIf="showPlacesF"><p class="firstPlace">1er {{ firstF }}</p><p class="secondPlace">2do {{ secondF }}</p></div>
+          <h2 *ngIf="!showPlacesF">{{ fillTextF }}</h2>
+          <ion-grid>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapF }}">{{ teamF1 }}</ion-col>
+              <ion-col>{{ teamF2 }}</ion-col>
+            </ion-row>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapA }}">{{ teamF3 }}</ion-col>
+              <ion-col>{{ teamF4 }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-item class="notifications" (click)="clickGroup('G')">
+          <ion-avatar item-left>
+            <span class="group-letter">G</span>
+          </ion-avatar>
+          <div *ngIf="showPlacesG"><p class="firstPlace">1er {{ firstG }}</p><p class="secondPlace">2do {{ secondG }}</p></div>
+          <h2 *ngIf="!showPlacesG">{{ fillTextG }}</h2>
+          <ion-grid>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapG }}">{{ teamG1 }}</ion-col>
+              <ion-col>{{ teamG2 }}</ion-col>
+            </ion-row>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapA }}">{{ teamG3 }}</ion-col>
+              <ion-col>{{ teamG4 }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-item class="notifications" (click)="clickGroup('H')">
+          <ion-avatar item-left>
+            <span class="group-letter">H</span>
+          </ion-avatar>
+          <div *ngIf="showPlacesH"><p class="firstPlace">1er {{ firstH }}</p><p class="secondPlace">2do {{ secondH }}</p></div>
+          <h2 *ngIf="!showPlacesH">{{ fillTextH }}</h2>
+          <ion-grid>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapH }}">{{ teamH1 }}</ion-col>
+              <ion-col>{{ teamH2 }}</ion-col>
+            </ion-row>
+            <ion-row wrap class="notifications-details">
+              <ion-col class="{{ noWrapA }}">{{ teamH3 }}</ion-col>
+              <ion-col>{{ teamH4 }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-item>
+    </ion-item-group>
+</ion-content>

@@ -1,0 +1,51 @@
+<!--
+  Generated template for the ForgotPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Recuperar mi contraseña</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div ng-show="true">
+
+        <div class="list card cardprogram">
+            <form [formGroup]="forgot" (ngSubmit)="attemptUserForgot()">
+            <div class="item item-body">
+                <label class="lorems lorems-content">
+                   Por favor introduce el email de tu cuenta
+                </label>
+                <br/>
+                <br/>
+                <ion-item  *ngIf="!showSent">
+                    <ion-input type="email" placeholder="Email" autocapitalize="none" formControlName="email"></ion-input>
+                </ion-item>
+                <br *ngIf="!showSent">
+                <button ion-button full type="submit" class="button button-calm" [disabled]="!forgot.valid" *ngIf="!showSent">ENVIAR</button>
+                <br *ngIf="!showSent">
+                <br *ngIf="!showSent">
+                <label class="lorems lorems-content" *ngIf="showSent">
+                   Una nueva contraseña ha sido enviada a la direccion de correo que envio<br>Por favor, le recomendamos que la cambie tan pronto vuelva a entrar
+                </label>
+                <br/>
+                <div ion-button (click)="openRegister()">
+                    REGISTRARSE
+                </div>
+                <div ion-button (click)="openLogin()">
+                    LOGIN
+                </div>
+
+            </div>
+            </form>
+        </div>
+
+    </div>
+
+</ion-content>

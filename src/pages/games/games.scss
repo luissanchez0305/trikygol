@@ -1,0 +1,40 @@
+page-games {
+    .game-container{
+        float:left; 
+        width: 100%; 
+        border-bottom: solid 1px;
+        font-size: 140%;
+    }
+    .game-container .date{
+        float:left; 
+        width: 25%;
+        font-size: 16px;
+    }
+    
+    .game-container .scores{
+        float:left; 
+        margin: 0;
+    }
+    
+    .game-container .scores img{
+        margin: 10px 0 0 0;
+        border-radius: 50%;
+    }
+    
+    .game-container .scores input{
+        margin-left: 5px; 
+        width: calc(60% - 8px);
+        border: 1px solid !important;
+    }
+    .game-container .input-cover{
+        height: 75%;
+    }
+    
+    .game-container .text-input-md{
+        margin: 0px;
+    }
+    .selected{
+        background-color: #F89406;
+    }
+    
+}

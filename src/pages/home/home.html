@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>TrikyGol</ion-title>
+    <ion-buttons end>
+      <button (click)="logout()">
+        Logout
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item-group class="people-group">	
+    <ion-item-divider color="grey" class="title" end>Mis puntos: {{ myPoints }}</ion-item-divider>
+  	<ion-label class="entire-text">Conforme se vayan dando los juegos los puntos se iran llenando de acorde a los aciertos en sus pronósticos</ion-label>
+		<ion-grid>
+      <ion-row>
+        <ion-col>
+          <section>
+            <ion-item color="grey-light" no-lines>
+              <p># de marcadores acertados</p>
+              <p padding>{{ scoresRight }}</p>
+            </ion-item>
+          </section>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <section>
+            <ion-item color="grey-light" no-lines>
+              <p># de empates</p>
+              <p padding>{{ tieGames }}</p>
+            </ion-item>
+          </section>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <section>
+            <ion-item color="grey-light" no-lines>
+              <p># de equipos ganadores</p>
+              <p padding>{{ winTeams }}</p>
+            </ion-item>
+          </section>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <section>
+            <ion-item color="grey-light" no-lines>
+              <p># de equipos clasificados(x2)</p>
+              <p padding>{{ passedTeams }}</p>
+            </ion-item>
+          </section>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item-group>
+  <ion-item-group class="people-group positions">
+    <ion-item-divider color="grey" class="title">Tabla de posiciones</ion-item-divider>
+    <div *ngIf="positionTable">
+      <ion-item class="position1">
+        <h1>{{ positionName1 }}</h1>
+      </ion-item>  
+      <ion-item class="position1">{{ positionName2 }}
+      </ion-item>  
+      <ion-item class="position1">{{ positionName3 }}
+      </ion-item>  
+      <ion-item class="position1">{{ positionName4 }}
+      </ion-item>  
+      <ion-item class="position1">{{ positionName5 }}
+      </ion-item>  
+    </div>
+    <div *ngIf="!positionTable">
+      <section>
+        <ion-item color="grey-light" no-lines>
+          <h2>Aún no perteneces a un grupo</h2>
+          <p>Introduce el grupo abajo y dale a "Entrar" para empezar a jugar</p>
+          <form [formGroup]="group" (ngSubmit)="attemptJoinGroup()">
+            <ion-item>
+                <ion-input type="text" placeholder="Código" autocapitalize="none" formControlName="code"></ion-input>
+            </ion-item>
+            <br>
+            <button ion-button full type="submit" class="button button-calm" [disabled]="!group.valid">ENTRAR</button>
+          </form>
+        </ion-item>
+      </section>
+    </div>
+  </ion-item-group>
+  <ion-item-group>
+  </ion-item-group>
+</ion-content>
