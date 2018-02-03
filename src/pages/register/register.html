@@ -6,14 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Registrarse</ion-title>
-    <ion-buttons end *ngIf="showLogout">
-      <button (click)="logout()">
+    <ion-navbar>
+        <ion-title>Registrarse</ion-title>
+        <ion-buttons end *ngIf="showLogout">
+            <button (click)="logout()">
         Logout
       </button>
-    </ion-buttons>
-  </ion-navbar>
+        </ion-buttons>
+    </ion-navbar>
 
 </ion-header>
 
@@ -23,39 +23,42 @@
 
         <div class="list card cardprogram">
             <form [formGroup]="register" (ngSubmit)="attemptUserRegister()">
-            <div class="item item-body">
-                <label class="lorems lorems-content">
-                   Por favor llene sus datos en el siguiente formulario
+                <div class="item item-body">
+              <div padding margin-bottom class="card-triky"><label>
+                   <ion-icon name="information-circle"></ion-icon> Por favor llene sus datos en el siguiente formulario
                 </label>
-                <br/>
-                <br/>
-                <ion-item>
-                    <ion-input value="{{ emailValue }}" type="email" placeholder="Email*" autocapitalize="none" formControlName="email"></ion-input>
-                </ion-item>
-                <br/>
-                <ion-item>
-                    <ion-input type="text" placeholder="Nombre" value="{{ nameValue }}" formControlName="name"></ion-input>
-                </ion-item>
-                <br/>
-                <ion-item>
-                    <ion-input type="text" placeholder="Codigo de grupo" value="{{ groupValue }}" formControlName="group"></ion-input>
-                </ion-item>
-                <br>  
-                <ion-item>
-                    <ion-input type="password" placeholder="Contraseña{{ passwordStar }}" formControlName="pwd"></ion-input>
-                </ion-item>
-                <br>
-                <button ion-button full type="submit" class="button button-calm" [disabled]="!register.valid">{{ submitText }}</button>
-                <br>
-                <br>
-                <div *ngIf="!isLoggedIn" ion-button (click)="openLogin()">
-                    LOGIN
-                </div>
-                <div *ngIf="!isLoggedIn" ion-button (click)="openForgot()">
-                    RECUPERAR MI CONTRASEÑA
-                </div>
+</div>
+                    <div padding class="card-triky">
+                        <ion-item>
+                            <ion-input value="{{ emailValue }}" type="email" placeholder="Email*" autocapitalize="none" formControlName="email"></ion-input>
+                        </ion-item>
+                        <br/>
+                        <ion-item>
+                            <ion-input type="text" placeholder="Nombre" value="{{ nameValue }}" formControlName="name"></ion-input>
+                        </ion-item>
+                        <br/>
+                        <ion-item>
+                            <ion-input type="text" placeholder="Codigo de grupo" value="{{ groupValue }}" formControlName="group"></ion-input>
+                        </ion-item>
+                        <br>
+                        <ion-item>
+                            <ion-input type="password" placeholder="Contraseña{{ passwordStar }}" formControlName="pwd"></ion-input>
+                        </ion-item>
+                    </div>
+                    <br>
+                    <button ion-button full type="submit" class="button button-calm" [disabled]="!register.valid">{{ submitText }}</button>
+                    <br>
+                    <div style="text-align:center">
+                                            <div *ngIf="!isLoggedIn" ion-button clear (click)="openLogin()">
+                        Ya tengo una cuenta
+                    </div>
+                    <br/>
+                    <div *ngIf="!isLoggedIn" ion-button clear (click)="openForgot()">
+                        Olvide mi contraseña
+                    </div>
+                    </div>
 
-            </div>
+                </div>
             </form>
         </div>
 

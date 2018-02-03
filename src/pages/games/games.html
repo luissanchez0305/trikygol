@@ -11,8 +11,6 @@
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
 <!-- Generated template for the TrikyGamesComponent component -->
     <ion-grid *ngIf="!isPlayoff">
@@ -25,10 +23,13 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <div class="card-triky" margin-bottom padding>
+  	<label style="white-space: normal !important;"><ion-icon name="ios-thumbs-up"></ion-icon>Coloca tu pronostico, el los siguientes recuadros de cada partido</label>
+</div>
     <form [formGroup]="GroupGames" (ngSubmit)="saveGroupGames()">
-        <div class="game-container">
-        	<ion-input type="hidden" value="{{ gameId1 }}" formControlName="formGameId1"></ion-input>
-            <div class="date">{{ date1 }}</div>
+    	<ion-input type="hidden" value="{{ gameId1 }}" formControlName="formGameId1"></ion-input>
+        <div class="date">{{ date1 }}</div>
+        <div margin-bottom class="card-triky">
             <ion-grid>
                 <ion-row class="scores">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera1_1 }}" /></ion-col>
@@ -37,6 +38,7 @@
                         <ion-input *ngIf="!isFifa" type="number" value="{{ marcador1_1 }}" formControlName="formMarcador1_1"></ion-input>
                     </ion-col>
                 </ion-row>
+                <span class="line-score"></span>
                 <ion-row class="scores">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera1_2 }}"/></ion-col>
             		<ion-col><label>{{ equipo1_2 }}</label></ion-col>
@@ -47,9 +49,9 @@
         	</ion-grid>
     	</div>
     	
-        <div class="game-container">
-        	<ion-input type="hidden" value="{{ gameId2 }}" formControlName="formGameId2"></ion-input>
-            <div class="date">{{ date2 }}</div>
+	    <ion-input type="hidden" value="{{ gameId2 }}" formControlName="formGameId2"></ion-input>
+        <div class="date">{{ date2 }}</div>
+        <div margin-bottom class="card-triky">
             <ion-grid>
                 <ion-row class="scores">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera2_1 }}" /></ion-col>
@@ -58,6 +60,7 @@
                         <ion-input *ngIf="!isFifa" type="number" value="{{ marcador2_1 }}" formControlName="formMarcador2_1"></ion-input>
                     </ion-col>
                 </ion-row>
+                <span class="line-score"></span>
                 <ion-row class="scores">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera2_2 }}"/></ion-col>
             		<ion-col>{{ equipo2_2 }}</ion-col>
@@ -67,127 +70,152 @@
             	</ion-row>
             </ion-grid>
     	</div>	
-        <div class="game-container">
-        	<ion-input type="hidden" value="{{ gameId3 }}" formControlName="formGameId3"></ion-input>
+    	
+    	<div *ngIf="showGame3">
+    	   <ion-input type="hidden" value="{{ gameId3 }}" formControlName="formGameId3"></ion-input>
             <div class="date">{{ date3 }}</div>
-            <ion-grid>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera3_1 }}" /></ion-col>
-                    <ion-col>{{ equipo3_1 }}</ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador3_1 }}" formControlName="formMarcador3_1"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera3_2 }}"/></ion-col>
-            		<ion-col>{{ equipo3_2 }}</ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador3_2 }}" formControlName="formMarcador3_2"></ion-input>
-                    </ion-col>
-            	</ion-row>
-            </ion-grid>
-    	</div>	
-        <div class="game-container">
-        	<ion-input type="hidden" value="{{ gameId4 }}" formControlName="formGameId4"></ion-input>
-            <div class="date">{{ date4 }}</div>
-            <ion-grid>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera4_1 }}" /></ion-col>
-                    <ion-col>{{ equipo4_1 }}</ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador4_1 }}" formControlName="formMarcador4_1"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera4_2 }}"/></ion-col>
-            		<ion-col>{{ equipo4_2 }}</ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador4_2 }}" formControlName="formMarcador4_2"></ion-input>
-                    </ion-col>
-        	    </ion-row>
-            </ion-grid>
-    	</div>	
-        <div class="game-container" *ngIf="showGame5">
-        	<ion-input type="hidden" value="{{ gameId5 }}" formControlName="formGameId5"></ion-input>
-            <div class="date">{{ date5 }}</div>
-            <ion-grid>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera5_1 }}" /></ion-col>
-                    <ion-col>{{ equipo5_1 }}</ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador5_1 }}" formControlName="formMarcador5_1"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera5_2 }}"/></ion-col>
-            		<ion-col>{{ equipo5_2 }}</ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador5_2 }}" formControlName="formMarcador5_2"></ion-input>
-                    </ion-col>
-            	</ion-row>
-            </ion-grid>
+            <div margin-bottom class="card-triky">
+                <ion-grid>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera3_1 }}" /></ion-col>
+                        <ion-col>{{ equipo3_1 }}</ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador3_1 }}" formControlName="formMarcador3_1"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                     <span class="line-score"></span>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera3_2 }}"/></ion-col>
+                		<ion-col>{{ equipo3_2 }}</ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador3_2 }}" formControlName="formMarcador3_2"></ion-input>
+                        </ion-col>
+                	</ion-row>
+                </ion-grid>
+        	</div>	
     	</div>	
     	
-        <div class="game-container" *ngIf="showGame6">
-        	<ion-input type="hidden" value="{{ gameId6 }}" formControlName="formGameId6"></ion-input>
-            <div class="date">{{ date6 }}</div>
-            <ion-grid>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28" src="images/{{ bandera6_1 }}" /></ion-col>
-                    <ion-col>{{ equipo6_1 }}</ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador6_1 }}" formControlName="formMarcador6_1"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera6_2 }}"/></ion-col>
-            		<ion-col>{{ equipo6_2 }}</ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador6_2 }}" formControlName="formMarcador6_2"></ion-input>
-                    </ion-col>
-            	</ion-row>
-            </ion-grid>
+    	<div *ngIf="showGame4">
+        	<ion-input type="hidden" value="{{ gameId4 }}" formControlName="formGameId4"></ion-input>
+            <div class="date">{{ date4 }}</div>
+            <div margin-bottom class="card-triky">
+                <ion-grid>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera4_1 }}" /></ion-col>
+                        <ion-col>{{ equipo4_1 }}</ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador4_1 }}" formControlName="formMarcador4_1"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <span class="line-score"></span>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera4_2 }}"/></ion-col>
+                		<ion-col>{{ equipo4_2 }}</ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador4_2 }}" formControlName="formMarcador4_2"></ion-input>
+                        </ion-col>
+            	    </ion-row>
+                </ion-grid>
+        	</div>	
     	</div>	
-        <div class="game-container" *ngIf="showGame7">
+    	
+    	
+    	<div *ngIf="showGame5">
+        	<ion-input type="hidden" value="{{ gameId5 }}" formControlName="formGameId5"></ion-input>
+            <div class="date">{{ date5 }}</div>
+            <div margin-bottom class="card-triky">
+                <ion-grid>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera5_1 }}" /></ion-col>
+                        <ion-col>{{ equipo5_1 }}</ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador5_1 }}" formControlName="formMarcador5_1"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <span class="line-score"></span>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera5_2 }}"/></ion-col>
+                		<ion-col>{{ equipo5_2 }}</ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador5_2 }}" formControlName="formMarcador5_2"></ion-input>
+                        </ion-col>
+                	</ion-row>
+                </ion-grid>
+        	</div>
+    	</div>
+    	
+    	<div *ngIf="showGame6">
+    	    <ion-input type="hidden" value="{{ gameId6 }}" formControlName="formGameId6"></ion-input>
+            <div class="date">{{ date6 }}</div>
+            <div margin-bottom class="card-triky">
+                <ion-grid>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28" src="images/{{ bandera6_1 }}" /></ion-col>
+                        <ion-col>{{ equipo6_1 }}</ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador6_1 }}" formControlName="formMarcador6_1"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <span class="line-score"></span>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera6_2 }}"/></ion-col>
+                		<ion-col>{{ equipo6_2 }}</ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador6_2 }}" formControlName="formMarcador6_2"></ion-input>
+                        </ion-col>
+                	</ion-row>
+                </ion-grid>
+        	</div>
+    	</div>
+    	
+    	<div *ngIf="showGame7">
         	<ion-input type="hidden" value="{{ gameId7 }}" formControlName="formGameId7"></ion-input>
             <div class="date">{{ date7 }}</div>
-            <ion-grid>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera7_1 }}" /></ion-col>
-                    <ion-col><label>{{ equipo7_1 }}</label></ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador7_1 }}" formControlName="formMarcador7_1"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera7_2 }}"/></ion-col>
-            		<ion-col><label>{{ equipo7_2 }}</label></ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador7_2 }}" formControlName="formMarcador7_2"></ion-input>
-                    </ion-col>
-            	</ion-row>
-        	</ion-grid>
+            <div margin-bottom class="card-triky">
+                <ion-grid>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera7_1 }}" /></ion-col>
+                        <ion-col><label>{{ equipo7_1 }}</label></ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador7_1 }}" formControlName="formMarcador7_1"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <span class="line-score"></span>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera7_2 }}"/></ion-col>
+                		<ion-col><label>{{ equipo7_2 }}</label></ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador7_2 }}" formControlName="formMarcador7_2"></ion-input>
+                        </ion-col>
+                	</ion-row>
+            	</ion-grid>
+        	</div>
     	</div>
-        <div class="game-container" *ngIf="showGame8">
+    	
+    	<div *ngIf="showGame8">
         	<ion-input type="hidden" value="{{ gameId8 }}" formControlName="formGameId8"></ion-input>
             <div class="date">{{ date8 }}</div>
-            <ion-grid>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera8_1 }}" /></ion-col>
-                    <ion-col><label>{{ equipo8_1 }}</label></ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador8_1 }}" formControlName="formMarcador8_1"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row class="scores">
-                    <ion-col><img width="42" height="28"  src="images/{{ bandera8_2 }}"/></ion-col>
-            		<ion-col><label>{{ equipo8_2 }}</label></ion-col>
-                    <ion-col>
-                        <ion-input *ngIf="!isFifa" type="number" value="{{ marcador8_2 }}" formControlName="formMarcador8_2"></ion-input>
-                    </ion-col>
-            	</ion-row>
-        	</ion-grid>
+            <div margin-bottom class="card-triky">
+                <ion-grid>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera8_1 }}" /></ion-col>
+                        <ion-col><label>{{ equipo8_1 }}</label></ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador8_1 }}" formControlName="formMarcador8_1"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <span class="line-score"></span>
+                    <ion-row class="scores">
+                        <ion-col><img width="42" height="28"  src="images/{{ bandera8_2 }}"/></ion-col>
+                		<ion-col><label>{{ equipo8_2 }}</label></ion-col>
+                        <ion-col>
+                            <ion-input *ngIf="!isFifa" type="number" value="{{ marcador8_2 }}" formControlName="formMarcador8_2"></ion-input>
+                        </ion-col>
+                	</ion-row>
+            	</ion-grid>
+        	</div>
     	</div>
-        <button ion-button full type="submit" class="button button-calm" *ngIf="!isFifa">GUARDAR</button>
+    	
+        <button ion-button full type="submit" class="button button-calm" *ngIf="!isFifa">Guardar</button>
     </form>
 </ion-content>

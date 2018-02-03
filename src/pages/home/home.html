@@ -1,91 +1,94 @@
 <ion-header>
   <ion-navbar>
     <ion-title>TrikyGol</ion-title>
-    <ion-buttons end>
-      <button (click)="logout()">
-        Logout
-      </button>
-    </ion-buttons>
+    <button ion-button menuToggle end class="button button-clear">
+      <ion-icon name="menu"></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
+  <!--panel de mis puntos-->
   <ion-item-group class="people-group">	
-    <ion-item-divider color="grey" class="title" end>Mis puntos: {{ myPoints }}</ion-item-divider>
-  	<ion-label class="entire-text">Conforme se vayan dando los juegos los puntos se iran llenando de acorde a los aciertos en sus pronósticos</ion-label>
-		<ion-grid>
-      <ion-row>
-        <ion-col>
-          <section>
-            <ion-item color="grey-light" no-lines>
-              <p># de marcadores acertados</p>
-              <p padding>{{ scoresRight }}</p>
-            </ion-item>
-          </section>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <section>
-            <ion-item color="grey-light" no-lines>
-              <p># de empates</p>
-              <p padding>{{ tieGames }}</p>
-            </ion-item>
-          </section>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <section>
-            <ion-item color="grey-light" no-lines>
-              <p># de equipos ganadores</p>
-              <p padding>{{ winTeams }}</p>
-            </ion-item>
-          </section>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <section>
-            <ion-item color="grey-light" no-lines>
-              <p># de equipos clasificados(x2)</p>
-              <p padding>{{ passedTeams }}</p>
-            </ion-item>
-          </section>
-        </ion-col>
-      </ion-row>
+  <div class="headers-ion">Puntos Ganados</div>
+  <div padding margin-bottom text-center class="card-triky">
+        <div class="title" end>  <ion-icon style="color:#ff9800; font-size:3.5rem" name="md-trophy"></ion-icon> Mis puntos: {{ myPoints }}</div>
+  	<ion-label class="entire-text">Mis puntos total, acertados</ion-label>
+</div>
+<!--panel de estadisticas-->
+    <ion-grid style="font-size:1.4rem;text-align:center;white-space: inherit !important;">
+        <ion-row>
+            <ion-col col-6>
+              <div padding class="card-triky">
+                <div style="white-space: normal;"># de marcadores acertados</div>
+                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ scoresRight }}</b></div>
+                </div>
+            </ion-col>
+            <ion-col col-6>
+               <div padding class="card-triky">
+                <div style="white-space: normal;"># de partidos  empatados</div>
+                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ tieGames }}</b></div>
+                </div>
+            </ion-col>
+            <ion-col col-6>
+              <div padding class="card-triky">
+                <div style="white-space: normal;"># de equipos ganadores</div>
+                <div style="font-size:1.9rem;"><b>{{ winTeams }}</b></div>
+                </div>
+            </ion-col>
+            <ion-col col-6>
+              <div padding class="card-triky">
+                <div style="white-space: normal;"># de equipos clasificados(x2)</div>
+                <div style="font-size:1.9rem;"><b>{{ passedTeams }}</b></div>
+                </div>
+            </ion-col>
+        </ion-row>
     </ion-grid>
   </ion-item-group>
-  <ion-item-group class="people-group positions">
-    <ion-item-divider color="grey" class="title">Tabla de posiciones</ion-item-divider>
+  
+<!--tabla de usuarios-->
+<ion-item-group class="people-group positions">
+  <div class="headers-ion">Tabla de Posiciones</div>
+  <div padding class="card-triky">
     <div *ngIf="positionTable">
       <ion-item class="position1">
-        <h1>{{ positionName1 }}</h1>
-      </ion-item>  
-      <ion-item class="position1">{{ positionName2 }}
-      </ion-item>  
-      <ion-item class="position1">{{ positionName3 }}
-      </ion-item>  
-      <ion-item class="position1">{{ positionName4 }}
-      </ion-item>  
-      <ion-item class="position1">{{ positionName5 }}
-      </ion-item>  
+        <ion-grid>
+          <ion-row class="header-table">
+            <ion-col col-6>Usuario</ion-col>
+            <ion-col col-6>Puntos</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item class="position1">1
+        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ positionName1 }}
+      </ion-item>
+      <ion-item class="position1">2
+        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ positionName2 }}
+      </ion-item>
+      <ion-item class="position1">3
+        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ positionName3 }}
+      </ion-item>
+      <ion-item class="position1">4
+        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ positionName4 }}
+      </ion-item>
+      <ion-item class="position1">5
+        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ positionName5 }}
+      </ion-item>
     </div>
     <div *ngIf="!positionTable">
-      <section>
-        <ion-item color="grey-light" no-lines>
+        <ion-item>
           <h2>Aún no perteneces a un grupo</h2>
           <p>Introduce el grupo abajo y dale a "Entrar" para empezar a jugar</p>
           <form [formGroup]="group" (ngSubmit)="attemptJoinGroup()">
             <ion-item>
-                <ion-input type="text" placeholder="Código" autocapitalize="none" formControlName="code"></ion-input>
+                <ion-input class="code-group" type="text" placeholder="Código" autocapitalize="none" formControlName="code"></ion-input>
             </ion-item>
             <br>
             <button ion-button full type="submit" class="button button-calm" [disabled]="!group.valid">ENTRAR</button>
           </form>
         </ion-item>
-      </section>
     </div>
+    </div>
+    
   </ion-item-group>
   <ion-item-group>
   </ion-item-group>

@@ -14,15 +14,19 @@ if(isset($post->e) && isset($post->c)) {
 		$query = "UPDATE usuarios SET pwd = '$pwd' WHERE email = '$currEmail'";
 		mysql_query($query,$link) or die('Errant query:  '.$query);
 	}
-	if(strlen($name)){
+	if(strlen($name) > 0){
 		$query = "UPDATE usuarios SET nombre = '$name' WHERE email = '$currEmail'";
 		mysql_query($query,$link) or die('Errant query:  '.$query);
 	}
-	if(strlen($group)){
+	if(strlen($group) > 0){
 		$query = "UPDATE usuarios SET grupo = '$group' WHERE email = '$currEmail'";
 		mysql_query($query,$link) or die('Errant query:  '.$query);
 	}
-	if(strlen($email)){
+	else {
+		$query = "UPDATE usuarios SET grupo = null WHERE email = '$currEmail'";
+		mysql_query($query,$link) or die('Errant query:  '.$query);
+	}
+	if(strlen($email) > 0){
 		$query = "UPDATE usuarios SET email = '$email' WHERE email = '$currEmail'";
 		mysql_query($query,$link) or die('Errant query:  '.$query);
 	}

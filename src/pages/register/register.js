@@ -34,6 +34,7 @@ var RegisterPage = (function () {
         this.passwordStar = '';
         this.submitText = '';
         // Quitar password de las validaciones al hacer submit
+        this.isLoggedIn = localStorage.getItem('UserLoggedIn') == 'true';
         if (localStorage.getItem('UserLoggedIn') == 'true') {
             this.register = this.formBuilder.group({
                 email: ['', forms_1.Validators.required],
@@ -54,12 +55,12 @@ var RegisterPage = (function () {
             this.submitText = 'GUARDAR';
             this.passwordStar = '';
             this.showLogout = true;
-            var data = { e: localStorage.getItem('userEmail') };
+            var data = { e: localStorage.getItem('userID') };
             this.authService.postData(data, '/userExists.php').then(function (result) {
                 _this.responseData = result;
-                _this.emailValue = _this.responseData.posts[0].post.email;
-                _this.nameValue = _this.responseData.posts[0].post.nombre;
-                _this.groupValue = _this.responseData.posts[0].post.grupo;
+                _this.emailValue = _this.responseData[0].email;
+                _this.nameValue = _this.responseData[0].nombre;
+                _this.groupValue = _this.responseData[0].grupo;
             });
         }
         else {
@@ -87,11 +88,18 @@ var RegisterPage = (function () {
                 //loginObjects();
                 //localStorage.setItem('loginData', JSON.stringify(this.responseData));
                 localStorage.setItem('userEmail', _this.register.value.email);
-                localStorage.setItem('UserLoggedIn', 'true');
+                if (_this.register.value.group.length > 0)
+                    localStorage.setItem('UserLoggedGroup', _this.register.value.group);
+                else
+                    localStorage.setItem('UserLoggedGroup', 'null');
+                if (localStorage.getItem('UserLoggedIn') == 'false')
+                    localStorage.setItem('userID', _this.responseData.id);
                 if (localStorage.getItem('UserLoggedIn') == 'true')
                     _this.helper.gapAlert('Perfil actualizado con exito', 'Perfil');
-                else
+                else {
+                    localStorage.setItem('UserLoggedIn', 'true');
                     _this.navCtrl.setRoot(home_1.HomePage);
+                }
                 // reaparece el nav bar
                 _this.tabBarElement = document.querySelector('#tabs div.tabbar');
                 _this.tabBarElement.style.display = null;

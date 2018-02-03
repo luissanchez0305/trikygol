@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 import { Constants } from '../services/constants';
 import 'rxjs/add/operator/map';
 
@@ -30,8 +30,6 @@ export class AuthService {
         }, (err) => {
           reject(err);
         });
-        /*.toPromise()
-	    .then(this.extractData);*/
     });
   }
 }

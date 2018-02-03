@@ -17,28 +17,32 @@
   <div ng-show="true">
         <div class="list card cardprogram">
             <form [formGroup]="login" (ngSubmit)="attemptUserLogin()">
-            <div class="item item-body">
-                <label class="lorems lorems-content">
-                   Por favor introduce la información de tu cuenta
-                </label>
-                <br/>
-                <br/>
-                <ion-item>
+            <div padding class="item item-body">
+                
+                <div padding margin-bottom class="card-triky"><label>
+                   <ion-icon name="information-circle"></ion-icon> Por favor introduce la información de tu cuenta
+                </label></div>
+
+                <div padding margin-bottom class="card-triky">
+                         <ion-item>
                     <ion-input type="text" placeholder="Email" autocapitalize="none" formControlName="email"></ion-input>
                 </ion-item>
                 <br>
                 <ion-item>
                     <ion-input type="password" placeholder="Contraseña" formControlName="pwd"></ion-input>
                 </ion-item>
+                </div>
                 <br>
                 <button ion-button full type="submit" class="button button-calm" [disabled]="!login.valid">INGRESAR</button>
                 <br>
-                <br>
-                <div ion-button (click)="openRegister()">
-                    REGISTRARSE
+                <div style="text-align:center">
+                <div ion-button clear (click)="openRegister()">
+                    Crear una cuenta
                 </div>
-                <div ion-button (click)="openForgot()">
-                    RECUPERAR MI CONTRASEÑA
+                <br>
+                <div ion-button clear (click)="openForgot()">
+                    Olvide mi contraseña
+                </div>
                 </div>
 
             </div>

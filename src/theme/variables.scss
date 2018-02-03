@@ -23,8 +23,9 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 $text-color:        #000;
-$background-color:  #f8f9fa;
+$background-color:  #eef1f5;
 $alt-text-color: #93a0b3;
+$navbar-color: #22af50;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -35,17 +36,18 @@ $alt-text-color: #93a0b3;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:      #488aff,
+  primary:      #1FA536,
   secondary:    #32db64,
   danger:       #f53d3d,
   light:        #f4f4f4,
   dark:         #222,
-  grey:         #f8f9fa,
-  green:        #51A351,
+  grey:         #eef1f5,
+  green:        #1FA536,
   black:        #000,
   grey-light:   #e9ecef,
-  triky-button: #847f79
+  triky-button: #847f79,
 );
+
 
 
 // App iOS Variables
@@ -79,6 +81,213 @@ $colors: (
 @import "ionic.theme.default";
 
 
+ion-header .toolbar-background {
+    background-color: #22af50 !important;
+}
+.toolbar-title {
+    color: white !important;
+}
+.item-block {
+    background-color: transparent !important;
+}
+.card-triky{
+    background: #FFFFFF ;
+    box-shadow: 0 2px 9px 0 rgba(180,189,189,0.29);
+    border-radius: 5px;
+}
+page-home .people-group ion-item p {
+    text-align: center;
+    color: #000;
+    padding-top: 3px !important;
+    white-space: normal !important;
+}
+page-home .people-group ion-item h2 {
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    padding-top: 10px !important;
+}
+.entire-text,
+.card-triky label{
+color: #696969 !important;
+}
+ion-content.content {
+    background-color: #eef1f5 !important;
+}
+.tabbar .tab-button{
+    color:rgba(165, 165, 165, 0.75);
+}
+.tabbar .tab-button-icon{
+    color:rgba(165, 165, 165, 0.75);
+}
+.back-button.show-back-button {
+    color: white !important;
+}
+page-home .item-divider-md {
+    border:0px !important;
+}
+.item-divider,page-home .item-divider-md,
+.item-md-grey, .item-divider-md-grey {
+    color: #000;
+    background-color: transparent !important;
+    border:0px !important;
+    text-align:center;
+}
+page-home .item-divider ion-label {
+    color: #606060 !important;
+    margin-bottom: 0px;
+}
+.date,
+.headers-ion{
+    color: #686869 !important;
+    font-size: 14px;
+    padding: 8px 0 8px;
+    font-weight: bold;
+}
+.header-table{
+    color: #606060 !important;
+    font-size: 13px;
+    padding: 5px;
+    font-weight: bold;
+}
+.position1{
+    font-size:1.4rem !important;
+}
+.icon-table{
+    color:#979797;
+    vertical-align: middle;
+    font-size: 2.3rem;
+    padding: 0px 8px;
+}
+.label-md,.label-ios{
+    margin: 0px !important;
+}
+.scores img{
+    border-radius: 10% !important;
+    height: 20px !important;
+    width: 32px !important;
+    margin: 0 25px;
+}
+.table-cla img{
+    border-radius: 10% !important;
+    height: 20px !important;
+    width: 32px !important;
+    margin-right: 10px;
+}
+.code-group,
+.scores .text-input {
+    margin: 1px 8px 1px 0 !important; 
+     background: #dcdcdc;
+    border: 1px solid #cacaca;
+    height: 28px !important;
+    width: 60px !important;
+    margin-left: 10%;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+}
+.line-score{
+    background-color:#dcdcdc;
+    height:1px;
+    width:100%;
+}
+.button-md-triky-button,
+.button-ios-triky-button {
+    color: #484848 !important;
+     background-color: #ffffff !important;
+    font-weight: bold;
+    border-bottom:3px solid #fff !important;
+}
+page-games .selected,
+page-groups .selected {
+    color: #1FA536 !important;
+    background-color: #fff;
+    border-bottom:3px solid #1FA536 !important;
+}
+.button-ios {
+    height: 2.5em !important;
+}
+.icon-bar{
+  color:white;
+font-size:2.7rem
+}
+.card-triky ion-icon {
+    display: inline-block;
+    font-size: 1.5em;
+    padding: 0px 8px;
+}
+.group{
+        color: white;
+    background: #22af50;
+    padding: 8px 15px;
+    border-radius: 8px 8px 0px 0px;
+    width: 100%;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+page-groups .notifications h2{    
+        background-color: #0b91ff !important;
+    padding: 10px;
+    color: white;
+}
+page-groups .notifications h2,
+.header-group{    
+    background-color: #ececec;
+    border-radius: 10px;
+}
+.header-group .label{    
+    font-weight: bold !important;
+    font-size: 17px !important;
+}
+.header-group ion-icon{    
+    vertical-align:middle;
+    color:#2e6eff !important;
+}
+.claf,
+.header-group span{    
+        background-color: #797979;
+    padding: 4px 8px !important;
+    border-radius: 0px !important;
+    margin-right: 10px;
+    color: white;
+    overflow: visible;
+}
+.header-group span{    
+        background-color: #3F51B5;
+}
+img{    
+    vertical-align:middle;
+}
+.point-g{    
+        float: right;
+    font-size: 15px !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    padding: 4px 8px;
+    margin-right: 10px !important;
+}
+.menu-inner .content{    
+        background-color: #111312 !important;
+        color:white !important;
+}
+.menu-inner .content .label{    
+        color:white !important;
+        padding: 20px;
+}
+.menu-inner .content .item-inner{    
+        border-bottom: 0.55px solid #4a4a4a !important; 
+}
+
+.menu-inner .content .item-md{    
+         padding-left: 0px !important;
+         text-align:center;
+         font-weight:bold;
+}
+.scroll-content {
+    max-width: 450px;
+    margin: 0 auto;
+}
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:

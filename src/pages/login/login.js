@@ -48,13 +48,12 @@ var LoginPage = (function () {
         var data = { type: 'cred', e: this.login.value.email, p: this.login.value.pwd };
         this.authService.postData(data, '/cred.php').then(function (result) {
             _this.responseData = result;
-            console.log(_this.responseData);
             if (_this.responseData.status == "ok") {
-                //loginObjects();
-                //localStorage.setItem('loginData', JSON.stringify(this.responseData));
                 _this.helper.gapAlert('Usuario logueado', 'Login');
                 localStorage.setItem('userEmail', _this.login.value.email);
+                localStorage.setItem('userID', _this.responseData.user[0].id);
                 localStorage.setItem('UserLoggedIn', 'true');
+                localStorage.setItem('UserLoggedGroup', _this.responseData.user[0].grupo);
                 _this.navCtrl.setRoot(home_1.HomePage);
                 // reaparece el nav bar
                 _this.tabBarElement.style.display = null;

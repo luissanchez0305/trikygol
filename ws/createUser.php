@@ -7,7 +7,10 @@ if(isset($post->p) && isset($post->e)) {
 	$name = $post->n;
 	$email = $post->e;
 	$group = $post->g;
-	$query = "INSERT INTO usuarios (pwd, nombre, email, grupo) VALUES ('$pwd', '$name', '$email', '$group')";
+	$query = "INSERT INTO usuarios (pwd, nombre, email) VALUES ('$pwd', '$name', '$email')";
+	if(strlen($group) > 0)
+		$query = "INSERT INTO usuarios (pwd, nombre, email, grupo) VALUES ('$pwd', '$name', '$email', '$group')";
+	
 	mysql_query($query,$link) or die('Errant query:  '.$query);
 	$newUserId = mysql_insert_id();
 
@@ -28,7 +31,7 @@ if(isset($post->p) && isset($post->e)) {
 		}
 	}
 		
-	echo json_encode(array('status'=>'ok'));
+	echo json_encode(array('status' => 'ok', 'id' => $newUserId));
 
 	/* disconnect from the db */
 	@mysql_close($link);

@@ -9,15 +9,13 @@
   <ion-navbar>
     <ion-title>Grupos</ion-title>
     <ion-buttons end>
-      <button (click)="logout()">
-        Logout
+      <button ion-button menuToggle end class="button button-clear">
+        <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
     <ion-grid>
       <ion-row>
@@ -29,158 +27,128 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-item-group>
-      <ion-item>
-        <ion-item class="notifications" (click)="clickGroup('A')">
-          <ion-avatar item-left>
-            <span class="group-letter">A</span>
-          </ion-avatar>
-          <div *ngIf="showPlacesA"><p class="firstPlace">1er {{ firstA }}</p><p class="secondPlace">2do {{ secondA }}</p></div>
-          <h2 *ngIf="!showPlacesA">{{ fillTextA }}</h2>
-          <ion-grid>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapA }}">{{ teamA1 }}</ion-col>
-              <ion-col>{{ teamA2 }}</ion-col>
-            </ion-row>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapA }}">{{ teamA3 }}</ion-col>
-              <ion-col>{{ teamA4 }}</ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-item>
-      <ion-item>
-        <ion-item class="notifications" (click)="clickGroup('B')">
-          <ion-avatar item-left>
-            <span class="group-letter">B</span>
-          </ion-avatar>
-          <div *ngIf="showPlacesB"><p class="firstPlace">1er {{ firstB }}</p><p class="secondPlace">2do {{ secondB }}</p></div>
-          <h2 *ngIf="!showPlacesB">{{ fillTextB }}</h2>
-          <ion-grid>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapB }}">{{ teamB1 }}</ion-col>
-              <ion-col>{{ teamB2 }}</ion-col>
-            </ion-row>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapA }}">{{ teamB3 }}</ion-col>
-              <ion-col>{{ teamB4 }}</ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-item>
-      <ion-item>
-        <ion-item class="notifications" (click)="clickGroup('C')">
-          <ion-avatar item-left>
-            <span class="group-letter">C</span>
-          </ion-avatar>
-          <div *ngIf="showPlacesC"><p class="firstPlace">1er {{ firstC }}</p><p class="secondPlace">2do {{ secondC }}</p></div>
-          <h2 *ngIf="!showPlacesC">{{ fillTextC }}</h2>
-          <ion-grid>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapC }}">{{ teamC1 }}</ion-col>
-              <ion-col>{{ teamC2 }}</ion-col>
-            </ion-row>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapA }}">{{ teamC3 }}</ion-col>
-              <ion-col>{{ teamC4 }}</ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-item>
-      <ion-item>
-        <ion-item class="notifications" (click)="clickGroup('D')">
-          <ion-avatar item-left>
-            <span class="group-letter">D</span>
-          </ion-avatar>
-          <div *ngIf="showPlacesD"><p class="firstPlace">1er {{ firstD }}</p><p class="secondPlace">2do {{ secondD }}</p></div>
-          <h2 *ngIf="!showPlacesD">{{ fillTextD }}</h2>
-          <ion-grid>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapD }}">{{ teamD1 }}</ion-col>
-              <ion-col>{{ teamD2 }}</ion-col>
-            </ion-row>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapA }}">{{ teamD3 }}</ion-col>
-              <ion-col>{{ teamD4 }}</ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-item>
-      <ion-item>
-        <ion-item class="notifications" (click)="clickGroup('E')">
-          <ion-avatar item-left>
-            <span class="group-letter">E</span>
-          </ion-avatar>
-          <div *ngIf="showPlacesE"><p class="firstPlace">1er {{ firstE }}</p><p class="secondPlace">2do {{ secondE }}</p></div>
-          <h2 *ngIf="!showPlacesE">{{ fillTextE }}</h2>
-          <ion-grid>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapE }}">{{ teamE1 }}</ion-col>
-              <ion-col>{{ teamE2 }}</ion-col>
-            </ion-row>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapA }}">{{ teamE3 }}</ion-col>
-              <ion-col>{{ teamE4 }}</ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-item>
-      <ion-item>
-        <ion-item class="notifications" (click)="clickGroup('F')">
-          <ion-avatar item-left>
-            <span class="group-letter">F</span>
-          </ion-avatar>
-          <div *ngIf="showPlacesF"><p class="firstPlace">1er {{ firstF }}</p><p class="secondPlace">2do {{ secondF }}</p></div>
-          <h2 *ngIf="!showPlacesF">{{ fillTextF }}</h2>
-          <ion-grid>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapF }}">{{ teamF1 }}</ion-col>
-              <ion-col>{{ teamF2 }}</ion-col>
-            </ion-row>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapA }}">{{ teamF3 }}</ion-col>
-              <ion-col>{{ teamF4 }}</ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-item>
-      <ion-item>
-        <ion-item class="notifications" (click)="clickGroup('G')">
-          <ion-avatar item-left>
-            <span class="group-letter">G</span>
-          </ion-avatar>
-          <div *ngIf="showPlacesG"><p class="firstPlace">1er {{ firstG }}</p><p class="secondPlace">2do {{ secondG }}</p></div>
-          <h2 *ngIf="!showPlacesG">{{ fillTextG }}</h2>
-          <ion-grid>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapG }}">{{ teamG1 }}</ion-col>
-              <ion-col>{{ teamG2 }}</ion-col>
-            </ion-row>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapA }}">{{ teamG3 }}</ion-col>
-              <ion-col>{{ teamG4 }}</ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-item>
-      <ion-item>
-        <ion-item class="notifications" (click)="clickGroup('H')">
-          <ion-avatar item-left>
-            <span class="group-letter">H</span>
-          </ion-avatar>
-          <div *ngIf="showPlacesH"><p class="firstPlace">1er {{ firstH }}</p><p class="secondPlace">2do {{ secondH }}</p></div>
-          <h2 *ngIf="!showPlacesH">{{ fillTextH }}</h2>
-          <ion-grid>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapH }}">{{ teamH1 }}</ion-col>
-              <ion-col>{{ teamH2 }}</ion-col>
-            </ion-row>
-            <ion-row wrap class="notifications-details">
-              <ion-col class="{{ noWrapA }}">{{ teamH3 }}</ion-col>
-              <ion-col>{{ teamH4 }}</ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-item>
+          <div class="card-triky" margin-bottom padding>
+  	<label><ion-icon name="ios-thumbs-up"></ion-icon>Coloca tu pronostico, el los siguientes recuadros de cada partido</label>
+</div>
+    <ion-item-group class="table-cla">
+    <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo A</span></div>
+    <div margin-bottom padding class="card-triky">
+    <ion-item-group class="notifications" (click)="clickGroup('A')">
+      <!--Ganadores dentro de este bloque-->
+        <h2 *ngIf="!showPlacesA"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextA }}</h2>
+        <div class="{{ showPlacesA ? 'header-group' : '' }}">
+        <ion-item><span class="{{ showPlacesA ? '' : 'claf' }}">1</span><img width="30" height="19"  src="images/{{ teamA1Flag }}" /> {{ teamA1 }} <ion-icon *ngIf="showPlacesA" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamA1Points }} Pts</span></ion-item>
+        <ion-item><span class="{{ showPlacesA ? '' : 'claf' }}">2</span><img width="30" height="19"  src="images/{{ teamA2Flag }}" /> {{ teamA2 }} <ion-icon *ngIf="showPlacesA" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamA2Points }} Pts</span></ion-item>
+        </div>
+        <!--termina bloque de ganadores-->
+        <ion-item><span class="claf">3</span><img width="30" height="19"  src="images/{{ teamA3Flag  }}" /> {{ teamA3 }} <span class="point-g">{{ teamA3Points }} Pts</span></ion-item>
+        <ion-item><span class="claf">4</span><img width="30" height="19"  src="images/{{ teamA4Flag  }}" /> {{ teamA4 }} <span class="point-g">{{ teamA4Points }} Pts</span></ion-item>
+    </ion-item-group>
+  </div>  
+  
+      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo B</span></div>
+    <div margin-bottom padding class="card-triky">
+       <ion-item-group class="notifications" (click)="clickGroup('B')">
+      <!--Ganadores dentro de este bloque-->
+        <h2 *ngIf="!showPlacesB"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextB }}</h2>
+        <div class="{{ showPlacesB ? 'header-group' : '' }}">
+        <ion-item><span class="{{ showPlacesB ? '' : 'claf' }}">1</span><img width="30" height="19"  src="images/{{ teamB1Flag }}" /> {{ teamB1 }} <ion-icon *ngIf="showPlacesB" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamB1Points }} Pts</span></ion-item>
+        <ion-item><span class="{{ showPlacesB ? '' : 'claf' }}">2</span><img width="30" height="19"  src="images/{{ teamB2Flag }}" /> {{ teamB2 }} <ion-icon *ngIf="showPlacesB" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamB2Points }} Pts</span></ion-item>
+        </div>
+        <!--termina bloque de ganadores-->
+        <ion-item><span class="claf">3</span><img width="30" height="19"  src="images/{{ teamB3Flag  }}" /> {{ teamB3 }} <span class="point-g">{{ teamB3Points }} Pts</span></ion-item>
+        <ion-item><span class="claf">4</span><img width="30" height="19"  src="images/{{ teamB4Flag  }}" /> {{ teamB4 }} <span class="point-g">{{ teamB4Points }} Pts</span></ion-item>
+    </ion-item-group>
+  </div> 
+  
+      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo C</span></div>
+    <div margin-bottom padding class="card-triky">
+       <ion-item-group class="notifications" (click)="clickGroup('C')">
+      <!--Ganadores dentro de este bloque-->
+        <h2 *ngIf="!showPlacesC"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextC }}</h2>
+        <div class="{{ showPlacesC ? 'header-group' : '' }}">
+        <ion-item><span class="{{ showPlacesC ? '' : 'claf' }}">1</span><img width="30" height="19"  src="images/{{ teamC1Flag }}" /> {{ teamC1 }} <ion-icon *ngIf="showPlacesC" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamC1Points }} Pts</span></ion-item>
+        <ion-item><span class="{{ showPlacesC ? '' : 'claf' }}">2</span><img width="30" height="19"  src="images/{{ teamC2Flag }}" /> {{ teamC2 }} <ion-icon *ngIf="showPlacesC" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamC2Points }} Pts</span></ion-item>
+        </div>
+        <!--termina bloque de ganadores-->
+        <ion-item><span class="claf">3</span><img width="30" height="19"  src="images/{{ teamC3Flag  }}" /> {{ teamC3 }} <span class="point-g">{{ teamC3Points }} Pts</span></ion-item>
+        <ion-item><span class="claf">4</span><img width="30" height="19"  src="images/{{ teamC4Flag  }}" /> {{ teamC4 }} <span class="point-g">{{ teamC4Points }} Pts</span></ion-item>
+    </ion-item-group>
+  </div> 
+  
+             <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo D</span></div>
+    <div margin-bottom padding class="card-triky">
+         <ion-item-group class="notifications" (click)="clickGroup('D')">
+      <!--Ganadores dentro de este bloque-->
+        <h2 *ngIf="!showPlacesD"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextD }}</h2>
+        <div class="{{ showPlacesD ? 'header-group' : '' }}">
+        <ion-item><span class="{{ showPlacesD ? '' : 'claf' }}">1</span><img width="30" height="19"  src="images/{{ teamD1Flag }}" /> {{ teamD1 }} <ion-icon *ngIf="showPlacesD" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamD1Points }} Pts</span></ion-item>
+        <ion-item><span class="{{ showPlacesD ? '' : 'claf' }}">2</span><img width="30" height="19"  src="images/{{ teamD2Flag }}" /> {{ teamD2 }} <ion-icon *ngIf="showPlacesD" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamD2Points }} Pts</span></ion-item>
+        </div>
+        <!--termina bloque de ganadores-->
+        <ion-item><span class="claf">3</span><img width="30" height="19"  src="images/{{ teamD3Flag  }}" /> {{ teamD3 }} <span class="point-g">{{ teamD3Points }} Pts</span></ion-item>
+        <ion-item><span class="claf">4</span><img width="30" height="19"  src="images/{{ teamD4Flag  }}" /> {{ teamD4 }} <span class="point-g">{{ teamD4Points }} Pts</span></ion-item>
+    </ion-item-group>
+  </div> 
+  
+           <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo E</span></div>
+    <div margin-bottom padding class="card-triky">
+           <ion-item-group class="notifications" (click)="clickGroup('E')">
+      <!--Ganadores dentro de este bloque-->
+        <h2 *ngIf="!showPlacesE"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextA }}</h2>
+        <div class="{{ showPlacesE ? 'header-group' : '' }}">
+        <ion-item><span class="{{ showPlacesE ? '' : 'claf' }}">1</span><img width="30" height="19"  src="images/{{ teamE1Flag }}" /> {{ teamE1 }} <ion-icon *ngIf="showPlacesE" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamE1Points }} Pts</span></ion-item>
+        <ion-item><span class="{{ showPlacesE ? '' : 'claf' }}">2</span><img width="30" height="19"  src="images/{{ teamE2Flag }}" /> {{ teamE2 }} <ion-icon *ngIf="showPlacesE" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamE2Points }} Pts</span></ion-item>
+        </div>
+        <!--termina bloque de ganadores-->
+        <ion-item><span class="claf">3</span><img width="30" height="19"  src="images/{{ teamE3Flag  }}" /> {{ teamE3 }} <span class="point-g">{{ teamE3Points }} Pts</span></ion-item>
+        <ion-item><span class="claf">4</span><img width="30" height="19"  src="images/{{ teamE4Flag  }}" /> {{ teamE4 }} <span class="point-g">{{ teamE4Points }} Pts</span></ion-item>
+    </ion-item-group>
+  </div> 
+  
+         <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo F</span></div>
+    <div margin-bottom padding class="card-triky">
+           <ion-item-group class="notifications" (click)="clickGroup('F')">
+      <!--Ganadores dentro de este bloque-->
+        <h2 *ngIf="!showPlacesF"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextF }}</h2>
+        <div class="{{ showPlacesF ? 'header-group' : '' }}">
+        <ion-item><span class="{{ showPlacesF ? '' : 'claf' }}">1</span><img width="30" height="19"  src="images/{{ teamF1Flag }}" /> {{ teamF1 }} <ion-icon *ngIf="showPlacesF" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamF1Points }} Pts</span></ion-item>
+        <ion-item><span class="{{ showPlacesF ? '' : 'claf' }}">2</span><img width="30" height="19"  src="images/{{ teamF2Flag }}" /> {{ teamF2 }} <ion-icon *ngIf="showPlacesF" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamF2Points }} Pts</span></ion-item>
+        </div>
+        <!--termina bloque de ganadores-->
+        <ion-item><span class="claf">3</span><img width="30" height="19"  src="images/{{ teamF3Flag  }}" /> {{ teamF3 }} <span class="point-g">{{ teamF3Points }} Pts</span></ion-item>
+        <ion-item><span class="claf">4</span><img width="30" height="19"  src="images/{{ teamF4Flag  }}" /> {{ teamF4 }} <span class="point-g">{{ teamF4Points }} Pts</span></ion-item>
+    </ion-item-group>
+  </div> 
+  
+      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo G</span></div>
+    <div margin-bottom padding class="card-triky">
+         <ion-item-group class="notifications" (click)="clickGroup('G')">
+      <!--Ganadores dentro de este bloque-->
+        <h2 *ngIf="!showPlacesG"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextG }}</h2>
+        <div class="{{ showPlacesG ? 'header-group' : '' }}">
+        <ion-item><span class="{{ showPlacesG ? '' : 'claf' }}">1</span><img width="30" height="19"  src="images/{{ teamG1Flag }}" /> {{ teamG1 }} <ion-icon *ngIf="showPlacesG" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamG1Points }} Pts</span></ion-item>
+        <ion-item><span class="{{ showPlacesG ? '' : 'claf' }}">2</span><img width="30" height="19"  src="images/{{ teamG2Flag }}" /> {{ teamG2 }} <ion-icon *ngIf="showPlacesG" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamG2Points }} Pts</span></ion-item>
+        </div>
+        <!--termina bloque de ganadores-->
+        <ion-item><span class="claf">3</span><img width="30" height="19"  src="images/{{ teamG3Flag  }}" /> {{ teamG3 }} <span class="point-g">{{ teamG3Points }} Pts</span></ion-item>
+        <ion-item><span class="claf">4</span><img width="30" height="19"  src="images/{{ teamG4Flag  }}" /> {{ teamG4 }} <span class="point-g">{{ teamG4Points }} Pts</span></ion-item>
+    </ion-item-group>
+  </div> 
+  
+      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo H</span></div>
+    <div margin-bottom padding class="card-triky">
+       <ion-item-group class="notifications" (click)="clickGroup('H')">
+      <!--Ganadores dentro de este bloque-->
+        <h2 *ngIf="!showPlacesH"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextH }}</h2>
+        <div class="{{ showPlacesH ? 'header-group' : '' }}">
+        <ion-item><span class="{{ showPlacesH ? '' : 'claf' }}">1</span><img width="30" height="19"  src="images/{{ teamH1Flag }}" /> {{ teamH1 }} <ion-icon *ngIf="showPlacesH" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamH1Points }} Pts</span></ion-item>
+        <ion-item><span class="{{ showPlacesH ? '' : 'claf' }}">2</span><img width="30" height="19"  src="images/{{ teamH2Flag }}" /> {{ teamH2 }} <ion-icon *ngIf="showPlacesH" name="ios-checkmark-circle"></ion-icon> <span class="point-g">{{ teamH2Points }} Pts</span></ion-item>
+        </div>
+        <!--termina bloque de ganadores-->
+        <ion-item><span class="claf">3</span><img width="30" height="19"  src="images/{{ teamH3Flag  }}" /> {{ teamH3 }} <span class="point-g">{{ teamH3Points }} Pts</span></ion-item>
+        <ion-item><span class="claf">4</span><img width="30" height="19"  src="images/{{ teamH4Flag  }}" /> {{ teamH4 }} <span class="point-g">{{ teamH4Points }} Pts</span></ion-item>
+    </ion-item-group>
+  </div> 
     </ion-item-group>
 </ion-content>

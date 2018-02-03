@@ -13,11 +13,11 @@ var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
     }
-    AuthService.prototype.postData = function (credentials, type) {
+    AuthService.prototype.postData = function (data, type) {
         var _this = this;
         return new Promise(function (resolve, reject) {
             var headers = new http_1.Headers();
-            _this.http.post(constants_1.Constants.API_ENDPOINT + type, JSON.stringify(credentials), { headers: headers })
+            _this.http.post(constants_1.Constants.API_ENDPOINT + type, JSON.stringify(data), { headers: headers })
                 .subscribe(function (res) {
                 resolve(res.json());
             }, function (err) {
@@ -33,8 +33,6 @@ var AuthService = (function () {
             }, function (err) {
                 reject(err);
             });
-            /*.toPromise()
-            .then(this.extractData);*/
         });
     };
     AuthService = __decorate([

@@ -1,0 +1,19 @@
+programacion
+- arreglar la lista de equipos para que traiga 4 con los 2 primeros marcados y los otros 2 no marcados
+- poner todas las imagenes de banderas de los equipos al cargar grupos
+x quitar perfil y agregar boton de semi-finales
+- poner nombres de los juegos semifinales y 3er lugar y final
+- quitar franja azul de "editar marcadores" y texto "coloca tu pronostico..." al entrar en fifa
+- agregar un overlay con loading al cambiar de triky a fifa
+
+diseño
+- arreglar color del boton de menu (3 rayas) casi no se ve
+- arreglar diseño del menu, ponerle encabezado con encabezado y un poco mas claro
+- poner un boton al final de la franja del nombre del grupo para entrar a ver los juegos del grupo
+- hacer que los trofeos de semifinal y final sean diferentes
+- mejorar diseño de boton de logout de perfil
+- mejorar diseño del header, poner logo y un poco mas vistoso
+
+futuro
+- login, signup con facebook y google
+

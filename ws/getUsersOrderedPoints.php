@@ -1,7 +1,7 @@
 <?php
 include "helper.php";
 
-if(isset($_GET['g'])) {
+if(isset($_GET['g']) && $_GET['g'] != 'null') {
 	/* grab the posts from the db */
 	$group = $_GET['g'];
 	$query = "SELECT nombre, puntos FROM usuarios WHERE grupo LIKE '$group' ORDER BY puntos DESC LIMIT 5";

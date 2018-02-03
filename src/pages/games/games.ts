@@ -95,6 +95,9 @@ export class GamesPage {
   private mode : string;
   private trikyButtonId : string;
   private fifaButtonId : string;
+  private showGameMenu : boolean;
+  private showGame3: boolean;
+  private showGame4: boolean;
   private showGame5: boolean;
   private showGame6: boolean;
   private showGame7: boolean;
@@ -142,6 +145,7 @@ export class GamesPage {
   ionViewDidEnter(){
     this.mode = this.navParams.get('mode');
     this.isPlayoff = (typeof this.mode === 'undefined');
+    this.showGameMenu = (typeof this.mode !== 'undefined');
     this.isFifa = this.navParams.get('type') == 'fifa';
     this.displaySelectedSource(this.navParams.get('type'));
     if(this.isPlayoff){
@@ -175,9 +179,13 @@ export class GamesPage {
         this.loadGames(3);
         console.log('cuartos');
         break;
-      case 'final':
+      case 'semifinal':
         this.loadGames(4);
-        console.log('semifinal & final');
+        console.log('semifinal');
+        break;
+      case 'final':
+        this.loadGames(5);
+        console.log('final');
         break;
     }
   }
@@ -205,7 +213,7 @@ export class GamesPage {
       case 5: // 3er lugar y final
       case 6:
         url = this.isFifa ? '/getGamesOnFinals.php' : '/getGamesByUserOnFinals.php';
-        data = this.isFifa ? '' : 'u=' + localStorage.getItem('userID');
+        data = 't=' + (gameType == 4 ? 'semi' : 'final') + '&' + (this.isFifa ? '' : 'u=' + localStorage.getItem('userID'));
         break;
     }
     this.authService.getData(data,url).then((result) => {
@@ -243,6 +251,7 @@ export class GamesPage {
             this.equipo2_2 = equipo2;
             break;
           case 2:
+            this.showGame3 = true;
             this.gameId3 = gameId;
             this.date3 = date;
             this.bandera3_1 = bandera1;
@@ -253,6 +262,7 @@ export class GamesPage {
             this.equipo3_2 = equipo2;
             break;
           case 3:
+            this.showGame4 = true;
             this.gameId4 = gameId;
             this.date4 = date;
             this.bandera4_1 = bandera1;

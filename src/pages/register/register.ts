@@ -94,12 +94,19 @@ export class RegisterPage {
                 //loginObjects();
                 //localStorage.setItem('loginData', JSON.stringify(this.responseData));
                 localStorage.setItem('userEmail', this.register.value.email);
-                localStorage.setItem('userID', this.register.value.id);
-                localStorage.setItem('UserLoggedIn', 'true');
+                if(this.register.value.group.length > 0)
+                    localStorage.setItem('UserLoggedGroup', this.register.value.group);
+                else
+                    localStorage.setItem('UserLoggedGroup', 'null');
+                    
+                if (localStorage.getItem('UserLoggedIn') == 'false')
+                    localStorage.setItem('userID', this.responseData.id);
                 if(localStorage.getItem('UserLoggedIn') == 'true')
                     this.helper.gapAlert('Perfil actualizado con exito', 'Perfil');
-                else
+                else{
+                    localStorage.setItem('UserLoggedIn', 'true');
                     this.navCtrl.setRoot(HomePage);
+                }
                 
                 // reaparece el nav bar
                 this.tabBarElement = document.querySelector('#tabs div.tabbar');
