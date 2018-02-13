@@ -30,8 +30,9 @@ include "helper.php";
 		// tomar todos los equipos del grupo actualizado para posicionarlos
 		$query = "SELECT id, nombre, bandera, grupo FROM equipos WHERE grupo = '$group'";
 		$teams = mysql_query($query,$link) or die('Errant query:  '.$query);
-
 		$teamsScores = array();
+		$teamsArray = array();
+		
 		if(mysql_num_rows($teams)) {
 			while($team = mysql_fetch_assoc($teams)) {
 				// sacar todos los juegos del equipo para sacar los puntajes
@@ -75,7 +76,10 @@ include "helper.php";
 					$teamsScores[] = array("id" => $team["id"], "bandera" => $team["bandera"], "nombre" => $team["nombre"], 
 							"puntos" => $teamPoints , "gols" => $teamGoals, "golsdif" => $teamGoalsDiff);
 				}
+				$teamsArray[] = array("id" => $team["id"], "bandera" => $team["bandera"], "nombre" => $team["nombre"]);
 			}
+			
+			//print_r($teamsScores);
 			
 			foreach ($teamsScores as $item){
 				if((int)$item["puntos"] > $firstPoints){
@@ -249,9 +253,78 @@ include "helper.php";
 			}*/
 		}
 		
+		if($firstTeam == 0){
+			$firstTeam = $teamsArray[0]['id'];
+			$firstName = $teamsArray[0]['nombre'];
+			$firstFlag = $teamsArray[0]['bandera'];
+			$firstPoints = 0;
+		}
+		if($secondTeam == 0){
+			if($teamsArray[0]['id'] != $firstTeam){
+				$secondTeam = $teamsArray[0]['id'];
+				$secondName = $teamsArray[0]['nombre'];
+				$secondFlag = $teamsArray[0]['bandera'];
+				$secondPoints = 0;
+			}
+			else{
+				$secondTeam = $teamsArray[1]['id'];
+				$secondName = $teamsArray[1]['nombre'];
+				$secondFlag = $teamsArray[1]['bandera'];
+				$secondPoints = 0;
+			}
+		}
+		if($thirdTeam == 0){
+			if($teamsArray[0]['id'] != $firstTeam && $teamsArray[0]['id'] != $secondTeam){
+				$thirdTeam = $teamsArray[0]['id'];
+				$thirdName = $teamsArray[0]['nombre'];
+				$thirdFlag = $teamsArray[0]['bandera'];
+				$thirdPoints = 0;
+			}
+			else if($teamsArray[1]['id'] != $firstTeam && $teamsArray[1]['id'] != $secondTeam){
+				$thirdTeam = $teamsArray[1]['id'];
+				$thirdName = $teamsArray[1]['nombre'];
+				$thirdFlag = $teamsArray[1]['bandera'];
+				$thirdPoints = 0;
+			}
+			else{
+				$thirdTeam = $teamsArray[2]['id'];
+				$thirdName = $teamsArray[2]['nombre'];
+				$thirdFlag = $teamsArray[2]['bandera'];
+				$thirdPoints = 0;
+			}
+		}
+		if($fourthTeam == 0){
+			if($teamsArray[0]['id'] != $firstTeam && $teamsArray[0]['id'] != $secondTeam && $teamsArray[0]['id'] != $thirdTeam){
+				$fourthTeam = $teamsArray[0]['id'];
+				$fourthName = $teamsArray[0]['nombre'];
+				$fourthFlag = $teamsArray[0]['bandera'];
+				$fourthPoints = 0;
+			}
+			else if($teamsArray[1]['id'] != $firstTeam && $teamsArray[1]['id'] != $secondTeam && $teamsArray[1]['id'] != $thirdTeam){
+				$fourthTeam = $teamsArray[1]['id'];
+				$fourthName = $teamsArray[1]['nombre'];
+				$fourthFlag = $teamsArray[1]['bandera'];
+				$fourthPoints = 0;
+			}
+			else if($teamsArray[2]['id'] != $firstTeam && $teamsArray[2]['id'] != $secondTeam && $teamsArray[2]['id'] != $thirdTeam){
+				$fourthTeam = $teamsArray[2]['id'];
+				$fourthName = $teamsArray[2]['nombre'];
+				$fourthFlag = $teamsArray[2]['bandera'];
+				$fourthPoints = 0;
+			}
+			else{
+				$fourthTeam = $teamsArray[3]['id'];
+				$fourthName = $teamsArray[3]['nombre'];
+				$fourthFlag = $teamsArray[3]['bandera'];
+				$fourthPoints = 0;
+			}
+			
+		}
+		
+		
 		$positions[] = array('letter' => $group, 
-				'team1' => array('bandera' => $firstFlag, 'nombre' => $firstName, 'id' => $firstTeam, 'puntos' => $firstPoints),
-				'team2' => array('bandera' => $secondFlag, 'nombre' => $secondName, 'id' => $secondTeam, 'puntos' => $secondPoints), 
+				'team1' => array('id' => $firstTeam, 'nombre' => $firstName, 'bandera' => $firstFlag, 'puntos' => $firstPoints),
+				'team2' => array('id' => $secondTeam, 'nombre' => $secondName, 'bandera' => $secondFlag, 'puntos' => $secondPoints), 
 				'team3' => array('id' => $thirdTeam,'nombre' => $thirdName, 'bandera' => $thirdFlag, 'puntos' => $thirdPoints), 
 				'team4' => array('id' => $fourthTeam,'nombre' => $fourthName, 'bandera' => $fourthFlag, 'puntos' => $fourthPoints));
 	}

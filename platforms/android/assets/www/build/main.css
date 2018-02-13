@@ -247,6 +247,26 @@ img {
   margin: 0 auto;
 }
 
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+  color: #ffffff !important;
+  background-color: transparent;
+}
+
+.bar-buttons-md #logout {
+  color: white;
+  background-color: #295d3a;
+  border-radius: 4px;
+  padding: 10px 15px;
+}
+
+.button-icon-arrow- {
+  font-size: 0.9em !important;
+  vertical-align: middle;
+  height: 2rem !important;
+  float: right;
+  text-transform: capitalize !important;
+}
+
 .ion-ios-add:before {
   content: "\f102";
 }

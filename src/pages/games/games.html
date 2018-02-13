@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Juegos Grupo {{ groupLetter }}</ion-title>
+    <ion-title>{{ gamesTitle }}</ion-title>
+    <ion-buttons end *ngIf="showMenuToggle">
+      <button ion-button menuToggle end class="button button-clear">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -28,7 +33,7 @@
 </div>
     <form [formGroup]="GroupGames" (ngSubmit)="saveGroupGames()">
     	<ion-input type="hidden" value="{{ gameId1 }}" formControlName="formGameId1"></ion-input>
-        <div class="date">{{ date1 }}</div>
+        <div class="date">{{ date1 }}{{ gameTitle1 }}</div>
         <div margin-bottom class="card-triky">
             <ion-grid>
                 <ion-row class="scores">
@@ -50,7 +55,7 @@
     	</div>
     	
 	    <ion-input type="hidden" value="{{ gameId2 }}" formControlName="formGameId2"></ion-input>
-        <div class="date">{{ date2 }}</div>
+        <div class="date">{{ date2 }}{{ gameTitle2 }}</div>
         <div margin-bottom class="card-triky">
             <ion-grid>
                 <ion-row class="scores">

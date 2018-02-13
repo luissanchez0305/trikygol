@@ -86,7 +86,8 @@ export class GamesPage {
   equipo8_1: string;
   equipo8_2: string;
   
-  public groupLetter: string;
+  public gamesTitle: string;
+  public showMenuToggle : boolean;
   private responseData : any;
   private isFifa: boolean;
   private isPlayoff: boolean;
@@ -96,6 +97,8 @@ export class GamesPage {
   private trikyButtonId : string;
   private fifaButtonId : string;
   private showGameMenu : boolean;
+  private gameTitle1 : string;
+  private gameTitle2 : string;
   private showGame3: boolean;
   private showGame4: boolean;
   private showGame5: boolean;
@@ -148,9 +151,11 @@ export class GamesPage {
     this.showGameMenu = (typeof this.mode !== 'undefined');
     this.isFifa = this.navParams.get('type') == 'fifa';
     this.displaySelectedSource(this.navParams.get('type'));
+    this.showMenuToggle = true;
     if(this.isPlayoff){
+      this.showMenuToggle = false;
       this.group = this.navParams.get('group');
-      this.groupLetter = this.group;
+      this.gamesTitle = "Juegos Grupo " + this.group;
       this.loadGames(1);
     }
     else {
@@ -172,18 +177,22 @@ export class GamesPage {
   loadPlayOffs(){
     switch(this.mode){
       case '8':
+        this.gamesTitle = '8vos de final';
         this.loadGames(2);
         console.log('octavos');
         break;
       case '4':
+        this.gamesTitle = '4tos de final';
         this.loadGames(3);
         console.log('cuartos');
         break;
       case 'semifinal':
+        this.gamesTitle = 'Semifinales';
         this.loadGames(4);
         console.log('semifinal');
         break;
       case 'final':
+        this.gamesTitle = 'Finales';
         this.loadGames(5);
         console.log('final');
         break;
@@ -218,6 +227,14 @@ export class GamesPage {
     }
     this.authService.getData(data,url).then((result) => {
       this.responseData = result;
+      if(gameType == 4){
+        this.gameTitle1 = " - Semifinal";
+        this.gameTitle2 = " - Semifinal";
+      }
+      else if(gameType == 5 || gameType == 6){
+        this.gameTitle1 = " - 3er puesto";
+        this.gameTitle2 = " - FINAL";
+      }
       for(var i = 0; i < this.responseData.length; i++){
         var juego = this.responseData[i];
         var gameId = juego.juegoid;
