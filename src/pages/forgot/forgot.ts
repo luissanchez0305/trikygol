@@ -25,7 +25,8 @@ export class ForgotPage {
     private forgot : FormGroup;
     showSent: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder) {
         this.forgot = this.formBuilder.group({
           email: ['', Validators.required]
         });
@@ -49,5 +50,4 @@ export class ForgotPage {
         this.helper.gapAlert('Error en logueao', err);
       });
     }
-
 }
