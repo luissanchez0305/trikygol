@@ -33,14 +33,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-statusbar.statusbar",
-    "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-    "pluginId": "cordova-plugin-statusbar",
-    "clobbers": [
-      "window.StatusBar"
-    ]
-  },
-  {
     "id": "ionic-plugin-keyboard.keyboard",
     "file": "plugins/ionic-plugin-keyboard/www/ios/keyboard.js",
     "pluginId": "ionic-plugin-keyboard",
@@ -57,7 +49,6 @@ module.exports.metadata =
   "cordova-plugin-dialogs": "1.3.3",
   "cordova-plugin-ionic-webview": "1.1.15",
   "cordova-plugin-splashscreen": "4.0.3",
-  "cordova-plugin-statusbar": "2.2.4-dev",
   "cordova-plugin-whitelist": "1.3.1",
   "ionic-plugin-keyboard": "2.2.1"
 };

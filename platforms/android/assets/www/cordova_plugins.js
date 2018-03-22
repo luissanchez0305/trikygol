@@ -10,14 +10,6 @@ module.exports = [
     "runs": true
   },
   {
-    "id": "cordova-plugin-statusbar.statusbar",
-    "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-    "pluginId": "cordova-plugin-statusbar",
-    "clobbers": [
-      "window.StatusBar"
-    ]
-  },
-  {
     "id": "cordova-plugin-device.device",
     "file": "plugins/cordova-plugin-device/www/device.js",
     "pluginId": "cordova-plugin-device",
@@ -55,7 +47,6 @@ module.exports.metadata =
 {
   "ionic-plugin-keyboard": "2.2.1",
   "cordova-plugin-whitelist": "1.3.1",
-  "cordova-plugin-statusbar": "2.2.4-dev",
   "cordova-plugin-device": "1.1.4",
   "cordova-plugin-splashscreen": "4.0.3",
   "cordova-plugin-ionic-webview": "1.1.15",

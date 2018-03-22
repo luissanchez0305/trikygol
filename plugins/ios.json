@@ -19,9 +19,6 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.esferasoluciones.trikygol"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.esferasoluciones.trikygol"
-    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.esferasoluciones.trikygol"
     },
