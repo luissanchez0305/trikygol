@@ -55,7 +55,6 @@ export class LoginPage {
         this.authService.postData(data,'/cred.php').then((result) => {
           this.responseData = result;
           if (this.responseData.status == "ok") {
-              this.helper.gapAlert('Usuario logueado', 'Login');
               localStorage.setItem('userEmail', this.login.value.email);
               localStorage.setItem('userID', this.responseData.user[0].id);
               localStorage.setItem('UserLoggedIn', 'true');

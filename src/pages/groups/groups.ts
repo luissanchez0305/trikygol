@@ -1,7 +1,7 @@
 import { Component, Injectable } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 import { HelperService } from '../../providers/helper';
-import { ModalController } from 'ionic-angular';
+import { ModalController, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
@@ -29,6 +29,14 @@ export class GroupsPage {
   private showPlacesF : boolean; 
   private showPlacesG : boolean;
   private showPlacesH : boolean;  
+  private showInfoBarA : boolean;
+  private showInfoBarB : boolean;
+  private showInfoBarC : boolean;
+  private showInfoBarD : boolean;
+  private showInfoBarE : boolean;
+  private showInfoBarF : boolean;
+  private showInfoBarG : boolean;
+  private showInfoBarH : boolean;
 
   private teamA1 : string;
   private teamA1Flag : string;
@@ -140,8 +148,8 @@ export class GroupsPage {
   private typeShowing : string;
   private defaultFillScoresText : string = "Click para llenar los marcadores";
   
-  constructor(public navCtrl: NavController, private authService : AuthService, public navParams: NavParams, 
-    public helper : HelperService, public modalCtrl: ModalController, public events : Events) {
+  constructor(public navCtrl: NavController, private authService : AuthService, public navParams: NavParams, public helper : HelperService, 
+    public modalCtrl: ModalController, public events : Events, public loadingCtrl: LoadingController) {
     this.displayGroupsAndTeams('triky');
       
     this.fillTextA = this.defaultFillScoresText;
@@ -160,10 +168,14 @@ export class GroupsPage {
   }
   
   private displayGroupsAndTeams(_source){
-      
+      let loading = this.loadingCtrl.create({
+        content: 'Espere un momento...'
+      });
+      loading.present();
       // HACER EL PHP "getFirstSecondTeams.php" QUE TRAIGA TODOS LOS EQUIPOS POR GRUPOS
       
-      this.authService.getData('source='+_source+(_source == 'triky' ? "&u=" + localStorage.getItem('userID') : ""),'/getFirstSecondTeams.php').then((result) => {
+      this.authService.getData('source='+_source+(_source == 'triky' ? "&u=" + localStorage.getItem('userID') : ""),'getFirstSecondTeams.php').then((result) => {
+          loading.dismiss();
           this.responseData = result;
           this.typeShowing = _source;
           this.showPlacesA = false;
@@ -193,6 +205,7 @@ export class GroupsPage {
                   this.teamA4Flag = grupo.team4.bandera;
                   this.teamA4Points = grupo.team4.puntos;
                   this.showPlacesA = grupo.team1.puntos != '0';
+                  this.showInfoBarA = !this.showPlacesA;
                 break;
               case 'b':
                   this.teamB1 = grupo.team1.nombre;
@@ -208,6 +221,7 @@ export class GroupsPage {
                   this.teamB4Flag = grupo.team4.bandera;
                   this.teamB4Points = grupo.team4.puntos;
                   this.showPlacesB = grupo.team1.puntos != '0';
+                  this.showInfoBarB = !this.showPlacesB;
                 break;
               case 'c':
                   this.teamC1 = grupo.team1.nombre;
@@ -223,6 +237,7 @@ export class GroupsPage {
                   this.teamC4Flag = grupo.team4.bandera;
                   this.teamC4Points = grupo.team4.puntos;
                   this.showPlacesC = grupo.team1.puntos != '0';
+                  this.showInfoBarC = !this.showPlacesC;
                 break;
               case 'd':
                   this.teamD1 = grupo.team1.nombre;
@@ -238,6 +253,7 @@ export class GroupsPage {
                   this.teamD4Flag = grupo.team4.bandera;
                   this.teamD4Points = grupo.team4.puntos;
                   this.showPlacesD = grupo.team1.puntos != '0';
+                  this.showInfoBarD = !this.showPlacesD;
                 break;
               case 'e':
                   this.teamE1 = grupo.team1.nombre;
@@ -253,6 +269,7 @@ export class GroupsPage {
                   this.teamE4Flag = grupo.team4.bandera;
                   this.teamE4Points = grupo.team4.puntos;
                   this.showPlacesE = grupo.team1.puntos != '0';
+                  this.showInfoBarE = !this.showPlacesE;
                 break;
               case 'f':
                   this.teamF1 = grupo.team1.nombre;
@@ -268,6 +285,7 @@ export class GroupsPage {
                   this.teamF4Flag = grupo.team4.bandera;
                   this.teamF4Points = grupo.team4.puntos;
                   this.showPlacesF = grupo.team1.puntos != '0';
+                  this.showInfoBarF = !this.showPlacesF;
                 break;
               case 'g':
                   this.teamG1 = grupo.team1.nombre;
@@ -283,6 +301,7 @@ export class GroupsPage {
                   this.teamG4Flag = grupo.team4.bandera;
                   this.teamG4Points = grupo.team4.puntos;
                   this.showPlacesG = grupo.team1.puntos != '0';
+                  this.showInfoBarG = !this.showPlacesG;
                 break;
               case 'h':
                   this.teamH1 = grupo.team1.nombre;
@@ -298,8 +317,19 @@ export class GroupsPage {
                   this.teamH4Flag = grupo.team4.bandera;
                   this.teamH4Points = grupo.team4.puntos;
                   this.showPlacesH = grupo.team1.puntos != '0';
+                  this.showInfoBarH = !this.showPlacesH;
                 break;
             }
+          }
+          if(_source == 'fifa'){
+            this.showInfoBarA = false;
+            this.showInfoBarB = false;
+            this.showInfoBarC = false;
+            this.showInfoBarD = false;
+            this.showInfoBarE = false;
+            this.showInfoBarF = false;
+            this.showInfoBarG = false;
+            this.showInfoBarH = false;
           }
           /* 
           PONER LOS 1ro y 2do lugar de cada equipo

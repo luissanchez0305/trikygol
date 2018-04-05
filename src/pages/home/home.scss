@@ -2,6 +2,9 @@ page-home {
     ion-content ion-item-divider[end]{
         text-align: end;
     }
+    .card-triky{
+        height: 100%;
+    }
     .item-divider-md{
         border-bottom: 3px solid #F89406 !important;
     }
@@ -57,4 +60,7 @@ page-home {
     .entire-text{
         white-space: normal;
     }
+}
+.un-code .text-input-md {
+    margin: 5px 8px !important;
 }

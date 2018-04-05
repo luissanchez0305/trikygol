@@ -49,7 +49,8 @@ export class HomePage {
       this.positionName3 = '';
       this.positionName4 = '';
       this.positionName5 = '';
-      
+  }
+  ionViewDidLoad(){
       this.loadPositionTable();
   }
   

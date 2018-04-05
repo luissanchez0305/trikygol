@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HelperService } from '../../providers/helper';
@@ -99,6 +99,8 @@ export class GamesPage {
   private showGameMenu : boolean;
   private gameTitle1 : string;
   private gameTitle2 : string;
+  private showGame1: boolean;
+  private showGame2: boolean;
   private showGame3: boolean;
   private showGame4: boolean;
   private showGame5: boolean;
@@ -107,7 +109,7 @@ export class GamesPage {
   private showGame8: boolean;
    
   constructor(public navCtrl: NavController,  private authService : AuthService, public navParams: NavParams, public helper : HelperService,
-    public events : Events) {
+    public events : Events, public loadingCtrl: LoadingController) {
     this.GroupGames = new FormGroup({
        formGameId1: new FormControl(),
        formMarcador1_1: new FormControl(),
@@ -170,7 +172,11 @@ export class GamesPage {
     if(currentSelectedButton != null){
       document.querySelector('page-games button.selected#' + oppositeSource + '-button-' + this.mode).className = currentSelectedButton.className.replace(/ selected/g,'');
     }
-    document.querySelector('page-games #' + source + '-button-' + (typeof this.mode === 'undefined' ? '' : this.mode)).className += ' selected';
+    else{
+      currentSelectedButton = document.querySelector('page-games #' + source + '-button-' + (typeof this.mode === 'undefined' ? '' : this.mode));
+      if(currentSelectedButton != null)
+        currentSelectedButton.className += ' selected';
+    }
     this.isFifa = source == 'fifa';
   }
   
@@ -200,6 +206,10 @@ export class GamesPage {
   }
   
   loadGames(gameType){
+    let loading = this.loadingCtrl.create({
+      content: 'Espere un momento...'
+    });
+    loading.present();
     this.showGame5 = false;
     this.showGame6 = false;
     this.showGame7 = false;
@@ -226,6 +236,7 @@ export class GamesPage {
         break;
     }
     this.authService.getData(data,url).then((result) => {
+      loading.dismiss();
       this.responseData = result;
       if(gameType == 4){
         this.gameTitle1 = " - Semifinal";
@@ -248,6 +259,7 @@ export class GamesPage {
         
         switch(i){
           case 0:
+            this.showGame1 = true;
             this.gameId1 = gameId;
             this.date1 = date;
             this.bandera1_1 = bandera1;
@@ -258,6 +270,7 @@ export class GamesPage {
             this.equipo1_2 = equipo2;
             break;
           case 1:
+            this.showGame2 = true;
             this.gameId2 = gameId;
             this.date2 = date;
             this.bandera2_1 = bandera1;

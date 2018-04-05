@@ -246,12 +246,13 @@ page-groups .notifications h2,
 }
 .claf,
 .header-group span{    
-        background-color: #797979;
-    padding: 4px 8px !important;
+         background-color: #99b1bb;
+    padding: 2px 7px !important;
     border-radius: 0px !important;
     margin-right: 10px;
     color: white;
     overflow: visible;
+    font-size: 13px;
 }
 .header-group span{    
         background-color: #3F51B5;
@@ -305,6 +306,13 @@ img{
     float: right;
     text-transform: capitalize !important
 }
+.score-home{
+    text-align: initial;
+    border-bottom: 1px solid #cecece;
+    padding: 0 !important;
+    margin-bottom: 10px !important;
+}
+
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
