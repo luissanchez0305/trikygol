@@ -39912,6 +39912,10 @@ body, p {
   letter-spacing: -.004em;
 }
 
+.hidden {
+  display: none;
+}
+
 textarea {
   min-height: 120px;
 }

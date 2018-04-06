@@ -9,7 +9,8 @@ x poner un overlay con loading al cambiar de pantalla
 x poner apertura de partidos y cambios de pantalla en callback de ajax
 - actualizar la seccion de tabla de posiciones de home al regresar de perfil
 - actualizar las posiciones del grupo despues de guardar los marcadores
-- poner en home proximos partidos y 5 ultimos partidos jugados y boton para ir a mis estadisticas
+x poner en home proximos partidos 
+- poner 5 ultimos partidos jugados y boton para ir a mis estadisticas
 - agregar seccion de mis estadisticas en el menu hamburguer
 - quitar de home marcadores acertados, partidos empatados, equipos ganadores, equipos clasificados y tabla de posiciciones y ponerlos en mis estadisticas
 
@@ -24,6 +25,7 @@ x mejorar diseño del header, poner logo y un poco mas vistoso----- En donde en 
     Este ya lo resolvi poniendole el titulo a cada opcion del menu inferior
 x La palabra "Código" del placeholder del input si no tiene un grupo asignado se ve mal
 - Cambiar splash image e icono para que vayan mas de acorde con el diseño interno
+- Arreglar el diesño cuando los proximos partidos no tienen marcador
 
 futuro
 - login, signup con facebook y google

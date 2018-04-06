@@ -8,14 +8,14 @@
 </ion-header>
 <ion-content padding>
   <!--Marcador Partido-->
-  <div class="headers-ion">Partido del día</div>
+  <div class="headers-ion">Próximos partidos</div>
   <div padding margin-bottom text-center style="height: auto;" class="card-triky">
     <ion-grid>
-      <ion-row>
-        <ion-col col-12 class="score-home"> <ion-icon name="md-calendar"></ion-icon> 25 de febrero 18:00</ion-col>
-        <ion-col col-4><img style="border-radius:4px" height="20" width="32" src="images/noflag.png"> Panama</ion-col>
-        <ion-col col-3><span style="font-weight:700">1</span> : <span style="font-weight:700">0</span></ion-col>
-        <ion-col col-4> Dinamarca <img style="border-radius:4px" height="20" width="32" src="images/noflag.png"></ion-col>
+      <ion-row *ngFor="let game of nextGames">
+        <ion-col col-12 class="score-home"> <ion-icon name="md-calendar"></ion-icon>{{ gameDate }}</ion-col>
+        <ion-col col-4><img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag1 }}"> {{ game.player1 }}</ion-col>
+        <ion-col col-3 *ngIf="game.showScore == 1"><span style="font-weight:700">{{ score1 }}</span> : <span style="font-weight:700; float: right;">{{ score2 }}</span></ion-col>
+        <ion-col col-4> {{ game.player2 }} <img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag2 }}"></ion-col>
       </ion-row>
     </ion-grid>
   </div>

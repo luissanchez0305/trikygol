@@ -5,6 +5,7 @@ import { LoginPage } from '../login/login';
 import { HelperService } from '../../providers/helper';
 import { AuthService } from '../../providers/auth-service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Constants } from '../../services/constants';
 
 @Component({
   selector: 'page-home',
@@ -25,6 +26,8 @@ export class HomePage {
   private responseUserData : any;
   private responsePositionData : any;
   private positionTable : boolean;
+  private nextGames : any;
+  private gameDate : string;
   
   constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, private formBuilder: FormBuilder) {
       this.group = this.formBuilder.group({
@@ -35,7 +38,7 @@ export class HomePage {
           return;
       }
       var data = { e : localStorage.getItem('userID') };
-      this.authService.postData(data,'/userExists.php').then((result) => {
+      this.authService.postData(data,'userExists.php').then((result) => {
         this.responseUserData = result;
         this.myPoints = this.responseUserData.puntos != null ? this.responseUserData.puntos : '0';
         this.scoresRight = this.responseUserData.marcadoresAcertados != null ? this.responseUserData.marcadoresAcertados : '0';
@@ -52,10 +55,26 @@ export class HomePage {
   }
   ionViewDidLoad(){
       this.loadPositionTable();
+      
+      var date = new Date('2018-06-14 5:00:00');
+      var firstDate = new Date('2018-06-14 5:00:00');
+      var lastDate = new Date('2018-06-14 5:00:00');
+      
+      if(Date.now() > lastDate.getTime()){
+        date = new Date('2018-07-15 5:00:00');
+      }
+      if(Date.now() > firstDate.getTime() && Date.now() <= lastDate.getTime()){
+        date = new Date();
+      }
+      
+      this.authService.getData('date=' + date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate(), 'getNextGames.php').then((result) => {
+        this.nextGames = result;
+        this.gameDate = Constants.months[date.getMonth()] + ', ' + date.getDate() + ' de ' + date.getFullYear();
+      });
   }
   
   loadPositionTable(){
-      this.authService.getData('g=' + localStorage.getItem('UserLoggedGroup'), '/getUsersOrderedPoints.php').then((result) => {
+      this.authService.getData('g=' + localStorage.getItem('UserLoggedGroup'), 'getUsersOrderedPoints.php').then((result) => {
         this.responsePositionData = result;
         if(this.responsePositionData.status == 'no params'){
           this.positionTable = false;
@@ -86,7 +105,7 @@ export class HomePage {
   attemptJoinGroup(){
     localStorage.setItem('UserLoggedGroup', this.group.value.code);
     var data = { g : this.group.value.code, u : localStorage.getItem('userID') };
-    this.authService.postData(data, '/updateUserGroup.php').then((result) => {
+    this.authService.postData(data, 'updateUserGroup.php').then((result) => {
       this.responsePositionData = result;
       if(this.responsePositionData.status == 'ok'){
         this.loadPositionTable();
