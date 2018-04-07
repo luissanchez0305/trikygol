@@ -24,7 +24,7 @@ x mejorar diseño de boton de logout de perfil
 x mejorar diseño del header, poner logo y un poco mas vistoso----- En donde en el navbar o la pagina de inicio ?
     Este ya lo resolvi poniendole el titulo a cada opcion del menu inferior
 x La palabra "Código" del placeholder del input si no tiene un grupo asignado se ve mal
-- Cambiar splash image e icono para que vayan mas de acorde con el diseño interno
+x Cambiar splash image e icono para que vayan mas de acorde con el diseño interno
 - Arreglar el diesño cuando los proximos partidos no tienen marcador
 
 futuro

@@ -13,6 +13,7 @@ import { RegisterPage } from '../pages/register/register';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { GroupsPage } from '../pages/groups/groups';
 import { GamesPage } from '../pages/games/games';
+import { StickersPage } from '../pages/stickers/stickers';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,7 +32,8 @@ import { HelperService } from '../providers/helper';
     RegisterPage,
     ForgotPage,
     GroupsPage,
-    GamesPage
+    GamesPage,
+    StickersPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { HelperService } from '../providers/helper';
     RegisterPage,
     ForgotPage,
     GroupsPage,
-    GamesPage
+    GamesPage,
+    StickersPage
   ],
   providers: [
     StatusBar,
