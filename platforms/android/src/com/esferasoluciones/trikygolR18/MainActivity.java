@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.esferasoluciones.trikygol2018;
+package com.esferasoluciones.trikygolR18;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
