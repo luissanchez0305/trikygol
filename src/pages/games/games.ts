@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
-import { FormGroup, FormControl } from '@angular/forms';
 import { HelperService } from '../../providers/helper';
 
 /**
@@ -52,6 +51,23 @@ export class GamesPage {
   marcador8_1: string;
   marcador8_2: string;
   
+  equipo1_1_selected: boolean;
+  equipo1_2_selected: boolean;
+  equipo2_1_selected: boolean;
+  equipo2_2_selected: boolean;
+  equipo3_1_selected: boolean;
+  equipo3_2_selected: boolean;
+  equipo4_1_selected: boolean;
+  equipo4_2_selected: boolean;
+  equipo5_1_selected: boolean;
+  equipo5_2_selected: boolean;
+  equipo6_1_selected: boolean;
+  equipo6_2_selected: boolean;
+  equipo7_1_selected: boolean;
+  equipo7_2_selected: boolean;
+  equipo8_1_selected: boolean;
+  equipo8_2_selected: boolean;
+  
   bandera1_1: string;
   bandera1_2: string;
   bandera2_1: string;
@@ -86,13 +102,29 @@ export class GamesPage {
   equipo8_1: string;
   equipo8_2: string;
   
+  equipo1_1_id: string;
+  equipo1_2_id: string;
+  equipo2_1_id: string;
+  equipo2_2_id: string;
+  equipo3_1_id: string;
+  equipo3_2_id: string;
+  equipo4_1_id: string;
+  equipo4_2_id: string;
+  equipo5_1_id: string;
+  equipo5_2_id: string;
+  equipo6_1_id: string;
+  equipo6_2_id: string;
+  equipo7_1_id: string;
+  equipo7_2_id: string;
+  equipo8_1_id: string;
+  equipo8_2_id: string;
+  
   public gamesTitle: string;
   public showMenuToggle : boolean;
   private responseData : any;
   private isFifa: boolean;
   private isPlayoff: boolean;
   private group: string;
-  private GroupGames : FormGroup;
   private mode : string;
   private trikyButtonId : string;
   private fifaButtonId : string;
@@ -110,32 +142,6 @@ export class GamesPage {
    
   constructor(public navCtrl: NavController,  private authService : AuthService, public navParams: NavParams, public helper : HelperService,
     public events : Events, public loadingCtrl: LoadingController) {
-    this.GroupGames = new FormGroup({
-       formGameId1: new FormControl(),
-       formMarcador1_1: new FormControl(),
-       formMarcador1_2: new FormControl(),
-       formGameId2: new FormControl(),
-       formMarcador2_1: new FormControl(),
-       formMarcador2_2: new FormControl(),
-       formGameId3: new FormControl(),
-       formMarcador3_1: new FormControl(),
-       formMarcador3_2: new FormControl(),
-       formGameId4: new FormControl(),
-       formMarcador4_1: new FormControl(),
-       formMarcador4_2: new FormControl(),
-       formGameId5: new FormControl(),
-       formMarcador5_1: new FormControl(),
-       formMarcador5_2: new FormControl(),
-       formGameId6: new FormControl(),
-       formMarcador6_1: new FormControl(),
-       formMarcador6_2: new FormControl(),
-       formGameId7: new FormControl(),
-       formMarcador7_1: new FormControl(),
-       formMarcador7_2: new FormControl(),
-       formGameId8: new FormControl(),
-       formMarcador8_1: new FormControl(),
-       formMarcador8_2: new FormControl(),
-    });
     this.mode = navParams.get('mode');
     if(typeof this.mode !== 'undefined') {
       this.trikyButtonId = 'triky-button-' + this.mode;
@@ -243,8 +249,7 @@ export class GamesPage {
         this.gameTitle2 = " - Semifinal";
       }
       else if(gameType == 5 || gameType == 6){
-        this.gameTitle1 = " - 3er puesto";
-        this.gameTitle2 = " - FINAL";
+        this.gameTitle1 = " - FINAL";
       }
       for(var i = 0; i < this.responseData.length; i++){
         var juego = this.responseData[i];
@@ -265,9 +270,13 @@ export class GamesPage {
             this.bandera1_1 = bandera1;
             this.marcador1_1 = marcador1;
             this.equipo1_1 = equipo1;
+            this.equipo1_1_id = juego.equipoid1;
+            this.equipo1_1_selected = (gameId != '64' && juego.games4ths1 != '0') || (gameId == '64' && marcador1 != '0' && marcador1 != null);
             this.bandera1_2 = bandera2;
             this.marcador1_2 = marcador2;
             this.equipo1_2 = equipo2;
+            this.equipo1_2_id = juego.equipoid2;
+            this.equipo1_2_selected = (gameId != '64' && juego.games4ths2 != '0') || (gameId == '64' && marcador2 != '0' && marcador2 != null);
             break;
           case 1:
             this.showGame2 = true;
@@ -276,9 +285,13 @@ export class GamesPage {
             this.bandera2_1 = bandera1;
             this.marcador2_1 = marcador1;
             this.equipo2_1 = equipo1;
+            this.equipo2_1_id = juego.equipoid1;
+            this.equipo2_1_selected = juego.games4ths1 != '0';
             this.bandera2_2 = bandera2;
             this.marcador2_2 = marcador2;
             this.equipo2_2 = equipo2;
+            this.equipo2_2_id = juego.equipoid2;
+            this.equipo2_2_selected = juego.games4ths2 != '0';
             break;
           case 2:
             this.showGame3 = true;
@@ -287,9 +300,13 @@ export class GamesPage {
             this.bandera3_1 = bandera1;
             this.marcador3_1 = marcador1;
             this.equipo3_1 = equipo1;
+            this.equipo3_1_id = juego.equipoid1;
+            this.equipo3_1_selected = juego.games4ths1 != '0';
             this.bandera3_2 = bandera2;
             this.marcador3_2 = marcador2;
             this.equipo3_2 = equipo2;
+            this.equipo3_2_id = juego.equipoid2;
+            this.equipo3_2_selected = juego.games4ths2 != '0';
             break;
           case 3:
             this.showGame4 = true;
@@ -298,9 +315,13 @@ export class GamesPage {
             this.bandera4_1 = bandera1;
             this.marcador4_1 = marcador1;
             this.equipo4_1 = equipo1;
+            this.equipo4_1_id = juego.equipoid1;
+            this.equipo4_1_selected = juego.games4ths1 != '0';
             this.bandera4_2 = bandera2;
             this.marcador4_2 = marcador2;
             this.equipo4_2 = equipo2;
+            this.equipo4_2_id = juego.equipoid2;
+            this.equipo4_2_selected = juego.games4ths2 != '0';
             break;
           case 4:
             this.showGame5 = true;
@@ -309,9 +330,13 @@ export class GamesPage {
             this.bandera5_1 = bandera1;
             this.marcador5_1 = marcador1;
             this.equipo5_1 = equipo1;
+            this.equipo5_1_id = juego.equipoid1;
+            this.equipo5_1_selected = juego.games4ths1 != '0';
             this.bandera5_2 = bandera2;
             this.marcador5_2 = marcador2;
             this.equipo5_2 = equipo2;
+            this.equipo5_2_id = juego.equipoid2;
+            this.equipo5_2_selected = juego.games4ths2 != '0';
             break;
           case 5:
             this.showGame6 = true;
@@ -320,9 +345,13 @@ export class GamesPage {
             this.bandera6_1 = bandera1;
             this.marcador6_1 = marcador1;
             this.equipo6_1 = equipo1;
+            this.equipo6_1_id = juego.equipoid1;
+            this.equipo6_1_selected = juego.games4ths1 != '0';
             this.bandera6_2 = bandera2;
             this.marcador6_2 = marcador2;
             this.equipo6_2 = equipo2;
+            this.equipo6_2_id = juego.equipoid2;
+            this.equipo6_2_selected = juego.games4ths2 != '0';
             break;
           case 6:
             this.showGame7 = true;
@@ -331,9 +360,13 @@ export class GamesPage {
             this.bandera7_1 = bandera1;
             this.marcador7_1 = marcador1;
             this.equipo7_1 = equipo1;
+            this.equipo7_1_id = juego.equipoid1;
+            this.equipo7_1_selected = juego.games4ths1 != '0';
             this.bandera7_2 = bandera2;
             this.marcador7_2 = marcador2;
             this.equipo7_2 = equipo2;
+            this.equipo7_2_id = juego.equipoid2;
+            this.equipo7_2_selected = juego.games4ths2 != '0';
             break;
           case 7:
             this.showGame8 = true;
@@ -342,42 +375,37 @@ export class GamesPage {
             this.bandera8_1 = bandera1;
             this.marcador8_1 = marcador1;
             this.equipo8_1 = equipo1;
+            this.equipo8_1_id = juego.equipoid1;
+            this.equipo8_1_selected = juego.games4ths1 != '0';
             this.bandera8_2 = bandera2;
             this.marcador8_2 = marcador2;
             this.equipo8_2 = equipo2;
+            this.equipo8_2_id = juego.equipoid2;
+            this.equipo8_2_selected = juego.games4ths2 != '0';
             break;
           }
         }
     });
   }
   
-  saveGroupGames() {
-    var url = '/updateUserGameScoreById.php';
-    var data = '';
-    if(this.GroupGames.value.formMarcador1_1 && this.GroupGames.value.formMarcador1_2){
-      data = 'g='+ this.GroupGames.value.formGameId1+'&s1='+ this.GroupGames.value.formMarcador1_1+'&s2='+ this.GroupGames.value.formMarcador1_2 +'&u='+ localStorage.getItem('userID');
+  clickTeam(gameId, teamId){
+    if(!this.isFifa){
+      console.log(gameId);
+      console.log(teamId);
+      let loading = this.loadingCtrl.create({
+        content: 'Guardando...'
+      });
+      loading.present();
+      this.authService.getData("&u=" + localStorage.getItem('userID') + "&pg=w" + gameId + "&te=" + teamId + "&t=" + (this.mode == '8' ? 3 : (this.mode == '4' ? 4 : (this.mode == 'semifinal' ? 5 : 6))) + (this.mode == 'semifinal' || this.mode == 'final' ? '&type=win' : ''),'updateUserTeamPosition.php').then((result) => {
+        loading.dismiss();
+      });
+      if(this.mode == 'semifinal'){
+        var lostTeam = this.equipo1_1_id == teamId ? this.equipo1_2_id : (this.equipo2_1_id == teamId ? this.equipo2_2_id : (this.equipo1_2_id == teamId ? this.equipo1_1_id : this.equipo2_1_id));
+        this.authService.getData("&u=" + localStorage.getItem('userID') + "&pg=w" + gameId + "&te=" + lostTeam + "&t=5" + (this.mode == 'semifinal' || this.mode == 'final' ? '&type=lost' : ''),'updateUserTeamPosition.php').then((result) => {
+          loading.dismiss();
+        });
+      }
     }
-    if(this.GroupGames.value.formMarcador2_1 && this.GroupGames.value.formMarcador2_2){
-      data = 'g='+ this.GroupGames.value.formGameId2+'&s1='+ this.GroupGames.value.formMarcador2_1+'&s2='+ this.GroupGames.value.formMarcador2_2 +'&u='+ localStorage.getItem('userID');
-    }
-    if(this.GroupGames.value.formMarcador3_1 && this.GroupGames.value.formMarcador3_2){
-      data = 'g='+ this.GroupGames.value.formGameId3+'&s1='+ this.GroupGames.value.formMarcador3_1+'&s2='+ this.GroupGames.value.formMarcador3_2 +'&u='+ localStorage.getItem('userID');
-    }
-    if(this.GroupGames.value.formMarcador4_1 && this.GroupGames.value.formMarcador4_2){
-      data = 'g='+ this.GroupGames.value.formGameId4+'&s1='+ this.GroupGames.value.formMarcador4_1+'&s2='+ this.GroupGames.value.formMarcador4_2 +'&u='+ localStorage.getItem('userID');
-    }
-    if(this.GroupGames.value.formMarcador5_1 && this.GroupGames.value.formMarcador5_2){
-      data = 'g='+ this.GroupGames.value.formGameId5+'&s1='+ this.GroupGames.value.formMarcador5_1+'&s2='+ this.GroupGames.value.formMarcador5_2 +'&u='+ localStorage.getItem('userID');
-    }
-    if(this.GroupGames.value.formMarcador6_1 && this.GroupGames.value.formMarcador6_2){
-      data = 'g='+ this.GroupGames.value.formGameId6+'&s1='+ this.GroupGames.value.formMarcador6_1+'&s2='+ this.GroupGames.value.formMarcador6_2 +'&u='+ localStorage.getItem('userID');
-    }
-  
-    this.navCtrl.popToRoot();
-    this.authService.getData(data,url).then(function(result){
-      console.log('saved');
-    });
-    this.events.publish('reloadGroups');
   }
   
   clickGames(type){
