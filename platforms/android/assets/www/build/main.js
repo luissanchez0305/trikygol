@@ -1860,12 +1860,12 @@ var GamesPage = (function () {
                         _this.marcador1_1 = marcador1;
                         _this.equipo1_1 = equipo1;
                         _this.equipo1_1_id = juego.equipoid1;
-                        _this.equipo1_1_selected = (gameId != '64' && juego.games4ths1 != '0') || (gameId == '64' && marcador1 != '0' && marcador1 != null);
+                        _this.equipo1_1_selected = (gameId != null && gameId != '64' && juego.games4ths1 != '0') || (gameId == '64' && marcador1 != '0' && marcador1 != null);
                         _this.bandera1_2 = bandera2;
                         _this.marcador1_2 = marcador2;
                         _this.equipo1_2 = equipo2;
                         _this.equipo1_2_id = juego.equipoid2;
-                        _this.equipo1_2_selected = (gameId != '64' && juego.games4ths2 != '0') || (gameId == '64' && marcador2 != '0' && marcador2 != null);
+                        _this.equipo1_2_selected = (gameId != null && gameId != '64' && juego.games4ths2 != '0') || (gameId == '64' && marcador2 != '0' && marcador2 != null);
                         break;
                     case 1:
                         _this.showGame2 = true;
@@ -1875,12 +1875,12 @@ var GamesPage = (function () {
                         _this.marcador2_1 = marcador1;
                         _this.equipo2_1 = equipo1;
                         _this.equipo2_1_id = juego.equipoid1;
-                        _this.equipo2_1_selected = juego.games4ths1 != '0';
+                        _this.equipo2_1_selected = gameId != null && juego.games4ths1 != '0';
                         _this.bandera2_2 = bandera2;
                         _this.marcador2_2 = marcador2;
                         _this.equipo2_2 = equipo2;
                         _this.equipo2_2_id = juego.equipoid2;
-                        _this.equipo2_2_selected = juego.games4ths2 != '0';
+                        _this.equipo2_2_selected = gameId != null && juego.games4ths2 != '0';
                         break;
                     case 2:
                         _this.showGame3 = true;
@@ -1890,12 +1890,12 @@ var GamesPage = (function () {
                         _this.marcador3_1 = marcador1;
                         _this.equipo3_1 = equipo1;
                         _this.equipo3_1_id = juego.equipoid1;
-                        _this.equipo3_1_selected = juego.games4ths1 != '0';
+                        _this.equipo3_1_selected = gameId != null && juego.games4ths1 != '0';
                         _this.bandera3_2 = bandera2;
                         _this.marcador3_2 = marcador2;
                         _this.equipo3_2 = equipo2;
                         _this.equipo3_2_id = juego.equipoid2;
-                        _this.equipo3_2_selected = juego.games4ths2 != '0';
+                        _this.equipo3_2_selected = gameId != null && juego.games4ths2 != '0';
                         break;
                     case 3:
                         _this.showGame4 = true;
@@ -1905,12 +1905,12 @@ var GamesPage = (function () {
                         _this.marcador4_1 = marcador1;
                         _this.equipo4_1 = equipo1;
                         _this.equipo4_1_id = juego.equipoid1;
-                        _this.equipo4_1_selected = juego.games4ths1 != '0';
+                        _this.equipo4_1_selected = gameId != null && juego.games4ths1 != '0';
                         _this.bandera4_2 = bandera2;
                         _this.marcador4_2 = marcador2;
                         _this.equipo4_2 = equipo2;
                         _this.equipo4_2_id = juego.equipoid2;
-                        _this.equipo4_2_selected = juego.games4ths2 != '0';
+                        _this.equipo4_2_selected = gameId != null && juego.games4ths2 != '0';
                         break;
                     case 4:
                         _this.showGame5 = true;
@@ -1920,12 +1920,12 @@ var GamesPage = (function () {
                         _this.marcador5_1 = marcador1;
                         _this.equipo5_1 = equipo1;
                         _this.equipo5_1_id = juego.equipoid1;
-                        _this.equipo5_1_selected = juego.games4ths1 != '0';
+                        _this.equipo5_1_selected = gameId != null && juego.games4ths1 != '0';
                         _this.bandera5_2 = bandera2;
                         _this.marcador5_2 = marcador2;
                         _this.equipo5_2 = equipo2;
                         _this.equipo5_2_id = juego.equipoid2;
-                        _this.equipo5_2_selected = juego.games4ths2 != '0';
+                        _this.equipo5_2_selected = gameId != null && juego.games4ths2 != '0';
                         break;
                     case 5:
                         _this.showGame6 = true;
@@ -1935,12 +1935,12 @@ var GamesPage = (function () {
                         _this.marcador6_1 = marcador1;
                         _this.equipo6_1 = equipo1;
                         _this.equipo6_1_id = juego.equipoid1;
-                        _this.equipo6_1_selected = juego.games4ths1 != '0';
+                        _this.equipo6_1_selected = gameId != null && juego.games4ths1 != '0';
                         _this.bandera6_2 = bandera2;
                         _this.marcador6_2 = marcador2;
                         _this.equipo6_2 = equipo2;
                         _this.equipo6_2_id = juego.equipoid2;
-                        _this.equipo6_2_selected = juego.games4ths2 != '0';
+                        _this.equipo6_2_selected = gameId != null && juego.games4ths2 != '0';
                         break;
                     case 6:
                         _this.showGame7 = true;
@@ -1950,12 +1950,12 @@ var GamesPage = (function () {
                         _this.marcador7_1 = marcador1;
                         _this.equipo7_1 = equipo1;
                         _this.equipo7_1_id = juego.equipoid1;
-                        _this.equipo7_1_selected = juego.games4ths1 != '0';
+                        _this.equipo7_1_selected = gameId != null && juego.games4ths1 != '0';
                         _this.bandera7_2 = bandera2;
                         _this.marcador7_2 = marcador2;
                         _this.equipo7_2 = equipo2;
                         _this.equipo7_2_id = juego.equipoid2;
-                        _this.equipo7_2_selected = juego.games4ths2 != '0';
+                        _this.equipo7_2_selected = gameId != null && juego.games4ths2 != '0';
                         break;
                     case 7:
                         _this.showGame8 = true;
@@ -1965,27 +1965,28 @@ var GamesPage = (function () {
                         _this.marcador8_1 = marcador1;
                         _this.equipo8_1 = equipo1;
                         _this.equipo8_1_id = juego.equipoid1;
-                        _this.equipo8_1_selected = juego.games4ths1 != '0';
+                        _this.equipo8_1_selected = gameId != null && juego.games4ths1 != '0';
                         _this.bandera8_2 = bandera2;
                         _this.marcador8_2 = marcador2;
                         _this.equipo8_2 = equipo2;
                         _this.equipo8_2_id = juego.equipoid2;
-                        _this.equipo8_2_selected = juego.games4ths2 != '0';
+                        _this.equipo8_2_selected = gameId != null && juego.games4ths2 != '0';
                         break;
                 }
             }
         });
     };
-    GamesPage.prototype.clickTeam = function (gameId, teamId) {
+    GamesPage.prototype.clickTeam = function (gameId, teamId, gameIndex, teamIndex) {
+        var _this = this;
         if (!this.isFifa) {
-            console.log(gameId);
-            console.log(teamId);
             var loading_1 = this.loadingCtrl.create({
                 content: 'Guardando...'
             });
             loading_1.present();
             this.authService.getData("&u=" + localStorage.getItem('userID') + "&pg=w" + gameId + "&te=" + teamId + "&t=" + (this.mode == '8' ? 3 : (this.mode == '4' ? 4 : (this.mode == 'semifinal' ? 5 : 6))) + (this.mode == 'semifinal' || this.mode == 'final' ? '&type=win' : ''), 'updateUserTeamPosition.php').then(function (result) {
-                loading_1.dismiss();
+                if (_this.mode != 'semifinal')
+                    loading_1.dismiss();
+                _this.switchSelected(gameIndex, teamIndex);
             });
             if (this.mode == 'semifinal') {
                 var lostTeam = this.equipo1_1_id == teamId ? this.equipo1_2_id : (this.equipo2_1_id == teamId ? this.equipo2_2_id : (this.equipo1_2_id == teamId ? this.equipo1_1_id : this.equipo2_1_id));
@@ -1999,11 +2000,77 @@ var GamesPage = (function () {
         this.displaySelectedSource(type);
         this.loadPlayOffs();
     };
+    GamesPage.prototype.switchSelected = function (game, team) {
+        if (game == 1 && team == 1) {
+            this.equipo1_1_selected = true;
+            this.equipo1_2_selected = false;
+        }
+        else if (game == 1 && team == 2) {
+            this.equipo1_1_selected = false;
+            this.equipo1_2_selected = true;
+        }
+        else if (game == 2 && team == 1) {
+            this.equipo2_1_selected = true;
+            this.equipo2_2_selected = false;
+        }
+        else if (game == 2 && team == 2) {
+            this.equipo2_1_selected = false;
+            this.equipo2_2_selected = true;
+        }
+        else if (game == 3 && team == 1) {
+            this.equipo3_1_selected = true;
+            this.equipo3_2_selected = false;
+        }
+        else if (game == 3 && team == 2) {
+            this.equipo3_1_selected = false;
+            this.equipo3_2_selected = true;
+        }
+        else if (game == 4 && team == 1) {
+            this.equipo4_1_selected = true;
+            this.equipo4_2_selected = false;
+        }
+        else if (game == 4 && team == 2) {
+            this.equipo4_1_selected = false;
+            this.equipo4_2_selected = true;
+        }
+        else if (game == 5 && team == 1) {
+            this.equipo5_1_selected = true;
+            this.equipo5_2_selected = false;
+        }
+        else if (game == 5 && team == 2) {
+            this.equipo5_1_selected = false;
+            this.equipo5_2_selected = true;
+        }
+        else if (game == 6 && team == 1) {
+            this.equipo6_1_selected = true;
+            this.equipo6_2_selected = false;
+        }
+        else if (game == 6 && team == 2) {
+            this.equipo6_1_selected = false;
+            this.equipo6_2_selected = true;
+        }
+        else if (game == 7 && team == 1) {
+            this.equipo7_1_selected = true;
+            this.equipo7_2_selected = false;
+        }
+        else if (game == 7 && team == 2) {
+            this.equipo7_1_selected = false;
+            this.equipo7_2_selected = true;
+        }
+        else if (game == 8 && team == 1) {
+            this.equipo8_1_selected = true;
+            this.equipo8_2_selected = false;
+        }
+        else if (game == 8 && team == 2) {
+            this.equipo8_1_selected = false;
+            this.equipo8_2_selected = true;
+        }
+    };
     return GamesPage;
 }());
 GamesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-games',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/games/games.html"*/'<!--\n  Generated template for the GamesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ gamesTitle }}</ion-title>\n    <ion-buttons end *ngIf="showMenuToggle">\n      <button ion-button menuToggle end class="button button-clear">\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n<ion-content padding>\n<!-- Generated template for the TrikyGamesComponent component -->\n    <ion-grid *ngIf="!isPlayoff">\n      <ion-row>\n        <ion-col>\n          <button ion-button full id="{{ trikyButtonId }}" color="triky-button" (click)="clickGames(\'triky\')">TRIKY</button>\n        </ion-col>\n        <ion-col>\n          <button ion-button full id="{{ fifaButtonId }}" color="triky-button" (click)="clickGames(\'fifa\')">FIFA</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <div class="card-triky" margin-bottom padding>\n  	<label style="white-space: normal !important;"><ion-icon name="ios-thumbs-up"></ion-icon>Coloca tu pronostico, el los siguientes recuadros de cada partido</label>\n</div>\n	<div *ngIf="showGame1">\n    	<ion-input type="hidden" value="{{ gameId1 }}"></ion-input>\n        <div class="date">{{ date1 }}{{ gameTitle1 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_1_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera1_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo1_1 }}</label></ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador1_1 }}</ion-item>\n                        <ion-item *ngIf="equipo1_1_selected">x</ion-item>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_2_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera1_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo1_2 }}</label></ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador1_2 }}</ion-item>\n                        <ion-item *ngIf="equipo1_2_selected">x</ion-item>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame2">\n	    <ion-input type="hidden" value="{{ gameId2 }}"></ion-input>\n        <div class="date">{{ date2 }}{{ gameTitle2 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_1_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera2_1 }}" /></ion-col>\n                    <ion-col>{{ equipo2_1 }}</ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador2_1 }}</ion-item>\n                        <ion-item *ngIf="equipo2_1_selected">x</ion-item>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_2_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera2_2 }}"/></ion-col>\n            		<ion-col>{{ equipo2_2 }}</ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador2_2 }}</ion-item>\n                        <ion-item *ngIf="equipo2_2_selected">x</ion-item>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>	\n	</div>\n	\n	<div *ngIf="showGame3">\n	   <ion-input type="hidden" value="{{ gameId3 }}"></ion-input>\n        <div class="date">{{ date3 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_1_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera3_1 }}" /></ion-col>\n                    <ion-col>{{ equipo3_1 }}</ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador3_1 }}</ion-item>\n                        <ion-item *ngIf="equipo3_1_selected">x</ion-item>\n                    </ion-col>\n                </ion-row>\n                 <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_2_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera3_2 }}"/></ion-col>\n            		<ion-col>{{ equipo3_2 }}</ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador3_2 }}</ion-item>\n                        <ion-item *ngIf="equipo3_2_selected">x</ion-item>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>	\n	</div>	\n	\n	<div *ngIf="showGame4">\n    	<ion-input type="hidden" value="{{ gameId4 }}"></ion-input>\n        <div class="date">{{ date4 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_1_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera4_1 }}" /></ion-col>\n                    <ion-col>{{ equipo4_1 }}</ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador4_1 }}</ion-item>\n                        <ion-item *ngIf="equipo4_1_selected">x</ion-item>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_2_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera4_2 }}"/></ion-col>\n            		<ion-col>{{ equipo4_2 }}</ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador4_2 }}</ion-item>\n                        <ion-item *ngIf="equipo4_2_selected">x</ion-item>\n                    </ion-col>\n        	    </ion-row>\n            </ion-grid>\n    	</div>	\n	</div>	\n	\n	\n	<div *ngIf="showGame5">\n    	<ion-input type="hidden" value="{{ gameId5 }}"></ion-input>\n        <div class="date">{{ date5 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_1_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera5_1 }}" /></ion-col>\n                    <ion-col>{{ equipo5_1 }}</ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador5_1 }}</ion-item>\n                        <ion-item *ngIf="equipo5_1_selected">x</ion-item>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_2_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera5_2 }}"/></ion-col>\n            		<ion-col>{{ equipo5_2 }}</ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador5_2 }}</ion-item>\n                        <ion-item *ngIf="equipo5_2_selected">x</ion-item>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame6">\n	    <ion-input type="hidden" value="{{ gameId6 }}"></ion-input>\n        <div class="date">{{ date6 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_1_id)">\n                    <ion-col><img width="42" height="28" src="images/{{ bandera6_1 }}" /></ion-col>\n                    <ion-col>{{ equipo6_1 }}</ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador6_1 }}</ion-item>\n                        <ion-item *ngIf="equipo6_1_selected">x</ion-item>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_2_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera6_2 }}"/></ion-col>\n            		<ion-col>{{ equipo6_2 }}</ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador6_2 }}</ion-item>\n                        <ion-item *ngIf="equipo6_2_selected">x</ion-item>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame7">\n    	<ion-input type="hidden" value="{{ gameId7 }}"></ion-input>\n        <div class="date">{{ date7 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_1_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera7_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo7_1 }}</label></ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador7_1 }}</ion-item>\n                        <ion-item *ngIf="equipo7_1_selected">x</ion-item>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_2_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera7_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo7_2 }}</label></ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador7_2 }}</ion-item>\n                        <ion-item *ngIf="equipo7_2_selected">x</ion-item>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame8">\n    	<ion-input type="hidden" value="{{ gameId8 }}"></ion-input>\n        <div class="date">{{ date8 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_1_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera8_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo8_1 }}</label></ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador8_1 }}</ion-item>\n                        <ion-item *ngIf="equipo8_1_selected">x</ion-item>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_2_id)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera8_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo8_2 }}</label></ion-col>\n                    <ion-col>\n                        <ion-item *ngIf="isFifa">{{ marcador8_2 }}</ion-item>\n                        <ion-item *ngIf="equipo8_2_selected">x</ion-item>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/games/games.html"*/,
+        selector: 'page-games',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/games/games.html"*/'<!--\n  Generated template for the GamesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ gamesTitle }}</ion-title>\n    <ion-buttons end *ngIf="showMenuToggle">\n      <button ion-button menuToggle end class="button button-clear">\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n<ion-content padding>\n<!-- Generated template for the TrikyGamesComponent component -->\n    <ion-grid *ngIf="!isPlayoff">\n      <ion-row>\n        <ion-col>\n          <button ion-button full id="{{ trikyButtonId }}" color="triky-button" (click)="clickGames(\'triky\')">TRIKY</button>\n        </ion-col>\n        <ion-col>\n          <button ion-button full id="{{ fifaButtonId }}" color="triky-button" (click)="clickGames(\'fifa\')">FIFA</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <div class="card-triky" margin-bottom padding>\n  	<label style="white-space: normal !important;"><ion-icon name="ios-thumbs-up"></ion-icon>Coloca tu pronostico, el los siguientes recuadros de cada partido</label>\n</div>\n	<div *ngIf="showGame1">\n    	<ion-input type="hidden" value="{{ gameId1 }}"></ion-input>\n        <div class="date">{{ date1 }}{{ gameTitle1 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_1_id, 1,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera1_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo1_1 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador1_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo1_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_2_id,1,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera1_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo1_2 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador1_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo1_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame2">\n	    <ion-input type="hidden" value="{{ gameId2 }}"></ion-input>\n        <div class="date">{{ date2 }}{{ gameTitle2 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_1_id,2,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera2_1 }}" /></ion-col>\n                    <ion-col>{{ equipo2_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador2_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo2_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_2_id,2,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera2_2 }}"/></ion-col>\n            		<ion-col>{{ equipo2_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador2_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo2_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>	\n	</div>\n	\n	<div *ngIf="showGame3">\n	   <ion-input type="hidden" value="{{ gameId3 }}"></ion-input>\n        <div class="date">{{ date3 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_1_id,3,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera3_1 }}" /></ion-col>\n                    <ion-col>{{ equipo3_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador3_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo3_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                 <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_2_id,3,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera3_2 }}"/></ion-col>\n            		<ion-col>{{ equipo3_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador3_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo3_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>	\n	</div>	\n	\n	<div *ngIf="showGame4">\n    	<ion-input type="hidden" value="{{ gameId4 }}"></ion-input>\n        <div class="date">{{ date4 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_1_id,4,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera4_1 }}" /></ion-col>\n                    <ion-col>{{ equipo4_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador4_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo4_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_2_id,4,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera4_2 }}"/></ion-col>\n            		<ion-col>{{ equipo4_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador4_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo4_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n        	    </ion-row>\n            </ion-grid>\n    	</div>	\n	</div>	\n	\n	\n	<div *ngIf="showGame5">\n    	<ion-input type="hidden" value="{{ gameId5 }}"></ion-input>\n        <div class="date">{{ date5 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_1_id,5,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera5_1 }}" /></ion-col>\n                    <ion-col>{{ equipo5_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador5_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo5_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_2_id,5,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera5_2 }}"/></ion-col>\n            		<ion-col>{{ equipo5_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador5_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo5_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame6">\n	    <ion-input type="hidden" value="{{ gameId6 }}"></ion-input>\n        <div class="date">{{ date6 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_1_id,6,1)">\n                    <ion-col><img width="42" height="28" src="images/{{ bandera6_1 }}" /></ion-col>\n                    <ion-col>{{ equipo6_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador6_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo6_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_2_id,6,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera6_2 }}"/></ion-col>\n            		<ion-col>{{ equipo6_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador6_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo6_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame7">\n    	<ion-input type="hidden" value="{{ gameId7 }}"></ion-input>\n        <div class="date">{{ date7 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_1_id,7,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera7_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo7_1 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador7_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo7_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_2_id,7,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera7_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo7_2 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador7_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo7_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame8">\n    	<ion-input type="hidden" value="{{ gameId8 }}"></ion-input>\n        <div class="date">{{ date8 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_1_id,8,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera8_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo8_1 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador8_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo8_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_2_id,8,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera8_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo8_2 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador8_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo8_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/games/games.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_helper__["a" /* HelperService */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])

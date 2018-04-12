@@ -36,21 +36,21 @@
         <div class="date">{{ date1 }}{{ gameTitle1 }}</div>
         <div margin-bottom class="card-triky">
             <ion-grid>
-                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_1_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_1_id, 1,1)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera1_1 }}" /></ion-col>
                     <ion-col><label>{{ equipo1_1 }}</label></ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador1_1 }}</ion-item>
-                        <ion-item *ngIf="equipo1_1_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo1_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
                 </ion-row>
                 <span class="line-score"></span>
-                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_2_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_2_id,1,2)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera1_2 }}"/></ion-col>
             		<ion-col><label>{{ equipo1_2 }}</label></ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador1_2 }}</ion-item>
-                        <ion-item *ngIf="equipo1_2_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo1_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
             	</ion-row>
         	</ion-grid>
@@ -62,21 +62,21 @@
         <div class="date">{{ date2 }}{{ gameTitle2 }}</div>
         <div margin-bottom class="card-triky">
             <ion-grid>
-                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_1_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_1_id,2,1)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera2_1 }}" /></ion-col>
                     <ion-col>{{ equipo2_1 }}</ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador2_1 }}</ion-item>
-                        <ion-item *ngIf="equipo2_1_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo2_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
                 </ion-row>
                 <span class="line-score"></span>
-                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_2_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_2_id,2,1)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera2_2 }}"/></ion-col>
             		<ion-col>{{ equipo2_2 }}</ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador2_2 }}</ion-item>
-                        <ion-item *ngIf="equipo2_2_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo2_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
             	</ion-row>
             </ion-grid>
@@ -88,21 +88,21 @@
         <div class="date">{{ date3 }}</div>
         <div margin-bottom class="card-triky">
             <ion-grid>
-                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_1_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_1_id,3,1)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera3_1 }}" /></ion-col>
                     <ion-col>{{ equipo3_1 }}</ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador3_1 }}</ion-item>
-                        <ion-item *ngIf="equipo3_1_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo3_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
                 </ion-row>
                  <span class="line-score"></span>
-                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_2_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_2_id,3,2)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera3_2 }}"/></ion-col>
             		<ion-col>{{ equipo3_2 }}</ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador3_2 }}</ion-item>
-                        <ion-item *ngIf="equipo3_2_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo3_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
             	</ion-row>
             </ion-grid>
@@ -114,21 +114,21 @@
         <div class="date">{{ date4 }}</div>
         <div margin-bottom class="card-triky">
             <ion-grid>
-                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_1_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_1_id,4,1)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera4_1 }}" /></ion-col>
                     <ion-col>{{ equipo4_1 }}</ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador4_1 }}</ion-item>
-                        <ion-item *ngIf="equipo4_1_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo4_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
                 </ion-row>
                 <span class="line-score"></span>
-                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_2_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_2_id,4,2)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera4_2 }}"/></ion-col>
             		<ion-col>{{ equipo4_2 }}</ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador4_2 }}</ion-item>
-                        <ion-item *ngIf="equipo4_2_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo4_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
         	    </ion-row>
             </ion-grid>
@@ -141,21 +141,21 @@
         <div class="date">{{ date5 }}</div>
         <div margin-bottom class="card-triky">
             <ion-grid>
-                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_1_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_1_id,5,1)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera5_1 }}" /></ion-col>
                     <ion-col>{{ equipo5_1 }}</ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador5_1 }}</ion-item>
-                        <ion-item *ngIf="equipo5_1_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo5_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
                 </ion-row>
                 <span class="line-score"></span>
-                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_2_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_2_id,5,2)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera5_2 }}"/></ion-col>
             		<ion-col>{{ equipo5_2 }}</ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador5_2 }}</ion-item>
-                        <ion-item *ngIf="equipo5_2_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo5_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
             	</ion-row>
             </ion-grid>
@@ -167,21 +167,21 @@
         <div class="date">{{ date6 }}</div>
         <div margin-bottom class="card-triky">
             <ion-grid>
-                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_1_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_1_id,6,1)">
                     <ion-col><img width="42" height="28" src="images/{{ bandera6_1 }}" /></ion-col>
                     <ion-col>{{ equipo6_1 }}</ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador6_1 }}</ion-item>
-                        <ion-item *ngIf="equipo6_1_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo6_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
                 </ion-row>
                 <span class="line-score"></span>
-                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_2_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_2_id,6,2)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera6_2 }}"/></ion-col>
             		<ion-col>{{ equipo6_2 }}</ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador6_2 }}</ion-item>
-                        <ion-item *ngIf="equipo6_2_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo6_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
             	</ion-row>
             </ion-grid>
@@ -193,21 +193,21 @@
         <div class="date">{{ date7 }}</div>
         <div margin-bottom class="card-triky">
             <ion-grid>
-                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_1_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_1_id,7,1)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera7_1 }}" /></ion-col>
                     <ion-col><label>{{ equipo7_1 }}</label></ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador7_1 }}</ion-item>
-                        <ion-item *ngIf="equipo7_1_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo7_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
                 </ion-row>
                 <span class="line-score"></span>
-                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_2_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_2_id,7,2)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera7_2 }}"/></ion-col>
             		<ion-col><label>{{ equipo7_2 }}</label></ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador7_2 }}</ion-item>
-                        <ion-item *ngIf="equipo7_2_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo7_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
             	</ion-row>
         	</ion-grid>
@@ -219,21 +219,21 @@
         <div class="date">{{ date8 }}</div>
         <div margin-bottom class="card-triky">
             <ion-grid>
-                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_1_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_1_id,8,1)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera8_1 }}" /></ion-col>
                     <ion-col><label>{{ equipo8_1 }}</label></ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador8_1 }}</ion-item>
-                        <ion-item *ngIf="equipo8_1_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo8_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
                 </ion-row>
                 <span class="line-score"></span>
-                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_2_id)">
+                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_2_id,8,2)">
                     <ion-col><img width="42" height="28"  src="images/{{ bandera8_2 }}"/></ion-col>
             		<ion-col><label>{{ equipo8_2 }}</label></ion-col>
-                    <ion-col>
+                    <ion-col class="selected-team">
                         <ion-item *ngIf="isFifa">{{ marcador8_2 }}</ion-item>
-                        <ion-item *ngIf="equipo8_2_selected">x</ion-item>
+                        <button end ion-button round *ngIf="equipo8_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>
                     </ion-col>
             	</ion-row>
         	</ion-grid>

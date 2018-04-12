@@ -271,12 +271,12 @@ export class GamesPage {
             this.marcador1_1 = marcador1;
             this.equipo1_1 = equipo1;
             this.equipo1_1_id = juego.equipoid1;
-            this.equipo1_1_selected = (gameId != '64' && juego.games4ths1 != '0') || (gameId == '64' && marcador1 != '0' && marcador1 != null);
+            this.equipo1_1_selected = (gameId != null && gameId != '64' && juego.games4ths1 != '0') || (gameId == '64' && marcador1 != '0' && marcador1 != null);
             this.bandera1_2 = bandera2;
             this.marcador1_2 = marcador2;
             this.equipo1_2 = equipo2;
             this.equipo1_2_id = juego.equipoid2;
-            this.equipo1_2_selected = (gameId != '64' && juego.games4ths2 != '0') || (gameId == '64' && marcador2 != '0' && marcador2 != null);
+            this.equipo1_2_selected = (gameId != null && gameId != '64' && juego.games4ths2 != '0') || (gameId == '64' && marcador2 != '0' && marcador2 != null);
             break;
           case 1:
             this.showGame2 = true;
@@ -286,12 +286,12 @@ export class GamesPage {
             this.marcador2_1 = marcador1;
             this.equipo2_1 = equipo1;
             this.equipo2_1_id = juego.equipoid1;
-            this.equipo2_1_selected = juego.games4ths1 != '0';
+            this.equipo2_1_selected = gameId != null && juego.games4ths1 != '0';
             this.bandera2_2 = bandera2;
             this.marcador2_2 = marcador2;
             this.equipo2_2 = equipo2;
             this.equipo2_2_id = juego.equipoid2;
-            this.equipo2_2_selected = juego.games4ths2 != '0';
+            this.equipo2_2_selected = gameId != null && juego.games4ths2 != '0';
             break;
           case 2:
             this.showGame3 = true;
@@ -301,12 +301,12 @@ export class GamesPage {
             this.marcador3_1 = marcador1;
             this.equipo3_1 = equipo1;
             this.equipo3_1_id = juego.equipoid1;
-            this.equipo3_1_selected = juego.games4ths1 != '0';
+            this.equipo3_1_selected = gameId != null && juego.games4ths1 != '0';
             this.bandera3_2 = bandera2;
             this.marcador3_2 = marcador2;
             this.equipo3_2 = equipo2;
             this.equipo3_2_id = juego.equipoid2;
-            this.equipo3_2_selected = juego.games4ths2 != '0';
+            this.equipo3_2_selected = gameId != null && juego.games4ths2 != '0';
             break;
           case 3:
             this.showGame4 = true;
@@ -316,12 +316,12 @@ export class GamesPage {
             this.marcador4_1 = marcador1;
             this.equipo4_1 = equipo1;
             this.equipo4_1_id = juego.equipoid1;
-            this.equipo4_1_selected = juego.games4ths1 != '0';
+            this.equipo4_1_selected = gameId != null && juego.games4ths1 != '0';
             this.bandera4_2 = bandera2;
             this.marcador4_2 = marcador2;
             this.equipo4_2 = equipo2;
             this.equipo4_2_id = juego.equipoid2;
-            this.equipo4_2_selected = juego.games4ths2 != '0';
+            this.equipo4_2_selected = gameId != null && juego.games4ths2 != '0';
             break;
           case 4:
             this.showGame5 = true;
@@ -331,12 +331,12 @@ export class GamesPage {
             this.marcador5_1 = marcador1;
             this.equipo5_1 = equipo1;
             this.equipo5_1_id = juego.equipoid1;
-            this.equipo5_1_selected = juego.games4ths1 != '0';
+            this.equipo5_1_selected = gameId != null && juego.games4ths1 != '0';
             this.bandera5_2 = bandera2;
             this.marcador5_2 = marcador2;
             this.equipo5_2 = equipo2;
             this.equipo5_2_id = juego.equipoid2;
-            this.equipo5_2_selected = juego.games4ths2 != '0';
+            this.equipo5_2_selected = gameId != null && juego.games4ths2 != '0';
             break;
           case 5:
             this.showGame6 = true;
@@ -346,12 +346,12 @@ export class GamesPage {
             this.marcador6_1 = marcador1;
             this.equipo6_1 = equipo1;
             this.equipo6_1_id = juego.equipoid1;
-            this.equipo6_1_selected = juego.games4ths1 != '0';
+            this.equipo6_1_selected = gameId != null && juego.games4ths1 != '0';
             this.bandera6_2 = bandera2;
             this.marcador6_2 = marcador2;
             this.equipo6_2 = equipo2;
             this.equipo6_2_id = juego.equipoid2;
-            this.equipo6_2_selected = juego.games4ths2 != '0';
+            this.equipo6_2_selected = gameId != null && juego.games4ths2 != '0';
             break;
           case 6:
             this.showGame7 = true;
@@ -361,12 +361,12 @@ export class GamesPage {
             this.marcador7_1 = marcador1;
             this.equipo7_1 = equipo1;
             this.equipo7_1_id = juego.equipoid1;
-            this.equipo7_1_selected = juego.games4ths1 != '0';
+            this.equipo7_1_selected = gameId != null && juego.games4ths1 != '0';
             this.bandera7_2 = bandera2;
             this.marcador7_2 = marcador2;
             this.equipo7_2 = equipo2;
             this.equipo7_2_id = juego.equipoid2;
-            this.equipo7_2_selected = juego.games4ths2 != '0';
+            this.equipo7_2_selected = gameId != null && juego.games4ths2 != '0';
             break;
           case 7:
             this.showGame8 = true;
@@ -376,28 +376,28 @@ export class GamesPage {
             this.marcador8_1 = marcador1;
             this.equipo8_1 = equipo1;
             this.equipo8_1_id = juego.equipoid1;
-            this.equipo8_1_selected = juego.games4ths1 != '0';
+            this.equipo8_1_selected = gameId != null && juego.games4ths1 != '0';
             this.bandera8_2 = bandera2;
             this.marcador8_2 = marcador2;
             this.equipo8_2 = equipo2;
             this.equipo8_2_id = juego.equipoid2;
-            this.equipo8_2_selected = juego.games4ths2 != '0';
+            this.equipo8_2_selected = gameId != null && juego.games4ths2 != '0';
             break;
           }
         }
     });
   }
   
-  clickTeam(gameId, teamId){
+  clickTeam(gameId, teamId, gameIndex, teamIndex){
     if(!this.isFifa){
-      console.log(gameId);
-      console.log(teamId);
       let loading = this.loadingCtrl.create({
         content: 'Guardando...'
       });
       loading.present();
       this.authService.getData("&u=" + localStorage.getItem('userID') + "&pg=w" + gameId + "&te=" + teamId + "&t=" + (this.mode == '8' ? 3 : (this.mode == '4' ? 4 : (this.mode == 'semifinal' ? 5 : 6))) + (this.mode == 'semifinal' || this.mode == 'final' ? '&type=win' : ''),'updateUserTeamPosition.php').then((result) => {
-        loading.dismiss();
+        if(this.mode != 'semifinal')
+          loading.dismiss();
+        this.switchSelected(gameIndex, teamIndex);
       });
       if(this.mode == 'semifinal'){
         var lostTeam = this.equipo1_1_id == teamId ? this.equipo1_2_id : (this.equipo2_1_id == teamId ? this.equipo2_2_id : (this.equipo1_2_id == teamId ? this.equipo1_1_id : this.equipo2_1_id));
@@ -411,5 +411,72 @@ export class GamesPage {
   clickGames(type){
     this.displaySelectedSource(type);
     this.loadPlayOffs()
+  }
+  
+  switchSelected(game, team){
+    if(game == 1 && team == 1){
+      this.equipo1_1_selected = true;
+      this.equipo1_2_selected = false;
+    }
+    else if(game == 1 && team == 2){
+      this.equipo1_1_selected = false;
+      this.equipo1_2_selected = true;
+    }
+    else if(game == 2 && team == 1){
+      this.equipo2_1_selected = true;
+      this.equipo2_2_selected = false;
+    }
+    else if(game == 2 && team == 2){
+      this.equipo2_1_selected = false;
+      this.equipo2_2_selected = true;
+    }
+    else if(game == 3 && team == 1){
+      this.equipo3_1_selected = true;
+      this.equipo3_2_selected = false;
+    }
+    else if(game == 3 && team == 2){
+      this.equipo3_1_selected = false;
+      this.equipo3_2_selected = true;
+    }
+    else if(game == 4 && team == 1){
+      this.equipo4_1_selected = true;
+      this.equipo4_2_selected = false;
+    }
+    else if(game == 4 && team == 2){
+      this.equipo4_1_selected = false;
+      this.equipo4_2_selected = true;
+    }
+    else if(game == 5 && team == 1){
+      this.equipo5_1_selected = true;
+      this.equipo5_2_selected = false;
+    }
+    else if(game == 5 && team == 2){
+      this.equipo5_1_selected = false;
+      this.equipo5_2_selected = true;
+    }
+    else if(game == 6 && team == 1){
+      this.equipo6_1_selected = true;
+      this.equipo6_2_selected = false;
+    }
+    else if(game == 6 && team == 2){
+      this.equipo6_1_selected = false;
+      this.equipo6_2_selected = true;
+    }
+    else if(game == 7 && team == 1){
+      this.equipo7_1_selected = true;
+      this.equipo7_2_selected = false;
+    }
+    else if(game == 7 && team == 2){
+      this.equipo7_1_selected = false;
+      this.equipo7_2_selected = true;
+    }
+    else if(game == 8 && team == 1){
+      this.equipo8_1_selected = true;
+      this.equipo8_2_selected = false;
+    }
+    else if(game == 8 && team == 2){
+      this.equipo8_1_selected = false;
+      this.equipo8_2_selected = true;
+    }
   }
 }

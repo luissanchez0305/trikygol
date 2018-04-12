@@ -39964,6 +39964,17 @@ ion-header .toolbar-background {
   color: red;
 }
 
+page-games .card-triky .scores button {
+  height: 20px;
+  width: 20px;
+  padding: 12px;
+  margin: 0;
+}
+
+page-games .card-triky .scores .selected-team {
+  text-align: right;
+}
+
 page-games .game-container {
   float: left;
   width: 100%;
