@@ -17,6 +17,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class StickersMissingPage {
   matches : String[];
+  languages : String[];
   recording : string = 'pause';
   showPermissionButton : boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private plt: Platform,
@@ -25,6 +26,12 @@ export class StickersMissingPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StickersMissingPage');
+    // Get the list of supported languages
+    this.speechRecognition.getSupportedLanguages()
+      .then(
+        (languages: Array<string>) => this.languages = languages,
+        (error) => console.log(error)
+      )
   }
   
   getPermissions(){
@@ -52,13 +59,14 @@ export class StickersMissingPage {
       (onerror) => console.log('error:', onerror)
     )*/
     .subscribe(
-      (matches: Array<string>) => {
+      async (matches: Array<string>) => {
         this.matches = matches;
         this.cd.detectChanges();
         this.recording = 'pause';
       },
-      (onerror) => { 
+      async (onerror) => { 
         alert('error: ' + onerror) 
+        this.recording = 'pause';
       });
     this.recording = 'recording';
   }

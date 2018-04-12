@@ -118,7 +118,11 @@ var StickersMissingPage = (function () {
         this.showPermissionButton = false;
     }
     StickersMissingPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
         console.log('ionViewDidLoad StickersMissingPage');
+        // Get the list of supported languages
+        this.speechRecognition.getSupportedLanguages()
+            .then(function (languages) { return _this.languages = languages; }, function (error) { return console.log(error); });
     };
     StickersMissingPage.prototype.getPermissions = function () {
         var _this = this;
@@ -148,13 +152,20 @@ var StickersMissingPage = (function () {
                             language: 'es-ES'
                         };
                         this.speechRecognition.startListening(options)
-                            .subscribe(function (matches) {
-                            _this.matches = matches;
-                            _this.cd.detectChanges();
-                            _this.recording = 'pause';
-                        }, function (onerror) {
-                            alert('error: ' + onerror);
-                        });
+                            .subscribe(function (matches) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                this.matches = matches;
+                                this.cd.detectChanges();
+                                this.recording = 'pause';
+                                return [2 /*return*/];
+                            });
+                        }); }, function (onerror) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                alert('error: ' + onerror);
+                                this.recording = 'pause';
+                                return [2 /*return*/];
+                            });
+                        }); });
                         this.recording = 'recording';
                         return [2 /*return*/];
                 }
@@ -174,7 +185,7 @@ var StickersMissingPage = (function () {
 }());
 StickersMissingPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-stickers-missing',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/'<!--\n  Generated template for the StickersMissingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Faltantes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div style="width:100%; height: 30px;" [class]="recording"></div>\n  <button ion-button full (click)="getPermissions()" *ngIf="showPermissionButton">Otorgar permisos</button>\n  <button ion-button full (click)="startListening()">Empezar</button>\n  <button ion-button full (click)="stopListening()" *ngIf="isIos()">Detener</button>\n  <ion-card>\n    <ion-card-header>Numeros escuchados</ion-card-header>\n    <ion-card-content>\n      <ion-list>\n        <ion-item *ngFor="let match of matches">\n          {{ match }}\n        </ion-item>\n      </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/,
+        selector: 'page-stickers-missing',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/'<!--\n  Generated template for the StickersMissingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Faltantes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let language of languages">\n      {{ language }}\n    </ion-item>\n  </ion-list>\n  <div style="width:100%; height: 30px;" [class]="recording"></div>\n  <button ion-button full (click)="getPermissions()" *ngIf="showPermissionButton">Otorgar permisos</button>\n  <button ion-button full (click)="startListening()">Empezar</button>\n  <button ion-button full (click)="stopListening()" *ngIf="isIos()">Detener</button>\n  <ion-card>\n    <ion-card-header>Numeros escuchados</ion-card-header>\n    <ion-card-content>\n      <ion-list>\n        <ion-item *ngFor="let match of matches">\n          {{ match }}\n        </ion-item>\n      </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */],
         __WEBPACK_IMPORTED_MODULE_2__ionic_native_speech_recognition__["a" /* SpeechRecognition */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectorRef */]])
@@ -323,11 +334,11 @@ var map = {
 		5
 	],
 	"../pages/register/register.module": [
-		289,
+		288,
 		4
 	],
 	"../pages/stickers-match/stickers-match.module": [
-		288,
+		289,
 		3
 	],
 	"../pages/stickers-missing/stickers-missing.module": [
@@ -825,8 +836,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/games/games.module#GamesPageModule', name: 'GamesPage', segment: 'games', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-missing/stickers-missing.module#StickersMissingPageModule', name: 'StickersMissingPage', segment: 'stickers-missing', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-repeated/stickers-repeated.module#StickersRepeatedPageModule', name: 'StickersRepeatedPage', segment: 'stickers-repeated', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers/stickers.module#StickersPageModule', name: 'StickersPage', segment: 'stickers', priority: 'low', defaultHistory: [] }
