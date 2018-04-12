@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
-import { ChangeDetectorRef } from '@angular/core';
 
 /**
  * Generated class for the StickersMissingPage page.
@@ -21,17 +20,17 @@ export class StickersMissingPage {
   recording : string = 'pause';
   showPermissionButton : boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private plt: Platform,
-  private speechRecognition: SpeechRecognition, private cd : ChangeDetectorRef ) {
+  private speechRecognition: SpeechRecognition) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StickersMissingPage');
     // Get the list of supported languages
-    this.speechRecognition.getSupportedLanguages()
+    /*this.speechRecognition.getSupportedLanguages()
       .then(
         (languages: Array<string>) => this.languages = languages,
         (error) => console.log(error)
-      )
+      )*/
   }
   
   getPermissions(){
@@ -50,9 +49,9 @@ export class StickersMissingPage {
     }
     
     let options = {
-      language: 'en-US'
+      language: 'es-ES'
     };
-    this.speechRecognition.startListening()
+    this.speechRecognition.startListening(options)
     
     /*.subscribe(
       (matches: Array<string>) => console.log(matches),
@@ -61,7 +60,6 @@ export class StickersMissingPage {
     .subscribe(
       async (matches: Array<string>) => {
         this.matches = matches;
-        this.cd.detectChanges();
         this.recording = 'pause';
       },
       async (onerror) => { 
