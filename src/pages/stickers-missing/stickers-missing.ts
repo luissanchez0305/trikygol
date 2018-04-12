@@ -52,7 +52,7 @@ export class StickersMissingPage {
     let options = {
       language: 'en-US'
     };
-    this.speechRecognition.startListening(options)
+    this.speechRecognition.startListening()
     
     /*.subscribe(
       (matches: Array<string>) => console.log(matches),
