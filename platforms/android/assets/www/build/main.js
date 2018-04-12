@@ -149,7 +149,7 @@ var StickersMissingPage = (function () {
                         _a.label = 3;
                     case 3:
                         options = {
-                            language: 'es-ES'
+                            language: 'en-US'
                         };
                         this.speechRecognition.startListening(options)
                             .subscribe(function (matches) { return __awaiter(_this, void 0, void 0, function () {
@@ -330,11 +330,11 @@ var map = {
 		6
 	],
 	"../pages/login/login.module": [
-		287,
+		288,
 		5
 	],
 	"../pages/register/register.module": [
-		288,
+		287,
 		4
 	],
 	"../pages/stickers-match/stickers-match.module": [
@@ -835,8 +835,8 @@ AppModule = __decorate([
                 links: [
                     { loadChildren: '../pages/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/games/games.module#GamesPageModule', name: 'GamesPage', segment: 'games', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-missing/stickers-missing.module#StickersMissingPageModule', name: 'StickersMissingPage', segment: 'stickers-missing', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-repeated/stickers-repeated.module#StickersRepeatedPageModule', name: 'StickersRepeatedPage', segment: 'stickers-repeated', priority: 'low', defaultHistory: [] },
