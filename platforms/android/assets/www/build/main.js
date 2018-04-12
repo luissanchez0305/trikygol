@@ -98,10 +98,13 @@ var StickersMissingPage = (function () {
         var options = {
             language: 'es-ES'
         };
-        this.speechRecognition.startListening(options).subscribe(function (matches) {
+        this.speechRecognition.startListening(options)
+            .subscribe(function (matches) {
             _this.matches = matches;
             _this.cd.detectChanges();
             _this.recording = 'pause';
+        }, function (onerror) {
+            alert('error: ' + onerror);
         });
         this.recording = 'recording';
     };

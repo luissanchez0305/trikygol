@@ -39,11 +39,21 @@ export class StickersMissingPage {
     let options = {
       language: 'es-ES'
     };
-    this.speechRecognition.startListening(options).subscribe(matches => {
-      this.matches = matches;
-      this.cd.detectChanges();
-      this.recording = 'pause';
-    });
+    this.speechRecognition.startListening(options)
+    
+    /*.subscribe(
+      (matches: Array<string>) => console.log(matches),
+      (onerror) => console.log('error:', onerror)
+    )*/
+    .subscribe(
+      (matches: Array<string>) => {
+        this.matches = matches;
+        this.cd.detectChanges();
+        this.recording = 'pause';
+      },
+      (onerror) => { 
+        alert('error: ' + onerror) 
+      });
     this.recording = 'recording';
   }
   
