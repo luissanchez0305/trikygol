@@ -101,6 +101,7 @@ var StickersMissingPage = (function () {
         this.speechRecognition.startListening(options).subscribe(function (matches) {
             _this.matches = matches;
             _this.cd.detectChanges();
+            _this.recording = 'pause';
         });
         this.recording = 'recording';
     };
@@ -262,27 +263,27 @@ var map = {
 		6
 	],
 	"../pages/login/login.module": [
-		288,
+		287,
 		5
 	],
 	"../pages/register/register.module": [
-		292,
+		288,
 		4
 	],
 	"../pages/stickers-match/stickers-match.module": [
-		287,
+		289,
 		3
 	],
 	"../pages/stickers-missing/stickers-missing.module": [
-		289,
+		290,
 		2
 	],
 	"../pages/stickers-repeated/stickers-repeated.module": [
-		290,
+		291,
 		1
 	],
 	"../pages/stickers/stickers.module": [
-		291,
+		292,
 		0
 	]
 };
@@ -767,12 +768,12 @@ AppModule = __decorate([
                 links: [
                     { loadChildren: '../pages/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/games/games.module#GamesPageModule', name: 'GamesPage', segment: 'games', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-missing/stickers-missing.module#StickersMissingPageModule', name: 'StickersMissingPage', segment: 'stickers-missing', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-repeated/stickers-repeated.module#StickersRepeatedPageModule', name: 'StickersRepeatedPage', segment: 'stickers-repeated', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers/stickers.module#StickersPageModule', name: 'StickersPage', segment: 'stickers', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/stickers/stickers.module#StickersPageModule', name: 'StickersPage', segment: 'stickers', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_20__angular_http__["c" /* HttpModule */]

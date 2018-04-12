@@ -42,6 +42,7 @@ export class StickersMissingPage {
     this.speechRecognition.startListening(options).subscribe(matches => {
       this.matches = matches;
       this.cd.detectChanges();
+      this.recording = 'pause';
     });
     this.recording = 'recording';
   }
