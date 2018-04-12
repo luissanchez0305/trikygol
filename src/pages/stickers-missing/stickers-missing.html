@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <div style="width:100%; height: 30px;" [class]="recording"></div>
-  <button ion-button full (click)="getPermissions()">Otorgar permisos</button>
+  <button ion-button full (click)="getPermissions()" *ngIf="showPermissionButton">Otorgar permisos</button>
   <button ion-button full (click)="startListening()">Empezar</button>
   <button ion-button full (click)="stopListening()" *ngIf="isIos()">Detener</button>
   <ion-card>

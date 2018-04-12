@@ -18,12 +18,17 @@ import { ChangeDetectorRef } from '@angular/core';
 export class StickersMissingPage {
   matches : String[];
   recording : string = 'pause';
+  showPermissionButton : boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private plt: Platform,
   private speechRecognition: SpeechRecognition, private cd : ChangeDetectorRef ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StickersMissingPage');
+    const hasPermission = this.speechRecognition.hasPermission();
+    if(!hasPermission){
+      this.showPermissionButton = true;
+    }
   }
   
   getPermissions(){

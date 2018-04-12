@@ -80,9 +80,14 @@ var StickersMissingPage = (function () {
         this.speechRecognition = speechRecognition;
         this.cd = cd;
         this.recording = 'pause';
+        this.showPermissionButton = false;
     }
     StickersMissingPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad StickersMissingPage');
+        var hasPermission = this.speechRecognition.hasPermission();
+        if (!hasPermission) {
+            this.showPermissionButton = true;
+        }
     };
     StickersMissingPage.prototype.getPermissions = function () {
         var _this = this;
@@ -121,7 +126,7 @@ var StickersMissingPage = (function () {
 }());
 StickersMissingPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-stickers-missing',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/'<!--\n  Generated template for the StickersMissingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Faltantes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div style="width:100%; height: 30px;" [class]="recording"></div>\n  <button ion-button full (click)="getPermissions()">Otorgar permisos</button>\n  <button ion-button full (click)="startListening()">Empezar</button>\n  <button ion-button full (click)="stopListening()" *ngIf="isIos()">Detener</button>\n  <ion-card>\n    <ion-card-header>Numeros escuchados</ion-card-header>\n    <ion-card-content>\n      <ion-list>\n        <ion-item *ngFor="let match of matches">\n          {{ match }}\n        </ion-item>\n      </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/,
+        selector: 'page-stickers-missing',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/'<!--\n  Generated template for the StickersMissingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Faltantes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div style="width:100%; height: 30px;" [class]="recording"></div>\n  <button ion-button full (click)="getPermissions()" *ngIf="showPermissionButton">Otorgar permisos</button>\n  <button ion-button full (click)="startListening()">Empezar</button>\n  <button ion-button full (click)="stopListening()" *ngIf="isIos()">Detener</button>\n  <ion-card>\n    <ion-card-header>Numeros escuchados</ion-card-header>\n    <ion-card-content>\n      <ion-list>\n        <ion-item *ngFor="let match of matches">\n          {{ match }}\n        </ion-item>\n      </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */],
         __WEBPACK_IMPORTED_MODULE_2__ionic_native_speech_recognition__["a" /* SpeechRecognition */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectorRef */]])
