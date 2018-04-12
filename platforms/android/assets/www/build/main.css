@@ -40132,3 +40132,11 @@ page-stickers-missing .pause {
 page-stickers-missing .recording {
   background-color: red;
 }
+
+page-stickers-missing label.pause {
+  display: none;
+}
+
+page-stickers-missing label.recording {
+  display: block;
+}

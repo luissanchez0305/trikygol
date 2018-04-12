@@ -16,30 +16,13 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
 })
 export class StickersMissingPage {
   matches : String[];
-  languages : String[];
   recording : string = 'pause';
-  showPermissionButton : boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private plt: Platform,
   private speechRecognition: SpeechRecognition) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StickersMissingPage');
-    // Get the list of supported languages
-    /*this.speechRecognition.getSupportedLanguages()
-      .then(
-        (languages: Array<string>) => this.languages = languages,
-        (error) => console.log(error)
-      )*/
-  }
-  
-  getPermissions(){
-    this.speechRecognition.hasPermission()
-      .then((hasPermission: boolean) => {
-        if(!hasPermission){
-          this.speechRecognition.requestPermission();
-        }
-      });
   }
   
   async startListening(){

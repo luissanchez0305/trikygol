@@ -5,4 +5,10 @@ page-stickers-missing {
 .recording{
     background-color: red;
 }
+label.pause{
+    display: none;
+}
+label.recording{
+    display: block;
+}
 }

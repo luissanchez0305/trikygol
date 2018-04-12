@@ -113,25 +113,9 @@ var StickersMissingPage = (function () {
         this.plt = plt;
         this.speechRecognition = speechRecognition;
         this.recording = 'pause';
-        this.showPermissionButton = false;
     }
     StickersMissingPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad StickersMissingPage');
-        // Get the list of supported languages
-        /*this.speechRecognition.getSupportedLanguages()
-          .then(
-            (languages: Array<string>) => this.languages = languages,
-            (error) => console.log(error)
-          )*/
-    };
-    StickersMissingPage.prototype.getPermissions = function () {
-        var _this = this;
-        this.speechRecognition.hasPermission()
-            .then(function (hasPermission) {
-            if (!hasPermission) {
-                _this.speechRecognition.requestPermission();
-            }
-        });
     };
     StickersMissingPage.prototype.startListening = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -184,7 +168,7 @@ var StickersMissingPage = (function () {
 }());
 StickersMissingPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-stickers-missing',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/'<!--\n  Generated template for the StickersMissingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Faltantes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let language of languages">\n      {{ language }}\n    </ion-item>\n  </ion-list>\n  <div style="width:100%; height: 30px;" [class]="recording"></div>\n  <button ion-button full (click)="getPermissions()" *ngIf="showPermissionButton">Otorgar permisos</button>\n  <button ion-button full (click)="startListening()">Empezar</button>\n  <button ion-button full (click)="stopListening()" *ngIf="isIos()">Detener</button>\n  <ion-card>\n    <ion-card-header>Numeros escuchados</ion-card-header>\n    <ion-card-content>\n      <ion-list>\n        <ion-item *ngFor="let match of matches">\n          {{ match }}\n        </ion-item>\n      </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/,
+        selector: 'page-stickers-missing',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/'<!--\n  Generated template for the StickersMissingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Faltantes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div style="width:100%; height: 30px;" [class]="recording"><label [class]="recording">Escuchando</label></div>\n  <button ion-button full (click)="startListening()">Empezar</button>\n  <button ion-button full (click)="stopListening()" *ngIf="isIos()">Detener</button>\n  <ion-card>\n    <ion-card-header>Numeros escuchados</ion-card-header>\n    <ion-card-content>\n      <ion-list>\n        <ion-item *ngFor="let match of matches">\n          {{ match }}\n        </ion-item>\n      </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/stickers-missing/stickers-missing.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */],
         __WEBPACK_IMPORTED_MODULE_2__ionic_native_speech_recognition__["a" /* SpeechRecognition */]])
@@ -392,7 +376,44 @@ var Constants = {
         'Octubre',
         'Noviembre',
         'Diciembre'
-    ]
+    ],
+    stickers: {
+        symbols: { name: 'Simbolos', range: [0, 7] },
+        stadiums: { name: 'Estadios', range: [8, 19] },
+        russia: { name: 'Rusia', range: [20, 39] },
+        saudi: { name: 'Arabia Saudita', range: [40, 59] },
+        egypt: { name: 'Egipto', range: [60, 79] },
+        uruguay: { name: 'Urugay', range: [80, 99] },
+        portugal: { name: 'Portugal', range: [100, 119] },
+        spain: { name: 'España', range: [120, 139] },
+        morocco: { name: 'Marruecos', range: [140, 159] },
+        islamicRep: { name: 'Iran', range: [160, 179] },
+        france: { name: 'Francia', range: [180, 199] },
+        australia: { name: 'Australia', range: [200, 219] },
+        peru: { name: 'Peru', range: [220, 239] },
+        denmark: { name: 'Dinamarca', range: [240, 259] },
+        argentina: { name: 'Argentina', range: [260, 279] },
+        iceland: { name: 'Islandia', range: [280, 299] },
+        croatia: { name: 'Croacia', range: [300, 319] },
+        nigeria: { name: 'Nigeria', range: [320, 339] },
+        brazil: { name: 'Brasil', range: [340, 359] },
+        switzerland: { name: 'Suiza', range: [360, 379] },
+        costaRica: { name: 'Costa Rica', range: [380, 399] },
+        serbia: { name: 'Serbia', range: [400, 419] },
+        germany: { name: 'Alemania', range: [420, 439] },
+        mexico: { name: 'Mexico', range: [440, 459] },
+        sweden: { name: 'Suecia', range: [460, 479] },
+        korea: { name: 'Corea del Sur', range: [480, 499] },
+        belgium: { name: 'Bélgica', range: [500, 519] },
+        panama: { name: 'Panamá', range: [520, 539] },
+        tunisia: { name: 'Túnez', range: [540, 559] },
+        england: { name: 'Inglaterra', range: [560, 579] },
+        poland: { name: 'Polonia', range: [580, 599] },
+        senegal: { name: 'Senegal', range: [600, 619] },
+        colombia: { name: 'Colombia', range: [620, 639] },
+        japan: { name: 'Japón', range: [640, 659] },
+        legends: { name: 'Leyendas', range: [660, 669] },
+    }
 };
 //# sourceMappingURL=constants.js.map
 
