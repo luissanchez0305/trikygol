@@ -25,10 +25,6 @@ export class StickersMissingPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StickersMissingPage');
-    const hasPermission = this.speechRecognition.hasPermission();
-    if(!hasPermission){
-      this.showPermissionButton = true;
-    }
   }
   
   getPermissions(){
@@ -40,7 +36,12 @@ export class StickersMissingPage {
       });
   }
   
-  startListening(){
+  async startListening(){
+    const hasPermission = await this.speechRecognition.hasPermission();
+    if(!hasPermission){
+      await this.speechRecognition.requestPermission();
+    }
+    
     let options = {
       language: 'es-ES'
     };
