@@ -40,6 +40,14 @@ module.exports = [
     "merges": [
       "navigator.notification"
     ]
+  },
+  {
+    "id": "cordova-plugin-speechrecognition.SpeechRecognition",
+    "file": "plugins/cordova-plugin-speechrecognition/www/speechRecognition.js",
+    "pluginId": "cordova-plugin-speechrecognition",
+    "merges": [
+      "window.plugins.speechRecognition"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -50,7 +58,8 @@ module.exports.metadata =
   "cordova-plugin-device": "1.1.4",
   "cordova-plugin-splashscreen": "4.0.3",
   "cordova-plugin-ionic-webview": "1.1.15",
-  "cordova-plugin-dialogs": "1.3.3"
+  "cordova-plugin-dialogs": "1.3.3",
+  "cordova-plugin-speechrecognition": "1.1.2"
 };
 // BOTTOM OF METADATA
 });

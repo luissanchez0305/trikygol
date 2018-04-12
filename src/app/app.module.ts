@@ -14,12 +14,16 @@ import { ForgotPage } from '../pages/forgot/forgot';
 import { GroupsPage } from '../pages/groups/groups';
 import { GamesPage } from '../pages/games/games';
 import { StickersPage } from '../pages/stickers/stickers';
+import { StickersMissingPage } from '../pages/stickers-missing/stickers-missing';
+import { StickersRepeatedPage } from '../pages/stickers-repeated/stickers-repeated';
+import { StickersMatchPage } from '../pages/stickers-match/stickers-match';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { AuthService } from '../providers/auth-service';
 import { HelperService } from '../providers/helper';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,10 @@ import { HelperService } from '../providers/helper';
     ForgotPage,
     GroupsPage,
     GamesPage,
-    StickersPage
+    StickersPage,
+    StickersMissingPage,
+    StickersRepeatedPage,
+    StickersMatchPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,10 @@ import { HelperService } from '../providers/helper';
     ForgotPage,
     GroupsPage,
     GamesPage,
-    StickersPage
+    StickersPage,
+    StickersMissingPage,
+    StickersRepeatedPage,
+    StickersMatchPage
   ],
   providers: [
     StatusBar,
@@ -60,6 +70,7 @@ import { HelperService } from '../providers/helper';
     AuthService,
     HelperService,
     Dialogs,
+    SpeechRecognition,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

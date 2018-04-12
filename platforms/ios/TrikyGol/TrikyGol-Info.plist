@@ -63,5 +63,9 @@
     <array>
       <string>UIInterfaceOrientationPortrait</string>
     </array>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Request to use Microphone</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Request to use Speech Recognition</string>
   </dict>
 </plist>

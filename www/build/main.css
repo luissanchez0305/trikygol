@@ -39920,6 +39920,10 @@ textarea {
   min-height: 120px;
 }
 
+.button-block {
+  height: 100px;
+}
+
 ion-content.content {
   background-color: #f8f9fa;
 }
@@ -40119,4 +40123,12 @@ page-home .entire-text {
 
 .un-code .text-input-md {
   margin: 5px 8px !important;
+}
+
+page-stickers-missing .pause {
+  background-color: gray;
+}
+
+page-stickers-missing .recording {
+  background-color: red;
 }

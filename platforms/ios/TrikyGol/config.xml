@@ -36,6 +36,9 @@
     <feature name="Keyboard">
         <param name="ios-package" onload="true" value="IonicKeyboard" />
     </feature>
+    <feature name="SpeechRecognition">
+        <param name="ios-package" value="SpeechRecognition" />
+    </feature>
     <name>TrikyGol</name>
     <description>Creacion de quinielas de futbol</description>
     <author email="lsanchez@esferasoluciones.com" href="https://www.esferasoluciones.com">

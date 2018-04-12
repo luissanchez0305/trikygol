@@ -24,6 +24,9 @@
     },
     "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "com.esferasoluciones.trikygol"
+    },
+    "cordova-plugin-speechrecognition": {
+      "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
     }
   },
   "dependent_plugins": {}

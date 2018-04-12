@@ -41,6 +41,8 @@
 		CD58D1F1109B4C979A8587BF /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B57AD5EEE14A3F9732B7AE /* CDVSplashScreen.m */; };
 		ADA108A250D246E395811DAF /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AC97310DD54A7E817334A5 /* CDVViewController+SplashScreen.m */; };
 		852E151A351F4D0C88682D9E /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D9477A7D5807485BA9BE25C8 /* IonicKeyboard.m */; };
+		DC13F7D5C4D64ECEBBD556F0 /* SpeechRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 79704755FD88431FBAF9FE8D /* SpeechRecognition.m */; };
+		31968CB64F7544D5901B8DE1 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28022CAF4594423596B12C49 /* Speech.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +131,9 @@
 		B6886FCF32754D8FB12D1C64 /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		D9477A7D5807485BA9BE25C8 /* IonicKeyboard.m */ = {isa = PBXFileReference; name = "IonicKeyboard.m"; path = "ionic-plugin-keyboard/IonicKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		DD8DDB96301B40199877D4C9 /* IonicKeyboard.h */ = {isa = PBXFileReference; name = "IonicKeyboard.h"; path = "ionic-plugin-keyboard/IonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		79704755FD88431FBAF9FE8D /* SpeechRecognition.m */ = {isa = PBXFileReference; name = "SpeechRecognition.m"; path = "cordova-plugin-speechrecognition/SpeechRecognition.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		6FE0FFE1EBAE4291A4FA481A /* SpeechRecognition.h */ = {isa = PBXFileReference; name = "SpeechRecognition.h"; path = "cordova-plugin-speechrecognition/SpeechRecognition.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		28022CAF4594423596B12C49 /* Speech.framework */ = {isa = PBXFileReference; name = "Speech.framework"; path = "System/Library/Frameworks/Speech.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +145,7 @@
 				125B1C508C1A429997C56F24 /* AudioToolbox.framework in Frameworks */,
 				6F566395A12A435F812B0033 /* WebKit.framework in Frameworks */,
 				7793F5E37A254265996C135A /* libz.tbd in Frameworks */,
+				31968CB64F7544D5901B8DE1 /* Speech.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +220,7 @@
 				E39012FD997A47A7BA49E982 /* AudioToolbox.framework */,
 				D0BB5E87D8674A9BBC46DE74 /* WebKit.framework */,
 				8F700BE5E15145828AB1BFFD /* libz.tbd */,
+				28022CAF4594423596B12C49 /* Speech.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,6 +290,8 @@
 				B6886FCF32754D8FB12D1C64 /* CDVViewController+SplashScreen.h */,
 				D9477A7D5807485BA9BE25C8 /* IonicKeyboard.m */,
 				DD8DDB96301B40199877D4C9 /* IonicKeyboard.h */,
+				79704755FD88431FBAF9FE8D /* SpeechRecognition.m */,
+				6FE0FFE1EBAE4291A4FA481A /* SpeechRecognition.h */,
 			);
 			name = Plugins;
 			path = "TrikyGol/Plugins";
@@ -417,6 +426,7 @@
 				CD58D1F1109B4C979A8587BF /* CDVSplashScreen.m in Sources */,
 				ADA108A250D246E395811DAF /* CDVViewController+SplashScreen.m in Sources */,
 				852E151A351F4D0C88682D9E /* IonicKeyboard.m in Sources */,
+				DC13F7D5C4D64ECEBBD556F0 /* SpeechRecognition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
