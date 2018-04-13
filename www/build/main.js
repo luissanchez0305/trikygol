@@ -196,7 +196,7 @@ var GroupsPage = (function () {
         this.groupGSecond = 0;
         this.groupHFirst = 0;
         this.groupHSecond = 0;
-        this.defaultFillScoresText = "Click al equipo que pasa a 8vos";
+        this.defaultFillScoresText = "Click a equipos que pasan a 8vos";
         this.displayGroupsAndTeams('triky');
         this.fillTextA = this.defaultFillScoresText;
         this.fillTextB = this.defaultFillScoresText;
@@ -218,7 +218,8 @@ var GroupsPage = (function () {
         });
         loading.present();
         // "getFirstSecondTeams.php" TRAE TODOS LOS EQUIPOS POR GRUPOS
-        this.authService.getData('source=' + _source + (_source == 'triky' ? "&u=" + localStorage.getItem('userID') : ""), _source == 'triky' ? 'getUserTeamsPositions.php' : 'getFirstSecondTeams.php').then(function (result) {
+        this.authService.getData('source=' + _source + (_source == 'triky' ? "&u=" + localStorage.getItem('userID') : ""), _source == 'triky' ? 'getUserTeamsPositions.php' : 'getFirstSecondTeams.php')
+            .then(function (result) {
             loading.dismiss();
             _this.responseData = result;
             _this.typeShowing = _source;
@@ -240,23 +241,23 @@ var GroupsPage = (function () {
                         _this.teamA1 = grupo.team1.nombre;
                         _this.teamA1Flag = grupo.team1.bandera;
                         _this.teamA1Points = grupo.team1.puntos;
-                        _this.showPlacesA = grupo.team1.puntos != '0';
-                        _this.teamA1Pos = _source == 'triky' ? (_this.showPlacesA ? 1 : null) : 1;
+                        _this.showPlacesA = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                        _this.teamA1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                         _this.teamA2Id = grupo.team2.id;
                         _this.teamA2 = grupo.team2.nombre;
                         _this.teamA2Flag = grupo.team2.bandera;
                         _this.teamA2Points = grupo.team2.puntos;
-                        _this.teamA2Pos = _source == 'triky' ? (_this.showPlacesA ? 2 : null) : 2;
+                        _this.teamA2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                         _this.teamA3Id = grupo.team3.id;
                         _this.teamA3 = grupo.team3.nombre;
                         _this.teamA3Flag = grupo.team3.bandera;
                         _this.teamA3Points = grupo.team3.puntos;
-                        _this.teamA3Pos = _source == 'triky' ? null : 3;
+                        _this.teamA3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                         _this.teamA4Id = grupo.team4.id;
                         _this.teamA4 = grupo.team4.nombre;
                         _this.teamA4Flag = grupo.team4.bandera;
                         _this.teamA4Points = grupo.team4.puntos;
-                        _this.teamA4Pos = _source == 'triky' ? null : 4;
+                        _this.teamA4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                         _this.showInfoBarA = !_this.showPlacesA;
                         break;
                     case 'b':
@@ -264,23 +265,23 @@ var GroupsPage = (function () {
                         _this.teamB1 = grupo.team1.nombre;
                         _this.teamB1Flag = grupo.team1.bandera;
                         _this.teamB1Points = grupo.team1.puntos;
-                        _this.showPlacesB = grupo.team1.puntos != '0';
-                        _this.teamB1Pos = _source == 'triky' ? (_this.showPlacesB ? 1 : null) : 1;
+                        _this.showPlacesB = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                        _this.teamB1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                         _this.teamB2Id = grupo.team2.id;
                         _this.teamB2 = grupo.team2.nombre;
                         _this.teamB2Flag = grupo.team2.bandera;
                         _this.teamB2Points = grupo.team2.puntos;
-                        _this.teamB2Pos = _source == 'triky' ? (_this.showPlacesB ? 2 : null) : 2;
+                        _this.teamB2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                         _this.teamB3Id = grupo.team3.id;
                         _this.teamB3 = grupo.team3.nombre;
                         _this.teamB3Flag = grupo.team3.bandera;
                         _this.teamB3Points = grupo.team3.puntos;
-                        _this.teamB3Pos = _source == 'triky' ? null : 3;
+                        _this.teamB3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                         _this.teamB4Id = grupo.team4.id;
                         _this.teamB4 = grupo.team4.nombre;
                         _this.teamB4Flag = grupo.team4.bandera;
                         _this.teamB4Points = grupo.team4.puntos;
-                        _this.teamB4Pos = _source == 'triky' ? null : 4;
+                        _this.teamB4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                         _this.showInfoBarB = !_this.showPlacesB;
                         break;
                     case 'c':
@@ -288,23 +289,23 @@ var GroupsPage = (function () {
                         _this.teamC1 = grupo.team1.nombre;
                         _this.teamC1Flag = grupo.team1.bandera;
                         _this.teamC1Points = grupo.team1.puntos;
-                        _this.showPlacesC = grupo.team1.puntos != '0';
-                        _this.teamC1Pos = _source == 'triky' ? (_this.showPlacesC ? 1 : null) : 1;
+                        _this.showPlacesC = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                        _this.teamC1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                         _this.teamC2Id = grupo.team2.id;
                         _this.teamC2 = grupo.team2.nombre;
                         _this.teamC2Flag = grupo.team2.bandera;
                         _this.teamC2Points = grupo.team2.puntos;
-                        _this.teamC2Pos = _source == 'triky' ? (_this.showPlacesC ? 2 : null) : 2;
+                        _this.teamC2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                         _this.teamC3Id = grupo.team3.id;
                         _this.teamC3 = grupo.team3.nombre;
                         _this.teamC3Flag = grupo.team3.bandera;
                         _this.teamC3Points = grupo.team3.puntos;
-                        _this.teamC3Pos = _source == 'triky' ? null : 3;
+                        _this.teamC3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                         _this.teamC4Id = grupo.team4.id;
                         _this.teamC4 = grupo.team4.nombre;
                         _this.teamC4Flag = grupo.team4.bandera;
                         _this.teamC4Points = grupo.team4.puntos;
-                        _this.teamC4Pos = _source == 'triky' ? null : 4;
+                        _this.teamC4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                         _this.showInfoBarC = !_this.showPlacesC;
                         break;
                     case 'd':
@@ -312,23 +313,23 @@ var GroupsPage = (function () {
                         _this.teamD1 = grupo.team1.nombre;
                         _this.teamD1Flag = grupo.team1.bandera;
                         _this.teamD1Points = grupo.team1.puntos;
-                        _this.showPlacesD = grupo.team1.puntos != '0';
-                        _this.teamD1Pos = _source == 'triky' ? (_this.showPlacesD ? 1 : null) : 1;
+                        _this.showPlacesD = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                        _this.teamD1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                         _this.teamD2Id = grupo.team2.id;
                         _this.teamD2 = grupo.team2.nombre;
                         _this.teamD2Flag = grupo.team2.bandera;
                         _this.teamD2Points = grupo.team2.puntos;
-                        _this.teamD2Pos = _source == 'triky' ? (_this.showPlacesD ? 2 : null) : 2;
+                        _this.teamD2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                         _this.teamD3Id = grupo.team3.id;
                         _this.teamD3 = grupo.team3.nombre;
                         _this.teamD3Flag = grupo.team3.bandera;
                         _this.teamD3Points = grupo.team3.puntos;
-                        _this.teamD3Pos = _source == 'triky' ? null : 3;
+                        _this.teamD3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                         _this.teamD4Id = grupo.team4.id;
                         _this.teamD4 = grupo.team4.nombre;
                         _this.teamD4Flag = grupo.team4.bandera;
                         _this.teamD4Points = grupo.team4.puntos;
-                        _this.teamD4Pos = _source == 'triky' ? null : 4;
+                        _this.teamD4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                         _this.showInfoBarD = !_this.showPlacesD;
                         break;
                     case 'e':
@@ -336,23 +337,23 @@ var GroupsPage = (function () {
                         _this.teamE1 = grupo.team1.nombre;
                         _this.teamE1Flag = grupo.team1.bandera;
                         _this.teamE1Points = grupo.team1.puntos;
-                        _this.showPlacesE = grupo.team1.puntos != '0';
-                        _this.teamE1Pos = _source == 'triky' ? (_this.showPlacesE ? 1 : null) : 1;
+                        _this.showPlacesE = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                        _this.teamE1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                         _this.teamE2Id = grupo.team2.id;
                         _this.teamE2 = grupo.team2.nombre;
                         _this.teamE2Flag = grupo.team2.bandera;
                         _this.teamE2Points = grupo.team2.puntos;
-                        _this.teamE2Pos = _source == 'triky' ? (_this.showPlacesE ? 2 : null) : 2;
+                        _this.teamE2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                         _this.teamE3Id = grupo.team3.id;
                         _this.teamE3 = grupo.team3.nombre;
                         _this.teamE3Flag = grupo.team3.bandera;
                         _this.teamE3Points = grupo.team3.puntos;
-                        _this.teamE3Pos = _source == 'triky' ? null : 3;
+                        _this.teamE3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                         _this.teamE4Id = grupo.team4.id;
                         _this.teamE4 = grupo.team4.nombre;
                         _this.teamE4Flag = grupo.team4.bandera;
                         _this.teamE4Points = grupo.team4.puntos;
-                        _this.teamE4Pos = _source == 'triky' ? null : 4;
+                        _this.teamE4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                         _this.showInfoBarE = !_this.showPlacesE;
                         break;
                     case 'f':
@@ -360,23 +361,23 @@ var GroupsPage = (function () {
                         _this.teamF1 = grupo.team1.nombre;
                         _this.teamF1Flag = grupo.team1.bandera;
                         _this.teamF1Points = grupo.team1.puntos;
-                        _this.showPlacesF = grupo.team1.puntos != '0';
-                        _this.teamF1Pos = _source == 'triky' ? (_this.showPlacesF ? 1 : null) : 1;
+                        _this.showPlacesF = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                        _this.teamF1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                         _this.teamF2Id = grupo.team2.id;
                         _this.teamF2 = grupo.team2.nombre;
                         _this.teamF2Flag = grupo.team2.bandera;
                         _this.teamF2Points = grupo.team2.puntos;
-                        _this.teamF2Pos = _source == 'triky' ? (_this.showPlacesF ? 2 : null) : 2;
+                        _this.teamF2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                         _this.teamF3Id = grupo.team3.id;
                         _this.teamF3 = grupo.team3.nombre;
                         _this.teamF3Flag = grupo.team3.bandera;
                         _this.teamF3Points = grupo.team3.puntos;
-                        _this.teamF3Pos = _source == 'triky' ? null : 3;
+                        _this.teamF3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                         _this.teamF4Id = grupo.team4.id;
                         _this.teamF4 = grupo.team4.nombre;
                         _this.teamF4Flag = grupo.team4.bandera;
                         _this.teamF4Points = grupo.team4.puntos;
-                        _this.teamF4Pos = _source == 'triky' ? null : 4;
+                        _this.teamF4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                         _this.showInfoBarF = !_this.showPlacesF;
                         break;
                     case 'g':
@@ -384,23 +385,23 @@ var GroupsPage = (function () {
                         _this.teamG1 = grupo.team1.nombre;
                         _this.teamG1Flag = grupo.team1.bandera;
                         _this.teamG1Points = grupo.team1.puntos;
-                        _this.showPlacesG = grupo.team1.puntos != '0';
-                        _this.teamG1Pos = _source == 'triky' ? (_this.showPlacesG ? 1 : null) : 1;
+                        _this.showPlacesG = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                        _this.teamG1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                         _this.teamG2Id = grupo.team2.id;
                         _this.teamG2 = grupo.team2.nombre;
                         _this.teamG2Flag = grupo.team2.bandera;
                         _this.teamG2Points = grupo.team2.puntos;
-                        _this.teamG2Pos = _source == 'triky' ? (_this.showPlacesG ? 2 : null) : 2;
+                        _this.teamG2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                         _this.teamG3Id = grupo.team3.id;
                         _this.teamG3 = grupo.team3.nombre;
                         _this.teamG3Flag = grupo.team3.bandera;
                         _this.teamG3Points = grupo.team3.puntos;
-                        _this.teamG3Pos = _source == 'triky' ? null : 3;
+                        _this.teamG3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                         _this.teamG4Id = grupo.team4.id;
                         _this.teamG4 = grupo.team4.nombre;
                         _this.teamG4Flag = grupo.team4.bandera;
                         _this.teamG4Points = grupo.team4.puntos;
-                        _this.teamG4Pos = _source == 'triky' ? null : 4;
+                        _this.teamG4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                         _this.showInfoBarG = !_this.showPlacesG;
                         break;
                     case 'h':
@@ -408,23 +409,23 @@ var GroupsPage = (function () {
                         _this.teamH1 = grupo.team1.nombre;
                         _this.teamH1Flag = grupo.team1.bandera;
                         _this.teamH1Points = grupo.team1.puntos;
-                        _this.showPlacesH = grupo.team1.puntos != '0';
-                        _this.teamH1Pos = _source == 'triky' ? (_this.showPlacesH ? 1 : null) : 1;
+                        _this.showPlacesH = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                        _this.teamH1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                         _this.teamH2Id = grupo.team2.id;
                         _this.teamH2 = grupo.team2.nombre;
                         _this.teamH2Flag = grupo.team2.bandera;
                         _this.teamH2Points = grupo.team2.puntos;
-                        _this.teamH2Pos = _source == 'triky' ? (_this.showPlacesH ? 2 : null) : 2;
+                        _this.teamH2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                         _this.teamH3Id = grupo.team3.id;
                         _this.teamH3 = grupo.team3.nombre;
                         _this.teamH3Flag = grupo.team3.bandera;
                         _this.teamH3Points = grupo.team3.puntos;
-                        _this.teamH3Pos = _source == 'triky' ? null : 3;
+                        _this.teamH3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                         _this.teamH4Id = grupo.team4.id;
                         _this.teamH4 = grupo.team4.nombre;
                         _this.teamH4Flag = grupo.team4.bandera;
                         _this.teamH4Points = grupo.team4.puntos;
-                        _this.teamH4Pos = _source == 'triky' ? null : 4;
+                        _this.teamH4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                         _this.showInfoBarH = !_this.showPlacesH;
                         break;
                 }
@@ -492,6 +493,8 @@ var GroupsPage = (function () {
             var pos = 1;
             switch (group) {
                 case 'A':
+                    this.showPlacesA = true;
+                    this.showInfoBarA = false;
                     if (this.groupAFirst != 0 && this.groupASecond != 0) {
                         pos = 1;
                         this.groupAFirst = id;
@@ -507,6 +510,8 @@ var GroupsPage = (function () {
                     }
                     break;
                 case 'B':
+                    this.showPlacesB = true;
+                    this.showInfoBarB = false;
                     if (this.groupBFirst != 0 && this.groupBSecond != 0) {
                         pos = 1;
                         this.groupBFirst = id;
@@ -522,6 +527,8 @@ var GroupsPage = (function () {
                     }
                     break;
                 case 'C':
+                    this.showPlacesC = true;
+                    this.showInfoBarC = false;
                     if (this.groupCFirst != 0 && this.groupCSecond != 0) {
                         pos = 1;
                         this.groupCFirst = id;
@@ -537,6 +544,8 @@ var GroupsPage = (function () {
                     }
                     break;
                 case 'D':
+                    this.showPlacesD = true;
+                    this.showInfoBarD = false;
                     if (this.groupDFirst != 0 && this.groupDSecond != 0) {
                         pos = 1;
                         this.groupDFirst = id;
@@ -552,6 +561,8 @@ var GroupsPage = (function () {
                     }
                     break;
                 case 'E':
+                    this.showPlacesE = true;
+                    this.showInfoBarE = false;
                     if (this.groupEFirst != 0 && this.groupESecond != 0) {
                         pos = 1;
                         this.groupEFirst = id;
@@ -567,6 +578,8 @@ var GroupsPage = (function () {
                     }
                     break;
                 case 'F':
+                    this.showPlacesF = true;
+                    this.showInfoBarF = false;
                     if (this.groupFFirst != 0 && this.groupFSecond != 0) {
                         pos = 1;
                         this.groupFFirst = id;
@@ -582,6 +595,8 @@ var GroupsPage = (function () {
                     }
                     break;
                 case 'G':
+                    this.showPlacesG = true;
+                    this.showInfoBarG = false;
                     if (this.groupGFirst != 0 && this.groupGSecond != 0) {
                         pos = 1;
                         this.groupGFirst = id;
@@ -597,6 +612,8 @@ var GroupsPage = (function () {
                     }
                     break;
                 case 'H':
+                    this.showPlacesH = true;
+                    this.showInfoBarH = false;
                     if (this.groupHFirst != 0 && this.groupHSecond != 0) {
                         pos = 1;
                         this.groupHFirst = id;
@@ -612,7 +629,7 @@ var GroupsPage = (function () {
                     }
                     break;
             }
-            this.cleanAssignedPosition(pos);
+            this.cleanAssignedPosition(group, pos);
             this.assignNewPosition(group, position, pos);
             var loading_1 = this.loadingCtrl.create({
                 content: 'Guardando...'
@@ -624,86 +641,172 @@ var GroupsPage = (function () {
         }
     };
     /* METODOS HELPER */
-    GroupsPage.prototype.cleanAssignedPosition = function (pos) {
-        if (this.teamA1Pos == pos)
-            this.teamA1Pos = null;
-        if (this.teamA2Pos == pos)
-            this.teamA2Pos = null;
-        if (this.teamA3Pos == pos)
-            this.teamA3Pos = null;
-        if (this.teamA4Pos == pos)
-            this.teamA4Pos = null;
-        if (this.teamB1Pos == pos)
-            this.teamB1Pos = null;
-        if (this.teamB2Pos == pos)
-            this.teamB2Pos = null;
-        if (this.teamB3Pos == pos)
-            this.teamB3Pos = null;
-        if (this.teamB4Pos == pos)
-            this.teamB4Pos = null;
-        if (this.teamC1Pos == pos)
-            this.teamC1Pos = null;
-        if (this.teamC2Pos == pos)
-            this.teamC2Pos = null;
-        if (this.teamC3Pos == pos)
-            this.teamC3Pos = null;
-        if (this.teamC4Pos == pos)
-            this.teamC4Pos = null;
-        if (this.teamD1Pos == pos)
-            this.teamD1Pos = null;
-        if (this.teamD2Pos == pos)
-            this.teamD2Pos = null;
-        if (this.teamD3Pos == pos)
-            this.teamD3Pos = null;
-        if (this.teamD4Pos == pos)
-            this.teamD4Pos = null;
-        if (this.teamE1Pos == pos)
-            this.teamE1Pos = null;
-        if (this.teamE2Pos == pos)
-            this.teamE2Pos = null;
-        if (this.teamE3Pos == pos)
-            this.teamE3Pos = null;
-        if (this.teamE4Pos == pos)
-            this.teamE4Pos = null;
-        if (this.teamF1Pos == pos)
-            this.teamF1Pos = null;
-        if (this.teamF2Pos == pos)
-            this.teamF2Pos = null;
-        if (this.teamF3Pos == pos)
-            this.teamF3Pos = null;
-        if (this.teamF4Pos == pos)
-            this.teamF4Pos = null;
-        if (this.teamG1Pos == pos)
-            this.teamG1Pos = null;
-        if (this.teamG2Pos == pos)
-            this.teamG2Pos = null;
-        if (this.teamG3Pos == pos)
-            this.teamG3Pos = null;
-        if (this.teamG4Pos == pos)
-            this.teamG4Pos = null;
-        if (this.teamH1Pos == pos)
-            this.teamH1Pos = null;
-        if (this.teamH2Pos == pos)
-            this.teamH2Pos = null;
-        if (this.teamH3Pos == pos)
-            this.teamH3Pos = null;
-        if (this.teamH4Pos == pos)
-            this.teamH4Pos = null;
+    GroupsPage.prototype.cleanAssignedPosition = function (group, pos) {
+        switch (group) {
+            case 'A':
+                if (this.teamA1Pos == pos) {
+                    this.teamA1Points = '0';
+                    this.teamA1Pos = null;
+                }
+                if (this.teamA2Pos == pos) {
+                    this.teamA2Points = '0';
+                    this.teamA2Pos = null;
+                }
+                if (this.teamA3Pos == pos) {
+                    this.teamA3Points = '0';
+                    this.teamA3Pos = null;
+                }
+                if (this.teamA4Pos == pos) {
+                    this.teamA4Points = '0';
+                    this.teamA4Pos = null;
+                }
+                break;
+            case 'B':
+                if (this.teamB1Pos == pos) {
+                    this.teamB1Points = '0';
+                    this.teamB1Pos = null;
+                }
+                if (this.teamB2Pos == pos) {
+                    this.teamB2Points = '0';
+                    this.teamB2Pos = null;
+                }
+                if (this.teamB3Pos == pos) {
+                    this.teamB3Points = '0';
+                    this.teamB3Pos = null;
+                }
+                if (this.teamB4Pos == pos) {
+                    this.teamB4Points = '0';
+                    this.teamB4Pos = null;
+                }
+                break;
+            case 'C':
+                if (this.teamC1Pos == pos) {
+                    this.teamC1Points = '0';
+                    this.teamC1Pos = null;
+                }
+                if (this.teamC2Pos == pos) {
+                    this.teamC2Points = '0';
+                    this.teamC2Pos = null;
+                }
+                if (this.teamC3Pos == pos) {
+                    this.teamC3Points = '0';
+                    this.teamC3Pos = null;
+                }
+                if (this.teamC4Pos == pos) {
+                    this.teamC4Points = '0';
+                    this.teamC4Pos = null;
+                }
+                break;
+            case 'D':
+                if (this.teamD1Pos == pos) {
+                    this.teamD1Points = '0';
+                    this.teamD1Pos = null;
+                }
+                if (this.teamD2Pos == pos) {
+                    this.teamD2Points = '0';
+                    this.teamD2Pos = null;
+                }
+                if (this.teamD3Pos == pos) {
+                    this.teamD3Points = '0';
+                    this.teamD3Pos = null;
+                }
+                if (this.teamD4Pos == pos) {
+                    this.teamD4Points = '0';
+                    this.teamD4Pos = null;
+                }
+                break;
+            case 'D':
+                if (this.teamE1Pos == pos) {
+                    this.teamE1Points = '0';
+                    this.teamE1Pos = null;
+                }
+                if (this.teamE2Pos == pos) {
+                    this.teamE2Points = '0';
+                    this.teamE2Pos = null;
+                }
+                if (this.teamE3Pos == pos) {
+                    this.teamE3Points = '0';
+                    this.teamE3Pos = null;
+                }
+                if (this.teamE4Pos == pos) {
+                    this.teamE4Points = '0';
+                    this.teamE4Pos = null;
+                }
+                break;
+            case 'F':
+                if (this.teamF1Pos == pos) {
+                    this.teamF1Points = '0';
+                    this.teamF1Pos = null;
+                }
+                if (this.teamF2Pos == pos) {
+                    this.teamF2Points = '0';
+                    this.teamF2Pos = null;
+                }
+                if (this.teamF3Pos == pos) {
+                    this.teamF3Points = '0';
+                    this.teamF3Pos = null;
+                }
+                if (this.teamF4Pos == pos) {
+                    this.teamF4Points = '0';
+                    this.teamF4Pos = null;
+                }
+                break;
+            case 'G':
+                if (this.teamG1Pos == pos) {
+                    this.teamG1Points = '0';
+                    this.teamG1Pos = null;
+                }
+                if (this.teamG2Pos == pos) {
+                    this.teamG2Points = '0';
+                    this.teamG2Pos = null;
+                }
+                if (this.teamG3Pos == pos) {
+                    this.teamG3Points = '0';
+                    this.teamG3Pos = null;
+                }
+                if (this.teamG4Pos == pos) {
+                    this.teamG4Points = '0';
+                    this.teamG4Pos = null;
+                }
+                break;
+            case 'H':
+                if (this.teamH1Pos == pos) {
+                    this.teamH1Points = '0';
+                    this.teamH1Pos = null;
+                }
+                if (this.teamH2Pos == pos) {
+                    this.teamH2Points = '0';
+                    this.teamH2Pos = null;
+                }
+                if (this.teamH3Pos == pos) {
+                    this.teamH3Points = '0';
+                    this.teamH3Pos = null;
+                }
+                if (this.teamH4Pos == pos) {
+                    this.teamH4Points = '0';
+                    this.teamH4Pos = null;
+                }
+                break;
+        }
     };
     GroupsPage.prototype.assignNewPosition = function (group, position, pos) {
         switch (group) {
             case 'A':
                 switch (position) {
                     case 1:
+                        this.teamA1Points = '1';
                         this.teamA1Pos = pos;
                         break;
                     case 2:
+                        this.teamA2Points = '1';
                         this.teamA2Pos = pos;
                         break;
                     case 3:
+                        this.teamA3Points = '1';
                         this.teamA3Pos = pos;
                         break;
                     case 4:
+                        this.teamA4Points = '1';
                         this.teamA4Pos = pos;
                         break;
                 }
@@ -711,15 +814,19 @@ var GroupsPage = (function () {
             case 'B':
                 switch (position) {
                     case 1:
+                        this.teamB1Points = '1';
                         this.teamB1Pos = pos;
                         break;
                     case 2:
+                        this.teamB2Points = '1';
                         this.teamB2Pos = pos;
                         break;
                     case 3:
+                        this.teamB3Points = '1';
                         this.teamB3Pos = pos;
                         break;
                     case 4:
+                        this.teamB4Points = '1';
                         this.teamB4Pos = pos;
                         break;
                 }
@@ -727,15 +834,19 @@ var GroupsPage = (function () {
             case 'C':
                 switch (position) {
                     case 1:
+                        this.teamC1Points = '1';
                         this.teamC1Pos = pos;
                         break;
                     case 2:
+                        this.teamC2Points = '1';
                         this.teamC2Pos = pos;
                         break;
                     case 3:
+                        this.teamC3Points = '1';
                         this.teamC3Pos = pos;
                         break;
                     case 4:
+                        this.teamC4Points = '1';
                         this.teamC4Pos = pos;
                         break;
                 }
@@ -743,15 +854,19 @@ var GroupsPage = (function () {
             case 'D':
                 switch (position) {
                     case 1:
+                        this.teamD1Points = '1';
                         this.teamD1Pos = pos;
                         break;
                     case 2:
+                        this.teamD2Points = '1';
                         this.teamD2Pos = pos;
                         break;
                     case 3:
+                        this.teamD3Points = '1';
                         this.teamD3Pos = pos;
                         break;
                     case 4:
+                        this.teamD4Points = '1';
                         this.teamD4Pos = pos;
                         break;
                 }
@@ -759,15 +874,19 @@ var GroupsPage = (function () {
             case 'E':
                 switch (position) {
                     case 1:
+                        this.teamE1Points = '1';
                         this.teamE1Pos = pos;
                         break;
                     case 2:
+                        this.teamE2Points = '1';
                         this.teamE2Pos = pos;
                         break;
                     case 3:
+                        this.teamE3Points = '1';
                         this.teamE3Pos = pos;
                         break;
                     case 4:
+                        this.teamE4Points = '1';
                         this.teamE4Pos = pos;
                         break;
                 }
@@ -775,15 +894,19 @@ var GroupsPage = (function () {
             case 'F':
                 switch (position) {
                     case 1:
+                        this.teamF1Points = '1';
                         this.teamF1Pos = pos;
                         break;
                     case 2:
+                        this.teamF2Points = '1';
                         this.teamF2Pos = pos;
                         break;
                     case 3:
+                        this.teamF3Points = '1';
                         this.teamF3Pos = pos;
                         break;
                     case 4:
+                        this.teamF4Points = '1';
                         this.teamF4Pos = pos;
                         break;
                 }
@@ -791,15 +914,19 @@ var GroupsPage = (function () {
             case 'G':
                 switch (position) {
                     case 1:
+                        this.teamG1Points = '1';
                         this.teamG1Pos = pos;
                         break;
                     case 2:
+                        this.teamG2Points = '1';
                         this.teamG2Pos = pos;
                         break;
                     case 3:
+                        this.teamG3Points = '1';
                         this.teamG3Pos = pos;
                         break;
                     case 4:
+                        this.teamG4Points = '1';
                         this.teamG4Pos = pos;
                         break;
                 }
@@ -807,15 +934,19 @@ var GroupsPage = (function () {
             case 'H':
                 switch (position) {
                     case 1:
+                        this.teamH1Points = '1';
                         this.teamH1Pos = pos;
                         break;
                     case 2:
+                        this.teamH2Points = '1';
                         this.teamH2Pos = pos;
                         break;
                     case 3:
+                        this.teamH3Points = '1';
                         this.teamH3Pos = pos;
                         break;
                     case 4:
+                        this.teamH4Points = '1';
                         this.teamH4Pos = pos;
                         break;
                 }
@@ -827,7 +958,7 @@ var GroupsPage = (function () {
 GroupsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-groups',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/groups/groups.html"*/'<!--\n  Generated template for the GroupsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Grupos</ion-title>\n    <ion-buttons end>\n      <button ion-button menuToggle end class="button button-clear">\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n<ion-content padding>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <button ion-button full id="triky-button" class="selected" color="triky-button" (click)="clickGroups(\'triky\')">TRIKY</button>\n        </ion-col>\n        <ion-col>\n          <button ion-button full id="fifa-button" color="triky-button" (click)="clickGroups(\'fifa\')">FIFA</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n          <div class="card-triky" margin-bottom padding>\n  	<label><ion-icon name="ios-thumbs-up"></ion-icon>Coloca tu pronostico, el los siguientes recuadros de cada partido</label>\n</div>\n    <ion-item-group class="table-cla">\n    <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo A <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'A\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky">\n    <ion-item-group class="notifications" (click)="clickGroup(\'A\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarA"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextA }}</h2>\n        <div class="{{ showPlacesA ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'A\', 1, teamA1Id)"><span class="{{ showPlacesA ? \'\' : \'claf\' }}">{{ teamA1Pos }}</span><img width="30" height="19"  src="images/{{ teamA1Flag }}" /> {{ teamA1 }} <ion-icon *ngIf="showPlacesA" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamA1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'A\', 2, teamA2Id)"><span class="{{ showPlacesA ? \'\' : \'claf\' }}">{{ teamA2Pos }}</span><img width="30" height="19"  src="images/{{ teamA2Flag }}" /> {{ teamA2 }} <ion-icon *ngIf="showPlacesA" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamA2Points }} Pts</span></ion-item>\n        </div>\n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'A\', 3, teamA3Id)"><span class="claf">{{ teamA3Pos }}</span><img width="30" height="19"  src="images/{{ teamA3Flag  }}" /> {{ teamA3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamA3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'A\', 4, teamA4Id)"><span class="claf">{{ teamA4Pos }}</span><img width="30" height="19"  src="images/{{ teamA4Flag  }}" /> {{ teamA4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamA4Points }} Pts</span></ion-item>\n    </ion-item-group>\n  </div>  \n  \n      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo B <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'B\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky">\n       <ion-item-group class="notifications" (click)="clickGroup(\'B\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarB"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextB }}</h2>\n        <div class="{{ showPlacesB ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'B\', 1, teamB1Id)"><span class="{{ showPlacesB ? \'\' : \'claf\' }}">{{ teamB1Pos }}</span><img width="30" height="19"  src="images/{{ teamB1Flag }}" /> {{ teamB1 }} <ion-icon *ngIf="showPlacesB" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamB1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'B\', 2, teamB2Id)"><span class="{{ showPlacesB ? \'\' : \'claf\' }}">{{ teamB2Pos }}</span><img width="30" height="19"  src="images/{{ teamB2Flag }}" /> {{ teamB2 }} <ion-icon *ngIf="showPlacesB" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamB2Points }} Pts</span></ion-item>\n        </div>\n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'B\', 3, teamB3Id)"><span class="claf">{{ teamB3Pos }}</span><img width="30" height="19"  src="images/{{ teamB3Flag  }}" /> {{ teamB3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamB3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'B\', 4, teamB4Id)"><span class="claf">{{ teamB4Pos }}</span><img width="30" height="19"  src="images/{{ teamB4Flag  }}" /> {{ teamB4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamB4Points }} Pts</span></ion-item>\n    </ion-item-group>\n  </div> \n  \n      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo C <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'C\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky">\n       <ion-item-group class="notifications" (click)="clickGroup(\'C\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarC"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextC }}</h2>\n        <div class="{{ showPlacesC ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'C\', 1, teamC1Id)"><span class="{{ showPlacesC ? \'\' : \'claf\' }}">{{ teamC1Pos }}</span><img width="30" height="19"  src="images/{{ teamC1Flag }}" /> {{ teamC1 }} <ion-icon *ngIf="showPlacesC" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamC1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'C\', 2, teamC2Id)"><span class="{{ showPlacesC ? \'\' : \'claf\' }}">{{ teamC2Pos }}</span><img width="30" height="19"  src="images/{{ teamC2Flag }}" /> {{ teamC2 }} <ion-icon *ngIf="showPlacesC" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamC2Points }} Pts</span></ion-item>\n        </div>\n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'C\', 3, teamC3Id)"><span class="claf">{{ teamC3Pos }}</span><img width="30" height="19"  src="images/{{ teamC3Flag  }}" /> {{ teamC3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamC3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'C\', 4, teamC4Id)"><span class="claf">{{ teamC4Pos }}</span><img width="30" height="19"  src="images/{{ teamC4Flag  }}" /> {{ teamC4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamC4Points }} Pts</span></ion-item>\n    </ion-item-group>\n  </div> \n  \n             <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo D <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'D\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky">\n         <ion-item-group class="notifications" (click)="clickGroup(\'D\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarD"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextD }}</h2>\n        <div class="{{ showPlacesD ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'D\', 1, teamD1Id)"><span class="{{ showPlacesD ? \'\' : \'claf\' }}">{{ teamD1Pos }}</span><img width="30" height="19"  src="images/{{ teamD1Flag }}" /> {{ teamD1 }} <ion-icon *ngIf="showPlacesD" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamD1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'D\', 2, teamD2Id)"><span class="{{ showPlacesD ? \'\' : \'claf\' }}">{{ teamD2Pos }}</span><img width="30" height="19"  src="images/{{ teamD2Flag }}" /> {{ teamD2 }} <ion-icon *ngIf="showPlacesD" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamD2Points }} Pts</span></ion-item>\n        </div>\n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'D\', 3, teamD3Id)"><span class="claf">{{ teamD3Pos }}</span><img width="30" height="19"  src="images/{{ teamD3Flag  }}" /> {{ teamD3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamD3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'D\', 4, teamD4Id)"><span class="claf">{{ teamD4Pos }}</span><img width="30" height="19"  src="images/{{ teamD4Flag  }}" /> {{ teamD4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamD4Points }} Pts</span></ion-item>\n    </ion-item-group>\n  </div> \n  \n           <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo E <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'E\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky">\n           <ion-item-group class="notifications" (click)="clickGroup(\'E\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarE"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextA }}</h2>\n        <div class="{{ showPlacesE ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'E\', 1, teamE1Id)"><span class="{{ showPlacesE ? \'\' : \'claf\' }}">{{ teamE1Pos }}</span><img width="30" height="19"  src="images/{{ teamE1Flag }}" /> {{ teamE1 }} <ion-icon *ngIf="showPlacesE" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamE1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'E\', 2, teamE2Id)"><span class="{{ showPlacesE ? \'\' : \'claf\' }}">{{ teamE2Pos }}</span><img width="30" height="19"  src="images/{{ teamE2Flag }}" /> {{ teamE2 }} <ion-icon *ngIf="showPlacesE" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamE2Points }} Pts</span></ion-item>\n        </div>\n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'E\', 3, teamE3Id)"><span class="claf">{{ teamE3Pos }}</span><img width="30" height="19"  src="images/{{ teamE3Flag  }}" /> {{ teamE3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamE3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'E\', 4, teamE4Id)"><span class="claf">{{ teamE4Pos }}</span><img width="30" height="19"  src="images/{{ teamE4Flag  }}" /> {{ teamE4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamE4Points }} Pts</span></ion-item>\n    </ion-item-group>\n  </div> \n  \n         <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo F <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'F\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky">\n           <ion-item-group class="notifications" (click)="clickGroup(\'F\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarF"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextF }}</h2>\n        <div class="{{ showPlacesF ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'F\', 1, teamF1Id)"><span class="{{ showPlacesF ? \'\' : \'claf\' }}">{{ teamF1Pos }}</span><img width="30" height="19"  src="images/{{ teamF1Flag }}" /> {{ teamF1 }} <ion-icon *ngIf="showPlacesF" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamF1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'F\', 2, teamF2Id)"><span class="{{ showPlacesF ? \'\' : \'claf\' }}">{{ teamF2Pos }}</span><img width="30" height="19"  src="images/{{ teamF2Flag }}" /> {{ teamF2 }} <ion-icon *ngIf="showPlacesF" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamF2Points }} Pts</span></ion-item>\n        </div>\n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'F\', 3, teamF3Id)"><span class="claf">{{ teamF3Pos }}</span><img width="30" height="19"  src="images/{{ teamF3Flag  }}" /> {{ teamF3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamF3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'F\', 4, teamF4Id)"><span class="claf">{{ teamF4Pos }}</span><img width="30" height="19"  src="images/{{ teamF4Flag  }}" /> {{ teamF4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamF4Points }} Pts</span></ion-item>\n    </ion-item-group>\n  </div> \n  \n      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo G <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'G\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky">\n         <ion-item-group class="notifications" (click)="clickGroup(\'G\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarG"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextG }}</h2>\n        <div class="{{ showPlacesG ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'G\', 1, teamG1Id)"><span class="{{ showPlacesG ? \'\' : \'claf\' }}">{{ teamG1Pos }}</span><img width="30" height="19"  src="images/{{ teamG1Flag }}" /> {{ teamG1 }} <ion-icon *ngIf="showPlacesG" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamG1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'G\', 2, teamG2Id)"><span class="{{ showPlacesG ? \'\' : \'claf\' }}">{{ teamG2Pos }}</span><img width="30" height="19"  src="images/{{ teamG2Flag }}" /> {{ teamG2 }} <ion-icon *ngIf="showPlacesG" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamG2Points }} Pts</span></ion-item>\n        </div>\n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'G\', 3, teamG3Id)"><span class="claf">{{ teamG3Pos }}</span><img width="30" height="19"  src="images/{{ teamG3Flag  }}" /> {{ teamG3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamG3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'G\', 4, teamG4Id)"><span class="claf">{{ teamG4Pos }}</span><img width="30" height="19"  src="images/{{ teamG4Flag  }}" /> {{ teamG4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamG4Points }} Pts</span></ion-item>\n    </ion-item-group>\n  </div> \n  \n      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo H <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'H\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky">\n       <ion-item-group class="notifications" (click)="clickGroup(\'H\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarH"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextH }}</h2>\n        <div class="{{ showPlacesH ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'H\', 1, teamH1Id)"><span class="{{ showPlacesH ? \'\' : \'claf\' }}">{{ teamH1Pos }}</span><img width="30" height="19"  src="images/{{ teamH1Flag }}" /> {{ teamH1 }} <ion-icon *ngIf="showPlacesH" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamH1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'H\', 2, teamH2Id)"><span class="{{ showPlacesH ? \'\' : \'claf\' }}">{{ teamH2Pos }}</span><img width="30" height="19"  src="images/{{ teamH2Flag }}" /> {{ teamH2 }} <ion-icon *ngIf="showPlacesH" name="ios-checkmark-circle"></ion-icon> <span class="point-g" *ngIf="showFifaItems">{{ teamH2Points }} Pts</span></ion-item>\n        </div>\n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'H\', 3, teamH3Id)"><span class="claf">{{ teamH3Pos }}</span><img width="30" height="19"  src="images/{{ teamH3Flag  }}" /> {{ teamH3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamH3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'H\', 4, teamH4Id)"><span class="claf">{{ teamH4Pos }}</span><img width="30" height="19"  src="images/{{ teamH4Flag  }}" /> {{ teamH4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamH4Points }} Pts</span></ion-item>\n    </ion-item-group>\n  </div> \n    </ion-item-group>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/groups/groups.html"*/,
+        selector: 'page-groups',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/groups/groups.html"*/'<!--\n  Generated template for the GroupsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Grupos</ion-title>\n    <ion-buttons end>\n      <button ion-button menuToggle end class="button button-clear">\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n<ion-content padding>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <button ion-button full id="triky-button" class="selected" color="triky-button" (click)="clickGroups(\'triky\')">TRIKY</button>\n        </ion-col>\n        <ion-col>\n          <button ion-button full id="fifa-button" color="triky-button" (click)="clickGroups(\'fifa\')">FIFA</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n          <div class="card-triky" margin-bottom padding>\n  	<label><ion-icon name="ios-thumbs-up"></ion-icon>Coloca tu pronostico, el los siguientes recuadros de cada partido</label>\n</div>\n    <ion-item-group class="table-cla">\n    <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo A <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'A\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky {{ showFifaItems ? \'fifa\' : \'\' }}">\n    <ion-item-group class="notifications" (click)="clickGroup(\'A\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarA"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextA }}</h2>\n        <div class="{{ showPlacesA ? \'header-group\' : \'\' }}">\n          <ion-item (click)="clickTeam(\'A\', 1, teamA1Id)"><span class="{{ teamA1Points != \'0\' ? \'\' : \'claf\' }}">{{ teamA1Pos }}</span><img width="30" height="19"  src="images/{{ teamA1Flag }}" /> {{ teamA1 }} <span class="point-g" *ngIf="showFifaItems">{{ teamA1Points }} Pts</span></ion-item>\n          <ion-item (click)="clickTeam(\'A\', 2, teamA2Id)"><span class="{{ teamA2Points != \'0\' ? \'\' : \'claf\' }}">{{ teamA2Pos }}</span><img width="30" height="19"  src="images/{{ teamA2Flag }}" /> {{ teamA2 }} <span class="point-g" *ngIf="showFifaItems">{{ teamA2Points }} Pts</span></ion-item>\n          \n          <!--termina bloque de ganadores-->\n          <ion-item (click)="clickTeam(\'A\', 3, teamA3Id)"><span class="{{ teamA3Points != \'0\' ? \'\' : \'claf\' }}">{{ teamA3Pos }}</span><img width="30" height="19"  src="images/{{ teamA3Flag  }}" /> {{ teamA3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamA3Points }} Pts</span></ion-item>\n          <ion-item (click)="clickTeam(\'A\', 4, teamA4Id)"><span class="{{ teamA4Points != \'0\' ? \'\' : \'claf\' }}">{{ teamA4Pos }}</span><img width="30" height="19"  src="images/{{ teamA4Flag  }}" /> {{ teamA4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamA4Points }} Pts</span></ion-item>\n        </div>\n    </ion-item-group>\n  </div>  \n  \n      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo B <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'B\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky {{ showFifaItems ? \'fifa\' : \'\' }}">\n       <ion-item-group class="notifications" (click)="clickGroup(\'B\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarB"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextB }}</h2>\n        <div class="{{ showPlacesB ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'B\', 1, teamB1Id)"><span class="{{ teamB1Points != \'0\' ? \'\' : \'claf\' }}">{{ teamB1Pos }}</span><img width="30" height="19"  src="images/{{ teamB1Flag }}" /> {{ teamB1 }} <span class="point-g" *ngIf="showFifaItems">{{ teamB1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'B\', 2, teamB2Id)"><span class="{{ teamB2Points != \'0\' ? \'\' : \'claf\' }}">{{ teamB2Pos }}</span><img width="30" height="19"  src="images/{{ teamB2Flag }}" /> {{ teamB2 }} <span class="point-g" *ngIf="showFifaItems">{{ teamB2Points }} Pts</span></ion-item>\n        \n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'B\', 3, teamB3Id)"><span class="{{ teamB3Points != \'0\' ? \'\' : \'claf\' }}">{{ teamB3Pos }}</span><img width="30" height="19"  src="images/{{ teamB3Flag  }}" /> {{ teamB3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamB3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'B\', 4, teamB4Id)"><span class="{{ teamB4Points != \'0\' ? \'\' : \'claf\' }}">{{ teamB4Pos }}</span><img width="30" height="19"  src="images/{{ teamB4Flag  }}" /> {{ teamB4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamB4Points }} Pts</span></ion-item>\n        </div>\n    </ion-item-group>\n  </div> \n  \n      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo C <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'C\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky {{ showFifaItems ? \'fifa\' : \'\' }}">\n       <ion-item-group class="notifications" (click)="clickGroup(\'C\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarC"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextC }}</h2>\n        <div class="{{ showPlacesC ? \'header-group\' : \'\' }}">\n          <ion-item (click)="clickTeam(\'C\', 1, teamC1Id)"><span class="{{ teamC1Points != \'0\' ? \'\' : \'claf\' }}">{{ teamC1Pos }}</span><img width="30" height="19"  src="images/{{ teamC1Flag }}" /> {{ teamC1 }} <span class="point-g" *ngIf="showFifaItems">{{ teamC1Points }} Pts</span></ion-item>\n          <ion-item (click)="clickTeam(\'C\', 2, teamC2Id)"><span class="{{ teamC2Points != \'0\' ? \'\' : \'claf\' }}">{{ teamC2Pos }}</span><img width="30" height="19"  src="images/{{ teamC2Flag }}" /> {{ teamC2 }} <span class="point-g" *ngIf="showFifaItems">{{ teamC2Points }} Pts</span></ion-item>\n          \n          <!--termina bloque de ganadores-->\n          <ion-item (click)="clickTeam(\'C\', 3, teamC3Id)"><span class="{{ teamC3Points != \'0\' ? \'\' : \'claf\' }}">{{ teamC3Pos }}</span><img width="30" height="19"  src="images/{{ teamC3Flag  }}" /> {{ teamC3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamC3Points }} Pts</span></ion-item>\n          <ion-item (click)="clickTeam(\'C\', 4, teamC4Id)"><span class="{{ teamC4Points != \'0\' ? \'\' : \'claf\' }}">{{ teamC4Pos }}</span><img width="30" height="19"  src="images/{{ teamC4Flag  }}" /> {{ teamC4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamC4Points }} Pts</span></ion-item>\n        </div>\n    </ion-item-group>\n  </div> \n  \n             <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo D <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'D\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky {{ showFifaItems ? \'fifa\' : \'\' }}">\n         <ion-item-group class="notifications" (click)="clickGroup(\'D\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarD"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextD }}</h2>\n        <div class="{{ showPlacesD ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'D\', 1, teamD1Id)"><span class="{{ teamD1Points != \'0\' ? \'\' : \'claf\' }}">{{ teamD1Pos }}</span><img width="30" height="19"  src="images/{{ teamD1Flag }}" /> {{ teamD1 }} <span class="point-g" *ngIf="showFifaItems">{{ teamD1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'D\', 2, teamD2Id)"><span class="{{ teamD2Points != \'0\' ? \'\' : \'claf\' }}">{{ teamD2Pos }}</span><img width="30" height="19"  src="images/{{ teamD2Flag }}" /> {{ teamD2 }} <span class="point-g" *ngIf="showFifaItems">{{ teamD2Points }} Pts</span></ion-item>\n        \n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'D\', 3, teamD3Id)"><span class="{{ teamD3Points != \'0\' ? \'\' : \'claf\' }}">{{ teamD3Pos }}</span><img width="30" height="19"  src="images/{{ teamD3Flag  }}" /> {{ teamD3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamD3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'D\', 4, teamD4Id)"><span class="{{ teamD4Points != \'0\' ? \'\' : \'claf\' }}">{{ teamD4Pos }}</span><img width="30" height="19"  src="images/{{ teamD4Flag  }}" /> {{ teamD4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamD4Points }} Pts</span></ion-item>\n        </div>\n    </ion-item-group>\n  </div> \n  \n           <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo E <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'E\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky {{ showFifaItems ? \'fifa\' : \'\' }}">\n           <ion-item-group class="notifications" (click)="clickGroup(\'E\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarE"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextA }}</h2>\n        <div class="{{ showPlacesE ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'E\', 1, teamE1Id)"><span class="{{ teamE1Points != \'0\' ? \'\' : \'claf\' }}">{{ teamE1Pos }}</span><img width="30" height="19"  src="images/{{ teamE1Flag }}" /> {{ teamE1 }} <span class="point-g" *ngIf="showFifaItems">{{ teamE1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'E\', 2, teamE2Id)"><span class="{{ teamE2Points != \'0\' ? \'\' : \'claf\' }}">{{ teamE2Pos }}</span><img width="30" height="19"  src="images/{{ teamE2Flag }}" /> {{ teamE2 }} <span class="point-g" *ngIf="showFifaItems">{{ teamE2Points }} Pts</span></ion-item>\n        \n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'E\', 3, teamE3Id)"><span class="{{ teamE3Points != \'0\' ? \'\' : \'claf\' }}">{{ teamE3Pos }}</span><img width="30" height="19"  src="images/{{ teamE3Flag  }}" /> {{ teamE3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamE3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'E\', 4, teamE4Id)"><span class="{{ teamE4Points != \'0\' ? \'\' : \'claf\' }}">{{ teamE4Pos }}</span><img width="30" height="19"  src="images/{{ teamE4Flag  }}" /> {{ teamE4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamE4Points }} Pts</span></ion-item>\n        </div>\n    </ion-item-group>\n  </div> \n  \n         <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo F <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'F\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky {{ showFifaItems ? \'fifa\' : \'\' }}">\n           <ion-item-group class="notifications" (click)="clickGroup(\'F\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarF"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextF }}</h2>\n        <div class="{{ showPlacesF ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'F\', 1, teamF1Id)"><span class="{{ teamF1Points != \'0\' ? \'\' : \'claf\' }}">{{ teamF1Pos }}</span><img width="30" height="19"  src="images/{{ teamF1Flag }}" /> {{ teamF1 }} <span class="point-g" *ngIf="showFifaItems">{{ teamF1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'F\', 2, teamF2Id)"><span class="{{ teamF2Points != \'0\' ? \'\' : \'claf\' }}">{{ teamF2Pos }}</span><img width="30" height="19"  src="images/{{ teamF2Flag }}" /> {{ teamF2 }} <span class="point-g" *ngIf="showFifaItems">{{ teamF2Points }} Pts</span></ion-item>\n        \n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'F\', 3, teamF3Id)"><span class="{{ teamF3Points != \'0\' ? \'\' : \'claf\' }}">{{ teamF3Pos }}</span><img width="30" height="19"  src="images/{{ teamF3Flag  }}" /> {{ teamF3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamF3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'F\', 4, teamF4Id)"><span class="{{ teamF4Points != \'0\' ? \'\' : \'claf\' }}">{{ teamF4Pos }}</span><img width="30" height="19"  src="images/{{ teamF4Flag  }}" /> {{ teamF4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamF4Points }} Pts</span></ion-item>\n        </div>\n    </ion-item-group>\n  </div> \n  \n      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo G <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'G\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky {{ showFifaItems ? \'fifa\' : \'\' }}">\n         <ion-item-group class="notifications" (click)="clickGroup(\'G\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarG"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextG }}</h2>\n        <div class="{{ showPlacesG ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'G\', 1, teamG1Id)"><span class="{{ teamG1Points != \'0\' ? \'\' : \'claf\' }}">{{ teamG1Pos }}</span><img width="30" height="19"  src="images/{{ teamG1Flag }}" /> {{ teamG1 }} <span class="point-g" *ngIf="showFifaItems">{{ teamG1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'G\', 2, teamG2Id)"><span class="{{ teamG2Points != \'0\' ? \'\' : \'claf\' }}">{{ teamG2Pos }}</span><img width="30" height="19"  src="images/{{ teamG2Flag }}" /> {{ teamG2 }} <span class="point-g" *ngIf="showFifaItems">{{ teamG2Points }} Pts</span></ion-item>\n        \n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'G\', 3, teamG3Id)"><span class="{{ teamG3Points != \'0\' ? \'\' : \'claf\' }}">{{ teamG3Pos }}</span><img width="30" height="19"  src="images/{{ teamG3Flag  }}" /> {{ teamG3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamG3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'G\', 4, teamG4Id)"><span class="{{ teamG4Points != \'0\' ? \'\' : \'claf\' }}">{{ teamG4Pos }}</span><img width="30" height="19"  src="images/{{ teamG4Flag  }}" /> {{ teamG4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamG4Points }} Pts</span></ion-item>\n        </div>\n    </ion-item-group>\n  </div> \n  \n      <div style="display: flex;"><span class="group"><ion-icon name="football"></ion-icon> Grupo H <button *ngIf="showFifaItems" class="button-icon-arrow-" ion-button color="light" clear (click)="clickGroup(\'H\')"><ion-icon name="md-arrow-dropright-circle"></ion-icon> Ver Info. </button></span></div>\n    <div margin-bottom padding class="card-triky {{ showFifaItems ? \'fifa\' : \'\' }}">\n       <ion-item-group class="notifications" (click)="clickGroup(\'H\')">\n      <!--Ganadores dentro de este bloque-->\n        <h2 *ngIf="showInfoBarH"><ion-icon name="md-arrow-forward"></ion-icon> {{ fillTextH }}</h2>\n        <div class="{{ showPlacesH ? \'header-group\' : \'\' }}">\n        <ion-item (click)="clickTeam(\'H\', 1, teamH1Id)"><span class="{{ teamH1Points != \'0\' ? \'\' : \'claf\' }}">{{ teamH1Pos }}</span><img width="30" height="19"  src="images/{{ teamH1Flag }}" /> {{ teamH1 }} <span class="point-g" *ngIf="showFifaItems">{{ teamH1Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'H\', 2, teamH2Id)"><span class="{{ teamH2Points != \'0\' ? \'\' : \'claf\' }}">{{ teamH2Pos }}</span><img width="30" height="19"  src="images/{{ teamH2Flag }}" /> {{ teamH2 }} <span class="point-g" *ngIf="showFifaItems">{{ teamH2Points }} Pts</span></ion-item>\n        \n        <!--termina bloque de ganadores-->\n        <ion-item (click)="clickTeam(\'H\', 3, teamH3Id)"><span class="{{ teamH3Points != \'0\' ? \'\' : \'claf\' }}">{{ teamH3Pos }}</span><img width="30" height="19"  src="images/{{ teamH3Flag  }}" /> {{ teamH3 }} <span class="point-g" *ngIf="showFifaItems">{{ teamH3Points }} Pts</span></ion-item>\n        <ion-item (click)="clickTeam(\'H\', 4, teamH4Id)"><span class="{{ teamH4Points != \'0\' ? \'\' : \'claf\' }}">{{ teamH4Pos }}</span><img width="30" height="19"  src="images/{{ teamH4Flag  }}" /> {{ teamH4 }} <span class="point-g" *ngIf="showFifaItems">{{ teamH4Points }} Pts</span></ion-item>\n        </div>\n    </ion-item-group>\n  </div> \n    </ion-item-group>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/groups/groups.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_helper__["a" /* HelperService */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
@@ -1976,9 +2107,9 @@ var GamesPage = (function () {
             }
         });
     };
-    GamesPage.prototype.clickTeam = function (gameId, teamId, gameIndex, teamIndex) {
+    GamesPage.prototype.clickTeam = function (gameId, teamId, gameIndex, teamIndex, obj) {
         var _this = this;
-        if (!this.isFifa) {
+        if (!this.isFifa && teamId != null) {
             var loading_1 = this.loadingCtrl.create({
                 content: 'Guardando...'
             });
@@ -2070,7 +2201,7 @@ var GamesPage = (function () {
 }());
 GamesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-games',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/games/games.html"*/'<!--\n  Generated template for the GamesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ gamesTitle }}</ion-title>\n    <ion-buttons end *ngIf="showMenuToggle">\n      <button ion-button menuToggle end class="button button-clear">\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n<ion-content padding>\n<!-- Generated template for the TrikyGamesComponent component -->\n    <ion-grid *ngIf="!isPlayoff">\n      <ion-row>\n        <ion-col>\n          <button ion-button full id="{{ trikyButtonId }}" color="triky-button" (click)="clickGames(\'triky\')">TRIKY</button>\n        </ion-col>\n        <ion-col>\n          <button ion-button full id="{{ fifaButtonId }}" color="triky-button" (click)="clickGames(\'fifa\')">FIFA</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <div class="card-triky" margin-bottom padding>\n  	<label style="white-space: normal !important;"><ion-icon name="ios-thumbs-up"></ion-icon>Coloca tu pronostico, el los siguientes recuadros de cada partido</label>\n</div>\n	<div *ngIf="showGame1">\n    	<ion-input type="hidden" value="{{ gameId1 }}"></ion-input>\n        <div class="date">{{ date1 }}{{ gameTitle1 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_1_id, 1,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera1_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo1_1 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador1_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo1_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_2_id,1,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera1_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo1_2 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador1_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo1_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame2">\n	    <ion-input type="hidden" value="{{ gameId2 }}"></ion-input>\n        <div class="date">{{ date2 }}{{ gameTitle2 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_1_id,2,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera2_1 }}" /></ion-col>\n                    <ion-col>{{ equipo2_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador2_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo2_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_2_id,2,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera2_2 }}"/></ion-col>\n            		<ion-col>{{ equipo2_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador2_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo2_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>	\n	</div>\n	\n	<div *ngIf="showGame3">\n	   <ion-input type="hidden" value="{{ gameId3 }}"></ion-input>\n        <div class="date">{{ date3 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_1_id,3,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera3_1 }}" /></ion-col>\n                    <ion-col>{{ equipo3_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador3_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo3_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                 <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_2_id,3,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera3_2 }}"/></ion-col>\n            		<ion-col>{{ equipo3_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador3_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo3_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>	\n	</div>	\n	\n	<div *ngIf="showGame4">\n    	<ion-input type="hidden" value="{{ gameId4 }}"></ion-input>\n        <div class="date">{{ date4 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_1_id,4,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera4_1 }}" /></ion-col>\n                    <ion-col>{{ equipo4_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador4_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo4_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_2_id,4,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera4_2 }}"/></ion-col>\n            		<ion-col>{{ equipo4_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador4_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo4_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n        	    </ion-row>\n            </ion-grid>\n    	</div>	\n	</div>	\n	\n	\n	<div *ngIf="showGame5">\n    	<ion-input type="hidden" value="{{ gameId5 }}"></ion-input>\n        <div class="date">{{ date5 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_1_id,5,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera5_1 }}" /></ion-col>\n                    <ion-col>{{ equipo5_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador5_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo5_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_2_id,5,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera5_2 }}"/></ion-col>\n            		<ion-col>{{ equipo5_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador5_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo5_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame6">\n	    <ion-input type="hidden" value="{{ gameId6 }}"></ion-input>\n        <div class="date">{{ date6 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_1_id,6,1)">\n                    <ion-col><img width="42" height="28" src="images/{{ bandera6_1 }}" /></ion-col>\n                    <ion-col>{{ equipo6_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador6_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo6_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_2_id,6,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera6_2 }}"/></ion-col>\n            		<ion-col>{{ equipo6_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador6_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo6_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame7">\n    	<ion-input type="hidden" value="{{ gameId7 }}"></ion-input>\n        <div class="date">{{ date7 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_1_id,7,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera7_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo7_1 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador7_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo7_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_2_id,7,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera7_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo7_2 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador7_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo7_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame8">\n    	<ion-input type="hidden" value="{{ gameId8 }}"></ion-input>\n        <div class="date">{{ date8 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_1_id,8,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera8_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo8_1 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador8_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo8_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_2_id,8,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera8_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo8_2 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador8_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo8_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/games/games.html"*/,
+        selector: 'page-games',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/games/games.html"*/'<!--\n  Generated template for the GamesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ gamesTitle }}</ion-title>\n    <ion-buttons end *ngIf="showMenuToggle">\n      <button ion-button menuToggle end class="button button-clear">\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n<ion-content padding>\n<!-- Generated template for the TrikyGamesComponent component -->\n    <ion-grid *ngIf="!isPlayoff">\n      <ion-row>\n        <ion-col>\n          <button ion-button full id="{{ trikyButtonId }}" color="triky-button" (click)="clickGames(\'triky\')">TRIKY</button>\n        </ion-col>\n        <ion-col>\n          <button ion-button full id="{{ fifaButtonId }}" color="triky-button" (click)="clickGames(\'fifa\')">FIFA</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <div class="card-triky" margin-bottom padding>\n  	<label style="white-space: normal !important;"><ion-icon name="ios-thumbs-up"></ion-icon>Coloca tu pronostico, el los siguientes recuadros de cada partido</label>\n</div>\n	<div *ngIf="showGame1">\n    	<ion-input type="hidden" value="{{ gameId1 }}"></ion-input>\n        <div class="date">{{ date1 }}{{ gameTitle1 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_1_id, 1,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera1_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo1_1 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador1_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo1_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId1, equipo1_2_id,1,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera1_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo1_2 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador1_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo1_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame2">\n	    <ion-input type="hidden" value="{{ gameId2 }}"></ion-input>\n        <div class="date">{{ date2 }}{{ gameTitle2 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_1_id,2,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera2_1 }}" /></ion-col>\n                    <ion-col>{{ equipo2_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador2_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo2_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId2, equipo2_2_id,2,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera2_2 }}"/></ion-col>\n            		<ion-col>{{ equipo2_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador2_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo2_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>	\n	</div>\n	\n	<div *ngIf="showGame3">\n	   <ion-input type="hidden" value="{{ gameId3 }}"></ion-input>\n        <div class="date">{{ date3 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_1_id,3,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera3_1 }}" /></ion-col>\n                    <ion-col>{{ equipo3_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador3_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo3_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                 <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId3, equipo3_2_id,3,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera3_2 }}"/></ion-col>\n            		<ion-col>{{ equipo3_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador3_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo3_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>	\n	</div>	\n	\n	<div *ngIf="showGame4">\n    	<ion-input type="hidden" value="{{ gameId4 }}"></ion-input>\n        <div class="date">{{ date4 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_1_id,4,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera4_1 }}" /></ion-col>\n                    <ion-col>{{ equipo4_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador4_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo4_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId4, equipo4_2_id,4,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera4_2 }}"/></ion-col>\n            		<ion-col>{{ equipo4_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador4_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo4_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n        	    </ion-row>\n            </ion-grid>\n    	</div>	\n	</div>	\n	\n	\n	<div *ngIf="showGame5">\n    	<ion-input type="hidden" value="{{ gameId5 }}"></ion-input>\n        <div class="date">{{ date5 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_1_id,5,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera5_1 }}" /></ion-col>\n                    <ion-col>{{ equipo5_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador5_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo5_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId5, equipo5_2_id,5,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera5_2 }}"/></ion-col>\n            		<ion-col>{{ equipo5_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador5_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo5_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame6">\n	    <ion-input type="hidden" value="{{ gameId6 }}"></ion-input>\n        <div class="date">{{ date6 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_1_id,6,1)">\n                    <ion-col><img width="42" height="28" src="images/{{ bandera6_1 }}" /></ion-col>\n                    <ion-col>{{ equipo6_1 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador6_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo6_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId6, equipo6_2_id,6,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera6_2 }}"/></ion-col>\n            		<ion-col>{{ equipo6_2 }}</ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador6_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo6_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n            </ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame7">\n    	<ion-input type="hidden" value="{{ gameId7 }}"></ion-input>\n        <div class="date">{{ date7 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_1_id,7,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera7_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo7_1 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador7_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo7_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId7, equipo7_2_id,7,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera7_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo7_2 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador7_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo7_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n	\n	<div *ngIf="showGame8">\n    	<ion-input type="hidden" value="{{ gameId8 }}"></ion-input>\n        <div class="date">{{ date8 }}</div>\n        <div margin-bottom class="card-triky">\n            <ion-grid>\n                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_1_id,8,1)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera8_1 }}" /></ion-col>\n                    <ion-col><label>{{ equipo8_1 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador8_1 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo8_1_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n                </ion-row>\n                <span class="line-score"></span>\n                <ion-row class="scores" (click)="clickTeam(gameId8, equipo8_2_id,8,2)">\n                    <ion-col><img width="42" height="28"  src="images/{{ bandera8_2 }}"/></ion-col>\n            		<ion-col><label>{{ equipo8_2 }}</label></ion-col>\n                    <ion-col class="selected-team">\n                        <ion-item *ngIf="isFifa">{{ marcador8_2 }}</ion-item>\n                        <button end ion-button round *ngIf="equipo8_2_selected"><ion-icon end ios="ios-checkmark" md="md-checkmark"></ion-icon></button>\n                    </ion-col>\n            	</ion-row>\n        	</ion-grid>\n    	</div>\n	</div>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/games/games.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_helper__["a" /* HelperService */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])

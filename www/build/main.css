@@ -179,9 +179,12 @@ page-groups .notifications h2 {
   color: white;
 }
 
-page-groups .notifications h2,
-.header-group {
+page-groups .notifications h2 {
   background-color: #ececec;
+  border-radius: 10px;
+}
+
+.header-group {
   border-radius: 10px;
 }
 
@@ -195,8 +198,7 @@ page-groups .notifications h2,
   color: #2e6eff !important;
 }
 
-.claf,
-.header-group span {
+.claf, .header-group span {
   background-color: #99b1bb;
   padding: 2px 7px !important;
   border-radius: 0px !important;
@@ -208,6 +210,16 @@ page-groups .notifications h2,
 
 .header-group span {
   background-color: #3F51B5;
+}
+
+.fifa .header-group span {
+  background-color: #99b1bb;
+  margin: 0;
+}
+
+.fifa .header-group span.claf {
+  background-color: #99b1bb;
+  margin: 0 10px 0 0;
 }
 
 img {
@@ -40058,6 +40070,11 @@ page-groups .secondPlace {
 
 page-groups .selected {
   background-color: #F89406;
+}
+
+page-groups .card-triky span.claf {
+  background-color: #FFF;
+  margin: 0 0 0 16px;
 }
 
 page-home ion-content ion-item-divider[end] {

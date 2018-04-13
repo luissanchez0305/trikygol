@@ -231,9 +231,11 @@ page-groups .notifications h2{
     padding: 10px;
     color: white;
 }
-page-groups .notifications h2,
-.header-group{    
+page-groups .notifications h2{
     background-color: #ececec;
+    border-radius: 10px;
+}
+.header-group{    
     border-radius: 10px;
 }
 .header-group .label{    
@@ -244,9 +246,8 @@ page-groups .notifications h2,
     vertical-align:middle;
     color:#2e6eff !important;
 }
-.claf,
-.header-group span{    
-         background-color: #99b1bb;
+.claf, .header-group span{    
+    background-color: #99b1bb;
     padding: 2px 7px !important;
     border-radius: 0px !important;
     margin-right: 10px;
@@ -255,7 +256,15 @@ page-groups .notifications h2,
     font-size: 13px;
 }
 .header-group span{    
-        background-color: #3F51B5;
+    background-color: #3F51B5;
+}
+.fifa .header-group span {
+    background-color: #99b1bb;
+    margin: 0;
+}
+.fifa .header-group span.claf{
+    background-color: #99b1bb;
+    margin: 0 10px 0 0;
 }
 img{    
     vertical-align:middle;

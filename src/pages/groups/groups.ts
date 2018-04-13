@@ -227,7 +227,7 @@ export class GroupsPage {
   
   private responseData : any;
   private typeShowing : string;
-  private defaultFillScoresText : string = "Click al equipo que pasa a 8vos";
+  private defaultFillScoresText : string = "Click a equipos que pasan a 8vos";
   private showFifaItems : boolean;
   
   constructor(public navCtrl: NavController, private authService : AuthService, public navParams: NavParams, public helper : HelperService, 
@@ -256,7 +256,8 @@ export class GroupsPage {
       loading.present();
       // "getFirstSecondTeams.php" TRAE TODOS LOS EQUIPOS POR GRUPOS
       
-      this.authService.getData('source='+_source+(_source == 'triky' ? "&u=" + localStorage.getItem('userID') : ""),_source == 'triky' ? 'getUserTeamsPositions.php' : 'getFirstSecondTeams.php').then((result) => {
+      this.authService.getData('source='+_source+(_source == 'triky' ? "&u=" + localStorage.getItem('userID') : ""),_source == 'triky' ? 'getUserTeamsPositions.php' : 'getFirstSecondTeams.php')
+        .then((result) => {
           loading.dismiss();
           this.responseData = result;
           this.typeShowing = _source;
@@ -278,23 +279,23 @@ export class GroupsPage {
                   this.teamA1 = grupo.team1.nombre;
                   this.teamA1Flag = grupo.team1.bandera;
                   this.teamA1Points = grupo.team1.puntos;
-                  this.showPlacesA = grupo.team1.puntos != '0';
-                  this.teamA1Pos = _source == 'triky' ? (this.showPlacesA ? 1 : null) : 1;
+                  this.showPlacesA = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                  this.teamA1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                   this.teamA2Id = grupo.team2.id;
                   this.teamA2 = grupo.team2.nombre;
                   this.teamA2Flag = grupo.team2.bandera;
                   this.teamA2Points = grupo.team2.puntos;
-                  this.teamA2Pos = _source == 'triky' ? (this.showPlacesA ? 2 : null) : 2;
+                  this.teamA2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                   this.teamA3Id = grupo.team3.id;
                   this.teamA3 = grupo.team3.nombre;
                   this.teamA3Flag = grupo.team3.bandera;
                   this.teamA3Points = grupo.team3.puntos;
-                  this.teamA3Pos = _source == 'triky' ? null : 3;
+                  this.teamA3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                   this.teamA4Id = grupo.team4.id;
                   this.teamA4 = grupo.team4.nombre;
                   this.teamA4Flag = grupo.team4.bandera;
                   this.teamA4Points = grupo.team4.puntos;
-                  this.teamA4Pos = _source == 'triky' ? null : 4;
+                  this.teamA4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                   this.showInfoBarA = !this.showPlacesA;
                 break;
               case 'b':
@@ -302,23 +303,23 @@ export class GroupsPage {
                   this.teamB1 = grupo.team1.nombre;
                   this.teamB1Flag = grupo.team1.bandera;
                   this.teamB1Points = grupo.team1.puntos;
-                  this.showPlacesB = grupo.team1.puntos != '0';
-                  this.teamB1Pos = _source == 'triky' ? (this.showPlacesB ? 1 : null) : 1;
+                  this.showPlacesB = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                  this.teamB1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                   this.teamB2Id = grupo.team2.id;
                   this.teamB2 = grupo.team2.nombre;
                   this.teamB2Flag = grupo.team2.bandera;
                   this.teamB2Points = grupo.team2.puntos;
-                  this.teamB2Pos = _source == 'triky' ? (this.showPlacesB ? 2 : null) : 2;
+                  this.teamB2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                   this.teamB3Id = grupo.team3.id;
                   this.teamB3 = grupo.team3.nombre;
                   this.teamB3Flag = grupo.team3.bandera;
                   this.teamB3Points = grupo.team3.puntos;
-                  this.teamB3Pos = _source == 'triky' ? null : 3;
+                  this.teamB3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                   this.teamB4Id = grupo.team4.id;
                   this.teamB4 = grupo.team4.nombre;
                   this.teamB4Flag = grupo.team4.bandera;
                   this.teamB4Points = grupo.team4.puntos;
-                  this.teamB4Pos = _source == 'triky' ? null : 4;
+                  this.teamB4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                   this.showInfoBarB = !this.showPlacesB;
                 break;
               case 'c':
@@ -326,23 +327,23 @@ export class GroupsPage {
                   this.teamC1 = grupo.team1.nombre;
                   this.teamC1Flag = grupo.team1.bandera;
                   this.teamC1Points = grupo.team1.puntos;
-                  this.showPlacesC = grupo.team1.puntos != '0';
-                  this.teamC1Pos = _source == 'triky' ? (this.showPlacesC ? 1 : null) : 1;
+                  this.showPlacesC = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                  this.teamC1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                   this.teamC2Id = grupo.team2.id;
                   this.teamC2 = grupo.team2.nombre;
                   this.teamC2Flag = grupo.team2.bandera;
                   this.teamC2Points = grupo.team2.puntos;
-                  this.teamC2Pos = _source == 'triky' ? (this.showPlacesC ? 2 : null) : 2;
+                  this.teamC2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                   this.teamC3Id = grupo.team3.id;
                   this.teamC3 = grupo.team3.nombre;
                   this.teamC3Flag = grupo.team3.bandera;
                   this.teamC3Points = grupo.team3.puntos;
-                  this.teamC3Pos = _source == 'triky' ? null : 3;
+                  this.teamC3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                   this.teamC4Id = grupo.team4.id;
                   this.teamC4 = grupo.team4.nombre;
                   this.teamC4Flag = grupo.team4.bandera;
                   this.teamC4Points = grupo.team4.puntos;
-                  this.teamC4Pos = _source == 'triky' ? null : 4;
+                  this.teamC4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                   this.showInfoBarC = !this.showPlacesC;
                 break;
               case 'd':
@@ -350,23 +351,23 @@ export class GroupsPage {
                   this.teamD1 = grupo.team1.nombre;
                   this.teamD1Flag = grupo.team1.bandera;
                   this.teamD1Points = grupo.team1.puntos;
-                  this.showPlacesD = grupo.team1.puntos != '0';
-                  this.teamD1Pos = _source == 'triky' ? (this.showPlacesD ? 1 : null) : 1;
+                  this.showPlacesD = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                  this.teamD1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                   this.teamD2Id = grupo.team2.id;
                   this.teamD2 = grupo.team2.nombre;
                   this.teamD2Flag = grupo.team2.bandera;
                   this.teamD2Points = grupo.team2.puntos;
-                  this.teamD2Pos = _source == 'triky' ? (this.showPlacesD ? 2 : null) : 2;
+                  this.teamD2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                   this.teamD3Id = grupo.team3.id;
                   this.teamD3 = grupo.team3.nombre;
                   this.teamD3Flag = grupo.team3.bandera;
                   this.teamD3Points = grupo.team3.puntos;
-                  this.teamD3Pos = _source == 'triky' ? null : 3;
+                  this.teamD3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                   this.teamD4Id = grupo.team4.id;
                   this.teamD4 = grupo.team4.nombre;
                   this.teamD4Flag = grupo.team4.bandera;
                   this.teamD4Points = grupo.team4.puntos;
-                  this.teamD4Pos = _source == 'triky' ? null : 4;
+                  this.teamD4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                   this.showInfoBarD = !this.showPlacesD;
                 break;
               case 'e':
@@ -374,23 +375,23 @@ export class GroupsPage {
                   this.teamE1 = grupo.team1.nombre;
                   this.teamE1Flag = grupo.team1.bandera;
                   this.teamE1Points = grupo.team1.puntos;
-                  this.showPlacesE = grupo.team1.puntos != '0';
-                  this.teamE1Pos = _source == 'triky' ? (this.showPlacesE ? 1 : null) : 1;
+                  this.showPlacesE = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                  this.teamE1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                   this.teamE2Id = grupo.team2.id;
                   this.teamE2 = grupo.team2.nombre;
                   this.teamE2Flag = grupo.team2.bandera;
                   this.teamE2Points = grupo.team2.puntos;
-                  this.teamE2Pos = _source == 'triky' ? (this.showPlacesE ? 2 : null) : 2;
+                  this.teamE2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                   this.teamE3Id = grupo.team3.id;
                   this.teamE3 = grupo.team3.nombre;
                   this.teamE3Flag = grupo.team3.bandera;
                   this.teamE3Points = grupo.team3.puntos;
-                  this.teamE3Pos = _source == 'triky' ? null : 3;
+                  this.teamE3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                   this.teamE4Id = grupo.team4.id;
                   this.teamE4 = grupo.team4.nombre;
                   this.teamE4Flag = grupo.team4.bandera;
                   this.teamE4Points = grupo.team4.puntos;
-                  this.teamE4Pos = _source == 'triky' ? null : 4;
+                  this.teamE4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                   this.showInfoBarE = !this.showPlacesE;
                 break;
               case 'f':
@@ -398,23 +399,23 @@ export class GroupsPage {
                   this.teamF1 = grupo.team1.nombre;
                   this.teamF1Flag = grupo.team1.bandera;
                   this.teamF1Points = grupo.team1.puntos;
-                  this.showPlacesF = grupo.team1.puntos != '0';
-                  this.teamF1Pos = _source == 'triky' ? (this.showPlacesF ? 1 : null) : 1;
+                  this.showPlacesF = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                  this.teamF1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                   this.teamF2Id = grupo.team2.id;
                   this.teamF2 = grupo.team2.nombre;
                   this.teamF2Flag = grupo.team2.bandera;
                   this.teamF2Points = grupo.team2.puntos;
-                  this.teamF2Pos = _source == 'triky' ? (this.showPlacesF ? 2 : null) : 2;
+                  this.teamF2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                   this.teamF3Id = grupo.team3.id;
                   this.teamF3 = grupo.team3.nombre;
                   this.teamF3Flag = grupo.team3.bandera;
                   this.teamF3Points = grupo.team3.puntos;
-                  this.teamF3Pos = _source == 'triky' ? null : 3;
+                  this.teamF3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                   this.teamF4Id = grupo.team4.id;
                   this.teamF4 = grupo.team4.nombre;
                   this.teamF4Flag = grupo.team4.bandera;
                   this.teamF4Points = grupo.team4.puntos;
-                  this.teamF4Pos = _source == 'triky' ? null : 4;
+                  this.teamF4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                   this.showInfoBarF = !this.showPlacesF;
                 break;
               case 'g':
@@ -422,23 +423,23 @@ export class GroupsPage {
                   this.teamG1 = grupo.team1.nombre;
                   this.teamG1Flag = grupo.team1.bandera;
                   this.teamG1Points = grupo.team1.puntos;
-                  this.showPlacesG = grupo.team1.puntos != '0';
-                  this.teamG1Pos = _source == 'triky' ? (this.showPlacesG ? 1 : null) : 1;
+                  this.showPlacesG = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                  this.teamG1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                   this.teamG2Id = grupo.team2.id;
                   this.teamG2 = grupo.team2.nombre;
                   this.teamG2Flag = grupo.team2.bandera;
                   this.teamG2Points = grupo.team2.puntos;
-                  this.teamG2Pos = _source == 'triky' ? (this.showPlacesG ? 2 : null) : 2;
+                  this.teamG2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                   this.teamG3Id = grupo.team3.id;
                   this.teamG3 = grupo.team3.nombre;
                   this.teamG3Flag = grupo.team3.bandera;
                   this.teamG3Points = grupo.team3.puntos;
-                  this.teamG3Pos = _source == 'triky' ? null : 3;
+                  this.teamG3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                   this.teamG4Id = grupo.team4.id;
                   this.teamG4 = grupo.team4.nombre;
                   this.teamG4Flag = grupo.team4.bandera;
                   this.teamG4Points = grupo.team4.puntos;
-                  this.teamG4Pos = _source == 'triky' ? null : 4;
+                  this.teamG4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                   this.showInfoBarG = !this.showPlacesG;
                 break;
               case 'h':
@@ -446,23 +447,23 @@ export class GroupsPage {
                   this.teamH1 = grupo.team1.nombre;
                   this.teamH1Flag = grupo.team1.bandera;
                   this.teamH1Points = grupo.team1.puntos;
-                  this.showPlacesH = grupo.team1.puntos != '0';
-                  this.teamH1Pos = _source == 'triky' ? (this.showPlacesH ? 1 : null) : 1;
+                  this.showPlacesH = _source != 'triky' || (_source == 'triky' && (grupo.team1.puntos != '0' || grupo.team2.puntos != '0' || grupo.team3.puntos != '0' || grupo.team4.puntos != '0'));
+                  this.teamH1Pos = _source == 'triky' ? (grupo.team1.puntos != '0' ? grupo.team1.puntos : null) : 1;
                   this.teamH2Id = grupo.team2.id;
                   this.teamH2 = grupo.team2.nombre;
                   this.teamH2Flag = grupo.team2.bandera;
                   this.teamH2Points = grupo.team2.puntos;
-                  this.teamH2Pos = _source == 'triky' ? (this.showPlacesH ? 2 : null) : 2;
+                  this.teamH2Pos = _source == 'triky' ? (grupo.team2.puntos != '0' ? grupo.team2.puntos : null) : 2;
                   this.teamH3Id = grupo.team3.id;
                   this.teamH3 = grupo.team3.nombre;
                   this.teamH3Flag = grupo.team3.bandera;
                   this.teamH3Points = grupo.team3.puntos;
-                  this.teamH3Pos = _source == 'triky' ? null : 3;
+                  this.teamH3Pos = _source == 'triky' ? (grupo.team3.puntos != '0' ? grupo.team3.puntos : null) : 3;
                   this.teamH4Id = grupo.team4.id;
                   this.teamH4 = grupo.team4.nombre;
                   this.teamH4Flag = grupo.team4.bandera;
                   this.teamH4Points = grupo.team4.puntos;
-                  this.teamH4Pos = _source == 'triky' ? null : 4;
+                  this.teamH4Pos = _source == 'triky' ? (grupo.team4.puntos != '0' ? grupo.team4.puntos : null) : 4;
                   this.showInfoBarH = !this.showPlacesH;
                 break;
             }
@@ -488,7 +489,8 @@ export class GroupsPage {
         }, (err) => {
           // Error log
           this.helper.gapAlert('Error en al traer grupos', err);
-        });    
+        });   
+  
   }
   
   logout(){
@@ -535,6 +537,8 @@ export class GroupsPage {
       var pos = 1;
       switch(group){
         case 'A':
+          this.showPlacesA = true;
+          this.showInfoBarA = false;
           if(this.groupAFirst != 0 && this.groupASecond != 0){
             pos = 1;
             this.groupAFirst = id;
@@ -550,6 +554,8 @@ export class GroupsPage {
           }
           break;
         case 'B':
+          this.showPlacesB = true;
+          this.showInfoBarB = false;
           if(this.groupBFirst != 0 && this.groupBSecond != 0){
             pos = 1;
             this.groupBFirst = id;
@@ -565,6 +571,8 @@ export class GroupsPage {
           }
           break;
         case 'C':
+          this.showPlacesC = true;
+          this.showInfoBarC = false;
           if(this.groupCFirst != 0 && this.groupCSecond != 0){
             pos = 1;
             this.groupCFirst = id;
@@ -580,6 +588,8 @@ export class GroupsPage {
           }
           break;
         case 'D':
+          this.showPlacesD = true;
+          this.showInfoBarD = false;
           if(this.groupDFirst != 0 && this.groupDSecond != 0){
             pos = 1;
             this.groupDFirst = id;
@@ -595,6 +605,8 @@ export class GroupsPage {
           }
           break;
         case 'E':
+          this.showPlacesE = true;
+          this.showInfoBarE = false;
           if(this.groupEFirst != 0 && this.groupESecond != 0){
             pos = 1;
             this.groupEFirst = id;
@@ -610,6 +622,8 @@ export class GroupsPage {
           }
           break;
         case 'F':
+          this.showPlacesF = true;
+          this.showInfoBarF = false;
           if(this.groupFFirst != 0 && this.groupFSecond != 0){
             pos = 1;
             this.groupFFirst = id;
@@ -625,6 +639,8 @@ export class GroupsPage {
           }
           break;
         case 'G':
+          this.showPlacesG = true;
+          this.showInfoBarG = false;
           if(this.groupGFirst != 0 && this.groupGSecond != 0){
             pos = 1;
             this.groupGFirst = id;
@@ -640,6 +656,8 @@ export class GroupsPage {
           }
           break;
         case 'H':
+          this.showPlacesH = true;
+          this.showInfoBarH = false;
           if(this.groupHFirst != 0 && this.groupHSecond != 0){
             pos = 1;
             this.groupHFirst = id;
@@ -655,7 +673,7 @@ export class GroupsPage {
           }
           break;
       }
-      this.cleanAssignedPosition(pos);
+      this.cleanAssignedPosition(group,pos);
       this.assignNewPosition(group, position, pos);
       let loading = this.loadingCtrl.create({
         content: 'Guardando...'
@@ -668,86 +686,172 @@ export class GroupsPage {
   }
   
   /* METODOS HELPER */
-  cleanAssignedPosition(pos){
-    if(this.teamA1Pos == pos)
-      this.teamA1Pos = null;
-    if(this.teamA2Pos == pos)
-      this.teamA2Pos = null;
-    if(this.teamA3Pos == pos)
-      this.teamA3Pos = null;
-    if(this.teamA4Pos == pos)
-      this.teamA4Pos = null;
-    if(this.teamB1Pos == pos)
-      this.teamB1Pos = null;
-    if(this.teamB2Pos == pos)
-      this.teamB2Pos = null;
-    if(this.teamB3Pos == pos)
-      this.teamB3Pos = null;
-    if(this.teamB4Pos == pos)
-      this.teamB4Pos = null;
-    if(this.teamC1Pos == pos)
-      this.teamC1Pos = null;
-    if(this.teamC2Pos == pos)
-      this.teamC2Pos = null;
-    if(this.teamC3Pos == pos)
-      this.teamC3Pos = null;
-    if(this.teamC4Pos == pos)
-      this.teamC4Pos = null;
-    if(this.teamD1Pos == pos)
-      this.teamD1Pos = null;
-    if(this.teamD2Pos == pos)
-      this.teamD2Pos = null;
-    if(this.teamD3Pos == pos)
-      this.teamD3Pos = null;
-    if(this.teamD4Pos == pos)
-      this.teamD4Pos = null;
-    if(this.teamE1Pos == pos)
-      this.teamE1Pos = null;
-    if(this.teamE2Pos == pos)
-      this.teamE2Pos = null;
-    if(this.teamE3Pos == pos)
-      this.teamE3Pos = null;
-    if(this.teamE4Pos == pos)
-      this.teamE4Pos = null;
-    if(this.teamF1Pos == pos)
-      this.teamF1Pos = null;
-    if(this.teamF2Pos == pos)
-      this.teamF2Pos = null;
-    if(this.teamF3Pos == pos)
-      this.teamF3Pos = null;
-    if(this.teamF4Pos == pos)
-      this.teamF4Pos = null;
-    if(this.teamG1Pos == pos)
-      this.teamG1Pos = null;
-    if(this.teamG2Pos == pos)
-      this.teamG2Pos = null;
-    if(this.teamG3Pos == pos)
-      this.teamG3Pos = null;
-    if(this.teamG4Pos == pos)
-      this.teamG4Pos = null;
-    if(this.teamH1Pos == pos)
-      this.teamH1Pos = null;
-    if(this.teamH2Pos == pos)
-      this.teamH2Pos = null;
-    if(this.teamH3Pos == pos)
-      this.teamH3Pos = null;
-    if(this.teamH4Pos == pos)
-      this.teamH4Pos = null;
+  cleanAssignedPosition(group, pos){
+      switch(group){
+        case 'A':
+          if(this.teamA1Pos == pos){
+            this.teamA1Points = '0';
+            this.teamA1Pos = null;
+          }
+          if(this.teamA2Pos == pos){
+            this.teamA2Points = '0';
+            this.teamA2Pos = null;
+          }
+          if(this.teamA3Pos == pos){
+            this.teamA3Points = '0';
+            this.teamA3Pos = null;
+          }
+          if(this.teamA4Pos == pos){
+            this.teamA4Points = '0';
+            this.teamA4Pos = null;
+          }
+          break;
+        case 'B':      
+          if(this.teamB1Pos == pos){
+            this.teamB1Points = '0';
+            this.teamB1Pos = null;
+          }
+          if(this.teamB2Pos == pos){
+            this.teamB2Points = '0';
+            this.teamB2Pos = null;
+          }
+          if(this.teamB3Pos == pos){
+            this.teamB3Points = '0';
+            this.teamB3Pos = null;
+          }
+          if(this.teamB4Pos == pos){
+            this.teamB4Points = '0';
+            this.teamB4Pos = null;
+          }
+          break;
+        case 'C':
+          if(this.teamC1Pos == pos){
+            this.teamC1Points = '0';
+            this.teamC1Pos = null;
+          }
+          if(this.teamC2Pos == pos){
+            this.teamC2Points = '0';
+            this.teamC2Pos = null;
+          }
+          if(this.teamC3Pos == pos){
+            this.teamC3Points = '0';
+            this.teamC3Pos = null;
+          }
+          if(this.teamC4Pos == pos){
+            this.teamC4Points = '0';
+            this.teamC4Pos = null;
+          }
+          break;
+        case 'D':
+          if(this.teamD1Pos == pos){
+            this.teamD1Points = '0';
+            this.teamD1Pos = null;
+          }
+          if(this.teamD2Pos == pos){
+            this.teamD2Points = '0';
+            this.teamD2Pos = null;
+          }
+          if(this.teamD3Pos == pos){
+            this.teamD3Points = '0';
+            this.teamD3Pos = null;
+          }
+          if(this.teamD4Pos == pos){
+            this.teamD4Points = '0';
+            this.teamD4Pos = null;
+          }
+          break;
+        case 'D':
+          if(this.teamE1Pos == pos){
+            this.teamE1Points = '0';
+            this.teamE1Pos = null;
+          }
+          if(this.teamE2Pos == pos){
+            this.teamE2Points = '0';
+            this.teamE2Pos = null;
+          }
+          if(this.teamE3Pos == pos){
+            this.teamE3Points = '0';
+            this.teamE3Pos = null;
+          }
+          if(this.teamE4Pos == pos){
+            this.teamE4Points = '0';
+            this.teamE4Pos = null;
+          }
+          break;
+        case 'F':
+          if(this.teamF1Pos == pos){
+            this.teamF1Points = '0';
+            this.teamF1Pos = null;
+          }
+          if(this.teamF2Pos == pos){
+            this.teamF2Points = '0';
+            this.teamF2Pos = null;
+          }
+          if(this.teamF3Pos == pos){
+            this.teamF3Points = '0';
+            this.teamF3Pos = null;
+          }
+          if(this.teamF4Pos == pos){
+            this.teamF4Points = '0';
+            this.teamF4Pos = null;
+          }
+          break;
+        case 'G':
+          if(this.teamG1Pos == pos){
+            this.teamG1Points = '0';
+            this.teamG1Pos = null;
+          }
+          if(this.teamG2Pos == pos){
+            this.teamG2Points = '0';
+            this.teamG2Pos = null;
+          }
+          if(this.teamG3Pos == pos){
+            this.teamG3Points = '0';
+            this.teamG3Pos = null;
+          }
+          if(this.teamG4Pos == pos){
+            this.teamG4Points = '0';
+            this.teamG4Pos = null;
+          }
+          break;
+        case 'H':
+          if(this.teamH1Pos == pos){
+            this.teamH1Points = '0';
+            this.teamH1Pos = null;
+          }
+          if(this.teamH2Pos == pos){
+            this.teamH2Points = '0';
+            this.teamH2Pos = null;
+          }
+          if(this.teamH3Pos == pos){
+            this.teamH3Points = '0';
+            this.teamH3Pos = null;
+          }
+          if(this.teamH4Pos == pos){
+            this.teamH4Points = '0';
+            this.teamH4Pos = null;
+          }
+          break;
+      }
   }
   assignNewPosition(group, position, pos){
       switch(group){
         case 'A':
           switch(position){
             case 1:
+              this.teamA1Points = '1';
               this.teamA1Pos = pos;
               break;
             case 2:
+              this.teamA2Points = '1';
               this.teamA2Pos = pos;
               break;
             case 3:
+              this.teamA3Points = '1';
               this.teamA3Pos = pos;
               break;
             case 4:
+              this.teamA4Points = '1';
               this.teamA4Pos = pos;
               break;
           }
@@ -755,15 +859,19 @@ export class GroupsPage {
         case 'B':
           switch(position){
             case 1:
+              this.teamB1Points = '1';
               this.teamB1Pos = pos;
               break;
             case 2:
+              this.teamB2Points = '1';
               this.teamB2Pos = pos;
               break;
             case 3:
+              this.teamB3Points = '1';
               this.teamB3Pos = pos;
               break;
             case 4:
+              this.teamB4Points = '1';
               this.teamB4Pos = pos;
               break;
           }
@@ -771,15 +879,19 @@ export class GroupsPage {
         case 'C':
           switch(position){
             case 1:
+              this.teamC1Points = '1';
               this.teamC1Pos = pos;
               break;
             case 2:
+              this.teamC2Points = '1';
               this.teamC2Pos = pos;
               break;
             case 3:
+              this.teamC3Points = '1';
               this.teamC3Pos = pos;
               break;
             case 4:
+              this.teamC4Points = '1';
               this.teamC4Pos = pos;
               break;
           }
@@ -787,15 +899,19 @@ export class GroupsPage {
         case 'D':
           switch(position){
             case 1:
+              this.teamD1Points = '1';
               this.teamD1Pos = pos;
               break;
             case 2:
+              this.teamD2Points = '1';
               this.teamD2Pos = pos;
               break;
             case 3:
+              this.teamD3Points = '1';
               this.teamD3Pos = pos;
               break;
             case 4:
+              this.teamD4Points = '1';
               this.teamD4Pos = pos;
               break;
           }
@@ -803,15 +919,19 @@ export class GroupsPage {
         case 'E':
           switch(position){
             case 1:
+              this.teamE1Points = '1';
               this.teamE1Pos = pos;
               break;
             case 2:
+              this.teamE2Points = '1';
               this.teamE2Pos = pos;
               break;
             case 3:
+              this.teamE3Points = '1';
               this.teamE3Pos = pos;
               break;
             case 4:
+              this.teamE4Points = '1';
               this.teamE4Pos = pos;
               break;
           }
@@ -819,15 +939,19 @@ export class GroupsPage {
         case 'F':
           switch(position){
             case 1:
+              this.teamF1Points = '1';
               this.teamF1Pos = pos;
               break;
             case 2:
+              this.teamF2Points = '1';
               this.teamF2Pos = pos;
               break;
             case 3:
+              this.teamF3Points = '1';
               this.teamF3Pos = pos;
               break;
             case 4:
+              this.teamF4Points = '1';
               this.teamF4Pos = pos;
               break;
           }
@@ -835,15 +959,19 @@ export class GroupsPage {
         case 'G':
           switch(position){
             case 1:
+              this.teamG1Points = '1';
               this.teamG1Pos = pos;
               break;
             case 2:
+              this.teamG2Points = '1';
               this.teamG2Pos = pos;
               break;
             case 3:
+              this.teamG3Points = '1';
               this.teamG3Pos = pos;
               break;
             case 4:
+              this.teamG4Points = '1';
               this.teamG4Pos = pos;
               break;
           }
@@ -851,15 +979,19 @@ export class GroupsPage {
         case 'H':
           switch(position){
             case 1:
+              this.teamH1Points = '1';
               this.teamH1Pos = pos;
               break;
             case 2:
+              this.teamH2Points = '1';
               this.teamH2Pos = pos;
               break;
             case 3:
+              this.teamH3Points = '1';
               this.teamH3Pos = pos;
               break;
             case 4:
+              this.teamH4Points = '1';
               this.teamH4Pos = pos;
               break;
           }

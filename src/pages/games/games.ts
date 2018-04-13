@@ -388,8 +388,8 @@ export class GamesPage {
     });
   }
   
-  clickTeam(gameId, teamId, gameIndex, teamIndex){
-    if(!this.isFifa){
+  clickTeam(gameId, teamId, gameIndex, teamIndex, obj){
+    if(!this.isFifa && teamId != null){
       let loading = this.loadingCtrl.create({
         content: 'Guardando...'
       });
