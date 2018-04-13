@@ -1,4 +1,13 @@
 page-games {
+    .card-triky .scores button{
+        height: 20px;
+        width: 20px;
+        padding: 12px;
+        margin: 0;
+    }
+    .card-triky .scores .selected-team{
+        text-align: right;
+    }
     .game-container{
         float:left; 
         width: 100%; 

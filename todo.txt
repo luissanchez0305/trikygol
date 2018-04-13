@@ -7,9 +7,16 @@ x quitar franja azul de "editar marcadores" y texto "coloca tu pronostico..." al
 x quitar alert de login
 x poner un overlay con loading al cambiar de pantalla
 x poner apertura de partidos y cambios de pantalla en callback de ajax
+x poner en home proximos partidos 
+x cambiar los click de grupos en triky para escoger el 1ro y el 2do equipo por grupo
+x quitar los marcadores de los juegos en el tab de triky
+x escoger el equipo en octavos, cuartos y semifinales
+- quitar y poner estilo de equipo escogido en la pantalla de grupos
+- arreglar tab de fifa de la vista de games, la x de selected se despliega por error
+
+- revisar texto de login infructuoso
 - actualizar la seccion de tabla de posiciones de home al regresar de perfil
 - actualizar las posiciones del grupo despues de guardar los marcadores
-x poner en home proximos partidos 
 - poner 5 ultimos partidos jugados y boton para ir a mis estadisticas
 - agregar seccion de mis estadisticas en el menu hamburguer
 - quitar de home marcadores acertados, partidos empatados, equipos ganadores, equipos clasificados y tabla de posiciciones y ponerlos en mis estadisticas
@@ -24,8 +31,8 @@ x mejorar diseño de boton de logout de perfil
 x mejorar diseño del header, poner logo y un poco mas vistoso----- En donde en el navbar o la pagina de inicio ?
     Este ya lo resolvi poniendole el titulo a cada opcion del menu inferior
 x La palabra "Código" del placeholder del input si no tiene un grupo asignado se ve mal
-- Cambiar splash image e icono para que vayan mas de acorde con el diseño interno
-- Arreglar el diesño cuando los proximos partidos no tienen marcador
+x Cambiar splash image e icono para que vayan mas de acorde con el diseño interno
+x Arreglar el diesño cuando los proximos partidos no tienen marcador
 
 futuro
 - login, signup con facebook y google

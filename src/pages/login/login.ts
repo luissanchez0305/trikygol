@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { HomePage } from '../home/home';
@@ -26,9 +26,10 @@ export class LoginPage {
   private login : FormGroup;
   responseData : any;
   private tabBarElement : any;
+  private loginStatus : string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService : AuthService, public helper : HelperService, 
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder, public loadingCtrl: LoadingController) {
         this.login = this.formBuilder.group({
           email: ['', Validators.required],
           pwd: ['', Validators.required],
@@ -51,8 +52,13 @@ export class LoginPage {
     }
     
     attemptUserLogin() {
+      let loading = this.loadingCtrl.create({
+        content: 'Espere un momento...'
+      });
+      loading.present();
         var data = { type : 'cred', e : this.login.value.email, p : this.login.value.pwd };
         this.authService.postData(data,'/cred.php').then((result) => {
+          loading.dismiss();
           this.responseData = result;
           if (this.responseData.status == "ok") {
               localStorage.setItem('userEmail', this.login.value.email);
@@ -64,11 +70,11 @@ export class LoginPage {
               // reaparece el nav bar
               this.tabBarElement.style.display = null;
           } else {
-              this.helper.gapAlert("Username or password not valid", "Login Unsuccessful");
+              this.loginStatus = "El email y la contraseña no concuerdan. Por favor intente nuevamente";
           }
         }, (err) => {
           // Error log
-          this.helper.gapAlert('Error en logueo', err);
+          this.loginStatus = "Error al intentar ingresar";
         });
     }
 
