@@ -74,6 +74,7 @@ export class LoginPage {
           }
         }, (err) => {
           // Error log
+          loading.dismiss();
           this.loginStatus = "Error al intentar ingresar";
         });
     }
