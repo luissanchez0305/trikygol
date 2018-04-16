@@ -40153,6 +40153,6 @@ page-home .entire-text {
   margin: 5px 8px !important;
 }
 
-col-4.preview-country {
-  margin: 5px 5px 5px 0;
+[col-4].preview-country {
+  padding: 5px 5px 5px 0;
 }
