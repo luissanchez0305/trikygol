@@ -13,9 +13,9 @@
     <ion-grid>
       <ion-row *ngFor="let game of nextGames">
         <ion-col col-12 class="score-home"> <ion-icon name="md-calendar"></ion-icon>{{ gameDate }}</ion-col>
-        <ion-col col-4><img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag1 }}"> {{ game.player1 }}</ion-col>
+        <ion-col col-4 class="preview-country"><img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag1 }}"> {{ game.player1 }}</ion-col>
         <ion-col col-3><div><span style="font-weight:700">{{ game.score1 }}</span> : <span style="font-weight:700;">{{ game.score2 }}</span></div></ion-col>
-        <ion-col col-4> {{ game.player2 }} <img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag2 }}"></ion-col>
+        <ion-col col-4 class="preview-country"> {{ game.player2 }} <img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag2 }}"></ion-col>
       </ion-row>
     </ion-grid>
   </div>
@@ -29,18 +29,6 @@
 <!--panel de estadisticas-->
     <ion-grid style="font-size:1.4rem;text-align:center;white-space: inherit !important;">
         <ion-row>
-            <ion-col col-6>
-              <div padding class="card-triky">
-                <div style="white-space: normal;"># de marcadores acertados</div>
-                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ scoresRight }}</b></div>
-                </div>
-            </ion-col>
-            <ion-col col-6>
-               <div padding class="card-triky">
-                <div style="white-space: normal;"># de partidos  empatados</div>
-                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ tieGames }}</b></div>
-                </div>
-            </ion-col>
             <ion-col col-6>
               <div padding class="card-triky">
                 <div style="white-space: normal;"># de equipos ganadores</div>

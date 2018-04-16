@@ -232,8 +232,6 @@ export class GroupsPage {
   
   constructor(public navCtrl: NavController, private authService : AuthService, public navParams: NavParams, public helper : HelperService, 
     public modalCtrl: ModalController, public events : Events, public loadingCtrl: LoadingController) {
-    this.displayGroupsAndTeams('triky');
-      
     this.fillTextA = this.defaultFillScoresText;
     this.fillTextB = this.defaultFillScoresText;
     this.fillTextC = this.defaultFillScoresText;
@@ -247,6 +245,10 @@ export class GroupsPage {
         //call methods to refresh content
         this.displayGroupsAndTeams('triky');
     });
+  }
+  
+  ionViewDidEnter(){
+    this.displayGroupsAndTeams('triky');
   }
   
   private displayGroupsAndTeams(_source){

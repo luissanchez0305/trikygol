@@ -25,10 +25,11 @@
             <form [formGroup]="register" (ngSubmit)="attemptUserRegister()">
                 <div class="item item-body">
                     <p text-center padding margin-bottom><img width="70%" height="auto"  src="images/trikygol-green.png" /></p>
-              <div padding margin-bottom class="card-triky"><label>
-                   <ion-icon name="information-circle"></ion-icon> Por favor llene sus datos en el siguiente formulario
-                </label>
-</div>
+                     <div padding margin-bottom class="card-triky">
+                         <label>
+                           <ion-icon name="information-circle"></ion-icon> Por favor llene sus datos en el siguiente formulario
+                        </label>
+                    </div>
                     <div padding class="card-triky">
                         <ion-item>
                             <ion-input value="{{ emailValue }}" type="email" placeholder="Email*" autocapitalize="none" formControlName="email"></ion-input>
@@ -50,15 +51,14 @@
                     <button ion-button full type="submit" class="button button-calm" [disabled]="!register.valid">{{ submitText }}</button>
                     <br>
                     <div style="text-align:center">
-                                            <div *ngIf="!isLoggedIn" ion-button clear (click)="openLogin()">
-                        Ya tengo una cuenta
+                        <div *ngIf="!isLoggedIn" ion-button clear (click)="openLogin()">
+                            Ya tengo una cuenta
+                        </div>
+                        <br/>
+                        <div *ngIf="!isLoggedIn" ion-button clear (click)="openForgot()">
+                            Olvide mi contraseña
+                        </div>
                     </div>
-                    <br/>
-                    <div *ngIf="!isLoggedIn" ion-button clear (click)="openForgot()">
-                        Olvide mi contraseña
-                    </div>
-                    </div>
-
                 </div>
             </form>
         </div>

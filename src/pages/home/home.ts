@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { HelperService } from '../../providers/helper';
@@ -29,7 +29,8 @@ export class HomePage {
   private nextGames : any;
   private gameDate : string;
   
-  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, public events : Events, 
+    private formBuilder: FormBuilder) {
       this.group = this.formBuilder.group({
         code: ['', Validators.required]
       });
@@ -52,7 +53,13 @@ export class HomePage {
       this.positionName3 = '';
       this.positionName4 = '';
       this.positionName5 = '';
+      
+      this.events.subscribe('reloadPositionTable',() => {
+          //call method to refresh content
+          this.loadPositionTable();
+      });
   }
+  
   ionViewDidLoad(){
       this.loadPositionTable();
       
@@ -74,17 +81,24 @@ export class HomePage {
   }
   
   loadPositionTable(){
-      this.authService.getData('g=' + localStorage.getItem('UserLoggedGroup'), 'getUsersOrderedPoints.php').then((result) => {
+      this.authService.getData(localStorage.getItem('UserLoggedGroup').length > 0 ? 'g=' + localStorage.getItem('UserLoggedGroup') : '', 'getUsersOrderedPoints.php').then((result) => {
         this.responsePositionData = result;
         if(this.responsePositionData.status == 'no params'){
           this.positionTable = false;
         }
         else {
           this.positionTable = true;
+      
+          this.positionName1 = '';
+          this.positionName2 = '';
+          this.positionName3 = '';
+          this.positionName4 = '';
+          this.positionName5 = '';
           
     		  for(var i = 0; i < this.responsePositionData.length; i++){
     		    var user = this.responsePositionData[i];
     		    var user_data = user.nombre + ' - ' + (user.puntos != null ? user.puntos : 'Sin ') + ' puntos';
+      
     		    if(i == 0)
               this.positionName1 = user_data;
             else if(i == 1)

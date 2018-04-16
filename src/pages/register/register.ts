@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { HomePage } from '../home/home';
@@ -33,7 +33,8 @@ export class RegisterPage {
     submitText : string = '';
     isLoggedIn : boolean;
     
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService : AuthService, public helper : HelperService,
+    public events : Events, private formBuilder: FormBuilder) {
         // Quitar password de las validaciones al hacer submit
         this.isLoggedIn = localStorage.getItem('UserLoggedIn') == 'true';
         if(localStorage.getItem('UserLoggedIn') == 'true'){
@@ -69,7 +70,11 @@ export class RegisterPage {
             this.submitText = 'REGISTRAR';
             this.passwordStar = '*';
         }
-  }
+    }
+    
+    ionViewDidLeave(){
+        this.events.publish('reloadPositionTable');
+    }
     
     openLogin(){
         this.navCtrl.setRoot(LoginPage);
@@ -93,28 +98,27 @@ export class RegisterPage {
             if (this.responseData.status == "ok") {
                 //loginObjects();
                 //localStorage.setItem('loginData', JSON.stringify(this.responseData));
+                localStorage.setItem('UserLoggedGroup', this.register.value.group);
                 localStorage.setItem('userEmail', this.register.value.email);
-                if(this.register.value.group.length > 0)
-                    localStorage.setItem('UserLoggedGroup', this.register.value.group);
-                else
-                    localStorage.setItem('UserLoggedGroup', 'null');
-                    
-                if (localStorage.getItem('UserLoggedIn') == 'false')
-                    localStorage.setItem('userID', this.responseData.id);
+                localStorage.setItem('userID', this.responseData.id);
+                localStorage.setItem('UserLoggedIn', 'true');
                 if(localStorage.getItem('UserLoggedIn') == 'true')
                     this.helper.gapAlert('Perfil actualizado con exito', 'Perfil');
-                else{
-                    localStorage.setItem('UserLoggedIn', 'true');
+                else
                     this.navCtrl.setRoot(HomePage);
-                }
                 
                 // reaparece el nav bar
-                this.tabBarElement = document.querySelector('#tabs div.tabbar');
-                this.tabBarElement.style.display = null;
+                if(localStorage.getItem('UserLoggedIn') == 'true'){
+                    this.tabBarElement = document.querySelector('#tabs div.tabbar');
+                    this.tabBarElement.style.display = null;
+                }
             }
         }, (err) => {
             // Error log
-            this.helper.gapAlert('Error en registro', err);
+            if(err.msg == 'duplicate')
+                this.helper.gapAlert('Este email ya existe', err);
+            else
+                this.helper.gapAlert('Error en registro', err);
         });
     }
 
