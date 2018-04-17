@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { HelperService } from '../../providers/helper';
@@ -29,7 +29,8 @@ export class HomePage {
   private nextGames : any;
   private gameDate : string;
   
-  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public helper : HelperService, 
+  private authService : AuthService, private formBuilder: FormBuilder, private events: Events) {
       this.group = this.formBuilder.group({
         code: ['', Validators.required]
       });
@@ -52,6 +53,11 @@ export class HomePage {
       this.positionName3 = '';
       this.positionName4 = '';
       this.positionName5 = '';
+      
+      this.events.subscribe('reloadPositionTable',() => {
+          //call method to refresh content
+          this.loadPositionTable();
+      });
   }
   ionViewDidLoad(){
       this.loadPositionTable();

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { HomePage } from '../home/home';
@@ -33,7 +33,9 @@ export class RegisterPage {
     submitText : string = '';
     isLoggedIn : boolean;
     
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder,
+  public events : Events) {
         // Quitar password de las validaciones al hacer submit
         this.isLoggedIn = localStorage.getItem('UserLoggedIn') == 'true';
         if(localStorage.getItem('UserLoggedIn') == 'true'){
@@ -70,6 +72,10 @@ export class RegisterPage {
             this.passwordStar = '*';
         }
   }
+  
+    ionViewDidLeave(){
+        this.events.publish('reloadPositionTable');
+    }
     
     openLogin(){
         this.navCtrl.setRoot(LoginPage);

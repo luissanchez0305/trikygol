@@ -88,6 +88,7 @@ export class GamesPage {
   
   public gamesTitle: string;
   public showMenuToggle : boolean;
+  private saveButtonText: string;
   private responseData : any;
   private isFifa: boolean;
   private isPlayoff: boolean;
@@ -148,6 +149,7 @@ export class GamesPage {
   }
   
   ionViewDidEnter(){
+    this.saveButtonText = 'Guardar';
     this.mode = this.navParams.get('mode');
     this.isPlayoff = (typeof this.mode === 'undefined');
     this.showGameMenu = (typeof this.mode !== 'undefined');
@@ -248,7 +250,7 @@ export class GamesPage {
       }
       for(var i = 0; i < this.responseData.length; i++){
         var juego = this.responseData[i];
-        var gameId = juego.juegoid;
+        var gameId = juego.id;
         var date = this.helper.formatDate(juego.fecha);
         var bandera1 = juego.bandera1 != null && juego.bandera1.length>0 ? juego.bandera1 : 'noflag.png';
         var marcador1 = juego.equipo1marcador;
@@ -352,32 +354,62 @@ export class GamesPage {
   }
   
   saveGroupGames() {
-    var url = '/updateUserGameScoreById.php';
+    var url = 'updateUserGameScoreById.php';
     var data = '';
+    var games = '';
+    var scores1 = '';
+    var scores2 = '';
     if(this.GroupGames.value.formMarcador1_1 && this.GroupGames.value.formMarcador1_2){
-      data = 'g='+ this.GroupGames.value.formGameId1+'&s1='+ this.GroupGames.value.formMarcador1_1+'&s2='+ this.GroupGames.value.formMarcador1_2 +'&u='+ localStorage.getItem('userID');
+      games = this.GroupGames.value.formGameId1 + ',';
+      scores1 = this.GroupGames.value.formMarcador1_1 + ',';
+      scores2 = this.GroupGames.value.formMarcador1_2 + ',';
     }
     if(this.GroupGames.value.formMarcador2_1 && this.GroupGames.value.formMarcador2_2){
-      data = 'g='+ this.GroupGames.value.formGameId2+'&s1='+ this.GroupGames.value.formMarcador2_1+'&s2='+ this.GroupGames.value.formMarcador2_2 +'&u='+ localStorage.getItem('userID');
+      games += this.GroupGames.value.formGameId2 + ',';
+      scores1 += this.GroupGames.value.formMarcador2_1 + ',';
+      scores2 += this.GroupGames.value.formMarcador2_2 + ',';
     }
     if(this.GroupGames.value.formMarcador3_1 && this.GroupGames.value.formMarcador3_2){
-      data = 'g='+ this.GroupGames.value.formGameId3+'&s1='+ this.GroupGames.value.formMarcador3_1+'&s2='+ this.GroupGames.value.formMarcador3_2 +'&u='+ localStorage.getItem('userID');
+      games += this.GroupGames.value.formGameId3 + ',';
+      scores1 += this.GroupGames.value.formMarcador3_1 + ',';
+      scores2 += this.GroupGames.value.formMarcador3_2 + ',';
     }
     if(this.GroupGames.value.formMarcador4_1 && this.GroupGames.value.formMarcador4_2){
-      data = 'g='+ this.GroupGames.value.formGameId4+'&s1='+ this.GroupGames.value.formMarcador4_1+'&s2='+ this.GroupGames.value.formMarcador4_2 +'&u='+ localStorage.getItem('userID');
+      games += this.GroupGames.value.formGameId4 + ',';
+      scores1 += this.GroupGames.value.formMarcador4_1 + ',';
+      scores2 += this.GroupGames.value.formMarcador4_2 + ',';
     }
     if(this.GroupGames.value.formMarcador5_1 && this.GroupGames.value.formMarcador5_2){
-      data = 'g='+ this.GroupGames.value.formGameId5+'&s1='+ this.GroupGames.value.formMarcador5_1+'&s2='+ this.GroupGames.value.formMarcador5_2 +'&u='+ localStorage.getItem('userID');
+      games += this.GroupGames.value.formGameId5 + ',';
+      scores1 += this.GroupGames.value.formMarcador5_1 + ',';
+      scores2 += this.GroupGames.value.formMarcador5_2 + ',';
     }
     if(this.GroupGames.value.formMarcador6_1 && this.GroupGames.value.formMarcador6_2){
-      data = 'g='+ this.GroupGames.value.formGameId6+'&s1='+ this.GroupGames.value.formMarcador6_1+'&s2='+ this.GroupGames.value.formMarcador6_2 +'&u='+ localStorage.getItem('userID');
+      games += this.GroupGames.value.formGameId6 + ',';
+      scores1 += this.GroupGames.value.formMarcador6_1 + ',';
+      scores2 += this.GroupGames.value.formMarcador6_2 + ',';
     }
+    if(this.GroupGames.value.formMarcador7_1 && this.GroupGames.value.formMarcador7_2){
+      games += this.GroupGames.value.formGameId7 + ',';
+      scores1 += this.GroupGames.value.formMarcador7_1 + ',';
+      scores2 += this.GroupGames.value.formMarcador7_2 + ',';
+    }
+    if(this.GroupGames.value.formMarcador8_1 && this.GroupGames.value.formMarcador8_2){
+      games += this.GroupGames.value.formGameId8 + ',';
+      scores1 += this.GroupGames.value.formMarcador8_1 + ',';
+      scores2 += this.GroupGames.value.formMarcador8_2 + ',';
+    }
+    data = 'g='+ games +'&s1=' + scores1 +'&s2='+ scores2 +'&u='+ localStorage.getItem('userID');
   
-    this.navCtrl.popToRoot();
+    
+    this.saveButtonText = 'Guardando...';
+    var $this = this;
     this.authService.getData(data,url).then(function(result){
+      $this.saveButtonText = 'Guardado';
+      $this.navCtrl.popToRoot();
+      $this.events.publish('reloadGroups');
       console.log('saved');
     });
-    this.events.publish('reloadGroups');
   }
   
   clickGames(type){

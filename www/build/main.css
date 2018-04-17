@@ -40120,3 +40120,7 @@ page-home .entire-text {
 .un-code .text-input-md {
   margin: 5px 8px !important;
 }
+
+.next-games .col {
+  overflow: inherit;
+}

@@ -15,12 +15,13 @@ var forms_1 = require('@angular/forms');
  * Ionic pages and navigation.
  */
 var GamesPage = (function () {
-    function GamesPage(navCtrl, authService, navParams, helper, events) {
+    function GamesPage(navCtrl, authService, navParams, helper, events, loadingCtrl) {
         this.navCtrl = navCtrl;
         this.authService = authService;
         this.navParams = navParams;
         this.helper = helper;
         this.events = events;
+        this.loadingCtrl = loadingCtrl;
         this.GroupGames = new forms_1.FormGroup({
             formGameId1: new forms_1.FormControl(),
             formMarcador1_1: new forms_1.FormControl(),
@@ -63,9 +64,11 @@ var GamesPage = (function () {
         this.showGameMenu = (typeof this.mode !== 'undefined');
         this.isFifa = this.navParams.get('type') == 'fifa';
         this.displaySelectedSource(this.navParams.get('type'));
+        this.showMenuToggle = true;
         if (this.isPlayoff) {
+            this.showMenuToggle = false;
             this.group = this.navParams.get('group');
-            this.groupLetter = this.group;
+            this.gamesTitle = "Juegos Grupo " + this.group;
             this.loadGames(1);
         }
         else {
@@ -79,24 +82,32 @@ var GamesPage = (function () {
         if (currentSelectedButton != null) {
             document.querySelector('page-games button.selected#' + oppositeSource + '-button-' + this.mode).className = currentSelectedButton.className.replace(/ selected/g, '');
         }
-        document.querySelector('page-games #' + source + '-button-' + (typeof this.mode === 'undefined' ? '' : this.mode)).className += ' selected';
+        else {
+            currentSelectedButton = document.querySelector('page-games #' + source + '-button-' + (typeof this.mode === 'undefined' ? '' : this.mode));
+            if (currentSelectedButton != null)
+                currentSelectedButton.className += ' selected';
+        }
         this.isFifa = source == 'fifa';
     };
     GamesPage.prototype.loadPlayOffs = function () {
         switch (this.mode) {
             case '8':
+                this.gamesTitle = '8vos de final';
                 this.loadGames(2);
                 console.log('octavos');
                 break;
             case '4':
+                this.gamesTitle = '4tos de final';
                 this.loadGames(3);
                 console.log('cuartos');
                 break;
             case 'semifinal':
+                this.gamesTitle = 'Semifinales';
                 this.loadGames(4);
                 console.log('semifinal');
                 break;
             case 'final':
+                this.gamesTitle = 'Finales';
                 this.loadGames(5);
                 console.log('final');
                 break;
@@ -104,6 +115,10 @@ var GamesPage = (function () {
     };
     GamesPage.prototype.loadGames = function (gameType) {
         var _this = this;
+        var loading = this.loadingCtrl.create({
+            content: 'Espere un momento...'
+        });
+        loading.present();
         this.showGame5 = false;
         this.showGame6 = false;
         this.showGame7 = false;
@@ -130,10 +145,19 @@ var GamesPage = (function () {
                 break;
         }
         this.authService.getData(data, url).then(function (result) {
+            loading.dismiss();
             _this.responseData = result;
+            if (gameType == 4) {
+                _this.gameTitle1 = " - Semifinal";
+                _this.gameTitle2 = " - Semifinal";
+            }
+            else if (gameType == 5 || gameType == 6) {
+                _this.gameTitle1 = " - 3er puesto";
+                _this.gameTitle2 = " - FINAL";
+            }
             for (var i = 0; i < _this.responseData.length; i++) {
                 var juego = _this.responseData[i];
-                var gameId = juego.juegoid;
+                var gameId = juego.id;
                 var date = _this.helper.formatDate(juego.fecha);
                 var bandera1 = juego.bandera1 != null && juego.bandera1.length > 0 ? juego.bandera1 : 'noflag.png';
                 var marcador1 = juego.equipo1marcador;
@@ -143,6 +167,7 @@ var GamesPage = (function () {
                 var equipo2 = juego.equipo2;
                 switch (i) {
                     case 0:
+                        _this.showGame1 = true;
                         _this.gameId1 = gameId;
                         _this.date1 = date;
                         _this.bandera1_1 = bandera1;
@@ -153,6 +178,7 @@ var GamesPage = (function () {
                         _this.equipo1_2 = equipo2;
                         break;
                     case 1:
+                        _this.showGame2 = true;
                         _this.gameId2 = gameId;
                         _this.date2 = date;
                         _this.bandera2_1 = bandera1;
@@ -235,16 +261,28 @@ var GamesPage = (function () {
     GamesPage.prototype.saveGroupGames = function () {
         var url = '/updateUserGameScoreById.php';
         var data = '';
+        var games = '';
+        var scores1 = '';
+        var scores2 = '';
         if (this.GroupGames.value.formMarcador1_1 && this.GroupGames.value.formMarcador1_2) {
-            data = 'g=' + this.GroupGames.value.formGameId1 + '&s1=' + this.GroupGames.value.formMarcador1_1 + '&s2=' + this.GroupGames.value.formMarcador1_2 + '&u=' + localStorage.getItem('userID');
+            games = this.GroupGames.value.formGameId1;
+            scores1 = this.GroupGames.value.formMarcador1_1;
+            scores2 = this.GroupGames.value.formMarcador1_2;
         }
         if (this.GroupGames.value.formMarcador2_1 && this.GroupGames.value.formMarcador2_2) {
-            data = 'g=' + this.GroupGames.value.formGameId2 + '&s1=' + this.GroupGames.value.formMarcador2_1 + '&s2=' + this.GroupGames.value.formMarcador2_2 + '&u=' + localStorage.getItem('userID');
+            games = this.GroupGames.value.formGameId2;
+            scores1 = this.GroupGames.value.formMarcador2_1;
+            scores2 = this.GroupGames.value.formMarcador2_2;
         }
         if (this.GroupGames.value.formMarcador3_1 && this.GroupGames.value.formMarcador3_2) {
-            data = 'g=' + this.GroupGames.value.formGameId3 + '&s1=' + this.GroupGames.value.formMarcador3_1 + '&s2=' + this.GroupGames.value.formMarcador3_2 + '&u=' + localStorage.getItem('userID');
+            games = this.GroupGames.value.formGameId3;
+            scores1 = this.GroupGames.value.formMarcador3_1;
+            scores2 = this.GroupGames.value.formMarcador3_2;
         }
         if (this.GroupGames.value.formMarcador4_1 && this.GroupGames.value.formMarcador4_2) {
+            games = this.GroupGames.value.formGameId3;
+            scores1 = this.GroupGames.value.formMarcador3_1;
+            scores2 = this.GroupGames.value.formMarcador3_2;
             data = 'g=' + this.GroupGames.value.formGameId4 + '&s1=' + this.GroupGames.value.formMarcador4_1 + '&s2=' + this.GroupGames.value.formMarcador4_2 + '&u=' + localStorage.getItem('userID');
         }
         if (this.GroupGames.value.formMarcador5_1 && this.GroupGames.value.formMarcador5_2) {
