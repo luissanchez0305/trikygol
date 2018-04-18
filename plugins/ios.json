@@ -8,24 +8,24 @@
   },
   "installed_plugins": {
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.esferasoluciones.trikygol"
+      "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
     },
     "cordova-plugin-dialogs": {
-      "PACKAGE_NAME": "com.esferasoluciones.trikygol"
+      "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
     },
     "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "com.esferasoluciones.trikygol"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.esferasoluciones.trikygol"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.esferasoluciones.trikygol"
-    },
-    "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "com.esferasoluciones.trikygol"
+      "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
     },
     "cordova-plugin-speechrecognition": {
+      "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
+    },
+    "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
     }
   },

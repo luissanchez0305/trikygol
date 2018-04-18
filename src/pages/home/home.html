@@ -11,7 +11,7 @@
   <div class="headers-ion">Próximos partidos</div>
   <div padding margin-bottom text-center style="height: auto;" class="card-triky">
     <ion-grid>
-      <ion-row *ngFor="let game of nextGames">
+      <ion-row *ngFor="let game of nextGames" class="next-games">
         <ion-col col-12 class="score-home"> <ion-icon name="md-calendar"></ion-icon>{{ gameDate }}</ion-col>
         <ion-col col-4><img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag1 }}"> {{ game.player1 }}</ion-col>
         <ion-col col-3><div><span style="font-weight:700">{{ game.score1 }}</span> : <span style="font-weight:700;">{{ game.score2 }}</span></div></ion-col>
@@ -59,7 +59,7 @@
   
 <!--tabla de usuarios-->
 <ion-item-group class="people-group positions">
-  <div class="headers-ion">Tabla de Posiciones</div>
+  <div class="headers-ion">Participantes</div>
   <div padding class="card-triky">
     <div *ngIf="positionTable">
       <ion-item class="position1">
@@ -70,20 +70,8 @@
           </ion-row>
         </ion-grid>
       </ion-item>
-      <ion-item class="position1">1
-        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ positionName1 }}
-      </ion-item>
-      <ion-item class="position1">2
-        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ positionName2 }}
-      </ion-item>
-      <ion-item class="position1">3
-        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ positionName3 }}
-      </ion-item>
-      <ion-item class="position1">4
-        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ positionName4 }}
-      </ion-item>
-      <ion-item class="position1">5
-        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ positionName5 }}
+      <ion-item class="position1" *ngFor="let position of positions">{{ position.number }}
+        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ position.nombre }}
       </ion-item>
     </div>
     <div class="un-code" *ngIf="!positionTable">

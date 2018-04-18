@@ -40125,6 +40125,10 @@ page-home .entire-text {
   margin: 5px 8px !important;
 }
 
+.next-games .col {
+  overflow: inherit;
+}
+
 page-stickers-missing .pause {
   background-color: gray;
 }
