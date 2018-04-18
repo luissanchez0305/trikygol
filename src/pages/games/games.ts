@@ -401,13 +401,17 @@ export class GamesPage {
     }
     data = 'g='+ games +'&s1=' + scores1 +'&s2='+ scores2 +'&u='+ localStorage.getItem('userID');
   
-    
     this.saveButtonText = 'Guardando...';
     var $this = this;
     this.authService.getData(data,url).then(function(result){
       $this.saveButtonText = 'Guardado';
-      $this.navCtrl.popToRoot();
-      $this.events.publish('reloadGroups');
+      if($this.isPlayoff){
+        $this.navCtrl.popToRoot();
+        $this.events.publish('reloadGroups');
+      }
+      else{
+        setTimeout(function(){ $this.saveButtonText = 'Guardar' }, 8000)
+      }
       console.log('saved');
     });
   }

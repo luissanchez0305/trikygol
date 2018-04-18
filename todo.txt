@@ -15,13 +15,15 @@ x quitar y poner estilo de equipo escogido en la pantalla de grupos
 x arreglar tab de fifa de la vista de games, la x de selected se despliega por error
 
 rehacer
-- actualizar la seccion de tabla de posiciones de home al regresar de perfil
+x actualizar la seccion de tabla de posiciones de home al regresar de perfil
 - poner notificacion de "correo ya existe"
-- actualizar vista de grupos en cada load 
+x actualizar vista de grupos en cada load 
 
 
+x quitar actualizar vista de juegos al hacer guardar
+- revisar actualizacion de puntos en los grupos la guardar juegos 
 x revisar texto de login infructuoso
-- actualizar las posiciones del grupo despues de guardar los marcadores
+x actualizar las posiciones del grupo despues de guardar los marcadores
 - poner 5 ultimos partidos jugados y boton para ir a mis estadisticas
 - agregar seccion de mis estadisticas en el menu hamburguer
 - quitar de home marcadores acertados, partidos empatados, equipos ganadores, equipos clasificados y tabla de posiciciones y ponerlos en mis estadisticas

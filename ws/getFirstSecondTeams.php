@@ -36,7 +36,7 @@
 		if(mysql_num_rows($teams)) {
 			while($team = mysql_fetch_assoc($teams)) {
 				// sacar todos los juegos del equipo para sacar los puntajes
-				$userStatement = $usuarioId != '0' ? "AND usuarioid = ".$usuarioId : "";
+				$userStatement = $usuarioId != '0' ? "AND usuarioid = ".$usuarioId." AND juegoid IN (SELECT j.id FROM juegos j WHERE tipo = 1)" : "";
 				$query = "SELECT equipoid1, equipoid2, equipo1marcador, equipo2marcador FROM $source WHERE (equipoid1 = " . 
 					$team["id"] . " OR equipoid2 = " . $team["id"] . ") ". $userStatement .
 					" AND equipo1marcador IS NOT NULL AND equipo2marcador IS NOT NULL";

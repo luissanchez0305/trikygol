@@ -1611,8 +1611,13 @@ var GamesPage = (function () {
         var $this = this;
         this.authService.getData(data, url).then(function (result) {
             $this.saveButtonText = 'Guardado';
-            $this.navCtrl.popToRoot();
-            $this.events.publish('reloadGroups');
+            if ($this.isPlayoff) {
+                $this.navCtrl.popToRoot();
+                $this.events.publish('reloadGroups');
+            }
+            else {
+                setTimeout(function () { $this.saveButtonText = 'Guardar'; }, 8000);
+            }
             console.log('saved');
         });
     };
