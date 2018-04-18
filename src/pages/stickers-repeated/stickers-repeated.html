@@ -14,5 +14,14 @@
 
 
 <ion-content padding>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col col-33 *ngFor="let number of symbols">
+        <div class="card card-1" (click)="ondemand_details(post.product_final_categories_id)">
+          <img src="{{post.product_final_categories_icon}}">
+          <p style="font-size: 9px;">{{post.product_final_categories_name}}</p>
+       </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
