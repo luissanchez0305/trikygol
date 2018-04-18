@@ -18,19 +18,14 @@ export class HomePage {
   private tieGames : string;
   private winTeams : string;
   private passedTeams : string;
-  private positionName1 : string;
-  private positionName2 : string;
-  private positionName3 : string;
-  private positionName4 : string;
-  private positionName5 : string;
+  private positions : any;
   private responseUserData : any;
-  private responsePositionData : any;
   private positionTable : boolean;
   private nextGames : any;
   private gameDate : string;
   
-  constructor(public navCtrl: NavController, public helper : HelperService, 
-  private authService : AuthService, private formBuilder: FormBuilder, private events: Events) {
+  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, public events : Events, 
+    private formBuilder: FormBuilder) {
       this.group = this.formBuilder.group({
         code: ['', Validators.required]
       });
@@ -48,17 +43,12 @@ export class HomePage {
         this.passedTeams = this.responseUserData.equiposClasificados != null ? this.responseUserData.equiposClasificados : '0';
       });
       
-      this.positionName1 = '';
-      this.positionName2 = '';
-      this.positionName3 = '';
-      this.positionName4 = '';
-      this.positionName5 = '';
-      
       this.events.subscribe('reloadPositionTable',() => {
           //call method to refresh content
           this.loadPositionTable();
       });
   }
+  
   ionViewDidLoad(){
       this.loadPositionTable();
       
@@ -80,17 +70,18 @@ export class HomePage {
   }
   
   loadPositionTable(){
-      this.authService.getData('g=' + localStorage.getItem('UserLoggedGroup'), 'getUsersOrderedPoints.php').then((result) => {
-        this.responsePositionData = result;
-        if(this.responsePositionData.status == 'no params'){
+      this.authService.getData(localStorage.getItem('UserLoggedGroup').length > 0 ? 'g=' + localStorage.getItem('UserLoggedGroup') : '', 'getUsersOrderedPoints.php').then((result) => {
+        this.positions = result;
+        if(this.positions.status == 'no params'){
           this.positionTable = false;
         }
         else {
           this.positionTable = true;
           
-    		  for(var i = 0; i < this.responsePositionData.length; i++){
+    		  /*for(var i = 0; i < this.positions.length; i++){
     		    var user = this.responsePositionData[i];
     		    var user_data = user.nombre + ' - ' + (user.puntos != null ? user.puntos : 'Sin ') + ' puntos';
+      
     		    if(i == 0)
               this.positionName1 = user_data;
             else if(i == 1)
@@ -101,7 +92,7 @@ export class HomePage {
               this.positionName4 = user_data;
             else if(i == 4)
               this.positionName5 = user_data;
-    		  }
+    		  }*/
         }
       }, (error) => {
         console.log(error);
@@ -112,8 +103,8 @@ export class HomePage {
     localStorage.setItem('UserLoggedGroup', this.group.value.code);
     var data = { g : this.group.value.code, u : localStorage.getItem('userID') };
     this.authService.postData(data, 'updateUserGroup.php').then((result) => {
-      this.responsePositionData = result;
-      if(this.responsePositionData.status == 'ok'){
+      this.positions = result;
+      if(this.positions.status == 'ok'){
         this.loadPositionTable();
       }
     });

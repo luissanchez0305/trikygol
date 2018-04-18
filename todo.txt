@@ -21,7 +21,7 @@ x actualizar vista de grupos en cada load
 
 
 x quitar actualizar vista de juegos al hacer guardar
-- revisar actualizacion de puntos en los grupos la guardar juegos 
+x revisar actualizacion de puntos en los grupos la guardar juegos 
 x revisar texto de login infructuoso
 x actualizar las posiciones del grupo despues de guardar los marcadores
 - poner 5 ultimos partidos jugados y boton para ir a mis estadisticas
