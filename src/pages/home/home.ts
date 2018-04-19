@@ -51,14 +51,16 @@ export class HomePage {
       });
       this.isDeviceOnline = true;
       // watch network for a disconnect
-      var $this = this;
       this.network.onDisconnect().subscribe(() => {
-        
-        $this.isDeviceOnline = false;
+        this.zone.run(() => {
+          this.isDeviceOnline = false;
+        });
       });
       // watch network for a connection
       this.network.onConnect().subscribe(() => {
-        $this.isDeviceOnline = true;
+        this.zone.run(() => {
+          this.isDeviceOnline = true;
+        });
       });
   }
   

@@ -1131,13 +1131,16 @@ var HomePage = (function () {
         });
         this.isDeviceOnline = true;
         // watch network for a disconnect
-        var $this = this;
         this.network.onDisconnect().subscribe(function () {
-            $this.isDeviceOnline = false;
+            _this.zone.run(function () {
+                _this.isDeviceOnline = false;
+            });
         });
         // watch network for a connection
         this.network.onConnect().subscribe(function () {
-            $this.isDeviceOnline = true;
+            _this.zone.run(function () {
+                _this.isDeviceOnline = true;
+            });
         });
     }
     HomePage.prototype.ionViewDidLoad = function () {
