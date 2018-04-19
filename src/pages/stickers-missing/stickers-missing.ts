@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
-import { SpeechRecognition } from '@ionic-native/speech-recognition';
+import { Constants } from '../../services/constants';
+/*import { SpeechRecognition } from '@ionic-native/speech-recognition';*/
 
 /**
  * Generated class for the StickersMissingPage page.
@@ -15,16 +16,28 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
   templateUrl: 'stickers-missing.html',
 })
 export class StickersMissingPage {
-  matches : String[];
-  recording : string = 'pause';
-  constructor(public navCtrl: NavController, public navParams: NavParams, private plt: Platform,
-  private speechRecognition: SpeechRecognition) {
+  /*matches : String[];
+  recording : string = 'pause';*/
+  private sections : any = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams/*, private plt: Platform,
+  private speechRecognition: SpeechRecognition*/) {
+    for(var i = 0; i < Constants.stickers.length; i++){
+      var _stickers = [];
+      for(var j = Constants.stickers[i].range[0]; j <= Constants.stickers[i].range[1]; j++){
+        _stickers.push({ number: j, active: '' });
+      }
+      this.sections.push({ name: Constants.stickers[i].name, stickers: _stickers  });
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StickersMissingPage');
   }
-  
+  click_number(obj){
+    console.log(obj.number);
+    obj.active = 'active';
+  }
+  /*
   async startListening(){
     const hasPermission = await this.speechRecognition.hasPermission();
     if(!hasPermission){
@@ -39,7 +52,7 @@ export class StickersMissingPage {
     /*.subscribe(
       (matches: Array<string>) => console.log(matches),
       (onerror) => console.log('error:', onerror)
-    )*/
+    )/
     .subscribe(
       async (matches: Array<string>) => {
         this.matches = matches;
@@ -60,6 +73,6 @@ export class StickersMissingPage {
   
   isIos(){
     return this.plt.is('ios');
-  }
+  }*/
 
 }

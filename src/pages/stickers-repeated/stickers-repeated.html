@@ -13,12 +13,17 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-33 *ngFor="let number of symbols">
-        <button ion-button round (click)="click_number(number)">{{ number }}</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content padding class="sticker-numbers">
+  <div style="float:left; width:100%;" *ngFor="let section of sections">
+    <div>{{ section.name }}</div>
+    <div id="wrapper">
+      <ul id="circles">
+          <li *ngFor="let sticker of section.stickers">
+              <div class="circle {{ sticker.active }}" (click)="click_number(sticker)">
+                  <div>{{ sticker.number }}</div>
+              </div>
+          </li>
+      </ul>
+    </div>
+  </div>
 </ion-content>

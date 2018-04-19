@@ -16,11 +16,14 @@ import { Constants } from '../../services/constants';
 })
 export class StickersRepeatedPage {
 
-  private symbols : any = [];
+  private sections : any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    var name = Constants.stickers.symbols['name'];
-    for(var i = 0; i < Constants.stickers.symbols.range[1] - Constants.stickers.symbols.range[0]; i++){
-      this.symbols.push(i);
+    for(var i = 0; i < Constants.stickers.length; i++){
+      var _stickers = [];
+      for(var j = Constants.stickers[i].range[0]; j <= Constants.stickers[i].range[1]; j++){
+        _stickers.push({ number: j, active: '' });
+      }
+      this.sections.push({ name: Constants.stickers[i].name, stickers: _stickers  });
     }
   }
 
@@ -28,8 +31,9 @@ export class StickersRepeatedPage {
     console.log('ionViewDidLoad StickersRepeatedPage');
   }
   
-  click_number(number){
-    console.log(number);
+  click_number(obj){
+    console.log(obj.number);
+    obj.active = 'active';
   }
 
 }

@@ -13,8 +13,8 @@
 </ion-header>
 
 
-<ion-content padding>
-  <div>Puedes ingresar tus figuritas repetidas con reconocimiento de voz</div>
+<ion-content padding class="sticker-numbers">
+  <!--<div>Puedes ingresar tus figuritas repetidas con reconocimiento de voz</div>
   <div style="width:100%; height: 30px;" [class]="recording"><label [class]="recording">Escuchando</label></div>
   <button ion-button full (click)="startListening()">Empezar</button>
   <button ion-button full (click)="stopListening()" *ngIf="isIos()">Detener</button>
@@ -38,5 +38,18 @@
         </ion-item>
       </ion-list>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
+  
+  <div style="float:left; width:100%;" *ngFor="let section of sections">
+    <div>{{ section.name }}</div>
+    <div id="wrapper">
+      <ul id="circles">
+          <li *ngFor="let sticker of section.stickers">
+              <div class="circle {{ sticker.active }}" (click)="click_number(sticker)">
+                  <div>{{ sticker.number }}</div>
+              </div>
+          </li>
+      </ul>
+    </div>
+  </div>
 </ion-content>
