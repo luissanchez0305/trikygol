@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NavController, Events } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
@@ -27,7 +27,7 @@ export class HomePage {
   private isDeviceOnline : boolean;
   
   constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, public events : Events, 
-    private formBuilder: FormBuilder, private network: Network) {
+    private formBuilder: FormBuilder, private network: Network, private zone: NgZone) {
       this.group = this.formBuilder.group({
         code: ['', Validators.required]
       });
@@ -49,14 +49,16 @@ export class HomePage {
           //call method to refresh content
           this.loadPositionTable();
       });
-      this.isDeviceOnline = false;
+      this.isDeviceOnline = true;
       // watch network for a disconnect
+      var $this = this;
       this.network.onDisconnect().subscribe(() => {
-        this.isDeviceOnline = false;
+        
+        $this.isDeviceOnline = false;
       });
       // watch network for a connection
       this.network.onConnect().subscribe(() => {
-        this.isDeviceOnline = true;
+        $this.isDeviceOnline = true;
       });
   }
   
@@ -106,7 +108,7 @@ export class HomePage {
     		  }*/
         }
       }, (error) => {
-        console.log(error);
+        alert(error);
       });
   }
   
