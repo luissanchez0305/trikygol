@@ -49,7 +49,7 @@ export class HomePage {
           //call method to refresh content
           this.loadPositionTable();
       });
-      this.isDeviceOnline = true;
+      this.isDeviceOnline = false;
       // watch network for a disconnect
       this.network.onDisconnect().subscribe(() => {
         this.isDeviceOnline = false;

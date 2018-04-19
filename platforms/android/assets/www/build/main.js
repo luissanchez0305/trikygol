@@ -1128,7 +1128,7 @@ var HomePage = (function () {
             //call method to refresh content
             _this.loadPositionTable();
         });
-        this.isDeviceOnline = true;
+        this.isDeviceOnline = false;
         // watch network for a disconnect
         this.network.onDisconnect().subscribe(function () {
             _this.isDeviceOnline = false;
