@@ -24,8 +24,8 @@ export class HomePage {
   private nextGames : any;
   private gameDate : string;
   
-  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, public events : Events, 
-    private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, 
+    public events : Events, private formBuilder: FormBuilder) {
       this.group = this.formBuilder.group({
         code: ['', Validators.required]
       });

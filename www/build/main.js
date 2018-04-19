@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 109:
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45,7 +45,7 @@ StickersMatchPage = __decorate([
 
 /***/ }),
 
-/***/ 110:
+/***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -178,13 +178,14 @@ StickersMissingPage = __decorate([
 
 /***/ }),
 
-/***/ 111:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StickersRepeatedPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_constants__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -194,6 +195,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 /**
@@ -206,15 +208,23 @@ var StickersRepeatedPage = (function () {
     function StickersRepeatedPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.symbols = [];
+        var name = __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers.symbols['name'];
+        for (var i = 0; i < __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers.symbols.range[1] - __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers.symbols.range[0]; i++) {
+            this.symbols.push(i);
+        }
     }
     StickersRepeatedPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad StickersRepeatedPage');
+    };
+    StickersRepeatedPage.prototype.click_number = function (number) {
+        console.log(number);
     };
     return StickersRepeatedPage;
 }());
 StickersRepeatedPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-stickers-repeated',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/stickers-repeated/stickers-repeated.html"*/'<!--\n  Generated template for the StickersRepeatedPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Repetidas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/stickers-repeated/stickers-repeated.html"*/,
+        selector: 'page-stickers-repeated',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/stickers-repeated/stickers-repeated.html"*/'<!--\n  Generated template for the StickersRepeatedPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Repetidas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-33 *ngFor="let number of symbols">\n        <button ion-button round (click)="click_number(number)">{{ number }}</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/stickers-repeated/stickers-repeated.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
 ], StickersRepeatedPage);
@@ -223,16 +233,16 @@ StickersRepeatedPage = __decorate([
 
 /***/ }),
 
-/***/ 112:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StickersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stickers_missing_stickers_missing__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stickers_repeated_stickers_repeated__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stickers_match_stickers_match__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stickers_missing_stickers_missing__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stickers_repeated_stickers_repeated__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stickers_match_stickers_match__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -283,7 +293,7 @@ StickersPage = __decorate([
 
 /***/ }),
 
-/***/ 121:
+/***/ 122:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -296,36 +306,36 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 121;
+webpackEmptyAsyncContext.id = 122;
 
 /***/ }),
 
-/***/ 163:
+/***/ 164:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/forgot/forgot.module": [
-		286,
+		285,
 		7
 	],
 	"../pages/games/games.module": [
-		285,
+		286,
 		6
 	],
 	"../pages/login/login.module": [
-		288,
+		287,
 		5
 	],
 	"../pages/register/register.module": [
-		290,
+		288,
 		4
 	],
 	"../pages/stickers-match/stickers-match.module": [
-		287,
+		289,
 		3
 	],
 	"../pages/stickers-missing/stickers-missing.module": [
-		289,
+		290,
 		2
 	],
 	"../pages/stickers-repeated/stickers-repeated.module": [
@@ -348,74 +358,8 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 163;
+webpackAsyncContext.id = 164;
 module.exports = webpackAsyncContext;
-
-/***/ }),
-
-/***/ 165:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Constants; });
-//export var Constants = {  };
-//export var Constants = {  };
-var Constants = {
-    //API_ENDPOINT : '/ws/',
-    API_ENDPOINT: 'https://www.esferasoluciones.com/api/trikygol/',
-    months: [
-        'Enero',
-        'Febrero',
-        'Marzo',
-        'Abril',
-        'Mayo',
-        'Junio',
-        'Julio',
-        'Agosto',
-        'Septiembre',
-        'Octubre',
-        'Noviembre',
-        'Diciembre'
-    ],
-    stickers: {
-        symbols: { name: 'Simbolos', range: [0, 7] },
-        stadiums: { name: 'Estadios', range: [8, 19] },
-        russia: { name: 'Rusia', range: [20, 39] },
-        saudi: { name: 'Arabia Saudita', range: [40, 59] },
-        egypt: { name: 'Egipto', range: [60, 79] },
-        uruguay: { name: 'Urugay', range: [80, 99] },
-        portugal: { name: 'Portugal', range: [100, 119] },
-        spain: { name: 'España', range: [120, 139] },
-        morocco: { name: 'Marruecos', range: [140, 159] },
-        islamicRep: { name: 'Iran', range: [160, 179] },
-        france: { name: 'Francia', range: [180, 199] },
-        australia: { name: 'Australia', range: [200, 219] },
-        peru: { name: 'Peru', range: [220, 239] },
-        denmark: { name: 'Dinamarca', range: [240, 259] },
-        argentina: { name: 'Argentina', range: [260, 279] },
-        iceland: { name: 'Islandia', range: [280, 299] },
-        croatia: { name: 'Croacia', range: [300, 319] },
-        nigeria: { name: 'Nigeria', range: [320, 339] },
-        brazil: { name: 'Brasil', range: [340, 359] },
-        switzerland: { name: 'Suiza', range: [360, 379] },
-        costaRica: { name: 'Costa Rica', range: [380, 399] },
-        serbia: { name: 'Serbia', range: [400, 419] },
-        germany: { name: 'Alemania', range: [420, 439] },
-        mexico: { name: 'Mexico', range: [440, 459] },
-        sweden: { name: 'Suecia', range: [460, 479] },
-        korea: { name: 'Corea del Sur', range: [480, 499] },
-        belgium: { name: 'Bélgica', range: [500, 519] },
-        panama: { name: 'Panamá', range: [520, 539] },
-        tunisia: { name: 'Túnez', range: [540, 559] },
-        england: { name: 'Inglaterra', range: [560, 579] },
-        poland: { name: 'Polonia', range: [580, 599] },
-        senegal: { name: 'Senegal', range: [600, 619] },
-        colombia: { name: 'Colombia', range: [620, 639] },
-        japan: { name: 'Japón', range: [640, 659] },
-        legends: { name: 'Leyendas', range: [660, 669] },
-    }
-};
-//# sourceMappingURL=constants.js.map
 
 /***/ }),
 
@@ -428,7 +372,7 @@ var Constants = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__groups_groups__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__games_games__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__games_games__ = __webpack_require__(61);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -480,7 +424,7 @@ TabsPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_toPromise__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_toPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__games_games__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__games_games__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__login_login__ = __webpack_require__(32);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -775,7 +719,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_dialogs__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_dialogs__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_about_about__ = __webpack_require__(283);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_contact_contact__ = __webpack_require__(284);
@@ -783,16 +727,16 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_login_login__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_register_register__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_forgot_forgot__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_forgot_forgot__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_groups_groups__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_games_games__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_stickers_stickers__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_stickers_missing_stickers_missing__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_stickers_repeated_stickers_repeated__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_stickers_match_stickers_match__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_games_games__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_stickers_stickers__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_stickers_missing_stickers_missing__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_stickers_repeated_stickers_repeated__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_stickers_match_stickers_match__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_status_bar__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_splash_screen__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_http__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_http__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_auth_service__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_helper__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_speech_recognition__ = __webpack_require__(168);
@@ -853,12 +797,12 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                 links: [
-                    { loadChildren: '../pages/games/games.module#GamesPageModule', name: 'GamesPage', segment: 'games', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/games/games.module#GamesPageModule', name: 'GamesPage', segment: 'games', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers-missing/stickers-missing.module#StickersMissingPageModule', name: 'StickersMissingPage', segment: 'stickers-missing', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/stickers-missing/stickers-missing.module#StickersMissingPageModule', name: 'StickersMissingPage', segment: 'stickers-missing', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-repeated/stickers-repeated.module#StickersRepeatedPageModule', name: 'StickersRepeatedPage', segment: 'stickers-repeated', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers/stickers.module#StickersPageModule', name: 'StickersPage', segment: 'stickers', priority: 'low', defaultHistory: [] }
                 ]
@@ -904,7 +848,7 @@ AppModule = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelperService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_dialogs__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_dialogs__ = __webpack_require__(165);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -976,7 +920,7 @@ HelperService = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_stickers_stickers__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_stickers_stickers__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_register_register__ = __webpack_require__(44);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1121,9 +1065,9 @@ ContactPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_constants__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_constants__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(262);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1184,7 +1128,7 @@ AuthService = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__forgot_forgot__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__forgot_forgot__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__register_register__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_helper__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_service__ = __webpack_require__(31);
@@ -1289,7 +1233,7 @@ var LoginPage_1;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_helper__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_service__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_constants__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_constants__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1402,8 +1346,8 @@ HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>TrikyGol</ion-title>\n    <button ion-button menuToggle end class="button button-clear">\n      <ion-icon name="menu"></ion-icon>\n    </button>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <!--Marcador Partido-->\n  <div class="headers-ion">Próximos partidos</div>\n  <div padding margin-bottom text-center style="height: auto;" class="card-triky">\n    <ion-grid>\n      <ion-row *ngFor="let game of nextGames" class="next-games">\n        <ion-col col-12 class="score-home"> <ion-icon name="md-calendar"></ion-icon>{{ gameDate }}</ion-col>\n        <ion-col col-4><img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag1 }}"> {{ game.player1 }}</ion-col>\n        <ion-col col-3><div><span style="font-weight:700">{{ game.score1 }}</span> : <span style="font-weight:700;">{{ game.score2 }}</span></div></ion-col>\n        <ion-col col-4> {{ game.player2 }} <img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag2 }}"></ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n  <!--panel de mis puntos-->\n  <ion-item-group class="people-group">	\n  <div class="headers-ion">Puntos Ganados</div>\n  <div padding margin-bottom text-center class="card-triky">\n        <div class="title" end>  <ion-icon style="color:#ff9800; font-size:3.5rem" name="md-trophy"></ion-icon> Mis puntos: {{ myPoints }}</div>\n  	<ion-label class="entire-text">Mis puntos total, acertados</ion-label>\n</div>\n<!--panel de estadisticas-->\n    <ion-grid style="font-size:1.4rem;text-align:center;white-space: inherit !important;">\n        <ion-row>\n            <ion-col col-6>\n              <div padding class="card-triky">\n                <div style="white-space: normal;"># de marcadores acertados</div>\n                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ scoresRight }}</b></div>\n                </div>\n            </ion-col>\n            <ion-col col-6>\n               <div padding class="card-triky">\n                <div style="white-space: normal;"># de partidos  empatados</div>\n                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ tieGames }}</b></div>\n                </div>\n            </ion-col>\n            <ion-col col-6>\n              <div padding class="card-triky">\n                <div style="white-space: normal;"># de equipos ganadores</div>\n                <div style="font-size:1.9rem;"><b>{{ winTeams }}</b></div>\n                </div>\n            </ion-col>\n            <ion-col col-6>\n              <div padding class="card-triky">\n                <div style="white-space: normal;"># de equipos clasificados(x2)</div>\n                <div style="font-size:1.9rem;"><b>{{ passedTeams }}</b></div>\n                </div>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n  </ion-item-group>\n  \n<!--tabla de usuarios-->\n<ion-item-group class="people-group positions">\n  <div class="headers-ion">Participantes</div>\n  <div padding class="card-triky">\n    <div *ngIf="positionTable">\n      <ion-item class="position1">\n        <ion-grid>\n          <ion-row class="header-table">\n            <ion-col col-6>Usuario</ion-col>\n            <ion-col col-6>Puntos</ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-item>\n      <ion-item class="position1" *ngFor="let position of positions">{{ position.number }}\n        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ position.nombre }}\n      </ion-item>\n    </div>\n    <div class="un-code" *ngIf="!positionTable">\n        <ion-item>\n          <h2>Aún no perteneces a un grupo</h2>\n          <p>Introduce el grupo abajo y dale a "Entrar" para empezar a jugar</p>\n          <form [formGroup]="group" (ngSubmit)="attemptJoinGroup()">\n            <ion-item>\n                <ion-input class="code-group" type="text" placeholder="Código" autocapitalize="none" formControlName="code"></ion-input>\n            </ion-item>\n            <br>\n            <button ion-button full type="submit" class="button button-calm" [disabled]="!group.valid">ENTRAR</button>\n          </form>\n        </ion-item>\n    </div>\n    </div>\n    \n  </ion-item-group>\n  <ion-item-group>\n  </ion-item-group>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_4__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */],
-        __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_4__providers_auth_service__["a" /* AuthService */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */]])
 ], HomePage);
 
 //# sourceMappingURL=home.js.map
@@ -1420,7 +1364,7 @@ HomePage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__forgot_forgot__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__forgot_forgot__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_helper__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_service__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_catch__ = __webpack_require__(54);
@@ -1562,6 +1506,89 @@ RegisterPage = __decorate([
 /***/ }),
 
 /***/ 60:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ForgotPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__register_register__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_helper__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_auth_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_catch__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_catch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_toPromise__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_toPromise__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+/**
+ * Generated class for the ForgotPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ForgotPage = (function () {
+    function ForgotPage(navCtrl, navParams, authService, helper, formBuilder) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.authService = authService;
+        this.helper = helper;
+        this.formBuilder = formBuilder;
+        this.showSent = false;
+        this.forgot = this.formBuilder.group({
+            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["h" /* Validators */].required]
+        });
+        this.showSent = false;
+    }
+    ForgotPage.prototype.openLogin = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__login_login__["a" /* LoginPage */]);
+    };
+    ForgotPage.prototype.openRegister = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__register_register__["a" /* RegisterPage */]);
+    };
+    ForgotPage.prototype.attemptUserForgot = function () {
+        var _this = this;
+        var data = { type: 'cred', e: this.forgot.value.email };
+        this.authService.postData(data, '/sendMail.php').then(function (result) {
+            _this.showSent = true;
+        }, function (err) {
+            // Error log
+            _this.helper.gapAlert('Error en logueao', err);
+        });
+    };
+    return ForgotPage;
+}());
+ForgotPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-forgot',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/forgot/forgot.html"*/'<!--\n  Generated template for the ForgotPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-title>Recuperar mi contraseña</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <div ng-show="true">\n\n        <div class="list card cardprogram">\n            <form [formGroup]="forgot" (ngSubmit)="attemptUserForgot()">\n                <div class="item item-body">\n                    <div margin-bottom padding class="card-triky"><label>\n                   <ion-icon name="information-circle"></ion-icon> Por favor introduce la información de tu cuenta\n                </label>\n                    </div>\n                    <div margin-bottom padding class="card-triky">\n\n                        <ion-item *ngIf="!showSent">\n                            <ion-input type="email" placeholder="Email" autocapitalize="none" formControlName="email"></ion-input>\n                        </ion-item>\n\n                    </div>\n                    <div style="text-align:center">\n                        <br *ngIf="!showSent">\n                        <button ion-button full type="submit" class="button button-calm" [disabled]="!forgot.valid" *ngIf="!showSent">ENVIAR</button>\n                        <!--<br *ngIf="!showSent">-->\n                        <!--<br *ngIf="!showSent">-->\n                        <label class="lorems lorems-content" *ngIf="showSent">\n                   Una nueva contraseña ha sido enviada a la direccion de correo que envio<br>Por favor, le recomendamos que la cambie tan pronto vuelva a entrar\n                </label>\n                        <br/>\n                        <div ion-button clear (click)="openRegister()">\n                            Registrarse\n                        </div>\n                        <br/>\n                        <div ion-button clear (click)="openLogin()">\n                            Login\n                        </div>\n                    </div>\n                </div>\n            </form>\n        </div>\n\n    </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/forgot/forgot.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_6__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_5__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
+], ForgotPage);
+
+//# sourceMappingURL=forgot.js.map
+
+/***/ }),
+
+/***/ 61:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1915,86 +1942,69 @@ GamesPage = __decorate([
 
 /***/ }),
 
-/***/ 61:
+/***/ 88:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ForgotPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__register_register__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_helper__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_auth_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_catch__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_toPromise__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_toPromise__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-/**
- * Generated class for the ForgotPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ForgotPage = (function () {
-    function ForgotPage(navCtrl, navParams, authService, helper, formBuilder) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.authService = authService;
-        this.helper = helper;
-        this.formBuilder = formBuilder;
-        this.showSent = false;
-        this.forgot = this.formBuilder.group({
-            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["h" /* Validators */].required]
-        });
-        this.showSent = false;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Constants; });
+//export var Constants = {  };
+//export var Constants = {  };
+var Constants = {
+    //API_ENDPOINT : '/ws/',
+    API_ENDPOINT: 'https://www.esferasoluciones.com/api/trikygol/',
+    months: [
+        'Enero',
+        'Febrero',
+        'Marzo',
+        'Abril',
+        'Mayo',
+        'Junio',
+        'Julio',
+        'Agosto',
+        'Septiembre',
+        'Octubre',
+        'Noviembre',
+        'Diciembre'
+    ],
+    stickers: {
+        symbols: { name: 'Simbolos', range: [0, 7] },
+        stadiums: { name: 'Estadios', range: [8, 19] },
+        russia: { name: 'Rusia', range: [20, 39] },
+        saudi: { name: 'Arabia Saudita', range: [40, 59] },
+        egypt: { name: 'Egipto', range: [60, 79] },
+        uruguay: { name: 'Urugay', range: [80, 99] },
+        portugal: { name: 'Portugal', range: [100, 119] },
+        spain: { name: 'España', range: [120, 139] },
+        morocco: { name: 'Marruecos', range: [140, 159] },
+        islamicRep: { name: 'Iran', range: [160, 179] },
+        france: { name: 'Francia', range: [180, 199] },
+        australia: { name: 'Australia', range: [200, 219] },
+        peru: { name: 'Peru', range: [220, 239] },
+        denmark: { name: 'Dinamarca', range: [240, 259] },
+        argentina: { name: 'Argentina', range: [260, 279] },
+        iceland: { name: 'Islandia', range: [280, 299] },
+        croatia: { name: 'Croacia', range: [300, 319] },
+        nigeria: { name: 'Nigeria', range: [320, 339] },
+        brazil: { name: 'Brasil', range: [340, 359] },
+        switzerland: { name: 'Suiza', range: [360, 379] },
+        costaRica: { name: 'Costa Rica', range: [380, 399] },
+        serbia: { name: 'Serbia', range: [400, 419] },
+        germany: { name: 'Alemania', range: [420, 439] },
+        mexico: { name: 'Mexico', range: [440, 459] },
+        sweden: { name: 'Suecia', range: [460, 479] },
+        korea: { name: 'Corea del Sur', range: [480, 499] },
+        belgium: { name: 'Bélgica', range: [500, 519] },
+        panama: { name: 'Panamá', range: [520, 539] },
+        tunisia: { name: 'Túnez', range: [540, 559] },
+        england: { name: 'Inglaterra', range: [560, 579] },
+        poland: { name: 'Polonia', range: [580, 599] },
+        senegal: { name: 'Senegal', range: [600, 619] },
+        colombia: { name: 'Colombia', range: [620, 639] },
+        japan: { name: 'Japón', range: [640, 659] },
+        legends: { name: 'Leyendas', range: [660, 669] },
     }
-    ForgotPage.prototype.openLogin = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__login_login__["a" /* LoginPage */]);
-    };
-    ForgotPage.prototype.openRegister = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__register_register__["a" /* RegisterPage */]);
-    };
-    ForgotPage.prototype.attemptUserForgot = function () {
-        var _this = this;
-        var data = { type: 'cred', e: this.forgot.value.email };
-        this.authService.postData(data, '/sendMail.php').then(function (result) {
-            _this.showSent = true;
-        }, function (err) {
-            // Error log
-            _this.helper.gapAlert('Error en logueao', err);
-        });
-    };
-    return ForgotPage;
-}());
-ForgotPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-forgot',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/forgot/forgot.html"*/'<!--\n  Generated template for the ForgotPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-title>Recuperar mi contraseña</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <div ng-show="true">\n\n        <div class="list card cardprogram">\n            <form [formGroup]="forgot" (ngSubmit)="attemptUserForgot()">\n                <div class="item item-body">\n                    <div margin-bottom padding class="card-triky"><label>\n                   <ion-icon name="information-circle"></ion-icon> Por favor introduce la información de tu cuenta\n                </label>\n                    </div>\n                    <div margin-bottom padding class="card-triky">\n\n                        <ion-item *ngIf="!showSent">\n                            <ion-input type="email" placeholder="Email" autocapitalize="none" formControlName="email"></ion-input>\n                        </ion-item>\n\n                    </div>\n                    <div style="text-align:center">\n                        <br *ngIf="!showSent">\n                        <button ion-button full type="submit" class="button button-calm" [disabled]="!forgot.valid" *ngIf="!showSent">ENVIAR</button>\n                        <!--<br *ngIf="!showSent">-->\n                        <!--<br *ngIf="!showSent">-->\n                        <label class="lorems lorems-content" *ngIf="showSent">\n                   Una nueva contraseña ha sido enviada a la direccion de correo que envio<br>Por favor, le recomendamos que la cambie tan pronto vuelva a entrar\n                </label>\n                        <br/>\n                        <div ion-button clear (click)="openRegister()">\n                            Registrarse\n                        </div>\n                        <br/>\n                        <div ion-button clear (click)="openLogin()">\n                            Login\n                        </div>\n                    </div>\n                </div>\n            </form>\n        </div>\n\n    </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/forgot/forgot.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_6__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_5__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
-], ForgotPage);
-
-//# sourceMappingURL=forgot.js.map
+};
+//# sourceMappingURL=constants.js.map
 
 /***/ })
 
