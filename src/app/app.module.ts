@@ -19,6 +19,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { AuthService } from '../providers/auth-service';
 import { HelperService } from '../providers/helper';
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { HelperService } from '../providers/helper';
     AuthService,
     HelperService,
     Dialogs,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

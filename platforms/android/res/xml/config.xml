@@ -18,6 +18,9 @@
         <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
     <name>TrikyGol</name>
     <description>Creacion de quinielas de futbol</description>
     <author email="lsanchez@esferasoluciones.com" href="https://www.esferasoluciones.com">
