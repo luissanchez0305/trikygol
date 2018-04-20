@@ -4,6 +4,7 @@ import { AuthService } from '../../providers/auth-service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HelperService } from '../../providers/helper';
 import { Network } from '@ionic-native/network';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the GamesPage page.
@@ -227,6 +228,11 @@ export class GamesPage {
       content: 'Espere un momento...'
     });
     loading.present();
+    if(typeof localStorage.getItem('userID') === 'undefined' || localStorage.getItem('userID') == ''){
+      loading.dismiss();      
+      this.helper.logout();
+      this.navCtrl.setRoot(LoginPage);
+    }
     this.showGame5 = false;
     this.showGame6 = false;
     this.showGame7 = false;

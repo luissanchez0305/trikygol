@@ -152,8 +152,6 @@ export class GroupsPage {
   
   constructor(public navCtrl: NavController, private authService : AuthService, public navParams: NavParams, public helper : HelperService, 
     public modalCtrl: ModalController, public events : Events, public loadingCtrl: LoadingController, private network: Network, private zone: NgZone) {
-    this.displayGroupsAndTeams('triky');
-      
     this.fillTextA = this.defaultFillScoresText;
     this.fillTextB = this.defaultFillScoresText;
     this.fillTextC = this.defaultFillScoresText;
@@ -182,13 +180,20 @@ export class GroupsPage {
     });
   }
   
+  ionViewDidEnter(){    
+    this.displayGroupsAndTeams('triky');
+  }
+
   private displayGroupsAndTeams(_source){
       let loading = this.loadingCtrl.create({
         content: 'Espere un momento...'
       });
       loading.present();
+      if(typeof localStorage.getItem('userID') === 'undefined' || localStorage.getItem('userID') == ''){
+        loading.dismiss();      
+        this.logout();
+      }
       // HACER EL PHP "getFirstSecondTeams.php" QUE TRAIGA TODOS LOS EQUIPOS POR GRUPOS
-      
       this.authService.getData('source='+_source+(_source == 'triky' ? "&u=" + localStorage.getItem('userID') : ""),'getFirstSecondTeams.php').then((result) => {
           loading.dismiss();
           this.responseData = result;
