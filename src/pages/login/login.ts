@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
@@ -7,6 +7,7 @@ import { ForgotPage } from '../forgot/forgot';
 import { RegisterPage } from '../register/register';
 import { HelperService } from '../../providers/helper';
 import { AuthService } from '../../providers/auth-service';
+import { Network } from '@ionic-native/network';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
@@ -26,15 +27,29 @@ export class LoginPage {
   private login : FormGroup;
   responseData : any;
   private tabBarElement : any;
+  private isDeviceOnline : boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService : AuthService, public helper : HelperService, 
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder, private network: Network, private zone: NgZone) {
         this.login = this.formBuilder.group({
           email: ['', Validators.required],
           pwd: ['', Validators.required],
         });
         this.tabBarElement = document.querySelector('#tabs div.tabbar');
         this.tabBarElement.style.display = 'none';
+        this.isDeviceOnline = true;
+        // watch network for a disconnect
+        this.network.onDisconnect().subscribe(() => {
+          this.zone.run(() => {
+            this.isDeviceOnline = false;
+          });
+        });
+        // watch network for a connection
+        this.network.onConnect().subscribe(() => {
+          this.zone.run(() => {
+            this.isDeviceOnline = true;
+          });
+        });
   }
     
     openRegister(){

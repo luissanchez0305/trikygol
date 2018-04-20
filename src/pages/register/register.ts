@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
@@ -7,6 +7,7 @@ import { LoginPage } from '../login/login';
 import { ForgotPage } from '../forgot/forgot';
 import { HelperService } from '../../providers/helper';
 import { AuthService } from '../../providers/auth-service';
+import { Network } from '@ionic-native/network';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 /**
@@ -32,10 +33,11 @@ export class RegisterPage {
     passwordStar : string = '';
     submitText : string = '';
     isLoggedIn : boolean;
+    private isDeviceOnline : boolean;
     
   constructor(public navCtrl: NavController, public navParams: NavParams, 
   public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder,
-  public events : Events) {
+  public events : Events, private network: Network, private zone: NgZone) {
         // Quitar password de las validaciones al hacer submit
         this.isLoggedIn = localStorage.getItem('UserLoggedIn') == 'true';
         if(localStorage.getItem('UserLoggedIn') == 'true'){
@@ -71,6 +73,19 @@ export class RegisterPage {
             this.submitText = 'REGISTRAR';
             this.passwordStar = '*';
         }
+        this.isDeviceOnline = true;
+        // watch network for a disconnect
+        this.network.onDisconnect().subscribe(() => {
+          this.zone.run(() => {
+            this.isDeviceOnline = false;
+          });
+        });
+        // watch network for a connection
+        this.network.onConnect().subscribe(() => {
+          this.zone.run(() => {
+            this.isDeviceOnline = true;
+          });
+        });
   }
   
     ionViewDidLeave(){

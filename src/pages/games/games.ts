@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HelperService } from '../../providers/helper';
+import { Network } from '@ionic-native/network';
 
 /**
  * Generated class for the GamesPage page.
@@ -108,9 +109,10 @@ export class GamesPage {
   private showGame6: boolean;
   private showGame7: boolean;
   private showGame8: boolean;
+  private isDeviceOnline : boolean;
    
   constructor(public navCtrl: NavController,  private authService : AuthService, public navParams: NavParams, public helper : HelperService,
-    public events : Events, public loadingCtrl: LoadingController) {
+    public events : Events, public loadingCtrl: LoadingController, private network: Network, private zone: NgZone) {
     this.GroupGames = new FormGroup({
        formGameId1: new FormControl(),
        formMarcador1_1: new FormControl(),
@@ -146,6 +148,19 @@ export class GamesPage {
       this.trikyButtonId = 'triky-button-';
       this.fifaButtonId = 'fifa-button-';
     }
+    this.isDeviceOnline = true;
+    // watch network for a disconnect
+    this.network.onDisconnect().subscribe(() => {
+      this.zone.run(() => {
+        this.isDeviceOnline = false;
+      });
+    });
+    // watch network for a connection
+    this.network.onConnect().subscribe(() => {
+      this.zone.run(() => {
+        this.isDeviceOnline = true;
+      });
+    });
   }
   
   ionViewDidEnter(){

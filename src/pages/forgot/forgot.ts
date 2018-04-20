@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
@@ -6,6 +6,7 @@ import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
 import { HelperService } from '../../providers/helper';
 import { AuthService } from '../../providers/auth-service';
+import { Network } from '@ionic-native/network';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
@@ -24,13 +25,27 @@ import 'rxjs/add/operator/toPromise';
 export class ForgotPage {
     private forgot : FormGroup;
     showSent: boolean = false;
+    private isDeviceOnline : boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder) {
-        this.forgot = this.formBuilder.group({
-          email: ['', Validators.required]
+    public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder, private network: Network, private zone: NgZone) {
+      this.forgot = this.formBuilder.group({
+        email: ['', Validators.required]
+      });
+      this.showSent = false;
+      this.isDeviceOnline = true;
+      // watch network for a disconnect
+      this.network.onDisconnect().subscribe(() => {
+        this.zone.run(() => {
+          this.isDeviceOnline = false;
         });
-        this.showSent = false;
+      });
+      // watch network for a connection
+      this.network.onConnect().subscribe(() => {
+        this.zone.run(() => {
+          this.isDeviceOnline = true;
+        });
+      });
   }
     
     openLogin(){
