@@ -8,6 +8,7 @@
     <ion-navbar>
         <ion-title>Recuperar mi contraseña</ion-title>
     </ion-navbar>
+  <ion-item class="no-conection" *ngIf="!isDeviceOnline">Sin conexión a internet</ion-item>
 
 </ion-header>
 

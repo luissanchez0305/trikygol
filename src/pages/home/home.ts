@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NavController, Events } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
@@ -6,6 +6,7 @@ import { HelperService } from '../../providers/helper';
 import { AuthService } from '../../providers/auth-service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Constants } from '../../services/constants';
+import { Network } from '@ionic-native/network';
 
 @Component({
   selector: 'page-home',
@@ -23,9 +24,10 @@ export class HomePage {
   private positionTable : boolean;
   private nextGames : any;
   private gameDate : string;
+  private isDeviceOnline : boolean;
   
   constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, public events : Events, 
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder, private network: Network, private zone: NgZone) {
       this.group = this.formBuilder.group({
         code: ['', Validators.required]
       });
@@ -46,6 +48,19 @@ export class HomePage {
       this.events.subscribe('reloadPositionTable',() => {
           //call method to refresh content
           this.loadPositionTable();
+      });
+      this.isDeviceOnline = true;
+      // watch network for a disconnect
+      this.network.onDisconnect().subscribe(() => {
+        this.zone.run(() => {
+          this.isDeviceOnline = false;
+        });
+      });
+      // watch network for a connection
+      this.network.onConnect().subscribe(() => {
+        this.zone.run(() => {
+          this.isDeviceOnline = true;
+        });
       });
   }
   
@@ -95,7 +110,7 @@ export class HomePage {
     		  }*/
         }
       }, (error) => {
-        console.log(error);
+        alert(error);
       });
   }
   

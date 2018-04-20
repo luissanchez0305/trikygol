@@ -14,7 +14,7 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-
+  <ion-item class="no-conection" *ngIf="!isDeviceOnline">Sin conexión a internet</ion-item>
 </ion-header>
 <ion-content padding>
 <!-- Generated template for the TrikyGamesComponent component -->

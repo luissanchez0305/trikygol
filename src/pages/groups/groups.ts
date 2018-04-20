@@ -1,4 +1,4 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, NgZone } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 import { HelperService } from '../../providers/helper';
 import { ModalController, LoadingController } from 'ionic-angular';
@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 import { GamesPage } from '../games/games';
 
 import { LoginPage } from '../login/login';
+import { Network } from '@ionic-native/network';
 /**
  * Generated class for the GroupsPage page.
  *
@@ -144,12 +145,13 @@ export class GroupsPage {
   private fillTextG : string;
   private fillTextH : string;
   
+  private isDeviceOnline : boolean;
   private responseData : any;
   private typeShowing : string;
   private defaultFillScoresText : string = "Click para llenar los marcadores";
   
   constructor(public navCtrl: NavController, private authService : AuthService, public navParams: NavParams, public helper : HelperService, 
-    public modalCtrl: ModalController, public events : Events, public loadingCtrl: LoadingController) {
+    public modalCtrl: ModalController, public events : Events, public loadingCtrl: LoadingController, private network: Network, private zone: NgZone) {
     this.displayGroupsAndTeams('triky');
       
     this.fillTextA = this.defaultFillScoresText;
@@ -164,6 +166,19 @@ export class GroupsPage {
     this.events.subscribe('reloadGroups',() => {
         //call methods to refresh content
         this.displayGroupsAndTeams('triky');
+    });
+    this.isDeviceOnline = true;
+    // watch network for a disconnect
+    this.network.onDisconnect().subscribe(() => {
+      this.zone.run(() => {
+        this.isDeviceOnline = false;
+      });
+    });
+    // watch network for a connection
+    this.network.onConnect().subscribe(() => {
+      this.zone.run(() => {
+        this.isDeviceOnline = true;
+      });
     });
   }
   
@@ -338,7 +353,9 @@ export class GroupsPage {
           
         }, (err) => {
           // Error log
-          this.helper.gapAlert('Error en al traer grupos', err);
+          //this.helper.gapAlert('Error en al traer grupos', err);
+          this.isDeviceOnline = false;
+          loading.dismiss();
         });    
   }
   
