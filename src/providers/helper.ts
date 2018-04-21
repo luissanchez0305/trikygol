@@ -42,7 +42,7 @@ export class HelperService {
           "Noviembre", "Diciembre"
         ];
       
-        var day = _date.getDate();
+        var day = _date.getDate().toString();
         var monthIndex = _date.getMonth();
       
         return day + ' ' + monthNames[monthIndex];
