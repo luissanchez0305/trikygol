@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Dialogs } from '@ionic-native/dialogs';
+import { Platform } from 'ionic-angular';
 
 @Injectable()
 export class HelperService { 
     private tabBarElement : any;
     private 
-    constructor(private dialogs: Dialogs) { }
+    constructor(private dialogs: Dialogs, private pfm: Platform) {
+        }
     
     gapAlert(message, title) {
         this.dialogs.alert(
@@ -35,6 +37,11 @@ export class HelperService {
   
     formatDate(date) {
         var _date = new Date(date);
+        if(this.pfm.is('ios')){
+            var arr = date.split(/[- :]/);
+            _date = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
+        }
+            
         var monthNames = [
           "Enero", "Febrero", "Marzo",
           "Abril", "Mayo", "Junio", "Julio",
@@ -42,7 +49,7 @@ export class HelperService {
           "Noviembre", "Diciembre"
         ];
       
-        var day = _date.getDate().toString();
+        var day = _date.getDate();
         var monthIndex = _date.getMonth();
       
         return day + ' ' + monthNames[monthIndex];

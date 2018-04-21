@@ -574,6 +574,7 @@ AppModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelperService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_dialogs__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -585,9 +586,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var HelperService = (function () {
-    function HelperService(dialogs) {
+    function HelperService(dialogs, pfm) {
         this.dialogs = dialogs;
+        this.pfm = pfm;
     }
     HelperService.prototype.gapAlert = function (message, title) {
         this.dialogs.alert(message, // message
@@ -611,13 +614,17 @@ var HelperService = (function () {
     };
     HelperService.prototype.formatDate = function (date) {
         var _date = new Date(date);
+        if (this.pfm.is('ios')) {
+            var arr = date.split(/[- :]/);
+            _date = new Date(arr[0], arr[1] - 1, arr[2], arr[3], arr[4], arr[5]);
+        }
         var monthNames = [
             "Enero", "Febrero", "Marzo",
             "Abril", "Mayo", "Junio", "Julio",
             "Agosto", "Septiembre", "Octubre",
             "Noviembre", "Diciembre"
         ];
-        var day = _date.getDate().toString();
+        var day = _date.getDate();
         var monthIndex = _date.getMonth();
         return day + ' ' + monthNames[monthIndex];
     };
@@ -625,7 +632,7 @@ var HelperService = (function () {
 }());
 HelperService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_dialogs__["a" /* Dialogs */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_dialogs__["a" /* Dialogs */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* Platform */]])
 ], HelperService);
 
 //# sourceMappingURL=helper.js.map
