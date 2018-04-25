@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController, Events } from 'ionic-angular';
+import { NavController, Events, Platform } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { HelperService } from '../../providers/helper';
@@ -26,8 +26,9 @@ export class HomePage {
   private gameDate : string;
   private isDeviceOnline : boolean;
   
-  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, public events : Events, 
-    private formBuilder: FormBuilder, private network: Network, private zone: NgZone) {
+  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, 
+    public events : Events, private formBuilder: FormBuilder, private network: Network, private zone: NgZone,
+    private plt: Platform) {
       this.group = this.formBuilder.group({
         code: ['', Validators.required]
       });
@@ -70,6 +71,12 @@ export class HomePage {
       var date = new Date('2018-06-14 5:00:00');
       var firstDate = new Date('2018-06-14 5:00:00');
       var lastDate = new Date('2018-06-14 5:00:00');
+      
+      if(this.plt.is('ios')){
+        date = new Date(2018,5,14,5,0,0);
+        firstDate = new Date(2018,5,14,5,0,0);
+        lastDate = new Date(2018,5,14,5,0,0);
+      }
       
       if(Date.now() > lastDate.getTime()){
         date = new Date('2018-07-15 5:00:00');
