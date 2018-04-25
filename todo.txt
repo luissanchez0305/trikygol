@@ -16,7 +16,7 @@ x arreglar tab de fifa de la vista de games, la x de selected se despliega por e
 
 rehacer
 x actualizar la seccion de tabla de posiciones de home al regresar de perfil
-- poner notificacion de "correo ya existe"
+x poner notificacion de "correo ya existe"
 x actualizar vista de grupos en cada load
 
 

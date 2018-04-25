@@ -40130,3 +40130,15 @@ page-home .entire-text {
 .next-games .col {
   overflow: inherit;
 }
+
+.next-games .team1 {
+  text-align: left;
+}
+
+.next-games .team2 {
+  text-align: right;
+}
+
+page-register .error {
+  color: red;
+}
