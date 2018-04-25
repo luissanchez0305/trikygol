@@ -25,17 +25,13 @@ export class HomePage {
   private nextGames : any;
   private gameDate : string;
   private isDeviceOnline : boolean;
-  
-  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService, 
+
+  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService,
     public events : Events, private formBuilder: FormBuilder, private network: Network, private zone: NgZone,
     private plt: Platform) {
       this.group = this.formBuilder.group({
         code: ['', Validators.required]
       });
-      if(localStorage.getItem('UserLoggedIn') != 'true'){
-          this.navCtrl.setRoot(LoginPage);
-          return;
-      }
       var data = { e : localStorage.getItem('userID') };
       this.authService.postData(data,'userExists.php').then((result) => {
         this.responseUserData = result;
@@ -45,7 +41,7 @@ export class HomePage {
         this.winTeams = this.responseUserData.equiposGanadores != null ? this.responseUserData.equiposGanadores : '0';
         this.passedTeams = this.responseUserData.equiposClasificados != null ? this.responseUserData.equiposClasificados : '0';
       });
-      
+
       this.events.subscribe('reloadPositionTable',() => {
           //call method to refresh content
           this.loadPositionTable();
@@ -64,33 +60,39 @@ export class HomePage {
         });
       });
   }
-  
+
   ionViewDidLoad(){
+      if(localStorage.getItem('UserLoggedIn') != 'true'){
+          this.navCtrl.setRoot(LoginPage);
+          return;
+      }
       this.loadPositionTable();
-      
+
       var date = new Date('2018-06-14 5:00:00');
-      var firstDate = new Date('2018-06-14 5:00:00');
+      var firstDate = new Date('2018-07-14 5:00:00');
       var lastDate = new Date('2018-06-14 5:00:00');
-      
+
       if(this.plt.is('ios')){
         date = new Date(2018,5,14,5,0,0);
         firstDate = new Date(2018,5,14,5,0,0);
         lastDate = new Date(2018,5,14,5,0,0);
       }
-      
+
       if(Date.now() > lastDate.getTime()){
         date = new Date('2018-07-15 5:00:00');
+        if(this.plt.is('ios'))
+          date = new Date(2018,5,15,5,0,0);
       }
       if(Date.now() > firstDate.getTime() && Date.now() <= lastDate.getTime()){
         date = new Date();
       }
-      
+
       this.authService.getData('date=' + date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate(), 'getNextGames.php').then((result) => {
         this.nextGames = result;
         this.gameDate = Constants.months[date.getMonth()] + ', ' + date.getDate() + ' de ' + date.getFullYear();
       });
   }
-  
+
   loadPositionTable(){
       this.authService.getData(localStorage.getItem('UserLoggedGroup').length > 0 ? 'g=' + localStorage.getItem('UserLoggedGroup') : '', 'getUsersOrderedPoints.php').then((result) => {
         this.positions = result;
@@ -99,11 +101,11 @@ export class HomePage {
         }
         else {
           this.positionTable = true;
-          
+
     		  /*for(var i = 0; i < this.positions.length; i++){
     		    var user = this.responsePositionData[i];
     		    var user_data = user.nombre + ' - ' + (user.puntos != null ? user.puntos : 'Sin ') + ' puntos';
-      
+
     		    if(i == 0)
               this.positionName1 = user_data;
             else if(i == 1)
@@ -120,7 +122,7 @@ export class HomePage {
         alert(error);
       });
   }
-  
+
   attemptJoinGroup(){
     localStorage.setItem('UserLoggedGroup', this.group.value.code);
     var data = { g : this.group.value.code, u : localStorage.getItem('userID') };
@@ -131,7 +133,7 @@ export class HomePage {
       }
     });
   }
-  
+
   logout(){
     this.helper.logout();
     this.navCtrl.setRoot(LoginPage);
