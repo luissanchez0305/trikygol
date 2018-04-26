@@ -1,7 +1,7 @@
 //export var Constants = {  };
-export var Constants = { 
-    //API_ENDPOINT : '/ws/',
-    API_ENDPOINT : 'https://www.esferasoluciones.com/api/trikygol/',
+export var Constants = {
+    API_ENDPOINT : '/ws/',
+    //API_ENDPOINT : 'https://www.esferasoluciones.com/api/trikygol/',
     months: [
         'Enero',
         'Febrero',
@@ -15,5 +15,42 @@ export var Constants = {
         'Octubre',
         'Noviembre',
         'Diciembre'
+    ],
+    stickers: [
+        { name: 'Simbolos', range: [0,7] },
+        { name: 'Estadios', range: [8,19] },
+        { name: 'Rusia', range: [20,39] },
+        { name: 'Arabia Saudita', range: [40,59] },
+        { name: 'Egipto', range: [60,79] },
+        { name: 'Urugay', range: [80,99] },
+        { name: 'Portugal', range: [100,119] },
+        { name: 'España', range: [120,139] },
+        { name: 'Marruecos', range: [140,159] },
+        { name: 'Iran', range: [160,179] },
+        { name: 'Francia', range: [180,199] },
+        { name: 'Australia', range: [200,219] },
+        { name: 'Peru', range: [220,239] },
+        { name: 'Dinamarca', range: [240,259] },
+        { name: 'Argentina', range: [260,279] },
+        { name: 'Islandia', range: [280,299] },
+        { name: 'Croacia', range: [300,319] },
+        { name: 'Nigeria', range: [320,339] },
+        { name: 'Brasil', range: [340,359] },
+        { name: 'Suiza', range: [360,379] },
+        { name: 'Costa Rica', range: [380,399] },
+        { name: 'Serbia', range: [400,419] },
+        { name: 'Alemania', range: [420,439] },
+        { name: 'Mexico', range: [440,459] },
+        { name: 'Suecia', range: [460,479] },
+        { name: 'Corea del Sur', range: [480,499] },
+        { name: 'Bélgica', range: [500,519] },
+        { name: 'Panamá', range: [520,539] },
+        { name: 'Túnez', range: [540,559] },
+        { name: 'Inglaterra', range: [560,579] },
+        { name: 'Polonia', range: [580,599] },
+        { name: 'Senegal', range: [600,619] },
+        { name: 'Colombia', range: [620,639] },
+        { name: 'Japón', range: [640,659] },
+        { name: 'Leyendas', range: [660,669] },
     ]
 };
