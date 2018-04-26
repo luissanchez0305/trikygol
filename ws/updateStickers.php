@@ -9,7 +9,7 @@ if(isset($_GET['u']) && isset($_GET['t']) && isset($_GET['n'])) {
 
     // revisar si ya existe ese number y usuario
     // insertar number al usuario
-    $query = "SELECT * FROM " . $type == 'missing' ? 'figuritas_faltantes' : 'figuritas_repetidas' . " WHERE usuarioid = '$userId' AND numero = '$number'";
+    $query = "SELECT * FROM " . ($type == 'missing' ? 'figuritas_faltantes' : 'figuritas_repetidas') . " WHERE usuarioid = '$userId' AND numero = '$number'";
 
     $result = mysql_query($query,$link) or die('Errant query:  '.$query);
     if(mysql_num_rows($result) == 0) {

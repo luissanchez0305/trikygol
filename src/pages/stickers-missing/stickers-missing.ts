@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams/*, Platform*/ } from 'ionic-angular';
 import { Constants } from '../../services/constants';
 import { AuthService } from '../../providers/auth-service';
@@ -23,7 +23,7 @@ export class StickersMissingPage {
   private sections : any = [];
   private updateResult : any;
   private myStickers : any;
-  constructor(public helper : HelperService, public navCtrl: NavController, public navParams: NavParams, private authService : AuthService/*, private plt: Platform,
+  constructor(public helper : HelperService, public navCtrl: NavController, public navParams: NavParams, private authService : AuthService, private zone: NgZone/*, private plt: Platform,
   private speechRecognition: SpeechRecognition*/) {
     this.authService.getData('u=' + localStorage.getItem('userID') + '&t=missing','getStickers.php').then((result) => {
       this.myStickers = result;
@@ -46,9 +46,8 @@ export class StickersMissingPage {
   click_number(obj){
     this.authService.getData('u=' + localStorage.getItem('userID') + '&t=missing&n=' + obj.number,'updateStickers.php').then((result) => {
       this.updateResult = result;
-      if(this.updateResult.status != 'success'){
+      if(this.updateResult.status == 'success'){
         obj.active = 'active';
-
       }
     });
   }

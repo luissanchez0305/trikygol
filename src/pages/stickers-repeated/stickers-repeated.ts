@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Constants } from '../../services/constants';
 import { AuthService } from '../../providers/auth-service';
@@ -21,7 +21,7 @@ export class StickersRepeatedPage {
   private sections : any = [];
   private updateResult : any;
   private myStickers : any;
-  constructor(public helper : HelperService, public navCtrl: NavController, public navParams: NavParams, private authService : AuthService) {
+  constructor(public helper : HelperService, public navCtrl: NavController, public navParams: NavParams, private authService : AuthService, private zone: NgZone) {
     this.authService.getData('u=' + localStorage.getItem('userID') + '&t=repeated','getStickers.php').then((result) => {
       this.myStickers = result;
 
@@ -43,7 +43,7 @@ export class StickersRepeatedPage {
   click_number(obj){
     this.authService.getData('u=' + localStorage.getItem('userID') + '&t=repeated&n=' + obj.number,'updateStickers.php').then((result) => {
       this.updateResult = result;
-      if(this.updateResult.status != 'success'){
+      if(this.updateResult.status == 'success'){
         obj.active = 'active';
       }
     });

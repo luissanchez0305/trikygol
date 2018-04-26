@@ -77,13 +77,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var StickersMissingPage = (function () {
-    function StickersMissingPage(helper, navCtrl, navParams, authService /*, private plt: Platform,
+    function StickersMissingPage(helper, navCtrl, navParams, authService, zone /*, private plt: Platform,
         private speechRecognition: SpeechRecognition*/) {
         var _this = this;
         this.helper = helper;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.authService = authService; /*, private plt: Platform,
+        this.authService = authService;
+        this.zone = zone; /*, private plt: Platform,
         private speechRecognition: SpeechRecognition*/
         /*matches : String[];
         recording : string = 'pause';*/
@@ -106,7 +107,7 @@ var StickersMissingPage = (function () {
         var _this = this;
         this.authService.getData('u=' + localStorage.getItem('userID') + '&t=missing&n=' + obj.number, 'updateStickers.php').then(function (result) {
             _this.updateResult = result;
-            if (_this.updateResult.status != 'success') {
+            if (_this.updateResult.status == 'success') {
                 obj.active = 'active';
             }
         });
@@ -117,7 +118,7 @@ StickersMissingPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-stickers-missing',template:/*ion-inline-start:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-missing\stickers-missing.html"*/'<!--\n\n  Generated template for the StickersMissingPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Faltantes</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="sticker-numbers">\n\n  <!--<div>Puedes ingresar tus figuritas repetidas con reconocimiento de voz</div>\n\n  <div style="width:100%; height: 30px;" [class]="recording"><label [class]="recording">Escuchando</label></div>\n\n  <button ion-button full (click)="startListening()">Empezar</button>\n\n  <button ion-button full (click)="stopListening()" *ngIf="isIos()">Detener</button>\n\n  <ion-card>\n\n    <ion-card-header>Numeros escuchados</ion-card-header>\n\n    <ion-card-content>\n\n      <ion-list>\n\n        <ion-item *ngFor="let match of matches">\n\n          {{ match }}\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-card-content>\n\n  </ion-card>\n\n  <div>O puedes ingresarlas manualmente</div>\n\n  <ion-list>\n\n    <ion-item *ngFor="let section of sections">\n\n      <ion-list>\n\n        {{ section.name }}\n\n        <ion-item *ngFor="let number of section.numbers">\n\n          {{ number }}\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-item>\n\n  </ion-list>-->\n\n  \n\n  <div style="float:left; width:100%;" *ngFor="let section of sections">\n\n    <div>{{ section.name }}</div>\n\n    <div id="wrapper">\n\n      <ul id="circles">\n\n          <li *ngFor="let sticker of section.stickers">\n\n              <div class="circle {{ sticker.active }}" (click)="click_number(sticker)">\n\n                  <div>{{ sticker.number }}</div>\n\n              </div>\n\n          </li>\n\n      </ul>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-missing\stickers-missing.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__["a" /* AuthService */] /*, private plt: Platform,
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* NgZone */] /*, private plt: Platform,
         private speechRecognition: SpeechRecognition*/])
 ], StickersMissingPage);
 
@@ -156,12 +157,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var StickersRepeatedPage = (function () {
-    function StickersRepeatedPage(helper, navCtrl, navParams, authService) {
+    function StickersRepeatedPage(helper, navCtrl, navParams, authService, zone) {
         var _this = this;
         this.helper = helper;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.authService = authService;
+        this.zone = zone;
         this.sections = [];
         this.authService.getData('u=' + localStorage.getItem('userID') + '&t=repeated', 'getStickers.php').then(function (result) {
             _this.myStickers = result;
@@ -182,7 +184,7 @@ var StickersRepeatedPage = (function () {
         var _this = this;
         this.authService.getData('u=' + localStorage.getItem('userID') + '&t=repeated&n=' + obj.number, 'updateStickers.php').then(function (result) {
             _this.updateResult = result;
-            if (_this.updateResult.status != 'success') {
+            if (_this.updateResult.status == 'success') {
                 obj.active = 'active';
             }
         });
@@ -193,7 +195,7 @@ StickersRepeatedPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-stickers-repeated',template:/*ion-inline-start:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-repeated\stickers-repeated.html"*/'<!--\n\n  Generated template for the StickersRepeatedPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Repetidas</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="sticker-numbers">\n\n  <div style="float:left; width:100%;" *ngFor="let section of sections">\n\n    <div>{{ section.name }}</div>\n\n    <div id="wrapper">\n\n      <ul id="circles">\n\n          <li *ngFor="let sticker of section.stickers">\n\n              <div class="circle {{ sticker.active }}" (click)="click_number(sticker)">\n\n                  <div>{{ sticker.number }}</div>\n\n              </div>\n\n          </li>\n\n      </ul>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-repeated\stickers-repeated.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__["a" /* AuthService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* NgZone */]])
 ], StickersRepeatedPage);
 
 //# sourceMappingURL=stickers-repeated.js.map
