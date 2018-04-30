@@ -14,5 +14,8 @@
 
 
 <ion-content padding>
-
+    <ion-item *ngIf="showNoResult">No existe ningun match</ion-item>
+    <ion-item class="position1" *ngFor="let sticker of stickers">
+    {{ sticker.nombre }} - {{ sticker.numero }}
+    </ion-item>
 </ion-content>

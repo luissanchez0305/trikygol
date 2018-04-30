@@ -32,7 +32,8 @@ export class HelperService {
 
         // desaparece el nav bar
         this.tabBarElement = document.querySelector('#tabs div.tabbar');
-        this.tabBarElement.style.display = 'none';
+        if(this.tabBarElement)
+            this.tabBarElement.style.display = 'none';
     }
 
     formatDate(date) {

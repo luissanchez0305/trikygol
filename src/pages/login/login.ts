@@ -36,7 +36,8 @@ export class LoginPage {
           pwd: ['', Validators.required],
         });
         this.tabBarElement = document.querySelector('#tabs div.tabbar');
-        this.tabBarElement.style.display = 'none';
+        if(this.tabBarElement)
+          this.tabBarElement.style.display = 'none';
         this.isDeviceOnline = true;
         // watch network for a disconnect
         this.network.onDisconnect().subscribe(() => {
