@@ -6,7 +6,6 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Constants } from '../../services/constants';
 import { Network } from '@ionic-native/network';
 import { LoginPage } from '../login/login';
-import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-home',

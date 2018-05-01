@@ -4,8 +4,6 @@ import { Platform } from 'ionic-angular';
 
 @Injectable()
 export class HelperService {
-    private tabBarElement : any;
-    private
     constructor(private dialogs: Dialogs, private pfm: Platform) {
         }
 

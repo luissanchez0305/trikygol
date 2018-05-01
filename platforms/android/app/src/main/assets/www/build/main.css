@@ -39970,6 +39970,10 @@ ion-header .toolbar-background {
   padding: 0px !important;
 }
 
+.sticker-numbers h2 {
+  margin: 10px 0px 0px 0px;
+}
+
 .sticker-numbers .circle {
   display: table;
   width: 2.5em;

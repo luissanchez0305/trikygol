@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Constants } from '../../services/constants';
 import { AuthService } from '../../providers/auth-service';
@@ -21,7 +21,7 @@ export class StickersRepeatedPage {
   private sections : any = [];
   private updateResult : any;
   private myStickers : any;
-  constructor(public helper : HelperService, public navCtrl: NavController, public navParams: NavParams, private authService : AuthService, private zone: NgZone) {
+  constructor(public helper : HelperService, public navCtrl: NavController, public navParams: NavParams, private authService : AuthService) {
     this.authService.getData('u=' + localStorage.getItem('userID') + '&t=repeated','getStickers.php').then((result) => {
       this.myStickers = result;
 
