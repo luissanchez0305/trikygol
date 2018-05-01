@@ -19,9 +19,6 @@
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
     },
-    "cordova-plugin-speechrecognition": {
-      "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
-    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.esferasoluciones.trikygolR18"
     },

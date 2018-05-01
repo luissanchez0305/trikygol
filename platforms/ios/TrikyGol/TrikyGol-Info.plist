@@ -63,9 +63,5 @@
     </array>
     <key>UILaunchStoryboardName</key>
     <string>CDVLaunchScreen</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Request to use Microphone</string>
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>Request to use Speech Recognition</string>
   </dict>
 </plist>

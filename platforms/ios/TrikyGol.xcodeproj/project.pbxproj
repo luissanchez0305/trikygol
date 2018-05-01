@@ -42,8 +42,6 @@
 		B685AC7ABE674073A331ABD9 /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D90413E4C064C5899B87F7C /* CDVReachability.m */; };
 		B30056237B1B44C1AD75299A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5DBB0555C442D3B2D3B25D /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		44EA81CB734B45CD8DE26DD4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8A2B3049C7429690E82355 /* CoreTelephony.framework */; };
-		E77E7B67AD2A4B4DB95AABA8 /* SpeechRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE52644F13F453EB4879E8B /* SpeechRecognition.m */; };
-		7295EC14DF034141AB26B39A /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 986177BDB39C472FBE639910 /* Speech.framework */; };
 		1479065ED79D4DA880D9A9AD /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6604C1FC8C614F08BA91F427 /* CDVSplashScreen.m */; };
 		01E65789C50641DBAAD6318A /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA1AC9179294E78A98CA401 /* CDVViewController+SplashScreen.m */; };
 		8E73824E02A04F45B889754C /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD79E6A3BC14E0188E1DC00 /* IonicKeyboard.m */; };
@@ -135,9 +133,6 @@
 		22945CD306C644BF8D362AD8 /* CDVReachability.h */ = {isa = PBXFileReference; name = "CDVReachability.h"; path = "cordova-plugin-network-information/CDVReachability.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		BF5DBB0555C442D3B2D3B25D /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		FF8A2B3049C7429690E82355 /* CoreTelephony.framework */ = {isa = PBXFileReference; name = "CoreTelephony.framework"; path = "System/Library/Frameworks/CoreTelephony.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		6DE52644F13F453EB4879E8B /* SpeechRecognition.m */ = {isa = PBXFileReference; name = "SpeechRecognition.m"; path = "cordova-plugin-speechrecognition/SpeechRecognition.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		9BDFDB50993B4777A7FAA30D /* SpeechRecognition.h */ = {isa = PBXFileReference; name = "SpeechRecognition.h"; path = "cordova-plugin-speechrecognition/SpeechRecognition.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		986177BDB39C472FBE639910 /* Speech.framework */ = {isa = PBXFileReference; name = "Speech.framework"; path = "System/Library/Frameworks/Speech.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		6604C1FC8C614F08BA91F427 /* CDVSplashScreen.m */ = {isa = PBXFileReference; name = "CDVSplashScreen.m"; path = "cordova-plugin-splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		5FA1AC9179294E78A98CA401 /* CDVViewController+SplashScreen.m */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.m"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		73B6E42CD02041548EAF63DB /* CDVSplashScreen.h */ = {isa = PBXFileReference; name = "CDVSplashScreen.h"; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
@@ -157,7 +152,6 @@
 				DE9A1A53B08D45BA9FF907D8 /* libz.tbd in Frameworks */,
 				B30056237B1B44C1AD75299A /* SystemConfiguration.framework in Frameworks */,
 				44EA81CB734B45CD8DE26DD4 /* CoreTelephony.framework in Frameworks */,
-				7295EC14DF034141AB26B39A /* Speech.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +228,6 @@
 				63F1929EDF304AEEA1B40B1D /* libz.tbd */,
 				BF5DBB0555C442D3B2D3B25D /* SystemConfiguration.framework */,
 				FF8A2B3049C7429690E82355 /* CoreTelephony.framework */,
-				986177BDB39C472FBE639910 /* Speech.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -302,8 +295,6 @@
 				4D90413E4C064C5899B87F7C /* CDVReachability.m */,
 				582381EDFBDA4382B85CCE35 /* CDVConnection.h */,
 				22945CD306C644BF8D362AD8 /* CDVReachability.h */,
-				6DE52644F13F453EB4879E8B /* SpeechRecognition.m */,
-				9BDFDB50993B4777A7FAA30D /* SpeechRecognition.h */,
 				6604C1FC8C614F08BA91F427 /* CDVSplashScreen.m */,
 				5FA1AC9179294E78A98CA401 /* CDVViewController+SplashScreen.m */,
 				73B6E42CD02041548EAF63DB /* CDVSplashScreen.h */,
@@ -443,7 +434,6 @@
 				621D1FAA888C4822BE5FC955 /* GCDWebServerStreamedResponse.m in Sources */,
 				A4F78EE985684C36A5203EC5 /* CDVConnection.m in Sources */,
 				B685AC7ABE674073A331ABD9 /* CDVReachability.m in Sources */,
-				E77E7B67AD2A4B4DB95AABA8 /* SpeechRecognition.m in Sources */,
 				1479065ED79D4DA880D9A9AD /* CDVSplashScreen.m in Sources */,
 				01E65789C50641DBAAD6318A /* CDVViewController+SplashScreen.m in Sources */,
 				8E73824E02A04F45B889754C /* IonicKeyboard.m in Sources */,
