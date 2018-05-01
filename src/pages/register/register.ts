@@ -2,7 +2,7 @@ import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
 import { ForgotPage } from '../forgot/forgot';
 import { HelperService } from '../../providers/helper';
@@ -25,7 +25,6 @@ import 'rxjs/add/operator/toPromise';
 export class RegisterPage {
     private register : FormGroup;
     responseData : any;
-    private tabBarElement : any;
     showLogout: boolean = false;
     emailValue : string = '';
     nameValue : string = '';
@@ -133,12 +132,8 @@ export class RegisterPage {
                     this.helper.gapAlert('Perfil actualizado con exito', 'Perfil');
                 else{
                     localStorage.setItem('UserLoggedIn', 'true');
-                    this.navCtrl.setRoot(HomePage);
+                    this.navCtrl.setRoot(TabsPage);
                 }
-
-                // reaparece el nav bar
-                this.tabBarElement = document.querySelector('#tabs div.tabbar');
-                this.tabBarElement.style.display = null;
             }
             else if(this.responseData.msg == 'duplicate'){
                 this.showDuplicateText = true;

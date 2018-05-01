@@ -13,9 +13,18 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="sticker-numbers">
     <ion-item *ngIf="showNoResult">No existe ningun match</ion-item>
-    <ion-item class="position1" *ngFor="let sticker of stickers">
-    {{ sticker.nombre }} - {{ sticker.numero }}
-    </ion-item>
+    <div style="float:left; width:100%;" *ngFor="let sticker of stickers">
+    <div>{{ sticker.nombre }}</div>
+    <div id="wrapper">
+      <ul id="circles">
+          <li *ngFor="let numero of sticker.numeros">
+              <div class="circle">
+                  <div>{{ numero }}</div>
+              </div>
+          </li>
+      </ul>
+    </div>
+    </div>
 </ion-content>

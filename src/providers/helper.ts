@@ -29,11 +29,6 @@ export class HelperService {
         localStorage.setItem('userEmail', '');
         localStorage.setItem('userID', '0');
         localStorage.setItem('UserLoggedIn', 'false');
-
-        // desaparece el nav bar
-        this.tabBarElement = document.querySelector('#tabs div.tabbar');
-        if(this.tabBarElement)
-            this.tabBarElement.style.display = 'none';
     }
 
     formatDate(date) {

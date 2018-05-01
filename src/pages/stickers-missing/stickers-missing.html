@@ -39,9 +39,9 @@
       </ion-list>
     </ion-item>
   </ion-list>-->
-  
+
   <div style="float:left; width:100%;" *ngFor="let section of sections">
-    <div>{{ section.name }}</div>
+    <h2>{{ section.name }}</h2>
     <div id="wrapper">
       <ul id="circles">
           <li *ngFor="let sticker of section.stickers">

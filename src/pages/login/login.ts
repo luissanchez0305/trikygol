@@ -2,9 +2,9 @@ import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-import { HomePage } from '../home/home';
 import { ForgotPage } from '../forgot/forgot';
 import { RegisterPage } from '../register/register';
+import { TabsPage } from '../tabs/tabs';
 import { HelperService } from '../../providers/helper';
 import { AuthService } from '../../providers/auth-service';
 import { Network } from '@ionic-native/network';
@@ -26,7 +26,6 @@ import 'rxjs/add/operator/toPromise';
 export class LoginPage {
   private login : FormGroup;
   responseData : any;
-  private tabBarElement : any;
   private isDeviceOnline : boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService : AuthService, public helper : HelperService,
@@ -35,9 +34,6 @@ export class LoginPage {
           email: ['', Validators.required],
           pwd: ['', Validators.required],
         });
-        this.tabBarElement = document.querySelector('#tabs div.tabbar');
-        if(this.tabBarElement)
-          this.tabBarElement.style.display = 'none';
         this.isDeviceOnline = true;
         // watch network for a disconnect
         this.network.onDisconnect().subscribe(() => {
@@ -80,10 +76,7 @@ export class LoginPage {
             localStorage.setItem('userID', this.responseData.user[0].id);
             localStorage.setItem('UserLoggedIn', 'true');
             localStorage.setItem('UserLoggedGroup', this.responseData.user[0].grupo);
-            this.navCtrl.setRoot(HomePage);
-
-            // reaparece el nav bar
-            this.tabBarElement.style.display = null;
+            this.navCtrl.setRoot(TabsPage);
         } else {
             this.helper.gapAlert("Username or password not valid", "Login Unsuccessful");
         }

@@ -1,12 +1,12 @@
 import { Component, NgZone } from '@angular/core';
 import { NavController, Events, Platform } from 'ionic-angular';
 
-import { LoginPage } from '../login/login';
-import { HelperService } from '../../providers/helper';
 import { AuthService } from '../../providers/auth-service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Constants } from '../../services/constants';
 import { Network } from '@ionic-native/network';
+import { LoginPage } from '../login/login';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-home',
@@ -26,7 +26,7 @@ export class HomePage {
   private gameDate : string;
   private isDeviceOnline : boolean;
 
-  constructor(public navCtrl: NavController, public helper : HelperService, private authService : AuthService,
+  constructor(public navCtrl: NavController, private authService : AuthService,
     public events : Events, private formBuilder: FormBuilder, private network: Network, private zone: NgZone,
     private plt: Platform) {
       this.group = this.formBuilder.group({
@@ -132,10 +132,5 @@ export class HomePage {
         this.loadPositionTable();
       }
     });
-  }
-
-  logout(){
-    this.helper.logout();
-    this.navCtrl.setRoot(LoginPage);
   }
 }
