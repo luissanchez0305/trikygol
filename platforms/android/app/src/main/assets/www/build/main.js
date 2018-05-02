@@ -1169,6 +1169,9 @@ var LoginPage = LoginPage_1 = (function () {
             email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["h" /* Validators */].required],
             pwd: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["h" /* Validators */].required],
         });
+        this.tabBarElement = document.querySelector('#tabs div.tabbar');
+        if (this.tabBarElement)
+            this.tabBarElement.style.display = 'none';
         this.isDeviceOnline = true;
         // watch network for a disconnect
         this.network.onDisconnect().subscribe(function () {
@@ -1209,6 +1212,8 @@ var LoginPage = LoginPage_1 = (function () {
                 localStorage.setItem('UserLoggedIn', 'true');
                 localStorage.setItem('UserLoggedGroup', _this.responseData.user[0].grupo);
                 _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__tabs_tabs__["a" /* TabsPage */]);
+                // reaparece el nav bar
+                _this.tabBarElement.style.display = null;
             }
             else {
                 _this.helper.gapAlert("Username or password not valid", "Login Unsuccessful");
@@ -1531,6 +1536,10 @@ var RegisterPage = (function () {
                     localStorage.setItem('UserLoggedIn', 'true');
                     _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__tabs_tabs__["a" /* TabsPage */]);
                 }
+                // reaparece el nav bar
+                _this.tabBarElement = document.querySelector('#tabs div.tabbar');
+                if (_this.tabBarElement)
+                    _this.tabBarElement.style.display = null;
             }
             else if (_this.responseData.msg == 'duplicate') {
                 _this.showDuplicateText = true;

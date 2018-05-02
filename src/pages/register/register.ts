@@ -25,6 +25,7 @@ import 'rxjs/add/operator/toPromise';
 export class RegisterPage {
     private register : FormGroup;
     responseData : any;
+    private tabBarElement : any;
     showLogout: boolean = false;
     emailValue : string = '';
     nameValue : string = '';
@@ -134,6 +135,11 @@ export class RegisterPage {
                     localStorage.setItem('UserLoggedIn', 'true');
                     this.navCtrl.setRoot(TabsPage);
                 }
+
+                // reaparece el nav bar
+                this.tabBarElement = document.querySelector('#tabs div.tabbar');
+                if(this.tabBarElement)
+                    this.tabBarElement.style.display = null;
             }
             else if(this.responseData.msg == 'duplicate'){
                 this.showDuplicateText = true;
