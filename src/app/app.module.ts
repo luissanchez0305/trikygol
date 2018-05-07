@@ -13,6 +13,10 @@ import { RegisterPage } from '../pages/register/register';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { GroupsPage } from '../pages/groups/groups';
 import { GamesPage } from '../pages/games/games';
+import { StickersPage } from '../pages/stickers/stickers';
+import { StickersMissingPage } from '../pages/stickers-missing/stickers-missing';
+import { StickersRepeatedPage } from '../pages/stickers-repeated/stickers-repeated';
+import { StickersMatchPage } from '../pages/stickers-match/stickers-match';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +36,11 @@ import { Network } from '@ionic-native/network';
     RegisterPage,
     ForgotPage,
     GroupsPage,
-    GamesPage
+    GamesPage,
+    StickersPage,
+    StickersMissingPage,
+    StickersRepeatedPage,
+    StickersMatchPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,11 @@ import { Network } from '@ionic-native/network';
     RegisterPage,
     ForgotPage,
     GroupsPage,
-    GamesPage
+    GamesPage,
+    StickersPage,
+    StickersMissingPage,
+    StickersRepeatedPage,
+    StickersMatchPage
   ],
   providers: [
     StatusBar,

@@ -1,14 +1,23 @@
 webpackJsonp([3],{
 
+<<<<<<< HEAD
 /***/ 283:
+=======
+/***/ 290:
+>>>>>>> df18a295a150cf8af332acb12f840998d8b2fe3e
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ForgotPageModule", function() { return ForgotPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StickersMatchPageModule", function() { return StickersMatchPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__forgot__ = __webpack_require__(62);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stickers_match__ = __webpack_require__(111);
+>>>>>>> df18a295a150cf8af332acb12f840998d8b2fe3e
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +27,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ForgotPageModule = (function () {
-    function ForgotPageModule() {
+var StickersMatchPageModule = (function () {
+    function StickersMatchPageModule() {
     }
-    return ForgotPageModule;
+    return StickersMatchPageModule;
 }());
-ForgotPageModule = __decorate([
+StickersMatchPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__forgot__["a" /* ForgotPage */],
+            __WEBPACK_IMPORTED_MODULE_2__stickers_match__["a" /* StickersMatchPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__forgot__["a" /* ForgotPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__stickers_match__["a" /* StickersMatchPage */]),
         ],
     })
-], ForgotPageModule);
+], StickersMatchPageModule);
 
-//# sourceMappingURL=forgot.module.js.map
+//# sourceMappingURL=stickers-match.module.js.map
 
 /***/ })
 

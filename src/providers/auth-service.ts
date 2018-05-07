@@ -22,7 +22,7 @@ export class AuthService {
     });
 
   }
-  
+
   getData(data, url){
     return new Promise((resolve, reject) => {
       this.http.get(Constants.API_ENDPOINT + url+'?'+data).subscribe(res => {

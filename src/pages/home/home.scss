@@ -52,8 +52,8 @@ page-home {
         }
     }
     .people-group .title{
-        margin-top: 0px; 
-        margin-bottom: 0px;    
+        margin-top: 0px;
+        margin-bottom: 0px;
         font-size: 200%;
         font-weight: bold;
     }
@@ -67,4 +67,10 @@ page-home {
 
 .next-games .col {
     overflow: inherit;
+}
+.next-games .team1{
+    text-align: left;
+}
+.next-games .team2{
+    text-align: right;
 }

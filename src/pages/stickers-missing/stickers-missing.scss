@@ -1,0 +1,14 @@
+page-stickers-missing {
+.pause{
+    background-color: gray;
+}
+.recording{
+    background-color: red;
+}
+label.pause{
+    display: none;
+}
+label.recording{
+    display: block;
+}
+}

@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
@@ -27,7 +27,7 @@ export class ForgotPage {
     showSent: boolean = false;
     private isDeviceOnline : boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams,
     public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder, private network: Network, private zone: NgZone) {
       this.forgot = this.formBuilder.group({
         email: ['', Validators.required]
@@ -47,21 +47,27 @@ export class ForgotPage {
         });
       });
   }
-    
+
     openLogin(){
         this.navCtrl.setRoot(LoginPage);
     }
-    
+
     openRegister(){
         this.navCtrl.setRoot(RegisterPage);
     }
-    
+
     attemptUserForgot() {
+      let loading = this.loadingCtrl.create({
+        content: 'Espere un momento...'
+      });
+      loading.present();
       var data = { type : 'cred', e : this.forgot.value.email };
         this.authService.postData(data,'/sendMail.php').then((result) => {
+          loading.dismiss();
           this.showSent = true;
       }, (err) => {
         // Error log
+        loading.dismiss();
         this.helper.gapAlert('Error en logueao', err);
       });
     }

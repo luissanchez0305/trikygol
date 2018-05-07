@@ -49,6 +49,7 @@
                     </div>
                     <br>
                     <button ion-button full type="submit" class="button button-calm" [disabled]="!register.valid">{{ submitText }}</button>
+                    <label class="error" *ngIf="showDuplicateText">Este correo ya existe, intente otro</label>
                     <br>
                     <div style="text-align:center">
                                             <div *ngIf="!isLoggedIn" ion-button clear (click)="openLogin()">

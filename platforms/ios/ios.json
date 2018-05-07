@@ -42,6 +42,12 @@
             }
           ]
         }
+      },
+      "*-Info.plist": {
+        "parents": {
+          "NSMicrophoneUsageDescription": [],
+          "NSSpeechRecognitionUsageDescription": []
+        }
       }
     }
   },
