@@ -32,7 +32,7 @@ export class HomePage {
       this.group = this.formBuilder.group({
         code: ['', Validators.required]
       });
-      if(localStorage.getItem('UserLoggedIn') != 'true'){
+      if(localStorage.getItem('UserLoggedIn') == null || localStorage.getItem('UserLoggedIn') != 'true'){
           this.navCtrl.setRoot(LoginPage);
           return;
       }
