@@ -50,15 +50,6 @@ module.exports = [
     ]
   },
   {
-    "id": "ionic-plugin-keyboard.keyboard",
-    "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
-    "pluginId": "ionic-plugin-keyboard",
-    "clobbers": [
-      "cordova.plugins.Keyboard"
-    ],
-    "runs": true
-  },
-  {
     "id": "es6-promise-plugin.Promise",
     "file": "plugins/es6-promise-plugin/www/promise.js",
     "pluginId": "es6-promise-plugin",
@@ -71,6 +62,15 @@ module.exports = [
     "clobbers": [
       "window.plugins.socialsharing"
     ]
+  },
+  {
+    "id": "ionic-plugin-keyboard.keyboard",
+    "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
+    "pluginId": "ionic-plugin-keyboard",
+    "clobbers": [
+      "cordova.plugins.Keyboard"
+    ],
+    "runs": true
   }
 ];
 module.exports.metadata = 
@@ -82,9 +82,9 @@ module.exports.metadata =
   "cordova-plugin-network-information": "2.0.1",
   "cordova-plugin-splashscreen": "4.0.3",
   "cordova-plugin-whitelist": "1.3.1",
-  "ionic-plugin-keyboard": "2.2.1",
   "es6-promise-plugin": "4.2.2",
-  "cordova-plugin-x-socialsharing": "5.4.0"
+  "cordova-plugin-x-socialsharing": "5.4.0",
+  "ionic-plugin-keyboard": "2.2.1"
 };
 // BOTTOM OF METADATA
 });
