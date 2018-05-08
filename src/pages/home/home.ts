@@ -115,7 +115,7 @@ export class HomePage {
         this.socialSharing.canShareVia('facebook').then(() => {
             // Sharing is possible 
             this.socialSharing.shareViaFacebook('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-              localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en Android - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6').then(() => {
+              localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid o iPhone - https://goo.gl/Nnv8w6').then(() => {
                 
               }).catch(() => {
                 $this.helper.gapAlert('No compartido', 'error');
@@ -133,7 +133,7 @@ export class HomePage {
         this.socialSharing.canShareVia('whatsapp').then(() => {
             // Sharing is possible
             this.socialSharing.shareViaWhatsApp('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-              localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en Android - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6').then(() => {
+              localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6').then(() => {
                 
               }).catch(() => {
                 $this.helper.gapAlert('No compartido', 'error');
