@@ -144,7 +144,10 @@ var StickersMissingPage = (function () {
         this.authService.getData('u=' + localStorage.getItem('userID') + '&t=missing&n=' + obj.number, 'updateStickers.php').then(function (result) {
             _this.updateResult = result;
             if (_this.updateResult.status == 'success') {
-                obj.active = 'active';
+                if (_this.updateResult.action == 'delete')
+                    obj.active = '';
+                else
+                    obj.active = 'active';
             }
         });
     };
@@ -1217,7 +1220,9 @@ var LoginPage = LoginPage_1 = (function () {
                 localStorage.setItem('UserLoggedGroup', _this.responseData.user[0].grupo);
                 _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__tabs_tabs__["a" /* TabsPage */]);
                 // reaparece el nav bar
-                _this.tabBarElement.style.display = null;
+                _this.tabBarElement = document.querySelector('#tabs div.tabbar');
+                if (_this.tabBarElement)
+                    _this.tabBarElement.style.display = null;
             }
             else {
                 _this.helper.gapAlert("Username or password not valid", "Login Unsuccessful");
