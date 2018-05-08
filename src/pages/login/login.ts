@@ -83,7 +83,9 @@ export class LoginPage {
             this.navCtrl.setRoot(TabsPage);
 
             // reaparece el nav bar
-            this.tabBarElement.style.display = null;
+            this.tabBarElement = document.querySelector('#tabs div.tabbar');
+            if(this.tabBarElement)
+              this.tabBarElement.style.display = null;
         } else {
             this.helper.gapAlert("Username or password not valid", "Login Unsuccessful");
         }

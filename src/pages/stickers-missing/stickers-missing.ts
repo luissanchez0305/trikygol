@@ -47,7 +47,10 @@ export class StickersMissingPage {
     this.authService.getData('u=' + localStorage.getItem('userID') + '&t=missing&n=' + obj.number,'updateStickers.php').then((result) => {
       this.updateResult = result;
       if(this.updateResult.status == 'success'){
-        obj.active = 'active';
+        if(this.updateResult.action == 'delete')
+          obj.active = '';
+        else
+          obj.active = 'active';
       }
     });
   }
