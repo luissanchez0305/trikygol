@@ -24,6 +24,7 @@ import { HttpModule } from '@angular/http';
 import { AuthService } from '../providers/auth-service';
 import { HelperService } from '../providers/helper';
 import { Network } from '@ionic-native/network';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { Network } from '@ionic-native/network';
     HelperService,
     Dialogs,
     Network,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

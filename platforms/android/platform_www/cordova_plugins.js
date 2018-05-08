@@ -42,14 +42,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-speechrecognition.SpeechRecognition",
-    "file": "plugins/cordova-plugin-speechrecognition/www/speechRecognition.js",
-    "pluginId": "cordova-plugin-speechrecognition",
-    "merges": [
-      "window.plugins.speechRecognition"
-    ]
-  },
-  {
     "id": "cordova-plugin-splashscreen.SplashScreen",
     "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
     "pluginId": "cordova-plugin-splashscreen",
@@ -65,6 +57,20 @@ module.exports = [
       "cordova.plugins.Keyboard"
     ],
     "runs": true
+  },
+  {
+    "id": "es6-promise-plugin.Promise",
+    "file": "plugins/es6-promise-plugin/www/promise.js",
+    "pluginId": "es6-promise-plugin",
+    "runs": true
+  },
+  {
+    "id": "cordova-plugin-x-socialsharing.SocialSharing",
+    "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+    "pluginId": "cordova-plugin-x-socialsharing",
+    "clobbers": [
+      "window.plugins.socialsharing"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -74,10 +80,11 @@ module.exports.metadata =
   "cordova-plugin-dialogs": "1.3.3",
   "cordova-plugin-ionic-webview": "1.1.15",
   "cordova-plugin-network-information": "2.0.1",
-  "cordova-plugin-speechrecognition": "1.1.2",
   "cordova-plugin-splashscreen": "4.0.3",
   "cordova-plugin-whitelist": "1.3.1",
-  "ionic-plugin-keyboard": "2.2.1"
+  "ionic-plugin-keyboard": "2.2.1",
+  "es6-promise-plugin": "4.2.2",
+  "cordova-plugin-x-socialsharing": "5.4.0"
 };
 // BOTTOM OF METADATA
 });

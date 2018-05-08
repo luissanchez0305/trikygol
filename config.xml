@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.esferasoluciones.trikygolR18" version="1.1.3" versionCode="4" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.esferasoluciones.trikygolR18" version="1.1.4" versionCode="4" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>TrikyGol</name>
     <description>Creacion de quinielas de futbol</description>
     <author email="lsanchez@esferasoluciones.com" href="https://www.esferasoluciones.com">
@@ -87,6 +87,7 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.15" />
     <plugin name="cordova-plugin-dialogs" spec="^1.3.3" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.0" />
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.4" />
 </widget>

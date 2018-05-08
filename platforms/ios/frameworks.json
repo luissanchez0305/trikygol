@@ -3,5 +3,7 @@
     "WebKit.framework": 1,
     "libz.tbd": 1,
     "SystemConfiguration.framework": 1,
-    "CoreTelephony.framework": 1
+    "CoreTelephony.framework": 1,
+    "Social.framework": 1,
+    "MessageUI.framework": 1
 }

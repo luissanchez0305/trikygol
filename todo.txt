@@ -18,6 +18,7 @@ rehacer
 x actualizar la seccion de tabla de posiciones de home al regresar de perfil
 x poner notificacion de "correo ya existe"
 x actualizar vista de grupos en cada load
+- compartir grupo
 
 
 x quitar actualizar vista de juegos al hacer guardar

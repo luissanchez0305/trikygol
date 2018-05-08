@@ -6,6 +6,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Constants } from '../../services/constants';
 import { Network } from '@ionic-native/network';
 import { LoginPage } from '../login/login';
+import { HelperService } from '../../providers/helper';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'page-home',
@@ -27,7 +29,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private authService : AuthService,
     public events : Events, private formBuilder: FormBuilder, private network: Network, private zone: NgZone,
-    private plt: Platform) {
+    private plt: Platform, private socialSharing: SocialSharing, public helper : HelperService) {
       this.group = this.formBuilder.group({
         code: ['', Validators.required]
       });
@@ -94,6 +96,34 @@ export class HomePage {
         this.nextGames = result;
         this.gameDate = Constants.months[date.getMonth()] + ', ' + date.getDate() + ' de ' + date.getFullYear();
       });
+  }
+
+  shareFacebook(){
+      var $this = this;
+      if(this.plt.is('cordova')){
+        this.socialSharing.canShareVia('facebook', 'Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "_' +
+          localStorage.getItem('UserLoggedGroup') + '_"').then(() => {
+          $this.helper.gapAlert('Compartido', 'Listo, gracias');
+          // Sharing via email is possible
+        }).catch(() => {
+          // Sharing via email is not possible
+          $this.helper.gapAlert('No compartido', 'error');
+        });
+      }
+  }
+
+  shareWhatsapp(){
+      var $this = this;
+      if(this.plt.is('cordova')){
+        this.socialSharing.canShareVia('whatsapp', 'Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "_' +
+          localStorage.getItem('UserLoggedGroup') + '_"').then(() => {
+          $this.helper.gapAlert('Compartido', 'Listo, gracias');
+          // Sharing via email is possible
+        }).catch(() => {
+          // Sharing via email is not possible
+          $this.helper.gapAlert('No compartido', 'error');
+        });
+      }
   }
 
   loadPositionTable(){
