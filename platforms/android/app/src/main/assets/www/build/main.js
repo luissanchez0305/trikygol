@@ -408,6 +408,10 @@ var HomePage = (function () {
         this.group = this.formBuilder.group({
             code: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["h" /* Validators */].required]
         });
+        if (localStorage.getItem('UserLoggedIn') == null || localStorage.getItem('UserLoggedIn') != 'true') {
+            this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_6__login_login__["a" /* LoginPage */]);
+            return;
+        }
         var data = { e: localStorage.getItem('userID') };
         this.authService.postData(data, 'userExists.php').then(function (result) {
             _this.responseUserData = result;
