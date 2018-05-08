@@ -26,7 +26,8 @@ export class HomePage {
   private nextGames : any;
   private gameDate : string;
   private isDeviceOnline : boolean;
-
+  private groupName : string;
+  
   constructor(public navCtrl: NavController, private authService : AuthService,
     public events : Events, private formBuilder: FormBuilder, private network: Network, private zone: NgZone,
     private plt: Platform, private socialSharing: SocialSharing, public helper : HelperService) {
@@ -97,17 +98,26 @@ export class HomePage {
         this.gameDate = Constants.months[date.getMonth()] + ', ' + date.getDate() + ' de ' + date.getFullYear();
       });
   }
-
+  shareGroup(){
+      var $this = this;
+      if(this.plt.is('cordova')){
+      }
+  }
   shareFacebook(){
       var $this = this;
       if(this.plt.is('cordova')){
-        this.socialSharing.canShareVia('facebook', 'Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "_' +
-          localStorage.getItem('UserLoggedGroup') + '_"').then(() => {
-          $this.helper.gapAlert('Compartido', 'Listo, gracias');
-          // Sharing via email is possible
+        this.socialSharing.canShareVia('facebook').then(() => {
+            // Sharing is possible 
+            this.socialSharing.shareViaFacebook('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "_' +
+              localStorage.getItem('UserLoggedGroup') + '_". Puedes bajarlo en Android - https://goo.gl/uznmer o iPhone - https://goo.gl/Nnv8w6').then(() => {
+                $this.helper.gapAlert('Compartido', 'Listo, gracias');
+                
+              }).catch(() => {
+                $this.helper.gapAlert('No compartido', 'error');
+              });
         }).catch(() => {
-          // Sharing via email is not possible
-          $this.helper.gapAlert('No compartido', 'error');
+          // Sharing is not possible
+          $this.helper.gapAlert('No se puede', 'error');
         });
       }
   }
@@ -115,12 +125,16 @@ export class HomePage {
   shareWhatsapp(){
       var $this = this;
       if(this.plt.is('cordova')){
-        this.socialSharing.canShareVia('whatsapp', 'Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "_' +
-          localStorage.getItem('UserLoggedGroup') + '_"').then(() => {
-          $this.helper.gapAlert('Compartido', 'Listo, gracias');
-          // Sharing via email is possible
+        this.socialSharing.canShareVia('whatsapp').then(() => {
+            // Sharing is possible
+            this.socialSharing.shareViaWhatsApp('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "_' +
+              localStorage.getItem('UserLoggedGroup') + '_". Puedes bajarlo en Android - https://goo.gl/uznmer o iPhone - https://goo.gl/Nnv8w6').then(() => {
+                $this.helper.gapAlert('Compartido', 'Listo, gracias');
+              }).catch(() => {
+                $this.helper.gapAlert('No compartido', 'error');
+              });
         }).catch(() => {
-          // Sharing via email is not possible
+          // Sharing is not possible
           $this.helper.gapAlert('No compartido', 'error');
         });
       }
@@ -134,6 +148,7 @@ export class HomePage {
         }
         else {
           this.positionTable = true;
+          this.groupName = localStorage.getItem('UserLoggedGroup');
 
     		  /*for(var i = 0; i < this.positions.length; i++){
     		    var user = this.responsePositionData[i];

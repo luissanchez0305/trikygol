@@ -552,28 +552,43 @@ var HomePage = (function () {
             _this.gameDate = __WEBPACK_IMPORTED_MODULE_4__services_constants__["a" /* Constants */].months[date.getMonth()] + ', ' + date.getDate() + ' de ' + date.getFullYear();
         });
     };
-    HomePage.prototype.shareFacebook = function () {
+    HomePage.prototype.shareGroup = function () {
         var $this = this;
         if (this.plt.is('cordova')) {
-            this.socialSharing.canShareVia('facebook', 'Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "_' +
-                localStorage.getItem('UserLoggedGroup') + '_"').then(function () {
-                $this.helper.gapAlert('Compartido', 'Listo, gracias');
-                // Sharing via email is possible
+        }
+    };
+    HomePage.prototype.shareFacebook = function () {
+        var _this = this;
+        var $this = this;
+        if (this.plt.is('cordova')) {
+            this.socialSharing.canShareVia('facebook').then(function () {
+                // Sharing is possible 
+                _this.socialSharing.shareViaFacebook('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "_' +
+                    localStorage.getItem('UserLoggedGroup') + '_". Puedes bajarlo en Android - https://goo.gl/uznmer o iPhone - https://goo.gl/Nnv8w6').then(function () {
+                    $this.helper.gapAlert('Compartido', 'Listo, gracias');
+                }).catch(function () {
+                    $this.helper.gapAlert('No compartido', 'error');
+                });
             }).catch(function () {
-                // Sharing via email is not possible
-                $this.helper.gapAlert('No compartido', 'error');
+                // Sharing is not possible
+                $this.helper.gapAlert('No se puede', 'error');
             });
         }
     };
     HomePage.prototype.shareWhatsapp = function () {
+        var _this = this;
         var $this = this;
         if (this.plt.is('cordova')) {
-            this.socialSharing.canShareVia('whatsapp', 'Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "_' +
-                localStorage.getItem('UserLoggedGroup') + '_"').then(function () {
-                $this.helper.gapAlert('Compartido', 'Listo, gracias');
-                // Sharing via email is possible
+            this.socialSharing.canShareVia('whatsapp').then(function () {
+                // Sharing is possible
+                _this.socialSharing.shareViaWhatsApp('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "_' +
+                    localStorage.getItem('UserLoggedGroup') + '_". Puedes bajarlo en Android - https://goo.gl/uznmer o iPhone - https://goo.gl/Nnv8w6').then(function () {
+                    $this.helper.gapAlert('Compartido', 'Listo, gracias');
+                }).catch(function () {
+                    $this.helper.gapAlert('No compartido', 'error');
+                });
             }).catch(function () {
-                // Sharing via email is not possible
+                // Sharing is not possible
                 $this.helper.gapAlert('No compartido', 'error');
             });
         }
@@ -587,6 +602,7 @@ var HomePage = (function () {
             }
             else {
                 _this.positionTable = true;
+                _this.groupName = localStorage.getItem('UserLoggedGroup');
                 /*for(var i = 0; i < this.positions.length; i++){
                   var user = this.responsePositionData[i];
                   var user_data = user.nombre + ' - ' + (user.puntos != null ? user.puntos : 'Sin ') + ' puntos';
@@ -622,7 +638,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>TrikyGol</ion-title>\n    <button ion-button menuToggle end class="button button-clear">\n      <ion-icon name="menu"></ion-icon>\n    </button>\n  </ion-navbar>\n  <ion-item class="no-conection" *ngIf="!isDeviceOnline">Sin conexión a internet</ion-item>\n</ion-header>\n<ion-content padding>\n  <!--Marcador Partido-->\n  <div class="headers-ion">Próximos partidos</div>\n  <div padding margin-bottom text-center style="height: auto;" class="card-triky">\n    <ion-grid>\n      <ion-col col-12 class="score-home"> <ion-icon name="md-calendar"></ion-icon>{{ gameDate }}</ion-col>\n      <ion-row *ngFor="let game of nextGames" class="next-games">\n        <ion-col class="team1" col-4><img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag1 }}"> {{ game.player1 }}</ion-col>\n        <ion-col col-3><div><span style="font-weight:700">{{ game.score1 }}</span> : <span style="font-weight:700;">{{ game.score2 }}</span></div></ion-col>\n        <ion-col class="team2" col-4> {{ game.player2 }} <img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag2 }}"></ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n  <!--panel de mis puntos-->\n  <ion-item-group class="people-group">\n  <div class="headers-ion">Puntos Ganados</div>\n  <div padding margin-bottom text-center class="card-triky">\n        <div class="title" end>  <ion-icon style="color:#ff9800; font-size:3.5rem" name="md-trophy"></ion-icon> Mis puntos: {{ myPoints }}</div>\n  	<ion-label class="entire-text">Mis puntos total, acertados</ion-label>\n</div>\n<!--panel de estadisticas-->\n    <ion-grid style="font-size:1.4rem;text-align:center;white-space: inherit !important;">\n        <ion-row>\n            <ion-col col-6>\n              <div padding class="card-triky">\n                <div style="white-space: normal;"># de marcadores acertados</div>\n                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ scoresRight }}</b></div>\n                </div>\n            </ion-col>\n            <ion-col col-6>\n               <div padding class="card-triky">\n                <div style="white-space: normal;"># de partidos  empatados</div>\n                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ tieGames }}</b></div>\n                </div>\n            </ion-col>\n            <ion-col col-6>\n              <div padding class="card-triky">\n                <div style="white-space: normal;"># de equipos ganadores</div>\n                <div style="font-size:1.9rem;"><b>{{ winTeams }}</b></div>\n                </div>\n            </ion-col>\n            <ion-col col-6>\n              <div padding class="card-triky">\n                <div style="white-space: normal;"># de equipos clasificados(x2)</div>\n                <div style="font-size:1.9rem;"><b>{{ passedTeams }}</b></div>\n                </div>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n  </ion-item-group>\n\n<!--tabla de usuarios-->\n<ion-item-group class="people-group positions">\n  <div class="headers-ion">Participantes</div>\n  <div padding class="card-triky">\n    <div *ngIf="positionTable">\n      <ion-item class="position1">\n        <ion-grid>\n          <ion-row class="header-table">\n            <ion-col col-6><img (click)="shareFacebook()" width="30" height="30"  src="images/facebook.png" /></ion-col>\n            <ion-col col-6><img (click)="shareWhatsapp()" width="30" height="30"  src="images/whatsapp.png" /></ion-col>\n          </ion-row>\n          <ion-row class="header-table hidden">\n            <ion-col col-6>Usuario</ion-col>\n            <ion-col col-6>Puntos</ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-item>\n      <ion-item class="position1" *ngFor="let position of positions">{{ position.number }}\n        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ position.nombre }}\n      </ion-item>\n    </div>\n    <div class="un-code" *ngIf="!positionTable">\n        <ion-item>\n          <h2>Aún no perteneces a un grupo</h2>\n          <p>Introduce el grupo abajo y dale a "Entrar" para empezar a jugar</p>\n          <form [formGroup]="group" (ngSubmit)="attemptJoinGroup()">\n            <ion-item>\n                <ion-input class="code-group" type="text" placeholder="Código" autocapitalize="none" formControlName="code"></ion-input>\n            </ion-item>\n            <br>\n            <button ion-button full type="submit" class="button button-calm" [disabled]="!group.valid">ENTRAR</button>\n          </form>\n        </ion-item>\n    </div>\n    </div>\n\n  </ion-item-group>\n  <ion-item-group>\n  </ion-item-group>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/home/home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"/home/ubuntu/workspace/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>TrikyGol</ion-title>\n    <button ion-button menuToggle end class="button button-clear">\n      <ion-icon name="menu"></ion-icon>\n    </button>\n  </ion-navbar>\n  <ion-item class="no-conection" *ngIf="!isDeviceOnline">Sin conexión a internet</ion-item>\n</ion-header>\n<ion-content padding>\n  <!--Marcador Partido-->\n  <div class="headers-ion">Próximos partidos</div>\n  <div padding margin-bottom text-center style="height: auto;" class="card-triky">\n    <ion-grid>\n      <ion-col col-12 class="score-home"> <ion-icon name="md-calendar"></ion-icon>{{ gameDate }}</ion-col>\n      <ion-row *ngFor="let game of nextGames" class="next-games">\n        <ion-col class="team1" col-4><img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag1 }}"> {{ game.player1 }}</ion-col>\n        <ion-col col-3><div><span style="font-weight:700">{{ game.score1 }}</span> : <span style="font-weight:700;">{{ game.score2 }}</span></div></ion-col>\n        <ion-col class="team2" col-4> {{ game.player2 }} <img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag2 }}"></ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n  <!--panel de mis puntos-->\n  <ion-item-group class="people-group">\n  <div class="headers-ion">Puntos Ganados</div>\n  <div padding margin-bottom text-center class="card-triky">\n        <div class="title" end>  <ion-icon style="color:#ff9800; font-size:3.5rem" name="md-trophy"></ion-icon> Mis puntos: {{ myPoints }}</div>\n  	<ion-label class="entire-text">Mis puntos total, acertados</ion-label>\n</div>\n<!--panel de estadisticas-->\n    <ion-grid style="font-size:1.4rem;text-align:center;white-space: inherit !important;">\n        <ion-row>\n            <ion-col col-6>\n              <div padding class="card-triky">\n                <div style="white-space: normal;"># de marcadores acertados</div>\n                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ scoresRight }}</b></div>\n                </div>\n            </ion-col>\n            <ion-col col-6>\n               <div padding class="card-triky">\n                <div style="white-space: normal;"># de partidos  empatados</div>\n                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ tieGames }}</b></div>\n                </div>\n            </ion-col>\n            <ion-col col-6>\n              <div padding class="card-triky">\n                <div style="white-space: normal;"># de equipos ganadores</div>\n                <div style="font-size:1.9rem;"><b>{{ winTeams }}</b></div>\n                </div>\n            </ion-col>\n            <ion-col col-6>\n              <div padding class="card-triky">\n                <div style="white-space: normal;"># de equipos clasificados(x2)</div>\n                <div style="font-size:1.9rem;"><b>{{ passedTeams }}</b></div>\n                </div>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n  </ion-item-group>\n\n<!--tabla de usuarios-->\n<ion-item-group class="people-group positions">\n  <div class="headers-ion">Participantes del grupo {{ groupName }}</div>\n  <div padding class="card-triky">\n    <div *ngIf="positionTable">\n      <ion-item class="position1">\n        <ion-grid>\n          <ion-row class="header-table">\n            <ion-col col-6>Comparte tu grupo: </ion-col>\n            <ion-col col-6><img (click)="shareFacebook()" width="30" height="30"  src="images/facebook.png" /></ion-col>\n            <ion-col col-6><img (click)="shareWhatsapp()" width="30" height="30"  src="images/whatsapp.png" /></ion-col>\n          </ion-row>\n          <ion-row class="header-table hidden">\n            <ion-col col-6>Usuario</ion-col>\n            <ion-col col-6>Puntos</ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-item>\n      <ion-item class="position1" *ngFor="let position of positions">{{ position.number }}\n        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ position.nombre }}\n      </ion-item>\n    </div>\n    <div class="un-code" *ngIf="!positionTable">\n        <ion-item>\n          <h2>Aún no perteneces a un grupo</h2>\n          <p>Introduce el grupo abajo y dale a "Entrar" para empezar a jugar</p>\n          <form [formGroup]="group" (ngSubmit)="attemptJoinGroup()">\n            <ion-item>\n                <ion-input class="code-group" type="text" placeholder="Código" autocapitalize="none" formControlName="code"></ion-input>\n            </ion-item>\n            <br>\n            <button ion-button full type="submit" class="button button-calm" [disabled]="!group.valid">ENTRAR</button>\n          </form>\n        </ion-item>\n    </div>\n    </div>\n\n  </ion-item-group>\n  <ion-item-group>\n  </ion-item-group>\n</ion-content>\n'/*ion-inline-end:"/home/ubuntu/workspace/src/pages/home/home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* NgZone */],
