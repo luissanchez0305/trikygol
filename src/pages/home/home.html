@@ -60,15 +60,18 @@
 
 <!--tabla de usuarios-->
 <ion-item-group class="people-group positions">
-  <div class="headers-ion">Participantes del grupo {{ groupName }}</div>
+  <div class="headers-ion">Participantes del grupo <b>{{ groupName }}</b></div>
   <div padding class="card-triky">
     <div *ngIf="positionTable">
       <ion-item class="position1">
         <ion-grid>
           <ion-row class="header-table">
             <ion-col col-6>Comparte tu grupo: </ion-col>
+          </ion-row>
+          <ion-row class="header-table">
             <ion-col col-6><img (click)="shareFacebook()" width="30" height="30"  src="images/facebook.png" /></ion-col>
             <ion-col col-6><img (click)="shareWhatsapp()" width="30" height="30"  src="images/whatsapp.png" /></ion-col>
+            <ion-col col-6><img (click)="shareGroup()" width="30" height="30"  src="images/share.png" /></ion-col>
           </ion-row>
           <ion-row class="header-table hidden">
             <ion-col col-6>Usuario</ion-col>
