@@ -115,8 +115,7 @@ export class HomePage {
       if(this.plt.is('cordova')){
         this.socialSharing.canShareVia('facebook').then(() => {
             // Sharing is possible
-            this.socialSharing.shareViaFacebook('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-              localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid o iPhone - https://goo.gl/Nnv8w6', null, null).then(() => {
+            this.socialSharing.shareViaFacebook('hola', null, null).then(() => {
 
               }).catch(() => {
                 $this.helper.gapAlert('No compartido', 'error');
