@@ -116,7 +116,7 @@ export class HomePage {
         this.socialSharing.canShareVia('facebook').then(() => {
             // Sharing is possible
             this.socialSharing.shareViaFacebook('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-              localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid o iPhone - https://goo.gl/Nnv8w6', 'https://www.esferasoluciones.com/api/trikygol/image.png', null).then(() => {
+              localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid o iPhone - https://goo.gl/Nnv8w6', null, null).then(() => {
 
               }).catch(() => {
                 $this.helper.gapAlert('No compartido', 'error');

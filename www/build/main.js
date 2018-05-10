@@ -86,81 +86,6 @@ StickersMatchPage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StickersRepeatedPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_constants__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_helper__ = __webpack_require__(14);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/**
- * Generated class for the StickersRepeatedPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var StickersRepeatedPage = (function () {
-    function StickersRepeatedPage(helper, navCtrl, navParams, authService) {
-        var _this = this;
-        this.helper = helper;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.authService = authService;
-        this.sections = [];
-        this.authService.getData('u=' + localStorage.getItem('userID') + '&t=repeated', 'getStickers.php').then(function (result) {
-            _this.myStickers = result;
-            for (var i = 0; i < __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers.length; i++) {
-                var _stickers = [];
-                for (var j = __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers[i].range[0]; j <= __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers[i].range[1]; j++) {
-                    var founded = _this.helper.searchNumber(_this.myStickers, j);
-                    _stickers.push({ number: j, active: founded ? 'active' : '' });
-                }
-                _this.sections.push({ name: __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers[i].name, stickers: _stickers });
-            }
-        });
-    }
-    StickersRepeatedPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad StickersRepeatedPage');
-    };
-    StickersRepeatedPage.prototype.click_number = function (obj) {
-        var _this = this;
-        this.authService.getData('u=' + localStorage.getItem('userID') + '&t=repeated&n=' + obj.number, 'updateStickers.php').then(function (result) {
-            _this.updateResult = result;
-            if (_this.updateResult.status == 'success') {
-                obj.active = 'active';
-            }
-        });
-    };
-    return StickersRepeatedPage;
-}());
-StickersRepeatedPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-stickers-repeated',template:/*ion-inline-start:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-repeated\stickers-repeated.html"*/'<!--\n\n  Generated template for the StickersRepeatedPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Repetidas</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="sticker-numbers">\n\n  <div style="float:left; width:100%;" *ngFor="let section of sections">\n\n    <div>{{ section.name }}</div>\n\n    <div id="wrapper">\n\n      <ul id="circles">\n\n          <li *ngFor="let sticker of section.stickers">\n\n              <div class="circle {{ sticker.active }}" (click)="click_number(sticker)">\n\n                  <div>{{ sticker.number }}</div>\n\n              </div>\n\n          </li>\n\n      </ul>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-repeated\stickers-repeated.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__["a" /* AuthService */]])
-], StickersRepeatedPage);
-
-//# sourceMappingURL=stickers-repeated.js.map
-
-/***/ }),
-
-/***/ 113:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StickersMissingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
@@ -240,6 +165,81 @@ StickersMissingPage = __decorate([
 
 /***/ }),
 
+/***/ 113:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StickersRepeatedPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_constants__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_helper__ = __webpack_require__(14);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the StickersRepeatedPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var StickersRepeatedPage = (function () {
+    function StickersRepeatedPage(helper, navCtrl, navParams, authService) {
+        var _this = this;
+        this.helper = helper;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.authService = authService;
+        this.sections = [];
+        this.authService.getData('u=' + localStorage.getItem('userID') + '&t=repeated', 'getStickers.php').then(function (result) {
+            _this.myStickers = result;
+            for (var i = 0; i < __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers.length; i++) {
+                var _stickers = [];
+                for (var j = __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers[i].range[0]; j <= __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers[i].range[1]; j++) {
+                    var founded = _this.helper.searchNumber(_this.myStickers, j);
+                    _stickers.push({ number: j, active: founded ? 'active' : '' });
+                }
+                _this.sections.push({ name: __WEBPACK_IMPORTED_MODULE_2__services_constants__["a" /* Constants */].stickers[i].name, stickers: _stickers });
+            }
+        });
+    }
+    StickersRepeatedPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad StickersRepeatedPage');
+    };
+    StickersRepeatedPage.prototype.click_number = function (obj) {
+        var _this = this;
+        this.authService.getData('u=' + localStorage.getItem('userID') + '&t=repeated&n=' + obj.number, 'updateStickers.php').then(function (result) {
+            _this.updateResult = result;
+            if (_this.updateResult.status == 'success') {
+                obj.active = 'active';
+            }
+        });
+    };
+    return StickersRepeatedPage;
+}());
+StickersRepeatedPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-stickers-repeated',template:/*ion-inline-start:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-repeated\stickers-repeated.html"*/'<!--\n\n  Generated template for the StickersRepeatedPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Repetidas</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="sticker-numbers">\n\n  <div style="float:left; width:100%;" *ngFor="let section of sections">\n\n    <div>{{ section.name }}</div>\n\n    <div id="wrapper">\n\n      <ul id="circles">\n\n          <li *ngFor="let sticker of section.stickers">\n\n              <div class="circle {{ sticker.active }}" (click)="click_number(sticker)">\n\n                  <div>{{ sticker.number }}</div>\n\n              </div>\n\n          </li>\n\n      </ul>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-repeated\stickers-repeated.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__["a" /* AuthService */]])
+], StickersRepeatedPage);
+
+//# sourceMappingURL=stickers-repeated.js.map
+
+/***/ }),
+
 /***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -247,8 +247,8 @@ StickersMissingPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StickersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stickers_missing_stickers_missing__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stickers_repeated_stickers_repeated__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stickers_missing_stickers_missing__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stickers_repeated_stickers_repeated__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stickers_match_stickers_match__ = __webpack_require__(111);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -410,19 +410,19 @@ var map = {
 		5
 	],
 	"../pages/register/register.module": [
-		291,
+		290,
 		4
 	],
 	"../pages/stickers-match/stickers-match.module": [
-		290,
+		291,
 		3
 	],
 	"../pages/stickers-missing/stickers-missing.module": [
-		293,
+		292,
 		2
 	],
 	"../pages/stickers-repeated/stickers-repeated.module": [
-		292,
+		293,
 		1
 	],
 	"../pages/stickers/stickers.module": [
@@ -569,7 +569,7 @@ var HomePage = (function () {
             this.socialSharing.canShareVia('facebook').then(function () {
                 // Sharing is possible
                 _this.socialSharing.shareViaFacebook('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-                    localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid o iPhone - https://goo.gl/Nnv8w6', 'https://www.esferasoluciones.com/api/trikygol/image.png', null).then(function () {
+                    localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid o iPhone - https://goo.gl/Nnv8w6', null, null).then(function () {
                 }).catch(function () {
                     $this.helper.gapAlert('No compartido', 'error');
                 });
@@ -1057,8 +1057,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_groups_groups__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_games_games__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_stickers_stickers__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_stickers_missing_stickers_missing__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_stickers_repeated_stickers_repeated__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_stickers_missing_stickers_missing__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_stickers_repeated_stickers_repeated__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_stickers_match_stickers_match__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_status_bar__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_splash_screen__ = __webpack_require__(213);
@@ -1128,10 +1128,10 @@ AppModule = __decorate([
                     { loadChildren: '../pages/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/games/games.module#GamesPageModule', name: 'GamesPage', segment: 'games', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers-repeated/stickers-repeated.module#StickersRepeatedPageModule', name: 'StickersRepeatedPage', segment: 'stickers-repeated', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-missing/stickers-missing.module#StickersMissingPageModule', name: 'StickersMissingPage', segment: 'stickers-missing', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/stickers-repeated/stickers-repeated.module#StickersRepeatedPageModule', name: 'StickersRepeatedPage', segment: 'stickers-repeated', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers/stickers.module#StickersPageModule', name: 'StickersPage', segment: 'stickers', priority: 'low', defaultHistory: [] }
                 ]
             }),
