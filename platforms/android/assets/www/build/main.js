@@ -555,7 +555,7 @@ var HomePage = (function () {
     HomePage.prototype.shareGroup = function () {
         var $this = this;
         if (this.plt.is('cordova')) {
-            this.socialSharing.share('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
+            this.socialSharing.share('Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
                 localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6').then(function () {
             }).catch(function () {
                 $this.helper.gapAlert('No se puede', 'error');
@@ -568,8 +568,8 @@ var HomePage = (function () {
         if (this.plt.is('cordova')) {
             this.socialSharing.canShareVia('facebook').then(function () {
                 // Sharing is possible
-                _this.socialSharing.shareViaFacebook('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-                    localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid o iPhone - https://goo.gl/Nnv8w6', 'https://www.esferasoluciones.com/api/trikygol/image.png', 'https://www.esferasoluciones.com').then(function () {
+                _this.socialSharing.shareViaFacebook("Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo '" +
+                    localStorage.getItem('UserLoggedGroup') + "'. Puedes bajarlo en Android o iPhone", null, null).then(function () {
                 }).catch(function () {
                     $this.helper.gapAlert('No compartido', 'error');
                 });
@@ -585,7 +585,7 @@ var HomePage = (function () {
         if (this.plt.is('cordova')) {
             this.socialSharing.canShareVia('whatsapp').then(function () {
                 // Sharing is possible
-                _this.socialSharing.shareViaWhatsApp('Quieres hacer tu quiniela de Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
+                _this.socialSharing.shareViaWhatsApp('Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
                     localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6').then(function () {
                 }).catch(function () {
                     $this.helper.gapAlert('No compartido', 'error');
