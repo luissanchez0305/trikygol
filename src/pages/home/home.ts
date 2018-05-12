@@ -99,6 +99,7 @@ export class HomePage {
       });
   }
   shareGroup(){
+      console.log('share');
       var $this = this;
       if(this.plt.is('cordova')){
         this.socialSharing.share('Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +

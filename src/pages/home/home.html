@@ -60,7 +60,7 @@
 
 <!--tabla de usuarios-->
 <ion-item-group class="people-group positions">
-  <div class="headers-ion">Participantes del grupo <b>{{ groupName }}</b><img class="share-icon" (click)="shareGroup()" width="30" height="30"  src="images/share.png" /></div>
+  <div class="headers-ion">Participantes del grupo <b>{{ groupName }}</b> <img class="share-icon" width="30" height="30"  src="images/share.png" (click)="shareGroup()" /></div>
   <div padding class="card-triky">
     <div *ngIf="positionTable">
       <ion-item class="position1" *ngFor="let position of positions">{{ position.number }}
@@ -71,6 +71,9 @@
           <ion-col col-6>Usuario</ion-col>
           <ion-col col-6>Puntos</ion-col>
         </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row class="share-row" (click)="shareGroup()">Comparte este grupo <img class="share-icon" width="30" height="30"  src="images/share.png" /></ion-row>
       </ion-grid>
     </div>
     <div class="un-code" *ngIf="!positionTable">
@@ -86,7 +89,7 @@
           </form>
         </ion-item>
     </div>
-    </div>
+  </div>
 
   </ion-item-group>
   <ion-item-group>

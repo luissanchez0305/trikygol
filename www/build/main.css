@@ -40173,6 +40173,11 @@ page-home .people-group .share-icon {
   margin: 0px 0px 0px 10px;
 }
 
+page-home .people-group .share-row {
+  font-size: 20px;
+  color: #ff9800;
+}
+
 page-home .people-group .title {
   margin-top: 0px;
   margin-bottom: 0px;
