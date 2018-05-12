@@ -102,47 +102,12 @@ export class HomePage {
       var $this = this;
       if(this.plt.is('cordova')){
         this.socialSharing.share('Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-          localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6').then(()=>{
+          localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6', 'Este es mi grupo en TrikyGol - ' +
+          localStorage.getItem('UserLoggedGroup'), 'https://www.esferasoluciones.com/api/trikygol/image.png').then(()=>{
 
           }).catch(()=>{
             $this.helper.gapAlert('No se puede', 'error');
           });
-      }
-  }
-
-  shareFacebook(){
-      var $this = this;
-      if(this.plt.is('cordova')){
-        this.socialSharing.canShareVia('facebook').then(() => {
-            // Sharing is possible
-            this.socialSharing.shareViaFacebook("Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo '" +
-              localStorage.getItem('UserLoggedGroup') + "'. Puedes bajarlo en Android o iPhone", null, null).then(() => {
-
-              }).catch(() => {
-                $this.helper.gapAlert('No compartido', 'error');
-              });
-        }).catch(() => {
-          // Sharing is not possible
-          $this.helper.gapAlert('No se puede', 'error');
-        });
-      }
-  }
-
-  shareWhatsapp(){
-      var $this = this;
-      if(this.plt.is('cordova')){
-        this.socialSharing.canShareVia('whatsapp').then(() => {
-            // Sharing is possible
-            this.socialSharing.shareViaWhatsApp('Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-              localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6').then(() => {
-
-              }).catch(() => {
-                $this.helper.gapAlert('No compartido', 'error');
-              });
-        }).catch(() => {
-          // Sharing is not possible
-          $this.helper.gapAlert('No se puede', 'error');
-        });
       }
   }
 

@@ -4,88 +4,6 @@ webpackJsonp([8],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StickersMatchPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_helper__ = __webpack_require__(14);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/**
- * Generated class for the StickersMatchPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var StickersMatchPage = (function () {
-    function StickersMatchPage(navCtrl, helper, navParams, authService) {
-        this.navCtrl = navCtrl;
-        this.helper = helper;
-        this.navParams = navParams;
-        this.authService = authService;
-    }
-    StickersMatchPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        console.log('ionViewDidLoad StickersMatchPage');
-        this.authService.getData('u=' + localStorage.getItem('userID') + '&g=' + localStorage.getItem('UserLoggedGroup'), 'getStickersMatch.php').then(function (result) {
-            _this.matchResult = result;
-            if (_this.matchResult.status == 'no results' || _this.matchResult.status == 'no params') {
-                _this.showNoResult = true;
-            }
-            else {
-                _this.showNoResult = false;
-                _this.stickers = result;
-                var _stickers = [];
-                var currentName = '';
-                for (var i = 0; i < _this.stickers.length; i++) {
-                    var sticker = _this.stickers[i];
-                    if (sticker.nombre != currentName) {
-                        currentName = sticker.nombre;
-                        var _numbers = [];
-                        for (var j = i; j < _this.stickers.length; j++) {
-                            var number = _this.stickers[j];
-                            if (number.nombre != currentName) {
-                                break;
-                            }
-                            _numbers.push(number.numero);
-                        }
-                        _stickers.push({ nombre: currentName, numeros: _numbers });
-                    }
-                }
-                _this.stickers = _stickers;
-            }
-        }, function (error) {
-            alert(error);
-        });
-    };
-    return StickersMatchPage;
-}());
-StickersMatchPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-stickers-match',template:/*ion-inline-start:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-match\stickers-match.html"*/'<!--\n\n  Generated template for the StickersMatchPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Quien las tiene?</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="sticker-numbers">\n\n    <ion-item *ngIf="showNoResult">No existe ningun match</ion-item>\n\n    <div style="float:left; width:100%;" *ngFor="let sticker of stickers">\n\n    <div>{{ sticker.nombre }}</div>\n\n    <div id="wrapper">\n\n      <ul id="circles">\n\n          <li *ngFor="let numero of sticker.numeros">\n\n              <div class="circle">\n\n                  <div>{{ numero }}</div>\n\n              </div>\n\n          </li>\n\n      </ul>\n\n    </div>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-match\stickers-match.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */]])
-], StickersMatchPage);
-
-//# sourceMappingURL=stickers-match.js.map
-
-/***/ }),
-
-/***/ 112:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StickersMissingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
@@ -165,7 +83,7 @@ StickersMissingPage = __decorate([
 
 /***/ }),
 
-/***/ 113:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -240,16 +158,16 @@ StickersRepeatedPage = __decorate([
 
 /***/ }),
 
-/***/ 114:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StickersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stickers_missing_stickers_missing__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stickers_repeated_stickers_repeated__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stickers_match_stickers_match__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stickers_missing_stickers_missing__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stickers_repeated_stickers_repeated__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stickers_match_stickers_match__ = __webpack_require__(114);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -297,6 +215,88 @@ StickersPage = __decorate([
 ], StickersPage);
 
 //# sourceMappingURL=stickers.js.map
+
+/***/ }),
+
+/***/ 114:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StickersMatchPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_helper__ = __webpack_require__(14);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the StickersMatchPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var StickersMatchPage = (function () {
+    function StickersMatchPage(navCtrl, helper, navParams, authService) {
+        this.navCtrl = navCtrl;
+        this.helper = helper;
+        this.navParams = navParams;
+        this.authService = authService;
+    }
+    StickersMatchPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        console.log('ionViewDidLoad StickersMatchPage');
+        this.authService.getData('u=' + localStorage.getItem('userID') + '&g=' + localStorage.getItem('UserLoggedGroup'), 'getStickersMatch.php').then(function (result) {
+            _this.matchResult = result;
+            if (_this.matchResult.status == 'no results' || _this.matchResult.status == 'no params') {
+                _this.showNoResult = true;
+            }
+            else {
+                _this.showNoResult = false;
+                _this.stickers = result;
+                var _stickers = [];
+                var currentName = '';
+                for (var i = 0; i < _this.stickers.length; i++) {
+                    var sticker = _this.stickers[i];
+                    if (sticker.nombre != currentName) {
+                        currentName = sticker.nombre;
+                        var _numbers = [];
+                        for (var j = i; j < _this.stickers.length; j++) {
+                            var number = _this.stickers[j];
+                            if (number.nombre != currentName) {
+                                break;
+                            }
+                            _numbers.push(number.numero);
+                        }
+                        _stickers.push({ nombre: currentName, numeros: _numbers });
+                    }
+                }
+                _this.stickers = _stickers;
+            }
+        }, function (error) {
+            alert(error);
+        });
+    };
+    return StickersMatchPage;
+}());
+StickersMatchPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-stickers-match',template:/*ion-inline-start:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-match\stickers-match.html"*/'<!--\n\n  Generated template for the StickersMatchPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Quien las tiene?</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="sticker-numbers">\n\n    <ion-item *ngIf="showNoResult">No existe ningun match</ion-item>\n\n    <div style="float:left; width:100%;" *ngFor="let sticker of stickers">\n\n    <div>{{ sticker.nombre }}</div>\n\n    <div id="wrapper">\n\n      <ul id="circles">\n\n          <li *ngFor="let numero of sticker.numeros">\n\n              <div class="circle">\n\n                  <div>{{ numero }}</div>\n\n              </div>\n\n          </li>\n\n      </ul>\n\n    </div>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"c:\Users\lsanc\projects\trikygol\src\pages\stickers-match\stickers-match.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_helper__["a" /* HelperService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */]])
+], StickersMatchPage);
+
+//# sourceMappingURL=stickers-match.js.map
 
 /***/ }),
 
@@ -402,31 +402,31 @@ var map = {
 		7
 	],
 	"../pages/games/games.module": [
-		288,
+		290,
 		6
 	],
 	"../pages/login/login.module": [
-		289,
+		291,
 		5
 	],
 	"../pages/register/register.module": [
-		290,
+		288,
 		4
 	],
 	"../pages/stickers-match/stickers-match.module": [
-		291,
+		294,
 		3
 	],
 	"../pages/stickers-missing/stickers-missing.module": [
-		292,
+		289,
 		2
 	],
 	"../pages/stickers-repeated/stickers-repeated.module": [
-		293,
+		292,
 		1
 	],
 	"../pages/stickers/stickers.module": [
-		294,
+		293,
 		0
 	]
 };
@@ -556,42 +556,9 @@ var HomePage = (function () {
         var $this = this;
         if (this.plt.is('cordova')) {
             this.socialSharing.share('Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-                localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6').then(function () {
+                localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6', 'Este es mi grupo en TrikyGol - ' +
+                localStorage.getItem('UserLoggedGroup'), 'https://www.esferasoluciones.com/api/trikygol/image.png').then(function () {
             }).catch(function () {
-                $this.helper.gapAlert('No se puede', 'error');
-            });
-        }
-    };
-    HomePage.prototype.shareFacebook = function () {
-        var _this = this;
-        var $this = this;
-        if (this.plt.is('cordova')) {
-            this.socialSharing.canShareVia('facebook').then(function () {
-                // Sharing is possible
-                _this.socialSharing.shareViaFacebook("Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo '" +
-                    localStorage.getItem('UserLoggedGroup') + "'. Puedes bajarlo en Android o iPhone", null, null).then(function () {
-                }).catch(function () {
-                    $this.helper.gapAlert('No compartido', 'error');
-                });
-            }).catch(function () {
-                // Sharing is not possible
-                $this.helper.gapAlert('No se puede', 'error');
-            });
-        }
-    };
-    HomePage.prototype.shareWhatsapp = function () {
-        var _this = this;
-        var $this = this;
-        if (this.plt.is('cordova')) {
-            this.socialSharing.canShareVia('whatsapp').then(function () {
-                // Sharing is possible
-                _this.socialSharing.shareViaWhatsApp('Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-                    localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6').then(function () {
-                }).catch(function () {
-                    $this.helper.gapAlert('No compartido', 'error');
-                });
-            }).catch(function () {
-                // Sharing is not possible
                 $this.helper.gapAlert('No se puede', 'error');
             });
         }
@@ -641,7 +608,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"c:\Users\lsanc\projects\trikygol\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>TrikyGol</ion-title>\n\n    <button ion-button menuToggle end class="button button-clear">\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n  </ion-navbar>\n\n  <ion-item class="no-conection" *ngIf="!isDeviceOnline">Sin conexión a internet</ion-item>\n\n</ion-header>\n\n<ion-content padding>\n\n  <!--Marcador Partido-->\n\n  <div class="headers-ion">Próximos partidos</div>\n\n  <div padding margin-bottom text-center style="height: auto;" class="card-triky">\n\n    <ion-grid>\n\n      <ion-col col-12 class="score-home"> <ion-icon name="md-calendar"></ion-icon>{{ gameDate }}</ion-col>\n\n      <ion-row *ngFor="let game of nextGames" class="next-games">\n\n        <ion-col class="team1" col-4><img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag1 }}"> {{ game.player1 }}</ion-col>\n\n        <ion-col col-3><div><span style="font-weight:700">{{ game.score1 }}</span> : <span style="font-weight:700;">{{ game.score2 }}</span></div></ion-col>\n\n        <ion-col class="team2" col-4> {{ game.player2 }} <img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag2 }}"></ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </div>\n\n  <!--panel de mis puntos-->\n\n  <ion-item-group class="people-group">\n\n  <div class="headers-ion">Puntos Ganados</div>\n\n  <div padding margin-bottom text-center class="card-triky">\n\n        <div class="title" end>  <ion-icon style="color:#ff9800; font-size:3.5rem" name="md-trophy"></ion-icon> Mis puntos: {{ myPoints }}</div>\n\n  	<ion-label class="entire-text">Mis puntos total, acertados</ion-label>\n\n</div>\n\n<!--panel de estadisticas-->\n\n    <ion-grid style="font-size:1.4rem;text-align:center;white-space: inherit !important;">\n\n        <ion-row>\n\n            <ion-col col-6>\n\n              <div padding class="card-triky">\n\n                <div style="white-space: normal;"># de marcadores acertados</div>\n\n                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ scoresRight }}</b></div>\n\n                </div>\n\n            </ion-col>\n\n            <ion-col col-6>\n\n               <div padding class="card-triky">\n\n                <div style="white-space: normal;"># de partidos  empatados</div>\n\n                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ tieGames }}</b></div>\n\n                </div>\n\n            </ion-col>\n\n            <ion-col col-6>\n\n              <div padding class="card-triky">\n\n                <div style="white-space: normal;"># de equipos ganadores</div>\n\n                <div style="font-size:1.9rem;"><b>{{ winTeams }}</b></div>\n\n                </div>\n\n            </ion-col>\n\n            <ion-col col-6>\n\n              <div padding class="card-triky">\n\n                <div style="white-space: normal;"># de equipos clasificados(x2)</div>\n\n                <div style="font-size:1.9rem;"><b>{{ passedTeams }}</b></div>\n\n                </div>\n\n            </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n  </ion-item-group>\n\n\n\n<!--tabla de usuarios-->\n\n<ion-item-group class="people-group positions">\n\n  <div class="headers-ion">Participantes del grupo <b>{{ groupName }}</b></div>\n\n  <div padding class="card-triky">\n\n    <div *ngIf="positionTable">\n\n      <ion-item class="position1" *ngFor="let position of positions">{{ position.number }}\n\n        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ position.nombre }}\n\n      </ion-item>\n\n      <ion-grid>\n\n        <ion-row class="header-table">\n\n          <ion-col col-6>Comparte tu grupo: </ion-col>\n\n        </ion-row>\n\n        <ion-row class="header-table">\n\n          <ion-col col-4><img (click)="shareFacebook()" width="30" height="30"  src="images/facebook.png" /></ion-col>\n\n          <ion-col col-4><img (click)="shareWhatsapp()" width="30" height="30"  src="images/whatsapp.png" /></ion-col>\n\n          <ion-col col-4><img (click)="shareGroup()" width="30" height="30"  src="images/share.png" /></ion-col>\n\n        </ion-row>\n\n        <ion-row class="header-table hidden">\n\n          <ion-col col-6>Usuario</ion-col>\n\n          <ion-col col-6>Puntos</ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n    </div>\n\n    <div class="un-code" *ngIf="!positionTable">\n\n        <ion-item>\n\n          <h2>Aún no perteneces a un grupo</h2>\n\n          <p>Introduce el grupo abajo y dale a "Entrar" para empezar a jugar</p>\n\n          <form [formGroup]="group" (ngSubmit)="attemptJoinGroup()">\n\n            <ion-item>\n\n                <ion-input class="code-group" type="text" placeholder="Código" autocapitalize="none" formControlName="code"></ion-input>\n\n            </ion-item>\n\n            <br>\n\n            <button ion-button full type="submit" class="button button-calm" [disabled]="!group.valid">ENTRAR</button>\n\n          </form>\n\n        </ion-item>\n\n    </div>\n\n    </div>\n\n\n\n  </ion-item-group>\n\n  <ion-item-group>\n\n  </ion-item-group>\n\n</ion-content>\n\n'/*ion-inline-end:"c:\Users\lsanc\projects\trikygol\src\pages\home\home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"c:\Users\lsanc\projects\trikygol\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>TrikyGol</ion-title>\n\n    <button ion-button menuToggle end class="button button-clear">\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n  </ion-navbar>\n\n  <ion-item class="no-conection" *ngIf="!isDeviceOnline">Sin conexión a internet</ion-item>\n\n</ion-header>\n\n<ion-content padding>\n\n  <!--Marcador Partido-->\n\n  <div class="headers-ion">Próximos partidos</div>\n\n  <div padding margin-bottom text-center style="height: auto;" class="card-triky">\n\n    <ion-grid>\n\n      <ion-col col-12 class="score-home"> <ion-icon name="md-calendar"></ion-icon>{{ gameDate }}</ion-col>\n\n      <ion-row *ngFor="let game of nextGames" class="next-games">\n\n        <ion-col class="team1" col-4><img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag1 }}"> {{ game.player1 }}</ion-col>\n\n        <ion-col col-3><div><span style="font-weight:700">{{ game.score1 }}</span> : <span style="font-weight:700;">{{ game.score2 }}</span></div></ion-col>\n\n        <ion-col class="team2" col-4> {{ game.player2 }} <img style="border-radius:4px" height="20" width="32" src="images/{{ game.flag2 }}"></ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </div>\n\n  <!--panel de mis puntos-->\n\n  <ion-item-group class="people-group">\n\n  <div class="headers-ion">Puntos Ganados</div>\n\n  <div padding margin-bottom text-center class="card-triky">\n\n        <div class="title" end>  <ion-icon style="color:#ff9800; font-size:3.5rem" name="md-trophy"></ion-icon> Mis puntos: {{ myPoints }}</div>\n\n  	<ion-label class="entire-text">Mis puntos total, acertados</ion-label>\n\n</div>\n\n<!--panel de estadisticas-->\n\n    <ion-grid style="font-size:1.4rem;text-align:center;white-space: inherit !important;">\n\n        <ion-row>\n\n            <ion-col col-6>\n\n              <div padding class="card-triky">\n\n                <div style="white-space: normal;"># de marcadores acertados</div>\n\n                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ scoresRight }}</b></div>\n\n                </div>\n\n            </ion-col>\n\n            <ion-col col-6>\n\n               <div padding class="card-triky">\n\n                <div style="white-space: normal;"># de partidos  empatados</div>\n\n                <div style="font-size:1.9rem;padding-bottom:16px"><b>{{ tieGames }}</b></div>\n\n                </div>\n\n            </ion-col>\n\n            <ion-col col-6>\n\n              <div padding class="card-triky">\n\n                <div style="white-space: normal;"># de equipos ganadores</div>\n\n                <div style="font-size:1.9rem;"><b>{{ winTeams }}</b></div>\n\n                </div>\n\n            </ion-col>\n\n            <ion-col col-6>\n\n              <div padding class="card-triky">\n\n                <div style="white-space: normal;"># de equipos clasificados(x2)</div>\n\n                <div style="font-size:1.9rem;"><b>{{ passedTeams }}</b></div>\n\n                </div>\n\n            </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n  </ion-item-group>\n\n\n\n<!--tabla de usuarios-->\n\n<ion-item-group class="people-group positions">\n\n  <div class="headers-ion">Participantes del grupo <b>{{ groupName }}</b><img class="share-icon" (click)="shareGroup()" width="30" height="30"  src="images/share.png" /></div>\n\n  <div padding class="card-triky">\n\n    <div *ngIf="positionTable">\n\n      <ion-item class="position1" *ngFor="let position of positions">{{ position.number }}\n\n        <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ position.nombre }}\n\n      </ion-item>\n\n      <ion-grid>\n\n        <ion-row class="header-table hidden">\n\n          <ion-col col-6>Usuario</ion-col>\n\n          <ion-col col-6>Puntos</ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n    </div>\n\n    <div class="un-code" *ngIf="!positionTable">\n\n        <ion-item>\n\n          <h2>Aún no perteneces a un grupo</h2>\n\n          <p>Introduce el grupo abajo y dale a "Entrar" para empezar a jugar</p>\n\n          <form [formGroup]="group" (ngSubmit)="attemptJoinGroup()">\n\n            <ion-item>\n\n                <ion-input class="code-group" type="text" placeholder="Código" autocapitalize="none" formControlName="code"></ion-input>\n\n            </ion-item>\n\n            <br>\n\n            <button ion-button full type="submit" class="button button-calm" [disabled]="!group.valid">ENTRAR</button>\n\n          </form>\n\n        </ion-item>\n\n    </div>\n\n    </div>\n\n\n\n  </ion-item-group>\n\n  <ion-item-group>\n\n  </ion-item-group>\n\n</ion-content>\n\n'/*ion-inline-end:"c:\Users\lsanc\projects\trikygol\src\pages\home\home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* NgZone */],
@@ -1056,10 +1023,10 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_forgot_forgot__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_groups_groups__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_games_games__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_stickers_stickers__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_stickers_missing_stickers_missing__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_stickers_repeated_stickers_repeated__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_stickers_match_stickers_match__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_stickers_stickers__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_stickers_missing_stickers_missing__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_stickers_repeated_stickers_repeated__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_stickers_match_stickers_match__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_status_bar__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_splash_screen__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_http__ = __webpack_require__(168);
@@ -1126,13 +1093,13 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                 links: [
                     { loadChildren: '../pages/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/stickers-missing/stickers-missing.module#StickersMissingPageModule', name: 'StickersMissingPage', segment: 'stickers-missing', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/games/games.module#GamesPageModule', name: 'GamesPage', segment: 'games', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers-missing/stickers-missing.module#StickersMissingPageModule', name: 'StickersMissingPage', segment: 'stickers-missing', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-repeated/stickers-repeated.module#StickersRepeatedPageModule', name: 'StickersRepeatedPage', segment: 'stickers-repeated', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers/stickers.module#StickersPageModule', name: 'StickersPage', segment: 'stickers', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/stickers/stickers.module#StickersPageModule', name: 'StickersPage', segment: 'stickers', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_20__angular_http__["c" /* HttpModule */]
@@ -1313,7 +1280,7 @@ var LoginPage_1;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_helper__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_stickers_stickers__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_stickers_stickers__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_register_register__ = __webpack_require__(45);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
