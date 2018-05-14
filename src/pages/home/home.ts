@@ -103,7 +103,7 @@ export class HomePage {
       var $this = this;
       if(this.plt.is('cordova')){
         this.socialSharing.share('Quieres hacer tu quiniela del Mundial Rusia 2018? Solo debes bajar el App TrikyGol y agregar el nombre del grupo "' +
-          localStorage.getItem('UserLoggedGroup') + '".\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6', 'Este es mi grupo en TrikyGol - ' +
+          localStorage.getItem('UserLoggedGroup') + '".\nGRATIS, SIN ADS Y SUPER FACIL!!\nPuedes bajarlo en\nAndroid - https://goo.gl/uznmer\niPhone - https://goo.gl/Nnv8w6', 'Este es mi grupo en TrikyGol - ' +
           localStorage.getItem('UserLoggedGroup'), 'https://www.esferasoluciones.com/api/trikygol/image.png').then(()=>{
 
           }).catch(()=>{

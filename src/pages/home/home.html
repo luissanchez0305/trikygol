@@ -60,7 +60,7 @@
 
 <!--tabla de usuarios-->
 <ion-item-group class="people-group positions">
-  <div class="headers-ion">Participantes del grupo <b>{{ groupName }}</b> <img class="share-icon" width="30" height="30"  src="images/share.png" (click)="shareGroup()" /></div>
+  <div class="headers-ion">Participantes del grupo <b>{{ groupName }}</b> <img class="share-icon" width="30" height="30"  src="images/share.png" (click)="shareGroup()"  /></div>
   <div padding class="card-triky">
     <div *ngIf="positionTable">
       <ion-item class="position1" *ngFor="let position of positions">{{ position.number }}
@@ -82,7 +82,7 @@
           <p>Introduce el grupo abajo y dale a "Entrar" para empezar a jugar</p>
           <form [formGroup]="group" (ngSubmit)="attemptJoinGroup()">
             <ion-item>
-                <ion-input class="code-group" type="text" placeholder="Código" autocapitalize="none" formControlName="code"></ion-input>
+                <ion-input class="code-group" type="text" placeholder="Nombre del grupo" autocapitalize="none" formControlName="code"></ion-input>
             </ion-item>
             <br>
             <button ion-button full type="submit" class="button button-calm" [disabled]="!group.valid">ENTRAR</button>
