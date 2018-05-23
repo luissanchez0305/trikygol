@@ -60,25 +60,20 @@
 
 <!--tabla de usuarios-->
 <ion-item-group class="people-group positions">
-  <div class="headers-ion">Participantes del grupo <b>{{ groupName }}</b></div>
+  <div class="headers-ion">Participantes del grupo <b>{{ groupName }}</b> <img class="share-icon" width="30" height="30"  src="images/share.png" (click)="shareGroup()"  /></div>
   <div padding class="card-triky">
     <div *ngIf="positionTable">
       <ion-item class="position1" *ngFor="let position of positions">{{ position.number }}
         <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ position.nombre }}
       </ion-item>
       <ion-grid>
-        <ion-row class="header-table">
-          <ion-col col-6>Comparte tu grupo: </ion-col>
-        </ion-row>
-        <ion-row class="header-table">
-          <ion-col col-4><img (click)="shareFacebook()" width="30" height="30"  src="images/facebook.png" /></ion-col>
-          <ion-col col-4><img (click)="shareWhatsapp()" width="30" height="30"  src="images/whatsapp.png" /></ion-col>
-          <ion-col col-4><img (click)="shareGroup()" width="30" height="30"  src="images/share.png" /></ion-col>
-        </ion-row>
         <ion-row class="header-table hidden">
           <ion-col col-6>Usuario</ion-col>
           <ion-col col-6>Puntos</ion-col>
         </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row class="share-row" (click)="shareGroup()">Comparte este grupo <img class="share-icon" width="30" height="30"  src="images/share.png" /></ion-row>
       </ion-grid>
     </div>
     <div class="un-code" *ngIf="!positionTable">
@@ -87,14 +82,14 @@
           <p>Introduce el grupo abajo y dale a "Entrar" para empezar a jugar</p>
           <form [formGroup]="group" (ngSubmit)="attemptJoinGroup()">
             <ion-item>
-                <ion-input class="code-group" type="text" placeholder="Código" autocapitalize="none" formControlName="code"></ion-input>
+                <ion-input class="code-group" type="text" placeholder="Nombre del grupo" autocapitalize="none" formControlName="code"></ion-input>
             </ion-item>
             <br>
             <button ion-button full type="submit" class="button button-calm" [disabled]="!group.valid">ENTRAR</button>
           </form>
         </ion-item>
     </div>
-    </div>
+  </div>
 
   </ion-item-group>
   <ion-item-group>

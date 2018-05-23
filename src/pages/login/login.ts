@@ -72,7 +72,7 @@ export class LoginPage {
       });
       loading.present();
       var data = { type : 'cred', e : this.login.value.email, p : this.login.value.pwd };
-      this.authService.postData(data,'/cred.php').then((result) => {
+      this.authService.postData(data,'cred.php').then((result) => {
         loading.dismiss();
         this.responseData = result;
         if (this.responseData.status == "ok") {

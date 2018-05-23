@@ -43,7 +43,7 @@ var GroupsPage = (function () {
     GroupsPage.prototype.displayGroupsAndTeams = function (_source) {
         // HACER EL PHP "getFirstSecondTeams.php" QUE TRAIGA TODOS LOS EQUIPOS POR GRUPOS
         var _this = this;
-        this.authService.getData('source=' + _source + (_source == 'triky' ? "&u=" + localStorage.getItem('userID') : ""), '/getFirstSecondTeams.php').then(function (result) {
+        this.authService.getData('source=' + _source + (_source == 'triky' ? "&u=" + localStorage.getItem('userID') : ""), 'getFirstSecondTeams.php').then(function (result) {
             _this.responseData = result;
             _this.typeShowing = _source;
             _this.noWrapA = "noWrap";

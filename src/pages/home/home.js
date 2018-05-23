@@ -23,7 +23,7 @@ var HomePage = (function () {
             return;
         }
         var data = { e: localStorage.getItem('userID') };
-        this.authService.postData(data, '/userExists.php').then(function (result) {
+        this.authService.postData(data, 'userExists.php').then(function (result) {
             _this.responseUserData = result;
             _this.myPoints = _this.responseUserData.puntos != null ? _this.responseUserData.puntos : '0';
             _this.scoresRight = _this.responseUserData.marcadoresAcertados != null ? _this.responseUserData.marcadoresAcertados : '0';
@@ -40,7 +40,7 @@ var HomePage = (function () {
     }
     HomePage.prototype.loadPositionTable = function () {
         var _this = this;
-        this.authService.getData('g=' + localStorage.getItem('UserLoggedGroup'), '/getUsersOrderedPoints.php').then(function (result) {
+        this.authService.getData('g=' + localStorage.getItem('UserLoggedGroup'), 'getUsersOrderedPoints.php').then(function (result) {
             _this.responsePositionData = result;
             if (_this.responsePositionData.status == 'no params') {
                 _this.positionTable = false;
@@ -70,7 +70,7 @@ var HomePage = (function () {
         var _this = this;
         localStorage.setItem('UserLoggedGroup', this.group.value.code);
         var data = { g: this.group.value.code, u: localStorage.getItem('userID') };
-        this.authService.postData(data, '/updateUserGroup.php').then(function (result) {
+        this.authService.postData(data, 'updateUserGroup.php').then(function (result) {
             _this.responsePositionData = result;
             if (_this.responsePositionData.status == 'ok') {
                 _this.loadPositionTable();

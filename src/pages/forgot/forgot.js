@@ -40,7 +40,7 @@ var ForgotPage = (function () {
     ForgotPage.prototype.attemptUserForgot = function () {
         var _this = this;
         var data = { type: 'cred', e: this.forgot.value.email };
-        this.authService.postData(data, '/sendMail.php').then(function (result) {
+        this.authService.postData(data, 'sendMail.php').then(function (result) {
             _this.showSent = true;
         }, function (err) {
             // Error log
