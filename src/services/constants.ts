@@ -1,7 +1,7 @@
 //export var Constants = {  };
 export var Constants = {
-    //API_ENDPOINT : '/ws/',
-    API_ENDPOINT : 'https://www.esferasoluciones.com/api/trikygol/',
+    API_ENDPOINT : '/ws/',
+    //API_ENDPOINT : 'https://www.esferasoluciones.com/api/trikygol/',
     months: [
         'Enero',
         'Febrero',
