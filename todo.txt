@@ -18,8 +18,17 @@ rehacer
 x actualizar la seccion de tabla de posiciones de home al regresar de perfil
 x poner notificacion de "correo ya existe"
 x actualizar vista de grupos en cada load
-- compartir grupo
+x compartir grupo
+- sistema de puntuacion
+    * Acierto de resultado: 2 puntos
+    * Acierto de marcador: 1 puntos*
 
+    Bonificaciones:
+    * Acierto de marcador y resultado (acierto pleno): Bono de 3 puntos*.
+    * Acierto de marcador, con suma de goles mayor a 3: Bono de 1 punto.
+    * Acierto de marcador y resultado, con suma de goles mayor a 3: 1 punto.
+    * Acierto de los goles de uno de los dos equipos: 0.5 puntos.
+    * Bono "pegó en el palo": Si le faltó o sobró un gol para el acierto pleno: 0.5 puntos.
 
 x quitar actualizar vista de juegos al hacer guardar
 x revisar actualizacion de puntos en los grupos la guardar juegos

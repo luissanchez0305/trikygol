@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<script src="js/jquery-1.10.2.min.js"></script>
+	</head>
+	<body>
+	<div style="float:left; width: 100%;">
+		Fecha
+		<input type="text" id="date" value="2018-06-" />
+	</div>
+	<input style="float:left;" type="button" value="Buscar" onclick="searchGames()"/>
+
+	<div id="positions" style="float:left; width: 100%; margin-bottom: 5px; margin-top: 5px;">
+	</div>
+
+	<div id="games" style="float:left; width: 100%;">
+	</div>
+
+	<div id="status" style="float:left; margin-left:5px; width:100%;"></div>
+	<script>
+		function searchGames(){
+			var date = $('#date').val();
+
+			$.get('/ws/getGamesByDate.php', {f : date}, function(data){
+				$('#games').html('');
+				for(var i=0; i < data.posts.length; i++) {
+					$('#games').append(
+							'<div style="float:left; width: 100%;">'+
+							'<div style="float:left; width: 35%;">'+
+							data.posts[i].post.equipo1 + ' <img src="../images/'+data.posts[i].post.bandera1+'" /><input type="text" class="team-'+data.posts[i].post.id+'" value="'+(data.posts[i].post.equipo1marcador == null ? '' : data.posts[i].post.equipo1marcador)+'" />' +
+							'</div>'+
+							'<div style="float:left; width: 35%;">'+
+							data.posts[i].post.equipo2 + ' <img src="../images/'+data.posts[i].post.bandera2+'" /><input type="text" class="team-'+data.posts[i].post.id+'" value="'+(data.posts[i].post.equipo2marcador == null ? '' : data.posts[i].post.equipo2marcador)+'" />' +
+							'</div>'+
+							'<input type="button" value="Guardar" onclick="saveGame('+data.posts[i].post.id+')" />'+
+							'</div>');
+				}
+			});
+		}
+		function saveGame(id){
+			var score1 = $($('.team-'+ id)[0]).val();
+			var score2 = $($('.team-'+ id)[1]).val();
+			$.get('/ws/updateGameScoreById.php', {g : id, s1: score1, s2: score2}, function(data){
+				$('#status').html('GUARDADO');
+				setTimeout(function(){$('#status').html('');},10000);
+				if(typeof data === 'undefined')
+					$('#positions').html('');
+				else
+					$('#positions').html('<div style="width:35%;float:left;">1ro&nbsp;<img src="../images/'+data.posiciones[0].firstflag+'" />&nbsp;'+data.posiciones[0].firstname+'</div>'+
+						'<div style="width:35%;float:left;">2do&nbsp;<img src="../images/'+data.posiciones[0].secondflag+'" />&nbsp;'+data.posiciones[0].secondname+'</div>');
+				$.get('/ws/updateUsersPoints.php');
+			});
+		}
+	</script>
+	</body>
+</html>
