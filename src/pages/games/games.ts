@@ -93,6 +93,7 @@ export class GamesPage {
   private saveButtonText: string;
   private responseData : any;
   private isFifa: boolean;
+  private showSaveButton: boolean;
   private isPlayoff: boolean;
   private group: string;
   private GroupGames : FormGroup;
@@ -165,11 +166,14 @@ export class GamesPage {
   }
   
   ionViewDidEnter(){
+
+    var date = new Date('2018-06-14 5:00:00');
     this.saveButtonText = 'Guardar';
     this.mode = this.navParams.get('mode');
     this.isPlayoff = (typeof this.mode === 'undefined');
     this.showGameMenu = (typeof this.mode !== 'undefined');
     this.isFifa = this.navParams.get('type') == 'fifa';
+    this.showSaveButton = this.navParams.get('type') != 'fifa' && Date.now() < date.getTime();
     this.displaySelectedSource(this.navParams.get('type'));
     this.showMenuToggle = true;
     if(this.isPlayoff){
