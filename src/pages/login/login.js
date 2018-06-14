@@ -46,7 +46,7 @@ var LoginPage = (function () {
     LoginPage.prototype.attemptUserLogin = function () {
         var _this = this;
         var data = { type: 'cred', e: this.login.value.email, p: this.login.value.pwd };
-        this.authService.postData(data, '/cred.php').then(function (result) {
+        this.authService.postData(data, 'cred.php').then(function (result) {
             _this.responseData = result;
             if (_this.responseData.status == "ok") {
                 _this.helper.gapAlert('Usuario logueado', 'Login');

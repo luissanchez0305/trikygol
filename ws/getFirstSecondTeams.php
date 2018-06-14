@@ -172,10 +172,20 @@
 					}
 					
 					if($fourthGoalsDiff > $thirdGoalsDiff){
+						$tempPoints = $thirdPoints;
+						$tempFlag = $thirdFlag;
+						$tempTeam = $thirdTeam;
+						$tempName = $thirdName;
+						
 						$thirdPoints = $fourthPoints;
 						$thirdFlag = $fourthFlag;
 						$thirdTeam = $fourthTeam;
 						$thirdName = $fourthName;
+						
+						$fourthPoints = $tempPoints;
+						$fourthFlag = $tempFlag;
+						$fourthTeam = $tempTeam;
+						$fourthName = $tempName;
 					}
 					else{
 						foreach ($teamsScores as $item){
@@ -186,10 +196,20 @@
 						}
 						
 						if($fourthGoals > $thirdGoals){
+							$tempPoints = $thirdPoints;
+							$tempFlag = $thirdFlag;
+							$tempTeam = $thirdTeam;
+							$tempName = $thirdName;
+							
 							$thirdPoints = $fourthPoints;
 							$thirdFlag = $fourthFlag;
 							$thirdTeam = $fourthTeam;
 							$thirdName = $fourthName;
+							
+							$fourthPoints = $tempPoints;
+							$fourthFlag = $tempFlag;
+							$fourthTeam = $tempTeam;
+							$fourthName = $tempName;
 						}
 					}
 				}

@@ -4,7 +4,7 @@ include "helper.php";
 if(isset($_GET['g']) && $_GET['g'] != 'null') {
 	/* grab the posts from the db */
 	$group = $_GET['g'];
-	$query = "SELECT nombre, puntos FROM usuarios WHERE grupo LIKE '$group' ORDER BY puntos";// DESC LIMIT 5";
+	$query = "SELECT nombre, puntos FROM usuarios WHERE grupo LIKE '$group' ORDER BY puntos "; //DESC LIMIT 5";
 	$result = mysql_query($query,$link) or die('Errant query:  '.$query);
 
 	/* create one master array of the records */

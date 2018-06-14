@@ -237,24 +237,24 @@ export class GamesPage {
     this.showGame6 = false;
     this.showGame7 = false;
     this.showGame8 = false;
-    var url = this.isFifa ? '/getGamesByGroup.php' : '/getGamesByUserAndGroup.php';
+    var url = this.isFifa ? 'getGamesByGroup.php' : 'getGamesByUserAndGroup.php';
     var data = '';
     switch(gameType){
       case 1:
         data = this.isFifa ? 'g='+ this.group.toLowerCase() : 'g=' + this.group.toLowerCase() + '&u=' + localStorage.getItem('userID');
         break;
       case 2: // octavos
-        url = this.isFifa ? '/getGamesOn8th.php' : '/getGamesByUserOn8th.php';
+        url = this.isFifa ? 'getGamesOn8th.php' : 'getGamesByUserOn8th.php';
         data = this.isFifa ? '' : 'u=' + localStorage.getItem('userID');
         break;
       case 3: // cuartos
-        url = this.isFifa ? '/getGamesOn4th.php' : '/getGamesByUserOn4th.php';
+        url = this.isFifa ? 'getGamesOn4th.php' : 'getGamesByUserOn4th.php';
         data = this.isFifa ? '' : 'u=' + localStorage.getItem('userID');
         break;
       case 4: // semifinal
       case 5: // 3er lugar y final
       case 6:
-        url = this.isFifa ? '/getGamesOnFinals.php' : '/getGamesByUserOnFinals.php';
+        url = this.isFifa ? 'getGamesOnFinals.php' : 'getGamesByUserOnFinals.php';
         data = 't=' + (gameType == 4 ? 'semi' : 'final') + '&' + (this.isFifa ? '' : 'u=' + localStorage.getItem('userID'));
         break;
     }

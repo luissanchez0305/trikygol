@@ -62,7 +62,7 @@ export class ForgotPage {
       });
       loading.present();
       var data = { type : 'cred', e : this.forgot.value.email };
-        this.authService.postData(data,'/sendMail.php').then((result) => {
+        this.authService.postData(data,'sendMail.php').then((result) => {
           loading.dismiss();
           this.showSent = true;
       }, (err) => {

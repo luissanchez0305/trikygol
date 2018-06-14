@@ -19,9 +19,11 @@ x actualizar la seccion de tabla de posiciones de home al regresar de perfil
 x poner notificacion de "correo ya existe"
 x actualizar vista de grupos en cada load
 x compartir grupo
+x arreglar resetear password
+x arreglar api
 - sistema de puntuacion
     * Acierto de resultado: 2 puntos
-    * Acierto de marcador: 1 puntos*
+    * Acierto de marcador: 1 puntos
 
     Bonificaciones:
     * Acierto de marcador y resultado (acierto pleno): Bono de 3 puntos*.

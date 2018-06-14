@@ -56,7 +56,7 @@ var RegisterPage = (function () {
             this.passwordStar = '';
             this.showLogout = true;
             var data = { e: localStorage.getItem('userID') };
-            this.authService.postData(data, '/userExists.php').then(function (result) {
+            this.authService.postData(data, 'userExists.php').then(function (result) {
                 _this.responseData = result;
                 _this.emailValue = _this.responseData[0].email;
                 _this.nameValue = _this.responseData[0].nombre;
@@ -81,7 +81,7 @@ var RegisterPage = (function () {
     RegisterPage.prototype.attemptUserRegister = function () {
         var _this = this;
         var data = { n: this.register.value.name, c: localStorage.getItem('userEmail'), e: this.register.value.email, p: this.register.value.pwd, g: this.register.value.group };
-        this.authService.postData(data, localStorage.getItem('UserLoggedIn') == 'true' ? '/updateUser.php' : '/createUser.php').then(function (result) {
+        this.authService.postData(data, localStorage.getItem('UserLoggedIn') == 'true' ? 'updateUser.php' : 'createUser.php').then(function (result) {
             _this.responseData = result;
             console.log(_this.responseData);
             if (_this.responseData.status == "ok") {
