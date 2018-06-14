@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<script src="js/jquery-1.10.2.min.js"></script>
+	</head>
+	<body>
+	<div style="float:left; width: 20%;">
+		Equipo 1
+		<select id="team1">
+			<option value="0">Ninguno</option>
+		</select>
+	</div>
+	<div style="float:left; width: 20%;">
+		Equipo 2
+		<select id="team2">
+			<option value="0">Ninguno</option>
+		</select>
+	</div>
+	<div style="float:left; width: 100%;">
+		Fecha
+		<input type="text" id="date" value="2014-06-" />
+	</div>
+	<div style="float:left; width: 100%;">
+		Tipo de juego
+		<select id="gameType">
+			<option value="1">1ra fase</option>
+			<option value="2">8vos</option>
+			<option value="3">4tos</option>
+			<option value="4">Semifinal</option>
+			<option value="5">3re puesto</option>
+			<option value="6">Final</option>
+		</select>
+	</div>
+	<input style="float:left;" type="button" value="Guardar" onclick="saveGame()"/>
+	<div id="status" style="float:left; width:100%;"></div>
+	<div id="games" style="float:left; width:100%;">
+	</div>
+	<script>
+		$(document).ready(function(){
+			$.get('http://pollamundial.espherasoluciones.com/getteams.php', function(data){
+				for(var i=0; i < data.posts.length; i++) {
+					var nombre=data.posts[i].post.nombre;
+					var id = data.posts[i].post.id;
+
+					$('#team1').append('<option value="' + id + '">' + nombre + '</option>');
+					$('#team2').append('<option value="' + id + '">' + nombre + '</option>');
+				}
+			});
+			$.get('http://pollamundial.espherasoluciones.com/getGames.php', function(games){
+				for(var i=0; i < games.posts.length; i++) {
+					$('#games').append(games.posts[i].post.fecha + ' - ' + games.posts[i].post.equipo1 + ' vs ' + 
+							games.posts[i].post.equipo2 + '<br/>');
+				}
+			});			
+		});
+		function saveGame(){
+			var team1 = $('#team1').find(':selected').val();
+			var team2 = $('#team2').find(':selected').val();
+			var date = $('#date').val();
+			var type = $('#gameType').find(':selected').val();
+
+			$.get('http://pollamundial.espherasoluciones.com/getGameByTeamsId.php', {e1 : team1, e2 : team2}, function(data){
+				if(data.posts.length == 0){
+					team1 = team1 == '0' ? '' : team1;
+					team2 = team2 == '0' ? '' : team2;
+					$.get('http://pollamundial.espherasoluciones.com/createGame.php', 
+						{e1 : team1, e2 : team2, f: date, t: type}, 
+						function(data){
+							$.get('http://pollamundial.espherasoluciones.com/getGames.php', function(data){
+								$('#status').html('GUARDADO');
+								setTimeout(function(){ $('#status').html(''); },10000);
+								$('#games').html('');
+								for(var i=0; i < data.posts.length; i++) {
+									$('#games').append(data.posts[i].post.fecha + ' - ' + data.posts[i].post.equipo1 + ' vs ' + 
+											data.posts[i].post.equipo2 + '<br/>');
+								}
+							});
+						});						
+				}	
+				else {
+					$('#status').html('YA EXISTE');
+					setTimeout(function(){ $('#status').html(''); },10000);
+				}
+			});		
+		}
+	</script>
+	</body>
+</html>

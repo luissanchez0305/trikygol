@@ -4,7 +4,8 @@
 	$query = "SELECT DISTINCT(LOWER(grupo)) as grupo FROM usuarios WHERE grupo IS NOT NULL ORDER BY grupo";
 	$groups = mysql_query($query,$link) or die('Errant query:  '.$query);
 	while($groupItem = mysql_fetch_assoc($groups)) {
-		$group = $groupItem['group'];
+		echo $groupItem;
+		$group = $groupItem['grupo'];
 		$query = "SELECT id FROM usuarios WHERE LOWER(grupo) = '$group'";
 		$users = mysql_query($query,$link) or die('Errant query:  '.$query);
 
@@ -12,6 +13,7 @@
 			while($userItem = mysql_fetch_assoc($users)) {
 				/* grab the posts from the db */
 				$user = $userItem["id"];
+				echo $user;
 				$query = "SELECT juegoid, equipoid1, equipoid2, equipo1marcador, equipo2marcador FROM pronosticos " .
 				"WHERE usuarioid = $user AND equipo1marcador IS NOT null AND equipo2marcador IS NOT null";
 				$result = mysql_query($query,$link) or die('Errant query:  '.$query);
@@ -29,19 +31,28 @@
 						$realGames = mysql_query($query,$link) or die('Errant query:  '.$query);
 						if(mysql_num_rows($realGames)) {
 							while($realGame = mysql_fetch_assoc($realGames)) {
-								if($realGame["tipo"] == "1"){
+								if($realGame["tipo"] == "1") {
 									// si el pronostico le atino al ganador y no al marcador
 									if(((int)$realGame["equipo1marcador"] > (int)$realGame["equipo2marcador"] &&
 										(int)$userGame["equipo1marcador"] > (int)$userGame["equipo2marcador"]) ||
 										((int)$realGame["equipo2marcador"] > (int)$realGame["equipo1marcador"] &&
 										(int)$userGame["equipo2marcador"] > (int)$userGame["equipo1marcador"])){
 										{
-											$points += 1;
+											$points += 2;
 											$winningTeams += 1;
-											if((int)$realGame["equipo1marcador"] == (int)$userGame["equipo1marcador"] &&
-											(int)$realGame["equipo2marcador"] == (int)$userGame["equipo2marcador"]){
-												$points += 2;
+											// si atinaste el marcador del ganador
+											if(((int)$realGame["equipo1marcador"] > (int)$realGame["equipo2marcador"] &&
+												(int)$realGame["equipo1marcador"] == (int)$userGame["equipo1marcador"]) ||
+												((int)$realGame["equipo2marcador"] > (int)$realGame["equipo1marcador"] &&
+												(int)$realGame["equipo2marcador"] == (int)$userGame["equipo2marcador"])) {
+												$points += 3;
 												$scoresRight += 1;
+											}
+
+											// si el marcador del ganador es mayor al 3 goles
+											if(((int)$realGame["equipo1marcador"] > (int)$realGame["equipo2marcador"] && (int)$userGame["equipo1marcador"] >= 3) ||
+												(int)$realGame["equipo2marcador"] > (int)$realGame["equipo1marcador"] && (int)$userGame["equipo2marcador"] >= 3) {
+												$points += 2;
 											}
 										}
 									}
@@ -50,6 +61,10 @@
 										(int)$userGame["equipo1marcador"] == (int)$userGame["equipo2marcador"]){
 											$points += 1;
 											$tieGames += 1;
+
+											if((int)$userGame["equipo1marcador"] >= 3){
+												$points += 1;
+											}
 									}
 								}
 								else {
@@ -63,24 +78,39 @@
 									}
 									if($realGame["equipoid1"] == $userGame["equipoid1"] && $realGame["equipoid2"] == $userGame["equipoid2"])
 									{
+										// si el pronostico le atino al ganador y no al marcador
 										if(((int)$realGame["equipo1marcador"] > (int)$realGame["equipo2marcador"] &&
 											(int)$userGame["equipo1marcador"] > (int)$userGame["equipo2marcador"]) ||
 											((int)$realGame["equipo2marcador"] > (int)$realGame["equipo1marcador"] &&
 											(int)$userGame["equipo2marcador"] > (int)$userGame["equipo1marcador"])){
 											{
-												$points += 1;
+												$points += 2;
 												$winningTeams += 1;
-												if((int)$realGame["equipo1marcador"] == (int)$userGame["equipo1marcador"] &&
-												(int)$realGame["equipo2marcador"] == (int)$userGame["equipo2marcador"]){
-													$points += 2;
+												// si atinaste el marcador del ganador
+												if(((int)$realGame["equipo1marcador"] > (int)$realGame["equipo2marcador"] &&
+													(int)$realGame["equipo1marcador"] == (int)$userGame["equipo1marcador"]) ||
+													((int)$realGame["equipo2marcador"] > (int)$realGame["equipo1marcador"] &&
+													(int)$realGame["equipo2marcador"] == (int)$userGame["equipo2marcador"])) {
+													$points += 3;
 													$scoresRight += 1;
+												}
+
+												// si el marcador del ganador es mayor al 3 goles
+												if(((int)$realGame["equipo1marcador"] > (int)$realGame["equipo2marcador"] && (int)$userGame["equipo1marcador"] >= 3) ||
+													(int)$realGame["equipo2marcador"] > (int)$realGame["equipo1marcador"] && (int)$userGame["equipo2marcador"] >= 3) {
+													$points += 2;
 												}
 											}
 										}
+										// empate
 										else if((int)$realGame["equipo1marcador"] == (int)$realGame["equipo2marcador"] &&
-											(int)$userGame["equipo1marcador"] == (int)$userGame["equipo2marcador"]){
+												(int)$userGame["equipo1marcador"] == (int)$userGame["equipo2marcador"]) {
 												$points += 1;
 												$tieGames += 1;
+
+												if((int)$userGame["equipo1marcador"] >= 3){
+													$points += 1;
+												}
 										}
 									}
 								}

@@ -63,13 +63,17 @@
   <div class="headers-ion">Participantes del grupo <b>{{ groupName }}</b> <img class="share-icon" width="30" height="30"  src="images/share.png" (click)="shareGroup()"  /></div>
   <div padding class="card-triky">
     <div *ngIf="positionTable">
-      <ion-item class="position1" *ngFor="let position of positions">{{ position.number }}
+      <!--<ion-item class="position1 hidden" *ngFor="let position of positions">{{ position.number }}
         <ion-icon class="icon-table" name="ios-medal"></ion-icon> {{ position.nombre }}
-      </ion-item>
+      </ion-item>-->
       <ion-grid>
-        <ion-row class="header-table hidden">
+        <ion-row class="header-table">
           <ion-col col-6>Usuario</ion-col>
           <ion-col col-6>Puntos</ion-col>
+        </ion-row>
+        <ion-row class="header-table" *ngFor="let position of positions">
+          <ion-col col-6>{{ position.nombre }}</ion-col>
+          <ion-col col-6>{{ position.puntos }}</ion-col>
         </ion-row>
       </ion-grid>
       <ion-grid>

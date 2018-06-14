@@ -20,7 +20,7 @@
 		function searchGames(){
 			var date = $('#date').val();
 
-			$.get('https://www.esferasoluciones.com/api/trikygol/getGamesByDate.php', {f : date}, function(data){
+			$.get('https://www.esferasoluciones.com/api/trikygol_test/getGamesByDate.php', {f : date}, function(data){
 				$('#games').html('');
 				for(var i=0; i < data.posts.length; i++) {
 					$('#games').append(
@@ -39,7 +39,7 @@
 		function saveGame(id){
 			var score1 = $($('.team-'+ id)[0]).val();
 			var score2 = $($('.team-'+ id)[1]).val();
-			$.get('https://www.esferasoluciones.com/api/trikygol/updateGameScoreById.php', {g : id, s1: score1, s2: score2}, function(data){
+			$.get('https://www.esferasoluciones.com/api/trikygol_test/updateGameScoreById.php', {g : id, s1: score1, s2: score2}, function(data){
 				$('#status').html('GUARDADO');
 				setTimeout(function(){$('#status').html('');},10000);
 				if(typeof data === 'undefined')
@@ -47,7 +47,7 @@
 				else
 					$('#positions').html('<div style="width:35%;float:left;">1ro&nbsp;<img src="../images/'+data.posiciones[0].firstflag+'" />&nbsp;'+data.posiciones[0].firstname+'</div>'+
 						'<div style="width:35%;float:left;">2do&nbsp;<img src="../images/'+data.posiciones[0].secondflag+'" />&nbsp;'+data.posiciones[0].secondname+'</div>');
-				$.get('https://www.esferasoluciones.com/api/trikygol/updateUsersPoints.php');
+				$.get('https://www.esferasoluciones.com/api/trikygol_test/updateUsersPoints.php');
 			});
 		}
 	</script>
