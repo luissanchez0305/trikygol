@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, LoadingController, Platform } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HelperService } from '../../providers/helper';
@@ -114,7 +114,7 @@ export class GamesPage {
   private isDeviceOnline : boolean;
    
   constructor(public navCtrl: NavController,  private authService : AuthService, public navParams: NavParams, public helper : HelperService,
-    public events : Events, public loadingCtrl: LoadingController, private network: Network, private zone: NgZone) {
+    public events : Events, private plt: Platform, public loadingCtrl: LoadingController, private network: Network, private zone: NgZone) {
     this.GroupGames = new FormGroup({
        formGameId1: new FormControl(),
        formMarcador1_1: new FormControl(),
@@ -168,6 +168,8 @@ export class GamesPage {
   ionViewDidEnter(){
 
     var date = new Date('2018-06-14 5:00:00');
+    if(this.plt.is('ios'))
+      date = new Date(2018,5,14,5,0,0);
     this.saveButtonText = 'Guardar';
     this.mode = this.navParams.get('mode');
     this.isPlayoff = (typeof this.mode === 'undefined');
