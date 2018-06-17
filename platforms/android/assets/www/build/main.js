@@ -532,15 +532,15 @@ var HomePage = (function () {
         }
         this.loadPositionTable();
         var date = new Date('2018-06-14 5:00:00');
-        var firstDate = new Date('2018-07-14 5:00:00');
-        var lastDate = new Date('2018-06-14 5:00:00');
+        var firstDate = new Date('2018-06-14 5:00:00');
+        var lastDate = new Date('2018-07-14 5:00:00');
         if (this.plt.is('ios')) {
             date = new Date(2018, 5, 14, 5, 0, 0);
             firstDate = new Date(2018, 5, 14, 5, 0, 0);
-            lastDate = new Date(2018, 5, 14, 5, 0, 0);
+            lastDate = new Date(2018, 6, 14, 5, 0, 0);
         }
         if (Date.now() > lastDate.getTime()) {
-            date = new Date('2018-07-15 5:00:00');
+            date = new Date('2018-06-15 5:00:00');
             if (this.plt.is('ios'))
                 date = new Date(2018, 5, 15, 5, 0, 0);
         }
