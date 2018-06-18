@@ -21,13 +21,15 @@ x actualizar vista de grupos en cada load
 x compartir grupo
 x arreglar resetear password
 x arreglar api
-- sistema de puntuacion
+x sistema de puntuacion
     * Acierto de resultado: 2 puntos
     * Acierto de marcador: 1 puntos
 
     Bonificaciones:
     * Acierto de marcador y resultado (acierto pleno): Bono de 3 puntos*.
     * Acierto de marcador, con goles del ganadoor mayor a 3: Bono de 2 punto.
+x corregir regresar a groups desde games, para que mantenga el tab (fifa o triky) que tenga escogido
+x corregir datos de puntajes del usuario logueado
 
 x quitar actualizar vista de juegos al hacer guardar
 x revisar actualizacion de puntos en los grupos la guardar juegos

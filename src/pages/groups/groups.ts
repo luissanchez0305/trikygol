@@ -23,13 +23,13 @@ import { Network } from '@ionic-native/network';
 })
 export class GroupsPage {
   private showPlacesA : boolean;
-  private showPlacesB : boolean; 
+  private showPlacesB : boolean;
   private showPlacesC : boolean;
-  private showPlacesD : boolean; 
+  private showPlacesD : boolean;
   private showPlacesE : boolean;
-  private showPlacesF : boolean; 
+  private showPlacesF : boolean;
   private showPlacesG : boolean;
-  private showPlacesH : boolean;  
+  private showPlacesH : boolean;
   private showInfoBarA : boolean;
   private showInfoBarB : boolean;
   private showInfoBarC : boolean;
@@ -135,7 +135,7 @@ export class GroupsPage {
   private teamH4 : string;
   private teamH4Flag : string;
   private teamH4Points : string;
-  
+
   private fillTextA : string;
   private fillTextB : string;
   private fillTextC : string;
@@ -144,13 +144,13 @@ export class GroupsPage {
   private fillTextF : string;
   private fillTextG : string;
   private fillTextH : string;
-  
+
   private isDeviceOnline : boolean;
   private responseData : any;
   private typeShowing : string;
   private defaultFillScoresText : string = "Click para llenar los marcadores";
-  
-  constructor(public navCtrl: NavController, private authService : AuthService, public navParams: NavParams, public helper : HelperService, 
+
+  constructor(public navCtrl: NavController, private authService : AuthService, public navParams: NavParams, public helper : HelperService,
     public modalCtrl: ModalController, public events : Events, public loadingCtrl: LoadingController, private network: Network, private zone: NgZone) {
     this.fillTextA = this.defaultFillScoresText;
     this.fillTextB = this.defaultFillScoresText;
@@ -160,10 +160,10 @@ export class GroupsPage {
     this.fillTextF = this.defaultFillScoresText;
     this.fillTextG = this.defaultFillScoresText;
     this.fillTextH = this.defaultFillScoresText;
-    
-    this.events.subscribe('reloadGroups',() => {
+
+    this.events.subscribe('reloadGroups',(_type) => {
         //call methods to refresh content
-        this.displayGroupsAndTeams('triky');
+        this.displayGroupsAndTeams(_type);
     });
     this.isDeviceOnline = true;
     // watch network for a disconnect
@@ -178,9 +178,6 @@ export class GroupsPage {
         this.isDeviceOnline = true;
       });
     });
-  }
-  
-  ionViewDidEnter(){    
     this.displayGroupsAndTeams('triky');
   }
 
@@ -190,7 +187,7 @@ export class GroupsPage {
       });
       loading.present();
       if(typeof localStorage.getItem('userID') === 'undefined' || localStorage.getItem('userID') == ''){
-        loading.dismiss();      
+        loading.dismiss();
         this.logout();
       }
       // HACER EL PHP "getFirstSecondTeams.php" QUE TRAIGA TODOS LOS EQUIPOS POR GRUPOS
@@ -199,13 +196,13 @@ export class GroupsPage {
           this.responseData = result;
           this.typeShowing = _source;
           this.showPlacesA = false;
-          this.showPlacesB = false; 
+          this.showPlacesB = false;
           this.showPlacesC = false;
-          this.showPlacesD = false; 
+          this.showPlacesD = false;
           this.showPlacesE = false;
-          this.showPlacesF = false; 
+          this.showPlacesF = false;
           this.showPlacesG = false;
-          this.showPlacesH = false;  
+          this.showPlacesH = false;
           /* PONER LOS EQUIPOS DE CADA GRUPO teamA1, teamA2... SI EL GRUPO TIENE EQUIPOS PONER VARIABLE noWrap<LETRA> = "col"
             O PONER SI EL GRUPO NO TIENE EQUIPO - PONER TEXTO "Equipos aun no seleccionados" Y VARIABLE noWrap<LETRA> = "noWrap"*/
           for(var i = 0; i < this.responseData.length; i++){
@@ -351,24 +348,24 @@ export class GroupsPage {
             this.showInfoBarG = false;
             this.showInfoBarH = false;
           }
-          /* 
+          /*
           PONER LOS 1ro y 2do lugar de cada equipo
             O PONER SI LOS MARCADORES NO HAN SIDO LLENADOS POR EL USUARIO - PONER VARIABLE showPlaces<LETRA> = TRUE O FALSE
           */
-          
+
         }, (err) => {
           // Error log
           //this.helper.gapAlert('Error en al traer grupos', err);
           this.isDeviceOnline = false;
           loading.dismiss();
-        });    
+        });
   }
-  
+
   logout(){
     this.helper.logout();
     this.navCtrl.setRoot(LoginPage);
   }
-  
+
   clickGroups(type){
     document.querySelector('page-groups button.selected').className = document.querySelector('page-groups button.selected').className.replace(/\bselected\b/,'');
     this.typeShowing = type;
@@ -384,7 +381,7 @@ export class GroupsPage {
       this.fillTextG = this.defaultFillScoresText;
       this.fillTextH = this.defaultFillScoresText;
     }
-    else{ 
+    else{
       this.fillTextA = '';
       this.fillTextB = '';
       this.fillTextC = '';

@@ -41,11 +41,13 @@ export class HomePage {
       var data = { e : localStorage.getItem('userID') };
       this.authService.postData(data,'userExists.php').then((result) => {
         this.responseUserData = result;
-        this.myPoints = this.responseUserData.puntos != null ? this.responseUserData.puntos : '0';
-        this.scoresRight = this.responseUserData.marcadoresAcertados != null ? this.responseUserData.marcadoresAcertados : '0';
-        this.tieGames = this.responseUserData.empates != null ? this.responseUserData.empates : '0';
-        this.winTeams = this.responseUserData.equiposGanadores != null ? this.responseUserData.equiposGanadores : '0';
-        this.passedTeams = this.responseUserData.equiposClasificados != null ? this.responseUserData.equiposClasificados : '0';
+        if(this.responseUserData[0]){
+          this.myPoints = this.responseUserData[0].puntos != null ? this.responseUserData[0].puntos : '0';
+          this.scoresRight = this.responseUserData[0].marcadoresAcertados != null ? this.responseUserData[0].marcadoresAcertados : '0';
+          this.tieGames = this.responseUserData[0].empates != null ? this.responseUserData[0].empates : '0';
+          this.winTeams = this.responseUserData[0].equiposGanadores != null ? this.responseUserData[0].equiposGanadores : '0';
+          this.passedTeams = this.responseUserData[0].equiposClasificados != null ? this.responseUserData[0].equiposClasificados : '0';
+        }
       });
 
       this.events.subscribe('reloadPositionTable',() => {

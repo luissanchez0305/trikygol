@@ -27,7 +27,7 @@ export class GamesPage {
   date6: string;
   date7: string;
   date8: string;
-  
+
   gameId1: string;
   gameId2: string;
   gameId3: string;
@@ -36,7 +36,7 @@ export class GamesPage {
   gameId6: string;
   gameId7: string;
   gameId8: string;
-  
+
   marcador1_1: string;
   marcador1_2: string;
   marcador2_1: string;
@@ -53,7 +53,7 @@ export class GamesPage {
   marcador7_2: string;
   marcador8_1: string;
   marcador8_2: string;
-  
+
   bandera1_1: string;
   bandera1_2: string;
   bandera2_1: string;
@@ -70,7 +70,7 @@ export class GamesPage {
   bandera7_2: string;
   bandera8_1: string;
   bandera8_2: string;
-  
+
   equipo1_1: string;
   equipo1_2: string;
   equipo2_1: string;
@@ -87,7 +87,7 @@ export class GamesPage {
   equipo7_2: string;
   equipo8_1: string;
   equipo8_2: string;
-  
+
   public gamesTitle: string;
   public showMenuToggle : boolean;
   private saveButtonText: string;
@@ -112,7 +112,7 @@ export class GamesPage {
   private showGame7: boolean;
   private showGame8: boolean;
   private isDeviceOnline : boolean;
-   
+
   constructor(public navCtrl: NavController,  private authService : AuthService, public navParams: NavParams, public helper : HelperService,
     public events : Events, private plt: Platform, public loadingCtrl: LoadingController, private network: Network, private zone: NgZone) {
     this.GroupGames = new FormGroup({
@@ -164,7 +164,7 @@ export class GamesPage {
       });
     });
   }
-  
+
   ionViewDidEnter(){
 
     var date = new Date('2018-06-14 5:00:00');
@@ -188,7 +188,11 @@ export class GamesPage {
       this.loadPlayOffs();
     }
   }
-   
+
+  ionViewDidLeave(){
+    this.events.publish('reloadGroups', this.isFifa ? 'fifa' : 'triky' );
+  }
+
   // Despliega seleccionado el boton de Triky o Fifa
   displaySelectedSource(source){
     var oppositeSource = source == 'fifa' ? 'triky' : 'fifa';
@@ -203,7 +207,7 @@ export class GamesPage {
     }
     this.isFifa = source == 'fifa';
   }
-  
+
   loadPlayOffs(){
     switch(this.mode){
       case '8':
@@ -228,14 +232,14 @@ export class GamesPage {
         break;
     }
   }
-  
+
   loadGames(gameType){
     let loading = this.loadingCtrl.create({
       content: 'Espere un momento...'
     });
     loading.present();
     if(typeof localStorage.getItem('userID') === 'undefined' || localStorage.getItem('userID') == ''){
-      loading.dismiss();      
+      loading.dismiss();
       this.helper.logout();
       this.navCtrl.setRoot(LoginPage);
     }
@@ -285,7 +289,7 @@ export class GamesPage {
         var bandera2 = juego.bandera2 != null && juego.bandera2.length>0 ? juego.bandera2 : 'noflag.png'
         var marcador2 = juego.equipo2marcador;
         var equipo2 = juego.equipo2;
-        
+
         switch(i){
           case 0:
             this.showGame1 = true;
@@ -380,9 +384,9 @@ export class GamesPage {
     }, (error) => {
       this.isDeviceOnline = false;
       loading.dismiss();
-  });
+    });
   }
-  
+
   saveGroupGames() {
     var url = 'updateUserGameScoreById.php';
     var data = '';
@@ -430,14 +434,14 @@ export class GamesPage {
       scores2 += this.GroupGames.value.formMarcador8_2 + ',';
     }
     data = 'g='+ games +'&s1=' + scores1 +'&s2='+ scores2 +'&u='+ localStorage.getItem('userID');
-  
+
     this.saveButtonText = 'Guardando...';
     var $this = this;
     this.authService.getData(data,url).then(function(result){
       $this.saveButtonText = 'Guardado';
       if($this.isPlayoff){
         $this.navCtrl.popToRoot();
-        $this.events.publish('reloadGroups');
+        $this.events.publish('reloadGroups', { _type: this.isFifa ? 'fifa' : 'triky' });
       }
       else{
         setTimeout(function(){ $this.saveButtonText = 'Guardar' }, 8000)
@@ -445,7 +449,7 @@ export class GamesPage {
       console.log('saved');
     });
   }
-  
+
   clickGames(type){
     this.displaySelectedSource(type);
     this.loadPlayOffs()
