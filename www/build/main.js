@@ -406,27 +406,27 @@ var map = {
 		6
 	],
 	"../pages/login/login.module": [
-		294,
+		289,
 		5
 	],
 	"../pages/register/register.module": [
-		289,
+		290,
 		4
 	],
 	"../pages/stickers-match/stickers-match.module": [
-		290,
+		291,
 		3
 	],
 	"../pages/stickers-missing/stickers-missing.module": [
-		291,
+		292,
 		2
 	],
 	"../pages/stickers-repeated/stickers-repeated.module": [
-		292,
+		293,
 		1
 	],
 	"../pages/stickers/stickers.module": [
-		293,
+		294,
 		0
 	]
 };
@@ -1095,12 +1095,12 @@ AppModule = __decorate([
                 links: [
                     { loadChildren: '../pages/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/games/games.module#GamesPageModule', name: 'GamesPage', segment: 'games', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-missing/stickers-missing.module#StickersMissingPageModule', name: 'StickersMissingPage', segment: 'stickers-missing', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-repeated/stickers-repeated.module#StickersRepeatedPageModule', name: 'StickersRepeatedPage', segment: 'stickers-repeated', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/stickers/stickers.module#StickersPageModule', name: 'StickersPage', segment: 'stickers', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/stickers/stickers.module#StickersPageModule', name: 'StickersPage', segment: 'stickers', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_20__angular_http__["c" /* HttpModule */]
@@ -1231,8 +1231,8 @@ var LoginPage = LoginPage_1 = (function () {
             content: 'Espere un momento...'
         });
         loading.present();
-        var data = { type: 'cred', e: this.login.value.email, p: this.login.value.pwd };
-        this.authService.postData(data, 'cred.php').then(function (result) {
+        //var data = { type : 'cred', e : this.login.value.email, p : this.login.value.pwd };
+        this.authService.getData('e=' + this.login.value.email + '&p=' + this.login.value.pwd, 'cred.php').then(function (result) {
             loading.dismiss();
             _this.responseData = result;
             if (_this.responseData.status == "ok") {
@@ -1668,7 +1668,7 @@ TabsPage = __decorate([
 //export var Constants = {  };
 var Constants = {
     //API_ENDPOINT : '/ws/',
-    API_ENDPOINT: 'https://www.esferasoluciones.com/api/trikygol/',
+    API_ENDPOINT: 'http://www.esferasoluciones.com/api/trikygol/',
     months: [
         'Enero',
         'Febrero',

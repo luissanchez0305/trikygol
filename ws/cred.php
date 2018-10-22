@@ -1,11 +1,12 @@
 <?php
 include "helper.php";
 
-$post = retrieveJsonPostData($_POST);
+//$post = retrieveJsonPostData($_POST);
 
-if(isset($post->e) && isset($post->p)) {
-	$email = $post->e;
-	$pwd = $post->p;
+//if(isset($post->e) && isset($post->p)) {
+if(isset($_POST['e']) && isset($_POST['p'])) {
+	$email = $_POST['e'];
+	$pwd = $_POST['p'];
 
 	/* grab the posts from the db */
 	$query = "SELECT id, nombre, grupo FROM usuarios WHERE email = '$email' AND pwd = '$pwd'";

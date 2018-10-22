@@ -54,6 +54,7 @@ export class HomePage {
           //call method to refresh content
           this.loadPositionTable();
       });
+
       this.isDeviceOnline = true;
       // watch network for a disconnect
       this.network.onDisconnect().subscribe(() => {
@@ -61,6 +62,7 @@ export class HomePage {
           this.isDeviceOnline = false;
         });
       });
+
       // watch network for a connection
       this.network.onConnect().subscribe(() => {
         this.zone.run(() => {
