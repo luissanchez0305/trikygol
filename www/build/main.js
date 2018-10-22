@@ -410,11 +410,11 @@ var map = {
 		5
 	],
 	"../pages/register/register.module": [
-		290,
+		291,
 		4
 	],
 	"../pages/stickers-match/stickers-match.module": [
-		291,
+		290,
 		3
 	],
 	"../pages/stickers-missing/stickers-missing.module": [
@@ -1096,8 +1096,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/games/games.module#GamesPageModule', name: 'GamesPage', segment: 'games', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-match/stickers-match.module#StickersMatchPageModule', name: 'StickersMatchPage', segment: 'stickers-match', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-missing/stickers-missing.module#StickersMissingPageModule', name: 'StickersMissingPage', segment: 'stickers-missing', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers-repeated/stickers-repeated.module#StickersRepeatedPageModule', name: 'StickersRepeatedPage', segment: 'stickers-repeated', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stickers/stickers.module#StickersPageModule', name: 'StickersPage', segment: 'stickers', priority: 'low', defaultHistory: [] }
@@ -1546,8 +1546,12 @@ var RegisterPage = (function () {
             content: 'Espere un momento...'
         });
         loading.present();
-        var data = { n: this.register.value.name, c: localStorage.getItem('userEmail'), e: this.register.value.email, p: this.register.value.pwd, g: this.register.value.group };
-        this.authService.postData(data, localStorage.getItem('UserLoggedIn') == 'true' ? 'updateUser.php' : 'createUser.php').then(function (result) {
+        //var data = { n : this.register.value.name, c : localStorage.getItem('userEmail'), e : this.register.value.email, p : this.register.value.pwd, g : this.register.value.group };
+        this.authService.getData('n=' + this.register.value.name +
+            '&c=' + localStorage.getItem('userEmail') +
+            '&e=' + this.register.value.email +
+            '&p=' + this.register.value.pwd +
+            '&g=' + this.register.value.group, localStorage.getItem('UserLoggedIn') == 'true' ? 'updateUser.php' : 'createUser.php').then(function (result) {
             loading.dismiss();
             _this.responseData = result;
             console.log(_this.responseData);

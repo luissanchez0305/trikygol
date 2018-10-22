@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
@@ -36,9 +36,9 @@ export class RegisterPage {
     private isDeviceOnline : boolean;
     private showDuplicateText: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-  public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder,
-  public events : Events, private network: Network, private zone: NgZone, public loadingCtrl: LoadingController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+    public authService : AuthService, public helper : HelperService, private formBuilder: FormBuilder,
+    public events : Events, private network: Network, private zone: NgZone, public loadingCtrl: LoadingController) {
         // Quitar password de las validaciones al hacer submit
         this.isLoggedIn = localStorage.getItem('UserLoggedIn') == 'true';
         if(localStorage.getItem('UserLoggedIn') == 'true'){
@@ -87,7 +87,7 @@ export class RegisterPage {
             this.isDeviceOnline = true;
           });
         });
-  }
+    }
 
     ionViewDidLeave(){
         this.events.publish('reloadPositionTable');
@@ -112,9 +112,13 @@ export class RegisterPage {
             content: 'Espere un momento...'
         });
         loading.present();
-        var data = { n : this.register.value.name, c : localStorage.getItem('userEmail'), e : this.register.value.email, p : this.register.value.pwd, g : this.register.value.group };
+        //var data = { n : this.register.value.name, c : localStorage.getItem('userEmail'), e : this.register.value.email, p : this.register.value.pwd, g : this.register.value.group };
 
-        this.authService.postData(data, localStorage.getItem('UserLoggedIn') == 'true' ? 'updateUser.php' : 'createUser.php').then((result) => {
+        this.authService.getData('n=' + this.register.value.name +
+            '&c=' + localStorage.getItem('userEmail') +
+            '&e=' + this.register.value.email +
+            '&p=' + this.register.value.pwd +
+            '&g=' + this.register.value.group, localStorage.getItem('UserLoggedIn') == 'true' ? 'updateUser.php' : 'createUser.php').then((result) => {
             loading.dismiss();
             this.responseData = result;
             console.log(this.responseData);
